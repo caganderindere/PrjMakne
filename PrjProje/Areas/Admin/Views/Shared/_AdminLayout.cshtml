@@ -10,7 +10,7 @@
     // The group holding the current page starts open; the others stay collapsed to keep the menu short.
     string Expanded(string[] names) => names.Contains(controller) ? "true" : "false";
     string Show(string[] names) => names.Contains(controller) ? "show" : string.Empty;
-    var catalogPages = new[] { "ProductCategories", "Capabilities" };
+    var catalogPages = new[] { "ProductCategories", "Services" };
     var contentPages = new[] { "ContentTexts", "Blog", "BlogCategories", "Announcements", "References" };
     var mediaPages = new[] { "Gallery", "GalleryCategories", "Documents" };
     var systemPages = new[] { "Users", "Settings", "Notifications" };
@@ -54,7 +54,7 @@
                 <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navCatalog" aria-controls="navCatalog" aria-expanded="@Expanded(catalogPages)">Katalog<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                 <div class="collapse @Show(catalogPages)" id="navCatalog" data-bs-parent=".admin-nav">
                     <a class="@Active("ProductCategories")" asp-area="Admin" asp-controller="ProductCategories" asp-action="Index"><i class="fa-solid fa-folder-tree"></i>Ürün Kategorileri</a>
-                    <a class="@Active("Capabilities")" asp-area="Admin" asp-controller="Capabilities" asp-action="Index"><i class="fa-solid fa-industry"></i>Üretim Kabiliyetleri</a>
+                    <a class="@Active("Services")" asp-area="Admin" asp-controller="Services" asp-action="Index"><i class="fa-solid fa-screwdriver-wrench"></i>Hizmetler</a>
                 </div>
                 <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="@Expanded(contentPages)">İçerik<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                 <div class="collapse @Show(contentPages)" id="navContent" data-bs-parent=".admin-nav">

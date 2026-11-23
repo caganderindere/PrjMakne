@@ -1,7 +1,7 @@
 @using PrjProje.Domain.Enums
-@model QualityViewModel
+@model CertificatesViewModel
 @{
-    var header = new PageHeaderModel(L["Quality.Title"], L["Quality.Lead"], L["Nav.Quality"]);
+    var header = new PageHeaderModel(L["Certificates.Title"], L["Certificates.Lead"], L["Nav.Certificates"]);
     var groups = Model.Documents.GroupBy(d => d.DocumentType).OrderBy(g => g.Key);
 }
 <partial name="_PageHeader" model="header" />
@@ -10,16 +10,16 @@
     <div class="container">
         <div class="row g-5 align-items-center mb-5">
             <div class="col-lg-6">
-                <span class="eyebrow">@L["Quality.PolicyEyebrow"]</span>
-                <h2 class="section-title">@L["Quality.PolicyTitle"]</h2>
-                <p>@L["Quality.PolicyText"]</p>
+                <span class="eyebrow">@L["Certificates.PolicyEyebrow"]</span>
+                <h2 class="section-title">@L["Certificates.PolicyTitle"]</h2>
+                <p>@L["Certificates.PolicyText"]</p>
             </div>
             <div class="col-lg-6">
                 <ul class="check-list check-list-boxed">
-                    <li>@L["Quality.Point1"]</li>
-                    <li>@L["Quality.Point2"]</li>
-                    <li>@L["Quality.Point3"]</li>
-                    <li>@L["Quality.Point4"]</li>
+                    <li>@L["Certificates.Point1"]</li>
+                    <li>@L["Certificates.Point2"]</li>
+                    <li>@L["Certificates.Point3"]</li>
+                    <li>@L["Certificates.Point4"]</li>
                 </ul>
             </div>
         </div>
@@ -28,8 +28,8 @@
         {
             <div class="empty-state">
                 <i class="fa-solid fa-file-shield" aria-hidden="true"></i>
-                <h2>@L["Quality.EmptyTitle"]</h2>
-                <p>@L["Quality.EmptyText"]</p>
+                <h2>@L["Certificates.EmptyTitle"]</h2>
+                <p>@L["Certificates.EmptyText"]</p>
             </div>
         }
         @foreach (var group in groups)

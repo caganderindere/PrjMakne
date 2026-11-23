@@ -1,6 +1,6 @@
 @model IReadOnlyList<DocumentDto>
 @{
-    var header = new PageHeaderModel(L["Catalog.Title"], L["Catalog.Lead"], L["Nav.Products"]);
+    var header = new PageHeaderModel(L["Manuals.Title"], L["Manuals.Lead"], L["Nav.Products"]);
 }
 <partial name="_PageHeader" model="header" />
 
@@ -10,8 +10,8 @@
         {
             <div class="empty-state">
                 <i class="fa-solid fa-book-open" aria-hidden="true"></i>
-                <h2>@L["Catalog.EmptyTitle"]</h2>
-                <p>@L["Catalog.EmptyText"]</p>
+                <h2>@L["Manuals.EmptyTitle"]</h2>
+                <p>@L["Manuals.EmptyText"]</p>
             </div>
         }
         <div class="row g-4 g-xl-5">
@@ -28,7 +28,7 @@
                             {
                                 <i class="fa-solid fa-book-open catalog-cover-icon" aria-hidden="true"></i>
                             }
-                            <span class="catalog-cover-cta"><i class="fa-solid fa-book-open" aria-hidden="true"></i>@L["Catalog.Read"]<span class="visually-hidden">: @catalog.Title</span></span>
+                            <span class="catalog-cover-cta"><i class="fa-solid fa-book-open" aria-hidden="true"></i>@L["Manuals.Read"]<span class="visually-hidden">: @catalog.Title</span></span>
                         </button>
                         <h2 class="catalog-title">@catalog.Title</h2>
                         @if (!string.IsNullOrEmpty(catalog.Description))
@@ -37,7 +37,7 @@
                         }
                         <div class="catalog-meta">
                             <span>@catalog.DocumentDate.ToString("MMMM yyyy") &middot; PDF &middot; @ViewHelpers.FileSize(catalog.FileSize)</span>
-                            <a href="@catalog.FilePath" download><i class="fa-solid fa-download me-1" aria-hidden="true"></i>@L["Catalog.Download"]</a>
+                            <a href="@catalog.FilePath" download><i class="fa-solid fa-download me-1" aria-hidden="true"></i>@L["Manuals.Download"]</a>
                         </div>
                     </article>
                 </div>
@@ -48,17 +48,17 @@
 
 @if (Model.Count > 0)
 {
-    <dialog class="catalog-viewer" id="catalogViewer" aria-labelledby="catalogViewerTitle" data-loading="@L["Catalog.Loading"]" data-error="@L["Catalog.Error"]">
+    <dialog class="catalog-viewer" id="catalogViewer" aria-labelledby="catalogViewerTitle" data-loading="@L["Manuals.Loading"]" data-error="@L["Manuals.Error"]">
         <div class="catalog-viewer-bar">
             <h2 id="catalogViewerTitle"></h2>
             <span class="catalog-viewer-page" aria-live="polite"></span>
-            <a class="catalog-viewer-btn" data-catalog-download download title="@L["Catalog.Download"]"><i class="fa-solid fa-download" aria-hidden="true"></i><span class="visually-hidden">@L["Catalog.Download"]</span></a>
-            <button type="button" class="catalog-viewer-btn" data-catalog-close title="@L["Catalog.Close"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i><span class="visually-hidden">@L["Catalog.Close"]</span></button>
+            <a class="catalog-viewer-btn" data-catalog-download download title="@L["Manuals.Download"]"><i class="fa-solid fa-download" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Download"]</span></a>
+            <button type="button" class="catalog-viewer-btn" data-catalog-close title="@L["Manuals.Close"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Close"]</span></button>
         </div>
         <div class="catalog-viewer-stage">
             <p class="catalog-viewer-status" role="status"></p>
-            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-prev" data-catalog-prev title="@L["Catalog.Previous"]"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span class="visually-hidden">@L["Catalog.Previous"]</span></button>
-            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-next" data-catalog-next title="@L["Catalog.Next"]"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span class="visually-hidden">@L["Catalog.Next"]</span></button>
+            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-prev" data-catalog-prev title="@L["Manuals.Previous"]"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Previous"]</span></button>
+            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-next" data-catalog-next title="@L["Manuals.Next"]"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Next"]</span></button>
         </div>
     </dialog>
 }

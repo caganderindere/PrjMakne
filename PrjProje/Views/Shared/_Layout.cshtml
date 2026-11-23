@@ -86,17 +86,17 @@
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"><a class="nav-link @Active("Home")" href="@Url.Localized(SiteRoutes.Home)">@L["Nav.Home"]</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("About", "Quality")" href="@Url.Localized(SiteRoutes.About)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.About"]<small class="nav-hint" aria-hidden="true">@L["Nav.AboutUs"] · @L["Nav.Quality"]</small></a>
+                            <a class="nav-link dropdown-toggle @Active("About", "Certificates")" href="@Url.Localized(SiteRoutes.About)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.About"]<small class="nav-hint" aria-hidden="true">@L["Nav.AboutUs"] · @L["Nav.Certificates"]</small></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item @Active("About")" href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
-                                <li><a class="dropdown-item @Active("Quality")" href="@Url.Localized(SiteRoutes.Quality)">@L["Nav.Quality"]</a></li>
+                                <li><a class="dropdown-item @Active("Certificates")" href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Products", "Catalog")" href="@Url.Localized(SiteRoutes.Products)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Products"]<small class="nav-hint" aria-hidden="true">@string.Join(" · ", categories.Select(c => c.Name))</small></a>
+                            <a class="nav-link dropdown-toggle @Active("Products", "Manuals")" href="@Url.Localized(SiteRoutes.Products)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Products"]<small class="nav-hint" aria-hidden="true">@string.Join(" · ", categories.Select(c => c.Name))</small></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item fw-semibold" href="@Url.Localized(SiteRoutes.Products)">@L["Products.AllProducts"]</a></li>
-                                <li><a class="dropdown-item fw-semibold @Active("Catalog")" href="@Url.Localized(SiteRoutes.Catalog)">@L["Nav.Catalog"]</a></li>
+                                <li><a class="dropdown-item fw-semibold @Active("Manuals")" href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 @foreach (var category in categories)
                                 {
@@ -105,15 +105,15 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Manufacturing")" href="@Url.Localized(SiteRoutes.Manufacturing)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Manufacturing"]<small class="nav-hint" aria-hidden="true">@L["Nav.Capabilities"]</small></a>
+                            <a class="nav-link dropdown-toggle @Active("Services")" href="@Url.Localized(SiteRoutes.Services)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Services"]<small class="nav-hint" aria-hidden="true">@L["Nav.Services"]</small></a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("Manufacturing")" href="@Url.Localized(SiteRoutes.Manufacturing)">@L["Nav.Capabilities"]</a></li>
+                                <li><a class="dropdown-item @Active("Services")" href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Gallery", "Blog")" href="@Url.Localized(SiteRoutes.Gallery)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Media"]<small class="nav-hint" aria-hidden="true">@L["Nav.Gallery"] · @L["Nav.Blog"]</small></a>
+                            <a class="nav-link dropdown-toggle @Active("Videos", "Blog")" href="@Url.Localized(SiteRoutes.Videos)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Media"]<small class="nav-hint" aria-hidden="true">@L["Nav.Videos"] · @L["Nav.Blog"]</small></a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("Gallery")" href="@Url.Localized(SiteRoutes.Gallery)">@L["Nav.Gallery"]</a></li>
+                                <li><a class="dropdown-item @Active("Videos")" href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Videos"]</a></li>
                                 <li><a class="dropdown-item @Active("Blog")" href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
                             </ul>
                         </li>
@@ -156,9 +156,9 @@
                     <h2 class="footer-title">@L["Footer.Corporate"]</h2>
                     <ul class="footer-links">
                         <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.About"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Manufacturing)">@L["Nav.Manufacturing"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Quality)">@L["Nav.Quality"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Gallery)">@L["Nav.Gallery"]</a></li>
+                        <li><a href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></li>
+                        <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
+                        <li><a href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Videos"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
                     </ul>
                 </div>
@@ -169,7 +169,7 @@
                         {
                             <li><a href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)">@category.Name</a></li>
                         }
-                        <li><a href="@Url.Localized(SiteRoutes.Catalog)">@L["Nav.Catalog"]</a></li>
+                        <li><a href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Quote)">@L["Common.RequestQuote"]</a></li>
                     </ul>
                 </div>

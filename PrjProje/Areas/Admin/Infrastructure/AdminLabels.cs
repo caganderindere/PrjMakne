@@ -118,7 +118,7 @@ public static class AdminLabels
         "Gallery" => "Galeri",
         "GalleryCategory" => "Galeri kategorisi",
         "Document" => "Belge",
-        "Capability" => "Üretim kabiliyeti",
+        "Service" => "Hizmet",
         "ContactMessage" => "İletişim mesajı",
         "QuoteRequest" => "Teklif talebi",
         "User" => "Kullanıcı",
@@ -133,7 +133,7 @@ public static class AdminLabels
     {
         "about" => "Hakkımızda özeti",
         "categories" => "Ürün kategorileri",
-        "capabilities" => "Üretim kabiliyetleri",
+        "services" => "Hizmetler",
         "process" => "Üretim süreci",
         "featured" => "Öne çıkan ürünler",
         "why" => "Neden biz",

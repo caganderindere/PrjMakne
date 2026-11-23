@@ -37,21 +37,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.ToTable("BlogPostTags", (string)null);
                 });
 
-            modelBuilder.Entity("CapabilityProductCategory", b =>
-                {
-                    b.Property<int>("CapabilityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductCategoriesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CapabilityId", "ProductCategoriesId");
-
-                    b.HasIndex("ProductCategoriesId");
-
-                    b.ToTable("CapabilityProductCategories", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -515,104 +500,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.HasIndex("LanguageCode", "Status", "PublishedDate");
 
                     b.ToTable("BlogPostTranslations");
-                });
-
-            modelBuilder.Entity("PrjProje.Domain.Entities.Capability", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("GalleryCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IconClass")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Image")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ShowOnHome")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GalleryCategoryId");
-
-                    b.ToTable("Capabilities");
-                });
-
-            modelBuilder.Entity("PrjProje.Domain.Entities.CapabilityTranslation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CapabilityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LanguageCode")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("MetaDescription")
-                        .HasMaxLength(170)
-                        .HasColumnType("nvarchar(170)");
-
-                    b.Property<string>("MetaTitle")
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
-
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasMaxLength(180)
-                        .HasColumnType("nvarchar(180)");
-
-                    b.Property<string>("Specifications")
-                        .HasMaxLength(3000)
-                        .HasColumnType("nvarchar(3000)");
-
-                    b.Property<string>("Summary")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CapabilityId", "LanguageCode")
-                        .IsUnique();
-
-                    b.HasIndex("LanguageCode", "Slug")
-                        .IsUnique();
-
-                    b.ToTable("CapabilityTranslations");
                 });
 
             modelBuilder.Entity("PrjProje.Domain.Entities.ContactMessage", b =>
@@ -1282,6 +1169,104 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.ToTable("References");
                 });
 
+            modelBuilder.Entity("PrjProje.Domain.Entities.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("GalleryCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IconClass")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ShowOnHome")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GalleryCategoryId");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("PrjProje.Domain.Entities.ServiceTranslation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LanguageCode")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("MetaDescription")
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(180)
+                        .HasColumnType("nvarchar(180)");
+
+                    b.Property<string>("Specifications")
+                        .HasMaxLength(3000)
+                        .HasColumnType("nvarchar(3000)");
+
+                    b.Property<string>("Summary")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageCode", "Slug")
+                        .IsUnique();
+
+                    b.HasIndex("ServiceId", "LanguageCode")
+                        .IsUnique();
+
+                    b.ToTable("ServiceTranslations");
+                });
+
             modelBuilder.Entity("PrjProje.Domain.Entities.SiteSetting", b =>
                 {
                     b.Property<int>("Id")
@@ -1350,6 +1335,21 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.ToTable("WhatsAppClickDays");
                 });
 
+            modelBuilder.Entity("ProductCategoryService", b =>
+                {
+                    b.Property<int>("ProductCategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductCategoriesId", "ServiceId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("ServiceProductCategories", (string)null);
+                });
+
             modelBuilder.Entity("BlogPostTranslationTag", b =>
                 {
                     b.HasOne("PrjProje.Domain.Entities.BlogPostTranslation", null)
@@ -1361,21 +1361,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.HasOne("PrjProje.Domain.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CapabilityProductCategory", b =>
-                {
-                    b.HasOne("PrjProje.Domain.Entities.Capability", null)
-                        .WithMany()
-                        .HasForeignKey("CapabilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PrjProje.Domain.Entities.ProductCategory", null)
-                        .WithMany()
-                        .HasForeignKey("ProductCategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1461,27 +1446,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("BlogPost");
-                });
-
-            modelBuilder.Entity("PrjProje.Domain.Entities.Capability", b =>
-                {
-                    b.HasOne("PrjProje.Domain.Entities.GalleryCategory", "GalleryCategory")
-                        .WithMany()
-                        .HasForeignKey("GalleryCategoryId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("GalleryCategory");
-                });
-
-            modelBuilder.Entity("PrjProje.Domain.Entities.CapabilityTranslation", b =>
-                {
-                    b.HasOne("PrjProje.Domain.Entities.Capability", "Capability")
-                        .WithMany("Translations")
-                        .HasForeignKey("CapabilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Capability");
                 });
 
             modelBuilder.Entity("PrjProje.Domain.Entities.GalleryCategoryTranslation", b =>
@@ -1582,6 +1546,42 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("PrjProje.Domain.Entities.Service", b =>
+                {
+                    b.HasOne("PrjProje.Domain.Entities.GalleryCategory", "GalleryCategory")
+                        .WithMany()
+                        .HasForeignKey("GalleryCategoryId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("GalleryCategory");
+                });
+
+            modelBuilder.Entity("PrjProje.Domain.Entities.ServiceTranslation", b =>
+                {
+                    b.HasOne("PrjProje.Domain.Entities.Service", "Service")
+                        .WithMany("Translations")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("ProductCategoryService", b =>
+                {
+                    b.HasOne("PrjProje.Domain.Entities.ProductCategory", null)
+                        .WithMany()
+                        .HasForeignKey("ProductCategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PrjProje.Domain.Entities.Service", null)
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PrjProje.Domain.Entities.BlogCategory", b =>
                 {
                     b.Navigation("Posts");
@@ -1590,11 +1590,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                 });
 
             modelBuilder.Entity("PrjProje.Domain.Entities.BlogPost", b =>
-                {
-                    b.Navigation("Translations");
-                });
-
-            modelBuilder.Entity("PrjProje.Domain.Entities.Capability", b =>
                 {
                     b.Navigation("Translations");
                 });
@@ -1624,6 +1619,11 @@ namespace PrjProje.Infrastructure.Data.Migrations
                 {
                     b.Navigation("Products");
 
+                    b.Navigation("Translations");
+                });
+
+            modelBuilder.Entity("PrjProje.Domain.Entities.Service", b =>
+                {
                     b.Navigation("Translations");
                 });
 #pragma warning restore 612, 618

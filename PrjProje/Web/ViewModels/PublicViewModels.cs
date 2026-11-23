@@ -7,7 +7,7 @@ namespace PrjProje.Web.ViewModels;
 public class HomeViewModel
 {
     public IReadOnlyList<ProductCategoryDto> Categories { get; init; } = Array.Empty<ProductCategoryDto>();
-    public IReadOnlyList<CapabilityDto> Capabilities { get; init; } = Array.Empty<CapabilityDto>();
+    public IReadOnlyList<ServiceDto> Services { get; init; } = Array.Empty<ServiceDto>();
     public IReadOnlyList<ProductListItemDto> FeaturedProducts { get; init; } = Array.Empty<ProductListItemDto>();
     public IReadOnlyList<BlogPostListItemDto> LatestPosts { get; init; } = Array.Empty<BlogPostListItemDto>();
     public IReadOnlyList<string> ExportCountryCodes { get; init; } = Array.Empty<string>();
@@ -39,15 +39,15 @@ public class ProductListViewModel
     public PagedResult<ProductListItemDto> Products { get; init; } = new(Array.Empty<ProductListItemDto>(), 0, 1, 12);
 }
 
-public class ManufacturingViewModel
+public class ServicesViewModel
 {
-    public IReadOnlyList<CapabilityDto> Capabilities { get; init; } = Array.Empty<CapabilityDto>();
+    public IReadOnlyList<ServiceDto> Services { get; init; } = Array.Empty<ServiceDto>();
 }
 
-public class CapabilityDetailViewModel
+public class ServiceDetailViewModel
 {
-    public CapabilityDto Capability { get; init; } = new();
-    public IReadOnlyList<CapabilityDto> Others { get; init; } = Array.Empty<CapabilityDto>();
+    public ServiceDto Service { get; init; } = new();
+    public IReadOnlyList<ServiceDto> Others { get; init; } = Array.Empty<ServiceDto>();
     public IReadOnlyList<GalleryItemDto> Gallery { get; init; } = Array.Empty<GalleryItemDto>();
     public IReadOnlyList<ProductCategoryDto> Categories { get; init; } = Array.Empty<ProductCategoryDto>();
     public IReadOnlyList<DocumentDto> Certificates { get; init; } = Array.Empty<DocumentDto>();
@@ -62,7 +62,7 @@ public class BlogListViewModel
     public string? Search { get; init; }
 }
 
-public class QualityViewModel
+public class CertificatesViewModel
 {
     public IReadOnlyList<DocumentDto> Documents { get; init; } = Array.Empty<DocumentDto>();
 }

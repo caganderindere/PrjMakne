@@ -80,7 +80,7 @@
     }, { threshold: 0.6 });
 
     // Reveal-on-scroll for cards
-    var revealTargets = Array.prototype.slice.call(document.querySelectorAll(".category-card, .capability-card, .product-card, .blog-card, .process-card, .timeline-item, .principle-card, .info-block"));
+    var revealTargets = Array.prototype.slice.call(document.querySelectorAll(".category-card, .service-card, .product-card, .blog-card, .process-card, .timeline-item, .principle-card, .info-block"));
     revealTargets.forEach(function (element) { element.classList.add("reveal"); });
     onVisible(revealTargets, function (element) { element.classList.add("is-visible"); }, { threshold: 0.1 });
 

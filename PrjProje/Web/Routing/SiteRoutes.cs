@@ -6,7 +6,7 @@ public sealed record LocalizedRoute(string Key, string Controller, string Action
 
 /// <summary>
 /// Central registry of public, language-specific URLs. Every public page has its own
-/// translated path per language (e.g. /tr/hakkimizda and /en/about-us), which is used for
+/// translated path per language (e.g. /tr/kurumsal and /en/about-us), which is used for
 /// route registration, link generation, hreflang alternates and the sitemap.
 /// </summary>
 public static class SiteRoutes
@@ -18,13 +18,13 @@ public static class SiteRoutes
     public const string Products = "Products";
     public const string ProductCategory = "ProductCategory";
     public const string ProductDetail = "ProductDetail";
-    public const string Catalog = "Catalog";
-    public const string Manufacturing = "Manufacturing";
-    public const string ManufacturingDetail = "ManufacturingDetail";
+    public const string Manuals = "Manuals";
+    public const string Services = "Services";
+    public const string ServiceDetail = "ServiceDetail";
     public const string Blog = "Blog";
     public const string BlogDetail = "BlogDetail";
-    public const string Gallery = "Gallery";
-    public const string Quality = "Quality";
+    public const string Videos = "Videos";
+    public const string Certificates = "Certificates";
     public const string Contact = "Contact";
     public const string Quote = "Quote";
     public const string Privacy = "Privacy";
@@ -33,19 +33,19 @@ public static class SiteRoutes
     public static readonly IReadOnlyList<LocalizedRoute> All = new[]
     {
         Route(Home, "Home", "Index", "", ""),
-        Route(About, "About", "Index", "hakkimizda", "about-us"),
+        Route(About, "About", "Index", "kurumsal", "about-us"),
+        Route(Certificates, "Certificates", "Index", "belgeler", "certificates"),
         Route(ProductCategory, "Products", "Index", "urunler/kategori/{slug}", "products/category/{slug}"),
-        Route(Catalog, "Catalog", "Index", "urunler/katalog", "products/catalogue"),
         Route(ProductDetail, "Products", "Detail", "urunler/{slug}", "products/{slug}"),
         Route(Products, "Products", "Index", "urunler", "products"),
-        Route(ManufacturingDetail, "Manufacturing", "Detail", "uretim/{slug}", "manufacturing/{slug}"),
-        Route(Manufacturing, "Manufacturing", "Index", "uretim", "manufacturing"),
+        Route(ServiceDetail, "Services", "Detail", "hizmetler/{slug}", "services/{slug}"),
+        Route(Services, "Services", "Index", "hizmetler", "services"),
+        Route(Videos, "Videos", "Index", "videolar", "videos"),
+        Route(Manuals, "Manuals", "Index", "kullanim-kilavuzlari", "user-manuals"),
         Route(BlogDetail, "Blog", "Detail", "blog/{slug}", "blog/{slug}"),
         Route(Blog, "Blog", "Index", "blog", "blog"),
-        Route(Gallery, "Gallery", "Index", "galeri", "gallery"),
-        Route(Quality, "Quality", "Index", "kalite", "quality"),
-        Route(Contact, "Contact", "Index", "iletisim", "contact"),
         Route(Quote, "Quote", "Index", "teklif-al", "request-a-quote"),
+        Route(Contact, "Contact", "Index", "iletisim", "contact"),
         Route(Privacy, "Legal", "Privacy", "kvkk", "privacy-policy"),
         Route(Cookies, "Legal", "Cookies", "cerez-politikasi", "cookie-policy"),
     };

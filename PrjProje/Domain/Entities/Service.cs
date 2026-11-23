@@ -2,7 +2,7 @@ using PrjProje.Domain.Common;
 
 namespace PrjProje.Domain.Entities;
 
-public class Capability : BaseEntity, ITranslatable<CapabilityTranslation>
+public class Service : BaseEntity, ITranslatable<ServiceTranslation>
 {
     public string IconClass { get; set; } = "fa-solid fa-gear";
     public string? Image { get; set; }
@@ -12,14 +12,14 @@ public class Capability : BaseEntity, ITranslatable<CapabilityTranslation>
     public int? GalleryCategoryId { get; set; }
     public GalleryCategory? GalleryCategory { get; set; }
     public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
-    public ICollection<CapabilityTranslation> Translations { get; set; } = new List<CapabilityTranslation>();
+    public ICollection<ServiceTranslation> Translations { get; set; } = new List<ServiceTranslation>();
 }
 
-public class CapabilityTranslation : ITranslation
+public class ServiceTranslation : ITranslation
 {
     public int Id { get; set; }
-    public int CapabilityId { get; set; }
-    public Capability Capability { get; set; } = null!;
+    public int ServiceId { get; set; }
+    public Service Service { get; set; } = null!;
     public string LanguageCode { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Slug { get; set; } = string.Empty;

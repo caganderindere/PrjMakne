@@ -131,51 +131,51 @@ public class ProductCategoriesController : AdminControllerBase
         ResultRedirect(await _categoryService.DeleteAsync(id, cancellationToken), "Kategori silindi.");
 }
 
-public class CapabilitiesController : AdminControllerBase
+public class ServicesController : AdminControllerBase
 {
-    private readonly ICapabilityAdminService _capabilityService;
+    private readonly IServiceAdminService _serviceAdminService;
 
-    public CapabilitiesController(ICapabilityAdminService capabilityService)
+    public ServicesController(IServiceAdminService serviceAdminService)
     {
-        _capabilityService = capabilityService;
+        _serviceAdminService = serviceAdminService;
     }
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
-        View(await _capabilityService.GetListAsync(cancellationToken));
+        View(await _serviceAdminService.GetListAsync(cancellationToken));
 
     public async Task<IActionResult> Create(CancellationToken cancellationToken) =>
-        View("Form", await _capabilityService.CreateNewAsync(cancellationToken));
+        View("Form", await _serviceAdminService.CreateNewAsync(cancellationToken));
 
     public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
     {
-        var model = await _capabilityService.GetForEditAsync(id, cancellationToken);
+        var model = await _serviceAdminService.GetForEditAsync(id, cancellationToken);
         return model is null ? NotFound() : View("Form", model);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Save(CapabilityEditModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Save(ServiceEditModel model, CancellationToken cancellationToken)
     {
         if (ModelState.IsValid)
         {
-            var result = await _capabilityService.SaveAsync(model, cancellationToken);
+            var result = await _serviceAdminService.SaveAsync(model, cancellationToken);
             if (result.Succeeded)
             {
-                Success("Üretim kabiliyeti kaydedildi.");
+                Success("Hizmet kaydedildi.");
                 return RedirectToAction(nameof(Index));
             }
 
             AddErrors(result);
         }
 
-        await _capabilityService.PopulateOptionsAsync(model, cancellationToken);
+        await _serviceAdminService.PopulateOptionsAsync(model, cancellationToken);
         return View("Form", model);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
-        ResultRedirect(await _capabilityService.DeleteAsync(id, cancellationToken), "Üretim kabiliyeti silindi.");
+        ResultRedirect(await _serviceAdminService.DeleteAsync(id, cancellationToken), "Hizmet silindi.");
 }
 
 public class BlogController : AdminControllerBase

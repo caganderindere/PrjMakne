@@ -123,7 +123,7 @@ public record DocumentDto(
     DateTime DocumentDate,
     string? CoverImagePath);
 
-public class CapabilityDto
+public class ServiceDto
 {
     public int Id { get; init; }
     public string Title { get; init; } = string.Empty;

@@ -1,0 +1,53 @@
+@model ServicesViewModel
+@{
+    var header = new PageHeaderModel(L["Services.Title"], L["Services.Lead"], L["Nav.Services"]);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row g-5 mb-5 align-items-end">
+            <div class="col-lg-7">
+                <span class="eyebrow">@L["Services.IntroEyebrow"]</span>
+                <h2 class="section-title">@L["Services.IntroTitle"]</h2>
+            </div>
+            <div class="col-lg-5">
+                <p class="mb-0">@L["Services.IntroText"]</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            @foreach (var (service, index) in Model.Services.Select((c, i) => (c, i)))
+            {
+                <div class="col-md-6 col-lg-4">
+                    <a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)" class="process-card h-100">
+                        @if (service.Image is not null)
+                        {
+                            <span class="process-card-media"><img src="@ViewHelpers.SmallImage(service.Image)" alt="@service.Title" loading="lazy" decoding="async" width="640" height="360" /></span>
+                        }
+                        <span class="process-card-body">
+                            <span class="process-number">@((index + 1).ToString("00"))</span>
+                            <i class="@service.IconClass process-icon" aria-hidden="true"></i>
+                            <span class="process-title">@service.Title</span>
+                            <span class="process-text">@service.Summary</span>
+                            <span class="link-arrow">@L["Common.ViewDetails"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark">
+    <div class="container">
+        <div class="row g-4 text-center process-flow">
+            <div class="col-6 col-lg"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>@L["Services.FlowDesign"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-industry" aria-hidden="true"></i><span>@L["Services.FlowProduction"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-spray-can" aria-hidden="true"></i><span>@L["Services.FlowFinishing"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><span>@L["Services.FlowQuality"]</span></div>
+            <div class="col-12 col-lg"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>@L["Services.FlowShipping"]</span></div>
+        </div>
+    </div>
+</section>
+
+<partial name="_CtaSection" />

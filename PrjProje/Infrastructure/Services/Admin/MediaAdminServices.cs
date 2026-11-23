@@ -356,7 +356,7 @@ public sealed class DocumentAdminService : IDocumentAdminService
     }
 }
 
-public sealed class CapabilityAdminService : ICapabilityAdminService
+public sealed class ServiceAdminService : IServiceAdminService
 {
     private readonly ApplicationDbContext _db;
     private readonly IFileStorageService _storage;
@@ -366,7 +366,7 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
     private readonly IGalleryCategoryAdminService _galleryCategoryService;
     private readonly IProductCategoryAdminService _productCategoryService;
 
-    public CapabilityAdminService(ApplicationDbContext db, IFileStorageService storage, IHtmlSanitizerService sanitizer, IActivityLogger activityLogger, IContentCache cache,
+    public ServiceAdminService(ApplicationDbContext db, IFileStorageService storage, IHtmlSanitizerService sanitizer, IActivityLogger activityLogger, IContentCache cache,
         IGalleryCategoryAdminService galleryCategoryService, IProductCategoryAdminService productCategoryService)
     {
         _galleryCategoryService = galleryCategoryService;
@@ -379,7 +379,7 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
     }
 
     public async Task<IReadOnlyList<TranslatedListItem>> GetListAsync(CancellationToken cancellationToken = default) =>
-        await _db.Capabilities.AsNoTracking()
+        await _db.Services.AsNoTracking()
             .OrderBy(c => c.SortOrder)
             .Select(c => new TranslatedListItem(
                 c.Id,
@@ -391,45 +391,45 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
                 c.UpdatedDate ?? c.CreatedDate))
             .ToListAsync(cancellationToken);
 
-    public async Task<CapabilityEditModel> CreateNewAsync(CancellationToken cancellationToken = default)
+    public async Task<ServiceEditModel> CreateNewAsync(CancellationToken cancellationToken = default)
     {
-        var model = new CapabilityEditModel
+        var model = new ServiceEditModel
         {
-            Translations = Languages.All.Select(code => new CapabilityTranslationInput { LanguageCode = code }).ToList()
+            Translations = Languages.All.Select(code => new ServiceTranslationInput { LanguageCode = code }).ToList()
         };
         await PopulateOptionsAsync(model, cancellationToken);
         return model;
     }
 
-    public async Task PopulateOptionsAsync(CapabilityEditModel model, CancellationToken cancellationToken = default)
+    public async Task PopulateOptionsAsync(ServiceEditModel model, CancellationToken cancellationToken = default)
     {
         model.GalleryOptions = await _galleryCategoryService.GetOptionsAsync(cancellationToken);
         model.CategoryOptions = await _productCategoryService.GetOptionsAsync(cancellationToken);
     }
 
-    public async Task<CapabilityEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<ServiceEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default)
     {
-        var capability = await _db.Capabilities.AsNoTracking().Include(c => c.Translations).Include(c => c.ProductCategories)
+        var service = await _db.Services.AsNoTracking().Include(c => c.Translations).Include(c => c.ProductCategories)
             .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (capability is null)
+        if (service is null)
         {
             return null;
         }
 
-        var model = new CapabilityEditModel
+        var model = new ServiceEditModel
         {
-            Id = capability.Id,
-            IconClass = capability.IconClass,
-            Image = capability.Image,
-            SortOrder = capability.SortOrder,
-            IsActive = capability.IsActive,
-            ShowOnHome = capability.ShowOnHome,
-            GalleryCategoryId = capability.GalleryCategoryId,
-            ProductCategoryIds = capability.ProductCategories.Select(c => c.Id).ToList(),
+            Id = service.Id,
+            IconClass = service.IconClass,
+            Image = service.Image,
+            SortOrder = service.SortOrder,
+            IsActive = service.IsActive,
+            ShowOnHome = service.ShowOnHome,
+            GalleryCategoryId = service.GalleryCategoryId,
+            ProductCategoryIds = service.ProductCategories.Select(c => c.Id).ToList(),
             Translations = Languages.All.Select(code =>
             {
-                var t = capability.Translations.FirstOrDefault(x => x.LanguageCode == code);
-                return new CapabilityTranslationInput
+                var t = service.Translations.FirstOrDefault(x => x.LanguageCode == code);
+                return new ServiceTranslationInput
                 {
                     LanguageCode = code,
                     Title = t?.Title,
@@ -446,57 +446,57 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
         return model;
     }
 
-    public async Task<ServiceResult<int>> SaveAsync(CapabilityEditModel model, CancellationToken cancellationToken = default)
+    public async Task<ServiceResult<int>> SaveAsync(ServiceEditModel model, CancellationToken cancellationToken = default)
     {
         if (model.GalleryCategoryId is > 0 && !await _db.GalleryCategories.AnyAsync(c => c.Id == model.GalleryCategoryId, cancellationToken))
         {
             return ServiceResult<int>.Failure("Seçilen galeri kategorisi bulunamadı.");
         }
 
-        Capability? capability;
+        Service? service;
         var isNew = model.Id == 0;
         if (isNew)
         {
-            capability = new Capability();
-            _db.Capabilities.Add(capability);
+            service = new Service();
+            _db.Services.Add(service);
         }
         else
         {
-            capability = await _db.Capabilities.Include(c => c.Translations).Include(c => c.ProductCategories)
+            service = await _db.Services.Include(c => c.Translations).Include(c => c.ProductCategories)
                 .FirstOrDefaultAsync(c => c.Id == model.Id, cancellationToken);
-            if (capability is null)
+            if (service is null)
             {
-                return ServiceResult<int>.Failure("Kabiliyet bulunamadı.");
+                return ServiceResult<int>.Failure("Hizmet bulunamadı.");
             }
         }
 
-        var image = await AdminHelpers.ReplaceImageAsync(_storage, capability.Image, model.ImageFile, model.RemoveImage, ImageFolder.Capabilities, cancellationToken);
+        var image = await AdminHelpers.ReplaceImageAsync(_storage, service.Image, model.ImageFile, model.RemoveImage, ImageFolder.Services, cancellationToken);
         if (!image.Succeeded)
         {
             return ServiceResult<int>.Failure(image.Errors.ToArray());
         }
 
-        capability.Image = image.Value;
-        capability.IconClass = string.IsNullOrWhiteSpace(model.IconClass) ? "fa-solid fa-gear" : model.IconClass.Trim();
-        capability.SortOrder = model.SortOrder;
-        capability.IsActive = model.IsActive;
-        capability.ShowOnHome = model.ShowOnHome;
-        capability.GalleryCategoryId = model.GalleryCategoryId is > 0 ? model.GalleryCategoryId : null;
-        capability.ProductCategories.Clear();
+        service.Image = image.Value;
+        service.IconClass = string.IsNullOrWhiteSpace(model.IconClass) ? "fa-solid fa-gear" : model.IconClass.Trim();
+        service.SortOrder = model.SortOrder;
+        service.IsActive = model.IsActive;
+        service.ShowOnHome = model.ShowOnHome;
+        service.GalleryCategoryId = model.GalleryCategoryId is > 0 ? model.GalleryCategoryId : null;
+        service.ProductCategories.Clear();
         foreach (var category in await _db.ProductCategories.Where(c => model.ProductCategoryIds.Contains(c.Id)).ToListAsync(cancellationToken))
         {
-            capability.ProductCategories.Add(category);
+            service.ProductCategories.Add(category);
         }
 
         foreach (var code in Languages.All)
         {
             var input = model.Translations.FirstOrDefault(t => t.LanguageCode == code);
-            var translation = capability.Translations.FirstOrDefault(t => t.LanguageCode == code);
+            var translation = service.Translations.FirstOrDefault(t => t.LanguageCode == code);
             if (input is null || string.IsNullOrWhiteSpace(input.Title))
             {
                 if (translation is not null)
                 {
-                    _db.CapabilityTranslations.Remove(translation);
+                    _db.ServiceTranslations.Remove(translation);
                 }
 
                 continue;
@@ -504,14 +504,14 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
 
             if (translation is null)
             {
-                translation = new CapabilityTranslation { LanguageCode = code };
-                capability.Translations.Add(translation);
+                translation = new ServiceTranslation { LanguageCode = code };
+                service.Translations.Add(translation);
             }
 
-            var capabilityId = capability.Id;
+            var serviceId = service.Id;
             translation.Title = input.Title.Trim();
             translation.Slug = await AdminHelpers.UniqueSlugAsync(
-                _db.CapabilityTranslations.Where(t => t.LanguageCode == code && t.CapabilityId != capabilityId).Select(t => t.Slug),
+                _db.ServiceTranslations.Where(t => t.LanguageCode == code && t.ServiceId != serviceId).Select(t => t.Slug),
                 input.Slug, translation.Title, cancellationToken);
             translation.Summary = AdminHelpers.Clean(input.Summary);
             translation.Content = AdminHelpers.Clean(_sanitizer.Sanitize(input.Content));
@@ -522,24 +522,24 @@ public sealed class CapabilityAdminService : ICapabilityAdminService
 
         await _db.SaveChangesAsync(cancellationToken);
         _cache.Invalidate();
-        await _activityLogger.LogAsync(isNew ? "Created" : "Updated", "Capability", capability.Id,
-            capability.Translations.FirstOrDefault(t => t.LanguageCode == Languages.Default)?.Title, cancellationToken);
-        return ServiceResult<int>.Success(capability.Id);
+        await _activityLogger.LogAsync(isNew ? "Created" : "Updated", "Service", service.Id,
+            service.Translations.FirstOrDefault(t => t.LanguageCode == Languages.Default)?.Title, cancellationToken);
+        return ServiceResult<int>.Success(service.Id);
     }
 
     public async Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
-        var capability = await _db.Capabilities.FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (capability is null)
+        var service = await _db.Services.FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+        if (service is null)
         {
-            return ServiceResult.Failure("Kabiliyet bulunamadı.");
+            return ServiceResult.Failure("Hizmet bulunamadı.");
         }
 
-        _db.Capabilities.Remove(capability);
+        _db.Services.Remove(service);
         await _db.SaveChangesAsync(cancellationToken);
-        _storage.DeletePublicFile(capability.Image);
+        _storage.DeletePublicFile(service.Image);
         _cache.Invalidate();
-        await _activityLogger.LogAsync("Deleted", "Capability", id, null, cancellationToken);
+        await _activityLogger.LogAsync("Deleted", "Service", id, null, cancellationToken);
         return ServiceResult.Success();
     }
 }

@@ -7,12 +7,11 @@
   <data name="Nav.Home" xml:space="preserve"><value>Ana Sayfa</value></data>
   <data name="Nav.About" xml:space="preserve"><value>Kurumsal</value></data>
   <data name="Nav.AboutUs" xml:space="preserve"><value>Hakkımızda</value></data>
-  <data name="Nav.Capabilities" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
   <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Ürünler</value></data>
-  <data name="Nav.Manufacturing" xml:space="preserve"><value>Üretim</value></data>
-  <data name="Nav.Quality" xml:space="preserve"><value>Kalite</value></data>
-  <data name="Nav.Gallery" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Nav.Services" xml:space="preserve"><value>Üretim</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Kalite</value></data>
+  <data name="Nav.Videos" xml:space="preserve"><value>Galeri</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>İletişim</value></data>
   <data name="Nav.Quote" xml:space="preserve"><value>Teklif Al</value></data>
@@ -62,8 +61,8 @@
   <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Entegre üretim tesisi</value></data>
   <data name="Home.LearnMore" xml:space="preserve"><value>Detaylı İncele</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Ürün Kategorilerimiz</value></data>
-  <data name="Home.CapabilitiesTitle" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
-  <data name="Home.CapabilitiesLead" xml:space="preserve"><value>Entegre tesisimizde hammaddeden bitmiş ürüne kadar tüm kritik süreçleri kendi kontrolümüzde tutuyoruz.</value></data>
+  <data name="Home.ServicesTitle" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
+  <data name="Home.ServicesLead" xml:space="preserve"><value>Entegre tesisimizde hammaddeden bitmiş ürüne kadar tüm kritik süreçleri kendi kontrolümüzde tutuyoruz.</value></data>
   <data name="Home.AllCapabilities" xml:space="preserve"><value>Tüm Kabiliyetler</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>Tüm Yazılar</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Öne Çıkanlar</value></data>
@@ -189,24 +188,24 @@
 {1}</value></data>
   <data name="Products.Related" xml:space="preserve"><value>İlgili Ürünler</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Görsel {0}</value></data>
-  <data name="Manufacturing.MetaTitle" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
-  <data name="Manufacturing.MetaDescription" xml:space="preserve"><value>CNC işleme, hidrolik pres, kauçuk üretimi, lazer kesim, büküm, fırın boya, kaplama ve çelik döküm kabiliyetlerimiz.</value></data>
-  <data name="Manufacturing.Title" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
-  <data name="Manufacturing.Lead" xml:space="preserve"><value>Tasarımdan sevkiyata kadar tüm süreçler tek çatı altında.</value></data>
-  <data name="Manufacturing.IntroEyebrow" xml:space="preserve"><value>Entegre Üretim</value></data>
-  <data name="Manufacturing.IntroTitle" xml:space="preserve"><value>Kontrol bizde, kalite sizde</value></data>
-  <data name="Manufacturing.IntroText" xml:space="preserve"><value>Kritik üretim adımlarını dış kaynağa bırakmadan yönetiyor, her siparişte izlenebilirlik ve tekrarlanabilir kalite sağlıyoruz.</value></data>
-  <data name="Manufacturing.FlowDesign" xml:space="preserve"><value>Tasarım</value></data>
-  <data name="Manufacturing.FlowProduction" xml:space="preserve"><value>Üretim</value></data>
-  <data name="Manufacturing.FlowFinishing" xml:space="preserve"><value>Yüzey İşlem</value></data>
-  <data name="Manufacturing.FlowQuality" xml:space="preserve"><value>Kalite Kontrol</value></data>
-  <data name="Manufacturing.FlowShipping" xml:space="preserve"><value>Sevkiyat</value></data>
-  <data name="Manufacturing.OtherCapabilities" xml:space="preserve"><value>Diğer Kabiliyetler</value></data>
-  <data name="Manufacturing.SpecsTitle" xml:space="preserve"><value>Teknik Kapasite</value></data>
-  <data name="Manufacturing.GalleryTitle" xml:space="preserve"><value>Tesisten Görüntüler</value></data>
-  <data name="Manufacturing.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
-  <data name="Manufacturing.CertificatesTitle" xml:space="preserve"><value>Sertifikalar ve Belgeler</value></data>
-  <data name="Manufacturing.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
+  <data name="Services.MetaTitle" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
+  <data name="Services.MetaDescription" xml:space="preserve"><value>CNC işleme, hidrolik pres, kauçuk üretimi, lazer kesim, büküm, fırın boya, kaplama ve çelik döküm kabiliyetlerimiz.</value></data>
+  <data name="Services.Title" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
+  <data name="Services.Lead" xml:space="preserve"><value>Tasarımdan sevkiyata kadar tüm süreçler tek çatı altında.</value></data>
+  <data name="Services.IntroEyebrow" xml:space="preserve"><value>Entegre Üretim</value></data>
+  <data name="Services.IntroTitle" xml:space="preserve"><value>Kontrol bizde, kalite sizde</value></data>
+  <data name="Services.IntroText" xml:space="preserve"><value>Kritik üretim adımlarını dış kaynağa bırakmadan yönetiyor, her siparişte izlenebilirlik ve tekrarlanabilir kalite sağlıyoruz.</value></data>
+  <data name="Services.FlowDesign" xml:space="preserve"><value>Tasarım</value></data>
+  <data name="Services.FlowProduction" xml:space="preserve"><value>Üretim</value></data>
+  <data name="Services.FlowFinishing" xml:space="preserve"><value>Yüzey İşlem</value></data>
+  <data name="Services.FlowQuality" xml:space="preserve"><value>Kalite Kontrol</value></data>
+  <data name="Services.FlowShipping" xml:space="preserve"><value>Sevkiyat</value></data>
+  <data name="Services.OtherCapabilities" xml:space="preserve"><value>Diğer Kabiliyetler</value></data>
+  <data name="Services.SpecsTitle" xml:space="preserve"><value>Teknik Kapasite</value></data>
+  <data name="Services.GalleryTitle" xml:space="preserve"><value>Tesisten Görüntüler</value></data>
+  <data name="Services.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
+  <data name="Services.CertificatesTitle" xml:space="preserve"><value>Sertifikalar ve Belgeler</value></data>
+  <data name="Services.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
   <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Savunma sanayii ürünlerine ait teknik detaylar, çizimler ve üretim parametreleri kamuya açık olarak paylaşılmaz; yalnızca yetkili kurumlarla mevzuat çerçevesinde paylaşılır.</value></data>
   <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
@@ -222,46 +221,46 @@
   <data name="Blog.Tags" xml:space="preserve"><value>Etiketler</value></data>
   <data name="Blog.Share" xml:space="preserve"><value>Paylaş</value></data>
   <data name="Blog.Related" xml:space="preserve"><value>İlgili Yazılar</value></data>
-  <data name="Gallery.MetaTitle" xml:space="preserve"><value>Galeri</value></data>
-  <data name="Gallery.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina fabrika, üretim, CNC, kauçuk, çelik ve fuar fotoğrafları.</value></data>
-  <data name="Gallery.Title" xml:space="preserve"><value>Galeri</value></data>
-  <data name="Gallery.Lead" xml:space="preserve"><value>Tesisimizden, üretim hatlarımızdan ve etkinliklerimizden kareler.</value></data>
-  <data name="Gallery.FilterLabel" xml:space="preserve"><value>Galeri kategorileri</value></data>
-  <data name="Gallery.All" xml:space="preserve"><value>Tümü</value></data>
-  <data name="Gallery.EmptyTitle" xml:space="preserve"><value>Galeri hazırlanıyor</value></data>
-  <data name="Gallery.EmptyText" xml:space="preserve"><value>Yakında tesisimizden fotoğraflar burada yer alacak.</value></data>
-  <data name="Quality.MetaTitle" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
-  <data name="Quality.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina kalite politikası, sertifikaları, kalite belgeleri ve yetki belgeleri.</value></data>
-  <data name="Quality.Title" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
-  <data name="Quality.Lead" xml:space="preserve"><value>Her parçada ölçülebilir, izlenebilir ve belgelenmiş kalite.</value></data>
-  <data name="Quality.PolicyEyebrow" xml:space="preserve"><value>Kalite Politikamız</value></data>
-  <data name="Quality.PolicyTitle" xml:space="preserve"><value>Kalite bir departman değil, üretim kültürümüzdür</value></data>
-  <data name="Quality.PolicyText" xml:space="preserve"><value>Hammadde girişinden sevkiyata kadar her aşamada ölçüm, test ve kayıt süreçlerimizle müşterilerimize tutarlı ve güvenilir ürünler sunuyoruz.</value></data>
-  <data name="Quality.Point1" xml:space="preserve"><value>Hammadde giriş kontrolü ve malzeme sertifikaları</value></data>
-  <data name="Quality.Point2" xml:space="preserve"><value>Proses içi boyutsal ve görsel kontroller</value></data>
-  <data name="Quality.Point3" xml:space="preserve"><value>Sertlik, çekme ve fiziksel testler</value></data>
-  <data name="Quality.Point4" xml:space="preserve"><value>Parti bazında tam izlenebilirlik</value></data>
-  <data name="Quality.EmptyTitle" xml:space="preserve"><value>Belgeler yakında</value></data>
-  <data name="Quality.EmptyText" xml:space="preserve"><value>Sertifika ve kalite belgelerimiz yakında burada yayınlanacaktır.</value></data>
+  <data name="Videos.MetaTitle" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Videos.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina fabrika, üretim, CNC, kauçuk, çelik ve fuar fotoğrafları.</value></data>
+  <data name="Videos.Title" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Videos.Lead" xml:space="preserve"><value>Tesisimizden, üretim hatlarımızdan ve etkinliklerimizden kareler.</value></data>
+  <data name="Videos.FilterLabel" xml:space="preserve"><value>Galeri kategorileri</value></data>
+  <data name="Videos.All" xml:space="preserve"><value>Tümü</value></data>
+  <data name="Videos.EmptyTitle" xml:space="preserve"><value>Galeri hazırlanıyor</value></data>
+  <data name="Videos.EmptyText" xml:space="preserve"><value>Yakında tesisimizden fotoğraflar burada yer alacak.</value></data>
+  <data name="Certificates.MetaTitle" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
+  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina kalite politikası, sertifikaları, kalite belgeleri ve yetki belgeleri.</value></data>
+  <data name="Certificates.Title" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
+  <data name="Certificates.Lead" xml:space="preserve"><value>Her parçada ölçülebilir, izlenebilir ve belgelenmiş kalite.</value></data>
+  <data name="Certificates.PolicyEyebrow" xml:space="preserve"><value>Kalite Politikamız</value></data>
+  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>Kalite bir departman değil, üretim kültürümüzdür</value></data>
+  <data name="Certificates.PolicyText" xml:space="preserve"><value>Hammadde girişinden sevkiyata kadar her aşamada ölçüm, test ve kayıt süreçlerimizle müşterilerimize tutarlı ve güvenilir ürünler sunuyoruz.</value></data>
+  <data name="Certificates.Point1" xml:space="preserve"><value>Hammadde giriş kontrolü ve malzeme sertifikaları</value></data>
+  <data name="Certificates.Point2" xml:space="preserve"><value>Proses içi boyutsal ve görsel kontroller</value></data>
+  <data name="Certificates.Point3" xml:space="preserve"><value>Sertlik, çekme ve fiziksel testler</value></data>
+  <data name="Certificates.Point4" xml:space="preserve"><value>Parti bazında tam izlenebilirlik</value></data>
+  <data name="Certificates.EmptyTitle" xml:space="preserve"><value>Belgeler yakında</value></data>
+  <data name="Certificates.EmptyText" xml:space="preserve"><value>Sertifika ve kalite belgelerimiz yakında burada yayınlanacaktır.</value></data>
   <data name="DocumentType.Certificate" xml:space="preserve"><value>Sertifikalar</value></data>
   <data name="DocumentType.QualityDocument" xml:space="preserve"><value>Kalite Belgeleri</value></data>
   <data name="DocumentType.Standard" xml:space="preserve"><value>Standartlar</value></data>
   <data name="DocumentType.Authorization" xml:space="preserve"><value>Yetki Belgeleri</value></data>
   <data name="DocumentType.Catalog" xml:space="preserve"><value>Ürün Katalogları</value></data>
-  <data name="Nav.Catalog" xml:space="preserve"><value>Ürün Kataloğu</value></data>
-  <data name="Catalog.Title" xml:space="preserve"><value>Ürün Kataloğu</value></data>
-  <data name="Catalog.Lead" xml:space="preserve"><value>Ürün gruplarımızı ve teknik bilgileri kataloglarımızda sayfa sayfa inceleyin veya PDF olarak indirin</value></data>
-  <data name="Catalog.MetaTitle" xml:space="preserve"><value>Ürün Kataloğu</value></data>
-  <data name="Catalog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ürün kataloglarını çevrim içi inceleyin veya PDF olarak indirin.</value></data>
-  <data name="Catalog.Read" xml:space="preserve"><value>İncele</value></data>
-  <data name="Catalog.Download" xml:space="preserve"><value>PDF indir</value></data>
-  <data name="Catalog.Close" xml:space="preserve"><value>Kapat</value></data>
-  <data name="Catalog.Previous" xml:space="preserve"><value>Önceki sayfa</value></data>
-  <data name="Catalog.Next" xml:space="preserve"><value>Sonraki sayfa</value></data>
-  <data name="Catalog.Loading" xml:space="preserve"><value>Katalog yükleniyor…</value></data>
-  <data name="Catalog.Error" xml:space="preserve"><value>Katalog görüntülenemedi. PDF'i indirerek açabilirsiniz.</value></data>
-  <data name="Catalog.EmptyTitle" xml:space="preserve"><value>Kataloglar yakında</value></data>
-  <data name="Catalog.EmptyText" xml:space="preserve"><value>Ürün kataloglarımız yakında burada yayınlanacaktır.</value></data>
+  <data name="Nav.Manuals" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Manuals.Title" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Manuals.Lead" xml:space="preserve"><value>Ürün gruplarımızı ve teknik bilgileri kataloglarımızda sayfa sayfa inceleyin veya PDF olarak indirin</value></data>
+  <data name="Manuals.MetaTitle" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Manuals.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ürün kataloglarını çevrim içi inceleyin veya PDF olarak indirin.</value></data>
+  <data name="Manuals.Read" xml:space="preserve"><value>İncele</value></data>
+  <data name="Manuals.Download" xml:space="preserve"><value>PDF indir</value></data>
+  <data name="Manuals.Close" xml:space="preserve"><value>Kapat</value></data>
+  <data name="Manuals.Previous" xml:space="preserve"><value>Önceki sayfa</value></data>
+  <data name="Manuals.Next" xml:space="preserve"><value>Sonraki sayfa</value></data>
+  <data name="Manuals.Loading" xml:space="preserve"><value>Katalog yükleniyor…</value></data>
+  <data name="Manuals.Error" xml:space="preserve"><value>Katalog görüntülenemedi. PDF'i indirerek açabilirsiniz.</value></data>
+  <data name="Manuals.EmptyTitle" xml:space="preserve"><value>Kataloglar yakında</value></data>
+  <data name="Manuals.EmptyText" xml:space="preserve"><value>Ürün kataloglarımız yakında burada yayınlanacaktır.</value></data>
   <data name="Contact.MetaTitle" xml:space="preserve"><value>İletişim</value></data>
   <data name="Contact.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ile iletişime geçin: Sincan 1. Organize Sanayi Bölgesi, Ankara. Telefon, e-posta ve iletişim formu.</value></data>
   <data name="Contact.Title" xml:space="preserve"><value>İletişim</value></data>

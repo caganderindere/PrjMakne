@@ -56,11 +56,11 @@ public class SiteSettingsDto
     /// Keys missing from the value (e.g. sections added later) are appended as visible.
     /// </summary>
     // Why and process repeat the about section, so a new site starts with them hidden.
-    public string HomeSections { get; set; } = "about,categories,capabilities,featured,references,defense,export,blog,!industries,!why,!process";
+    public string HomeSections { get; set; } = "about,categories,services,featured,references,defense,export,blog,!industries,!why,!process";
 
     public static readonly IReadOnlyList<string> HomeSectionKeys = new[]
     {
-        "about", "categories", "capabilities", "process", "featured", "why",
+        "about", "categories", "services", "process", "featured", "why",
         "references", "defense", "industries", "export", "blog"
     };
 

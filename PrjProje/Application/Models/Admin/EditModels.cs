@@ -390,7 +390,7 @@ public class DocumentEditModel
 
 public record DocumentAdminItem(int Id, string Title, DocumentType DocumentType, string? LanguageCode, DateTime DocumentDate, long FileSize, string FilePath, bool IsActive);
 
-public class CapabilityTranslationInput
+public class ServiceTranslationInput
 {
     public string LanguageCode { get; set; } = string.Empty;
 
@@ -422,7 +422,7 @@ public class CapabilityTranslationInput
     public string? MetaDescription { get; set; }
 }
 
-public class CapabilityEditModel : IValidatableObject
+public class ServiceEditModel : IValidatableObject
 {
     public int Id { get; set; }
 
@@ -457,10 +457,10 @@ public class CapabilityEditModel : IValidatableObject
     [BindNever]
     public IReadOnlyList<OptionItem> CategoryOptions { get; set; } = Array.Empty<OptionItem>();
 
-    public List<CapabilityTranslationInput> Translations { get; set; } = new();
+    public List<ServiceTranslationInput> Translations { get; set; } = new();
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) =>
-        TranslationValidation.Validate(Translations, t => t.LanguageCode, t => t.Title, nameof(CapabilityTranslationInput.Title), "başlık");
+        TranslationValidation.Validate(Translations, t => t.LanguageCode, t => t.Title, nameof(ServiceTranslationInput.Title), "başlık");
 }
 
 public record TranslatedListItem(int Id, string Name, string? Image, int SortOrder, bool IsActive, IReadOnlyList<string> Languages, DateTime? UpdatedDate);

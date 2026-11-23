@@ -9,7 +9,7 @@ public enum ImageFolder
     Categories,
     Blog,
     Gallery,
-    Capabilities,
+    Services,
     Site,
     References,
     Announcements,

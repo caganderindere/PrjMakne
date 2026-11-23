@@ -83,33 +83,33 @@ public sealed class DocumentService : IDocumentService
                 .ToListAsync(cancellationToken));
 }
 
-public sealed class CapabilityService : ICapabilityService
+public sealed class ServicePageService : IServicePageService
 {
     private readonly ApplicationDbContext _db;
     private readonly IContentCache _cache;
 
-    public CapabilityService(ApplicationDbContext db, IContentCache cache)
+    public ServicePageService(ApplicationDbContext db, IContentCache cache)
     {
         _db = db;
         _cache = cache;
     }
 
-    public async Task<IReadOnlyList<CapabilityDto>> GetCapabilitiesAsync(string languageCode, bool homeOnly = false, CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<ServiceDto>> GetServicesAsync(string languageCode, bool homeOnly = false, CancellationToken cancellationToken = default)
     {
         var all = await GetAllAsync(languageCode, cancellationToken);
         return homeOnly ? all.Where(c => c.ShowOnHome).Select(c => c.Dto).ToList() : all.Select(c => c.Dto).ToList();
     }
 
-    public async Task<CapabilityDto?> GetDetailAsync(string languageCode, string slug, CancellationToken cancellationToken = default)
+    public async Task<ServiceDto?> GetDetailAsync(string languageCode, string slug, CancellationToken cancellationToken = default)
     {
         var all = await GetAllAsync(languageCode, cancellationToken);
         return all.Select(c => c.Dto).FirstOrDefault(c => c.Slug == slug);
     }
 
-    private Task<IReadOnlyList<(CapabilityDto Dto, bool ShowOnHome)>> GetAllAsync(string languageCode, CancellationToken cancellationToken) =>
-        _cache.GetOrCreateAsync($"capabilities:{languageCode}", async () =>
+    private Task<IReadOnlyList<(ServiceDto Dto, bool ShowOnHome)>> GetAllAsync(string languageCode, CancellationToken cancellationToken) =>
+        _cache.GetOrCreateAsync($"services:{languageCode}", async () =>
         {
-            var rows = await _db.Capabilities
+            var rows = await _db.Services
                 .AsNoTracking()
                 .Where(c => c.IsActive && c.Translations.Any(t => t.LanguageCode == languageCode))
                 .OrderBy(c => c.SortOrder)
@@ -125,10 +125,10 @@ public sealed class CapabilityService : ICapabilityService
                 })
                 .ToListAsync(cancellationToken);
 
-            return (IReadOnlyList<(CapabilityDto, bool)>)rows.Select(c =>
+            return (IReadOnlyList<(ServiceDto, bool)>)rows.Select(c =>
             {
                 var t = c.Translations.First(x => x.LanguageCode == languageCode);
-                var dto = new CapabilityDto
+                var dto = new ServiceDto
                 {
                     Id = c.Id,
                     Title = t.Title,
@@ -244,11 +244,11 @@ public sealed class SitemapService : ISitemapService
             entries.AddRange(posts.Where(p => p.Slugs.Count > 0)
                 .Select(p => new SitemapEntry("BlogDetail", p.Slugs.ToDictionary(s => s.LanguageCode, s => s.Slug), p.Date)));
 
-            var capabilities = await _db.Capabilities.AsNoTracking()
+            var services = await _db.Services.AsNoTracking()
                 .Where(c => c.IsActive)
                 .Select(c => new { Date = c.UpdatedDate ?? c.CreatedDate, Slugs = c.Translations.Select(t => new { t.LanguageCode, t.Slug }).ToList() })
                 .ToListAsync(cancellationToken);
-            entries.AddRange(capabilities.Select(c => new SitemapEntry("ManufacturingDetail", c.Slugs.ToDictionary(s => s.LanguageCode, s => s.Slug), c.Date)));
+            entries.AddRange(services.Select(c => new SitemapEntry("ServiceDetail", c.Slugs.ToDictionary(s => s.LanguageCode, s => s.Slug), c.Date)));
 
             return (IReadOnlyList<SitemapEntry>)entries;
         }, TimeSpan.FromHours(1));

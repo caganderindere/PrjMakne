@@ -82,18 +82,18 @@ public class QuoteController : PublicControllerBase
     private readonly ISpamProtectionService _spamProtection;
 
 
-    private readonly ICapabilityService _capabilityService;
+    private readonly IServicePageService _servicePageService;
 
-    public QuoteController(IQuoteService quoteService, IProductService productService, ISpamProtectionService spamProtection, ICapabilityService capabilityService)
+    public QuoteController(IQuoteService quoteService, IProductService productService, ISpamProtectionService spamProtection, IServicePageService servicePageService)
     {
-        _capabilityService = capabilityService;
+        _servicePageService = servicePageService;
         _quoteService = quoteService;
         _productService = productService;
         _spamProtection = spamProtection;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int? product, string? capability, CancellationToken cancellationToken)
+    public async Task<IActionResult> Index(int? product, string? service, CancellationToken cancellationToken)
     {
         var form = new QuoteFormModel();
         if (product is > 0)
@@ -106,13 +106,13 @@ public class QuoteController : PublicControllerBase
                 form.Description = L["Quote.ProductMessage", name];
             }
         }
-        else if (!string.IsNullOrEmpty(capability)
-            && await _capabilityService.GetDetailAsync(Lang, capability, cancellationToken) is { } selected)
+        else if (!string.IsNullOrEmpty(service)
+            && await _servicePageService.GetDetailAsync(Lang, service, cancellationToken) is { } selected)
         {
-            form.Description = L["Quote.CapabilityMessage", selected.Title];
+            form.Description = L["Quote.ServiceMessage", selected.Title];
         }
 
-        PrepareSeo(product is > 0 || !string.IsNullOrEmpty(capability));
+        PrepareSeo(product is > 0 || !string.IsNullOrEmpty(service));
         return View(await BuildViewModelAsync(form, cancellationToken));
     }
 

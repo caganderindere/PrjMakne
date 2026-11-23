@@ -112,9 +112,9 @@ public class GalleryItemTranslationConfiguration : IEntityTypeConfiguration<Gall
     }
 }
 
-public class CapabilityConfiguration : IEntityTypeConfiguration<Capability>
+public class ServiceConfiguration : IEntityTypeConfiguration<Service>
 {
-    public void Configure(EntityTypeBuilder<Capability> builder)
+    public void Configure(EntityTypeBuilder<Service> builder)
     {
         builder.Property(x => x.IconClass).HasMaxLength(100);
         builder.Property(x => x.Image).HasMaxLength(300);
@@ -124,13 +124,13 @@ public class CapabilityConfiguration : IEntityTypeConfiguration<Capability>
             .OnDelete(DeleteBehavior.SetNull);
         builder.HasMany(x => x.ProductCategories)
             .WithMany()
-            .UsingEntity(j => j.ToTable("CapabilityProductCategories"));
+            .UsingEntity(j => j.ToTable("ServiceProductCategories"));
     }
 }
 
-public class CapabilityTranslationConfiguration : IEntityTypeConfiguration<CapabilityTranslation>
+public class ServiceTranslationConfiguration : IEntityTypeConfiguration<ServiceTranslation>
 {
-    public void Configure(EntityTypeBuilder<CapabilityTranslation> builder)
+    public void Configure(EntityTypeBuilder<ServiceTranslation> builder)
     {
         builder.Property(x => x.LanguageCode).HasMaxLength(5).IsRequired();
         builder.Property(x => x.Title).HasMaxLength(150).IsRequired();
@@ -140,10 +140,10 @@ public class CapabilityTranslationConfiguration : IEntityTypeConfiguration<Capab
         builder.Property(x => x.MetaTitle).HasMaxLength(70);
         builder.Property(x => x.MetaDescription).HasMaxLength(170);
         builder.HasIndex(x => new { x.LanguageCode, x.Slug }).IsUnique();
-        builder.HasIndex(x => new { x.CapabilityId, x.LanguageCode }).IsUnique();
-        builder.HasOne(x => x.Capability)
+        builder.HasIndex(x => new { x.ServiceId, x.LanguageCode }).IsUnique();
+        builder.HasOne(x => x.Service)
             .WithMany(x => x.Translations)
-            .HasForeignKey(x => x.CapabilityId)
+            .HasForeignKey(x => x.ServiceId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

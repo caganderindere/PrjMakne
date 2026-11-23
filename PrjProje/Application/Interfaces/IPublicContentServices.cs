@@ -33,10 +33,10 @@ public interface IDocumentService
     Task<IReadOnlyList<DocumentDto>> GetPublicDocumentsAsync(string languageCode, CancellationToken cancellationToken = default);
 }
 
-public interface ICapabilityService
+public interface IServicePageService
 {
-    Task<IReadOnlyList<CapabilityDto>> GetCapabilitiesAsync(string languageCode, bool homeOnly = false, CancellationToken cancellationToken = default);
-    Task<CapabilityDto?> GetDetailAsync(string languageCode, string slug, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<ServiceDto>> GetServicesAsync(string languageCode, bool homeOnly = false, CancellationToken cancellationToken = default);
+    Task<ServiceDto?> GetDetailAsync(string languageCode, string slug, CancellationToken cancellationToken = default);
 }
 
 public interface ISiteSettingsService

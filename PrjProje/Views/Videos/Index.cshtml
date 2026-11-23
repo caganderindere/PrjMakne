@@ -1,6 +1,6 @@
 @model GalleryDto
 @{
-    var header = new PageHeaderModel(L["Gallery.Title"], L["Gallery.Lead"], L["Nav.Gallery"]);
+    var header = new PageHeaderModel(L["Videos.Title"], L["Videos.Lead"], L["Nav.Videos"]);
 }
 <partial name="_PageHeader" model="header" />
 
@@ -10,14 +10,14 @@
         {
             <div class="empty-state">
                 <i class="fa-regular fa-images" aria-hidden="true"></i>
-                <h2>@L["Gallery.EmptyTitle"]</h2>
-                <p>@L["Gallery.EmptyText"]</p>
+                <h2>@L["Videos.EmptyTitle"]</h2>
+                <p>@L["Videos.EmptyText"]</p>
             </div>
         }
         else
         {
-            <div class="gallery-filters" role="group" aria-label="@L["Gallery.FilterLabel"]">
-                <button type="button" class="active" data-gallery-filter="all">@L["Gallery.All"] <span>@Model.Items.Count</span></button>
+            <div class="gallery-filters" role="group" aria-label="@L["Videos.FilterLabel"]">
+                <button type="button" class="active" data-gallery-filter="all">@L["Videos.All"] <span>@Model.Items.Count</span></button>
                 @foreach (var category in Model.Categories)
                 {
                     <button type="button" data-gallery-filter="@category.Id">@category.Name <span>@category.ItemCount</span></button>

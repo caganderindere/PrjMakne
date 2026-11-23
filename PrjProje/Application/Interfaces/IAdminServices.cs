@@ -75,13 +75,13 @@ public interface IDocumentAdminService
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
 }
 
-public interface ICapabilityAdminService
+public interface IServiceAdminService
 {
     Task<IReadOnlyList<TranslatedListItem>> GetListAsync(CancellationToken cancellationToken = default);
-    Task<CapabilityEditModel> CreateNewAsync(CancellationToken cancellationToken = default);
-    Task<CapabilityEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
-    Task PopulateOptionsAsync(CapabilityEditModel model, CancellationToken cancellationToken = default);
-    Task<ServiceResult<int>> SaveAsync(CapabilityEditModel model, CancellationToken cancellationToken = default);
+    Task<ServiceEditModel> CreateNewAsync(CancellationToken cancellationToken = default);
+    Task<ServiceEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
+    Task PopulateOptionsAsync(ServiceEditModel model, CancellationToken cancellationToken = default);
+    Task<ServiceResult<int>> SaveAsync(ServiceEditModel model, CancellationToken cancellationToken = default);
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
 }
 

@@ -60,7 +60,7 @@ public static class DependencyInjection
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IGalleryService, GalleryService>();
         services.AddScoped<IDocumentService, DocumentService>();
-        services.AddScoped<ICapabilityService, CapabilityService>();
+        services.AddScoped<IServicePageService, ServicePageService>();
         services.AddScoped<ISiteSettingsService, SiteSettingsService>();
         services.AddScoped<ISitemapService, SitemapService>();
         services.AddScoped<IContactService, ContactService>();
@@ -75,7 +75,7 @@ public static class DependencyInjection
         services.AddScoped<IGalleryCategoryAdminService, GalleryCategoryAdminService>();
         services.AddScoped<IGalleryAdminService, GalleryAdminService>();
         services.AddScoped<IDocumentAdminService, DocumentAdminService>();
-        services.AddScoped<ICapabilityAdminService, CapabilityAdminService>();
+        services.AddScoped<IServiceAdminService, ServiceAdminService>();
         services.AddScoped<IContactAdminService, ContactAdminService>();
         services.AddScoped<IQuoteAdminService, QuoteAdminService>();
         services.AddScoped<IUserAdminService, UserAdminService>();

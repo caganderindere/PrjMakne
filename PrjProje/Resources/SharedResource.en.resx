@@ -7,12 +7,11 @@
   <data name="Nav.Home" xml:space="preserve"><value>Home</value></data>
   <data name="Nav.About" xml:space="preserve"><value>About</value></data>
   <data name="Nav.AboutUs" xml:space="preserve"><value>About Us</value></data>
-  <data name="Nav.Capabilities" xml:space="preserve"><value>Capabilities</value></data>
   <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Products</value></data>
-  <data name="Nav.Manufacturing" xml:space="preserve"><value>Manufacturing</value></data>
-  <data name="Nav.Quality" xml:space="preserve"><value>Quality</value></data>
-  <data name="Nav.Gallery" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Nav.Services" xml:space="preserve"><value>Manufacturing</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Quality</value></data>
+  <data name="Nav.Videos" xml:space="preserve"><value>Gallery</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>Contact</value></data>
   <data name="Nav.Quote" xml:space="preserve"><value>Request a Quote</value></data>
@@ -62,8 +61,8 @@
   <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Integrated production facility</value></data>
   <data name="Home.LearnMore" xml:space="preserve"><value>Learn More</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
-  <data name="Home.CapabilitiesTitle" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
-  <data name="Home.CapabilitiesLead" xml:space="preserve"><value>Within our integrated facility, we keep every critical step under our own control, from raw material to finished product.</value></data>
+  <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
+  <data name="Home.ServicesLead" xml:space="preserve"><value>Within our integrated facility, we keep every critical step under our own control, from raw material to finished product.</value></data>
   <data name="Home.AllCapabilities" xml:space="preserve"><value>All Capabilities</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>All Articles</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Featured</value></data>
@@ -189,24 +188,24 @@
 {1}</value></data>
   <data name="Products.Related" xml:space="preserve"><value>Related Products</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Image {0}</value></data>
-  <data name="Manufacturing.MetaTitle" xml:space="preserve"><value>Manufacturing Capabilities</value></data>
-  <data name="Manufacturing.MetaDescription" xml:space="preserve"><value>Our capabilities in CNC machining, hydraulic pressing, rubber production, laser cutting, bending, oven painting, coating and steel casting.</value></data>
-  <data name="Manufacturing.Title" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
-  <data name="Manufacturing.Lead" xml:space="preserve"><value>Every process, from design to shipment, under one roof.</value></data>
-  <data name="Manufacturing.IntroEyebrow" xml:space="preserve"><value>Integrated Production</value></data>
-  <data name="Manufacturing.IntroTitle" xml:space="preserve"><value>Full control, consistent quality</value></data>
-  <data name="Manufacturing.IntroText" xml:space="preserve"><value>We manage every critical step in-house rather than outsourcing it, ensuring traceability and repeatable quality on every order.</value></data>
-  <data name="Manufacturing.FlowDesign" xml:space="preserve"><value>Design</value></data>
-  <data name="Manufacturing.FlowProduction" xml:space="preserve"><value>Production</value></data>
-  <data name="Manufacturing.FlowFinishing" xml:space="preserve"><value>Finishing</value></data>
-  <data name="Manufacturing.FlowQuality" xml:space="preserve"><value>Quality Control</value></data>
-  <data name="Manufacturing.FlowShipping" xml:space="preserve"><value>Shipment</value></data>
-  <data name="Manufacturing.OtherCapabilities" xml:space="preserve"><value>Other Capabilities</value></data>
-  <data name="Manufacturing.SpecsTitle" xml:space="preserve"><value>Technical Capacity</value></data>
-  <data name="Manufacturing.GalleryTitle" xml:space="preserve"><value>From Our Facility</value></data>
-  <data name="Manufacturing.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
-  <data name="Manufacturing.CertificatesTitle" xml:space="preserve"><value>Certificates &amp; Approvals</value></data>
-  <data name="Manufacturing.AllDocuments" xml:space="preserve"><value>All documents</value></data>
+  <data name="Services.MetaTitle" xml:space="preserve"><value>Manufacturing Capabilities</value></data>
+  <data name="Services.MetaDescription" xml:space="preserve"><value>Our capabilities in CNC machining, hydraulic pressing, rubber production, laser cutting, bending, oven painting, coating and steel casting.</value></data>
+  <data name="Services.Title" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
+  <data name="Services.Lead" xml:space="preserve"><value>Every process, from design to shipment, under one roof.</value></data>
+  <data name="Services.IntroEyebrow" xml:space="preserve"><value>Integrated Production</value></data>
+  <data name="Services.IntroTitle" xml:space="preserve"><value>Full control, consistent quality</value></data>
+  <data name="Services.IntroText" xml:space="preserve"><value>We manage every critical step in-house rather than outsourcing it, ensuring traceability and repeatable quality on every order.</value></data>
+  <data name="Services.FlowDesign" xml:space="preserve"><value>Design</value></data>
+  <data name="Services.FlowProduction" xml:space="preserve"><value>Production</value></data>
+  <data name="Services.FlowFinishing" xml:space="preserve"><value>Finishing</value></data>
+  <data name="Services.FlowQuality" xml:space="preserve"><value>Quality Control</value></data>
+  <data name="Services.FlowShipping" xml:space="preserve"><value>Shipment</value></data>
+  <data name="Services.OtherCapabilities" xml:space="preserve"><value>Other Capabilities</value></data>
+  <data name="Services.SpecsTitle" xml:space="preserve"><value>Technical Capacity</value></data>
+  <data name="Services.GalleryTitle" xml:space="preserve"><value>From Our Facility</value></data>
+  <data name="Services.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
+  <data name="Services.CertificatesTitle" xml:space="preserve"><value>Certificates &amp; Approvals</value></data>
+  <data name="Services.AllDocuments" xml:space="preserve"><value>All documents</value></data>
   <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Technical details, drawings and production parameters for defense products are not publicly disclosed; they are shared only with authorized institutions in accordance with applicable regulations.</value></data>
   <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>Company news, technical articles and industry insights from PRJ Proje Makina.</value></data>
@@ -222,46 +221,46 @@
   <data name="Blog.Tags" xml:space="preserve"><value>Tags</value></data>
   <data name="Blog.Share" xml:space="preserve"><value>Share</value></data>
   <data name="Blog.Related" xml:space="preserve"><value>Related Articles</value></data>
-  <data name="Gallery.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
-  <data name="Gallery.MetaDescription" xml:space="preserve"><value>Photos of the PRJ Proje Makina factory, production lines, CNC machining, rubber and steel production and trade fairs.</value></data>
-  <data name="Gallery.Title" xml:space="preserve"><value>Gallery</value></data>
-  <data name="Gallery.Lead" xml:space="preserve"><value>A look inside our facility, production lines and events.</value></data>
-  <data name="Gallery.FilterLabel" xml:space="preserve"><value>Gallery categories</value></data>
-  <data name="Gallery.All" xml:space="preserve"><value>All</value></data>
-  <data name="Gallery.EmptyTitle" xml:space="preserve"><value>Gallery coming soon</value></data>
-  <data name="Gallery.EmptyText" xml:space="preserve"><value>Photos from our facility will be published here soon.</value></data>
-  <data name="Quality.MetaTitle" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
-  <data name="Quality.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's quality policy, certificates, quality documents and authorizations.</value></data>
-  <data name="Quality.Title" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
-  <data name="Quality.Lead" xml:space="preserve"><value>Measurable, traceable and documented quality in every part.</value></data>
-  <data name="Quality.PolicyEyebrow" xml:space="preserve"><value>Our Quality Policy</value></data>
-  <data name="Quality.PolicyTitle" xml:space="preserve"><value>Quality is not a department, it is how we work</value></data>
-  <data name="Quality.PolicyText" xml:space="preserve"><value>Measurement, testing and record-keeping at every stage, from incoming raw material to shipment, allow us to deliver consistent and reliable products.</value></data>
-  <data name="Quality.Point1" xml:space="preserve"><value>Incoming inspection and material certificates</value></data>
-  <data name="Quality.Point2" xml:space="preserve"><value>In-process dimensional and visual inspection</value></data>
-  <data name="Quality.Point3" xml:space="preserve"><value>Hardness, tensile and physical testing</value></data>
-  <data name="Quality.Point4" xml:space="preserve"><value>Full batch-level traceability</value></data>
-  <data name="Quality.EmptyTitle" xml:space="preserve"><value>Documents coming soon</value></data>
-  <data name="Quality.EmptyText" xml:space="preserve"><value>Our certificates and quality documents will be published here soon.</value></data>
+  <data name="Videos.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Videos.MetaDescription" xml:space="preserve"><value>Photos of the PRJ Proje Makina factory, production lines, CNC machining, rubber and steel production and trade fairs.</value></data>
+  <data name="Videos.Title" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Videos.Lead" xml:space="preserve"><value>A look inside our facility, production lines and events.</value></data>
+  <data name="Videos.FilterLabel" xml:space="preserve"><value>Gallery categories</value></data>
+  <data name="Videos.All" xml:space="preserve"><value>All</value></data>
+  <data name="Videos.EmptyTitle" xml:space="preserve"><value>Gallery coming soon</value></data>
+  <data name="Videos.EmptyText" xml:space="preserve"><value>Photos from our facility will be published here soon.</value></data>
+  <data name="Certificates.MetaTitle" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
+  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's quality policy, certificates, quality documents and authorizations.</value></data>
+  <data name="Certificates.Title" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
+  <data name="Certificates.Lead" xml:space="preserve"><value>Measurable, traceable and documented quality in every part.</value></data>
+  <data name="Certificates.PolicyEyebrow" xml:space="preserve"><value>Our Quality Policy</value></data>
+  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>Quality is not a department, it is how we work</value></data>
+  <data name="Certificates.PolicyText" xml:space="preserve"><value>Measurement, testing and record-keeping at every stage, from incoming raw material to shipment, allow us to deliver consistent and reliable products.</value></data>
+  <data name="Certificates.Point1" xml:space="preserve"><value>Incoming inspection and material certificates</value></data>
+  <data name="Certificates.Point2" xml:space="preserve"><value>In-process dimensional and visual inspection</value></data>
+  <data name="Certificates.Point3" xml:space="preserve"><value>Hardness, tensile and physical testing</value></data>
+  <data name="Certificates.Point4" xml:space="preserve"><value>Full batch-level traceability</value></data>
+  <data name="Certificates.EmptyTitle" xml:space="preserve"><value>Documents coming soon</value></data>
+  <data name="Certificates.EmptyText" xml:space="preserve"><value>Our certificates and quality documents will be published here soon.</value></data>
   <data name="DocumentType.Certificate" xml:space="preserve"><value>Certificates</value></data>
   <data name="DocumentType.QualityDocument" xml:space="preserve"><value>Quality Documents</value></data>
   <data name="DocumentType.Standard" xml:space="preserve"><value>Standards</value></data>
   <data name="DocumentType.Authorization" xml:space="preserve"><value>Authorizations</value></data>
   <data name="DocumentType.Catalog" xml:space="preserve"><value>Product Catalogues</value></data>
-  <data name="Nav.Catalog" xml:space="preserve"><value>Product Catalogue</value></data>
-  <data name="Catalog.Title" xml:space="preserve"><value>Product Catalogue</value></data>
-  <data name="Catalog.Lead" xml:space="preserve"><value>Browse our product groups and technical details page by page, or download them as PDF</value></data>
-  <data name="Catalog.MetaTitle" xml:space="preserve"><value>Product Catalogue</value></data>
-  <data name="Catalog.MetaDescription" xml:space="preserve"><value>Browse PRJ Proje Makina product catalogues online or download them as PDF.</value></data>
-  <data name="Catalog.Read" xml:space="preserve"><value>Browse</value></data>
-  <data name="Catalog.Download" xml:space="preserve"><value>Download PDF</value></data>
-  <data name="Catalog.Close" xml:space="preserve"><value>Close</value></data>
-  <data name="Catalog.Previous" xml:space="preserve"><value>Previous page</value></data>
-  <data name="Catalog.Next" xml:space="preserve"><value>Next page</value></data>
-  <data name="Catalog.Loading" xml:space="preserve"><value>Loading catalogue…</value></data>
-  <data name="Catalog.Error" xml:space="preserve"><value>The catalogue could not be displayed. You can download the PDF instead.</value></data>
-  <data name="Catalog.EmptyTitle" xml:space="preserve"><value>Catalogues coming soon</value></data>
-  <data name="Catalog.EmptyText" xml:space="preserve"><value>Our product catalogues will be published here soon.</value></data>
+  <data name="Nav.Manuals" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Manuals.Title" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Manuals.Lead" xml:space="preserve"><value>Browse our product groups and technical details page by page, or download them as PDF</value></data>
+  <data name="Manuals.MetaTitle" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Manuals.MetaDescription" xml:space="preserve"><value>Browse PRJ Proje Makina product catalogues online or download them as PDF.</value></data>
+  <data name="Manuals.Read" xml:space="preserve"><value>Browse</value></data>
+  <data name="Manuals.Download" xml:space="preserve"><value>Download PDF</value></data>
+  <data name="Manuals.Close" xml:space="preserve"><value>Close</value></data>
+  <data name="Manuals.Previous" xml:space="preserve"><value>Previous page</value></data>
+  <data name="Manuals.Next" xml:space="preserve"><value>Next page</value></data>
+  <data name="Manuals.Loading" xml:space="preserve"><value>Loading catalogue…</value></data>
+  <data name="Manuals.Error" xml:space="preserve"><value>The catalogue could not be displayed. You can download the PDF instead.</value></data>
+  <data name="Manuals.EmptyTitle" xml:space="preserve"><value>Catalogues coming soon</value></data>
+  <data name="Manuals.EmptyText" xml:space="preserve"><value>Our product catalogues will be published here soon.</value></data>
   <data name="Contact.MetaTitle" xml:space="preserve"><value>Contact Us</value></data>
   <data name="Contact.MetaDescription" xml:space="preserve"><value>Get in touch with PRJ Proje Makina in Sincan 1st Organized Industrial Zone, Ankara, by phone, e-mail or our contact form.</value></data>
   <data name="Contact.Title" xml:space="preserve"><value>Contact Us</value></data>

@@ -13,7 +13,7 @@ namespace PrjProje.Web.Controllers;
 public class HomeController : PublicControllerBase
 {
     private readonly IProductService _productService;
-    private readonly ICapabilityService _capabilityService;
+    private readonly IServicePageService _servicePageService;
     private readonly IBlogService _blogService;
     private readonly ISiteSettingsService _settingsService;
     private readonly ISiteContentService _siteContentService;
@@ -21,7 +21,7 @@ public class HomeController : PublicControllerBase
 
     public HomeController(
         IProductService productService,
-        ICapabilityService capabilityService,
+        IServicePageService servicePageService,
         IBlogService blogService,
         ISiteSettingsService settingsService,
         ISiteContentService siteContentService,
@@ -29,7 +29,7 @@ public class HomeController : PublicControllerBase
     {
         _environment = environment;
         _productService = productService;
-        _capabilityService = capabilityService;
+        _servicePageService = servicePageService;
         _blogService = blogService;
         _settingsService = settingsService;
         _siteContentService = siteContentService;
@@ -41,7 +41,7 @@ public class HomeController : PublicControllerBase
         var model = new HomeViewModel
         {
             Categories = await _productService.GetCategoriesAsync(Lang, cancellationToken),
-            Capabilities = await _capabilityService.GetCapabilitiesAsync(Lang, homeOnly: true, cancellationToken),
+            Services = await _servicePageService.GetServicesAsync(Lang, homeOnly: true, cancellationToken),
             FeaturedProducts = await _productService.GetFeaturedAsync(Lang, 4, cancellationToken),
             LatestPosts = await _blogService.GetLatestAsync(Lang, 3, cancellationToken),
             ExportCountryCodes = settings.GetExportCountryCodes(),
@@ -220,16 +220,16 @@ public class ProductsController : PublicControllerBase
     }
 }
 
-public class ManufacturingController : PublicControllerBase
+public class ServicesController : PublicControllerBase
 {
-    private readonly ICapabilityService _capabilityService;
+    private readonly IServicePageService _servicePageService;
     private readonly IGalleryService _galleryService;
     private readonly IProductService _productService;
     private readonly IDocumentService _documentService;
 
-    public ManufacturingController(ICapabilityService capabilityService, IGalleryService galleryService, IProductService productService, IDocumentService documentService)
+    public ServicesController(IServicePageService servicePageService, IGalleryService galleryService, IProductService productService, IDocumentService documentService)
     {
-        _capabilityService = capabilityService;
+        _servicePageService = servicePageService;
         _galleryService = galleryService;
         _productService = productService;
         _documentService = documentService;
@@ -237,41 +237,41 @@ public class ManufacturingController : PublicControllerBase
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
-        var capabilities = await _capabilityService.GetCapabilitiesAsync(Lang, cancellationToken: cancellationToken);
-        var seo = SetSeo(L["Manufacturing.MetaTitle"], L["Manufacturing.MetaDescription"], SiteRoutes.Manufacturing);
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Manufacturing"], null));
-        return View(new ManufacturingViewModel { Capabilities = capabilities });
+        var services = await _servicePageService.GetServicesAsync(Lang, cancellationToken: cancellationToken);
+        var seo = SetSeo(L["Services.MetaTitle"], L["Services.MetaDescription"], SiteRoutes.Services);
+        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Services"], null));
+        return View(new ServicesViewModel { Services = services });
     }
 
     public async Task<IActionResult> Detail(string slug, CancellationToken cancellationToken)
     {
-        var capability = await _capabilityService.GetDetailAsync(Lang, slug, cancellationToken);
-        if (capability is null)
+        var service = await _servicePageService.GetDetailAsync(Lang, slug, cancellationToken);
+        if (service is null)
         {
             return NotFound();
         }
 
-        var all = await _capabilityService.GetCapabilitiesAsync(Lang, cancellationToken: cancellationToken);
-        var seo = SetSeo(capability.MetaTitle ?? $"{capability.Title} | {L["Nav.Manufacturing"]}",
-            capability.MetaDescription ?? capability.Summary, SiteRoutes.ManufacturingDetail, capability.AlternateSlugs, SiteRoutes.Manufacturing);
-        seo.Image = capability.Image;
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Manufacturing"], Url.Localized(SiteRoutes.Manufacturing)));
-        seo.Breadcrumbs.Add(new BreadcrumbItem(capability.Title, null));
+        var all = await _servicePageService.GetServicesAsync(Lang, cancellationToken: cancellationToken);
+        var seo = SetSeo(service.MetaTitle ?? $"{service.Title} | {L["Nav.Services"]}",
+            service.MetaDescription ?? service.Summary, SiteRoutes.ServiceDetail, service.AlternateSlugs, SiteRoutes.Services);
+        seo.Image = service.Image;
+        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Services"], Url.Localized(SiteRoutes.Services)));
+        seo.Breadcrumbs.Add(new BreadcrumbItem(service.Title, null));
 
-        var gallery = capability.GalleryCategoryId is { } galleryCategoryId
+        var gallery = service.GalleryCategoryId is { } galleryCategoryId
             ? (await _galleryService.GetGalleryAsync(Lang, cancellationToken)).Items.Where(i => i.CategoryId == galleryCategoryId).ToList()
             : new List<GalleryItemDto>();
-        var categories = capability.ProductCategoryIds.Count == 0
+        var categories = service.ProductCategoryIds.Count == 0
             ? new List<ProductCategoryDto>()
-            : (await _productService.GetCategoriesAsync(Lang, cancellationToken)).Where(c => capability.ProductCategoryIds.Contains(c.Id)).ToList();
+            : (await _productService.GetCategoriesAsync(Lang, cancellationToken)).Where(c => service.ProductCategoryIds.Contains(c.Id)).ToList();
         var certificates = (await _documentService.GetPublicDocumentsAsync(Lang, cancellationToken))
             .Where(d => d.DocumentType is DocumentType.Certificate or DocumentType.Authorization)
             .ToList();
 
-        return View(new CapabilityDetailViewModel
+        return View(new ServiceDetailViewModel
         {
-            Capability = capability,
-            Others = all.Where(c => c.Id != capability.Id).ToList(),
+            Service = service,
+            Others = all.Where(c => c.Id != service.Id).ToList(),
             Gallery = gallery,
             Categories = categories,
             Certificates = certificates
@@ -357,11 +357,11 @@ public class BlogController : PublicControllerBase
     }
 }
 
-public class GalleryController : PublicControllerBase
+public class VideosController : PublicControllerBase
 {
     private readonly IGalleryService _galleryService;
 
-    public GalleryController(IGalleryService galleryService)
+    public VideosController(IGalleryService galleryService)
     {
         _galleryService = galleryService;
     }
@@ -369,17 +369,17 @@ public class GalleryController : PublicControllerBase
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         var gallery = await _galleryService.GetGalleryAsync(Lang, cancellationToken);
-        var seo = SetSeo(L["Gallery.MetaTitle"], L["Gallery.MetaDescription"], SiteRoutes.Gallery);
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Gallery"], null));
+        var seo = SetSeo(L["Videos.MetaTitle"], L["Videos.MetaDescription"], SiteRoutes.Videos);
+        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Videos"], null));
         return View(gallery);
     }
 }
 
-public class QualityController : PublicControllerBase
+public class CertificatesController : PublicControllerBase
 {
     private readonly IDocumentService _documentService;
 
-    public QualityController(IDocumentService documentService)
+    public CertificatesController(IDocumentService documentService)
     {
         _documentService = documentService;
     }
@@ -389,17 +389,17 @@ public class QualityController : PublicControllerBase
         var documents = (await _documentService.GetPublicDocumentsAsync(Lang, cancellationToken))
             .Where(d => d.DocumentType != DocumentType.Catalog)
             .ToList();
-        var seo = SetSeo(L["Quality.MetaTitle"], L["Quality.MetaDescription"], SiteRoutes.Quality);
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Quality"], null));
-        return View(new QualityViewModel { Documents = documents });
+        var seo = SetSeo(L["Certificates.MetaTitle"], L["Certificates.MetaDescription"], SiteRoutes.Certificates);
+        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Certificates"], null));
+        return View(new CertificatesViewModel { Documents = documents });
     }
 }
 
-public class CatalogController : PublicControllerBase
+public class ManualsController : PublicControllerBase
 {
     private readonly IDocumentService _documentService;
 
-    public CatalogController(IDocumentService documentService)
+    public ManualsController(IDocumentService documentService)
     {
         _documentService = documentService;
     }
@@ -409,9 +409,9 @@ public class CatalogController : PublicControllerBase
         var catalogs = (await _documentService.GetPublicDocumentsAsync(Lang, cancellationToken))
             .Where(d => d.DocumentType == DocumentType.Catalog)
             .ToList();
-        var seo = SetSeo(L["Catalog.MetaTitle"], L["Catalog.MetaDescription"], SiteRoutes.Catalog);
+        var seo = SetSeo(L["Manuals.MetaTitle"], L["Manuals.MetaDescription"], SiteRoutes.Manuals);
         seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Products"], Url.Localized(SiteRoutes.Products)));
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Catalog"], null));
+        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Manuals"], null));
         return View(catalogs);
     }
 }

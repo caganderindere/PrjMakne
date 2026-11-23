@@ -233,10 +233,10 @@ public sealed class ContentTextAdminService : IContentTextAdminService
     {
         new ContentTextGroup("home", "Ana Sayfa", "Hero başlığı ve sloganı, rakam etiketleri ve ana sayfa bölüm metinleri.", new[] { "Home.", "Stats." }),
         new ContentTextGroup("about", "Kurumsal", "Kurumsal (Hakkımızda) sayfası: tarihçe, vizyon, misyon, tesis.", new[] { "About." }),
-        new ContentTextGroup("quality", "Kalite", "Kalite politikası ve kalite sayfası metinleri.", new[] { "Quality." }),
-        new ContentTextGroup("manufacturing", "Üretim", "Üretim kabiliyetleri sayfasının sabit metinleri.", new[] { "Manufacturing." }),
-        new ContentTextGroup("general", "Genel", "Menü, alt bilgi, teklif çağrısı (CTA), çerez bandı ve ortak buton metinleri.", new[] { "Nav.", "Footer.", "Cta.", "Common.", "Cookie.", "Card.", "Fair." }),
-        new ContentTextGroup("pages", "Diğer Sayfalar", "Ürünler, blog, galeri, iletişim ve teklif sayfalarının metinleri.", new[] { "Products.", "Blog.", "Gallery.", "Contact.", "Quote." }),
+        new ContentTextGroup("certificates", "Belgeler", "Belgeler ve sertifikalar sayfası metinleri.", new[] { "Certificates." }),
+        new ContentTextGroup("services", "Hizmetler", "Hizmetler sayfasının sabit metinleri.", new[] { "Services." }),
+        new ContentTextGroup("general", "Genel", "Menü, alt bilgi, teklif çağrısı (CTA), çerez bandı ve ortak buton metinleri.", new[] { "Nav.", "Footer.", "Cta.", "Common.", "Cookie." }),
+        new ContentTextGroup("pages", "Diğer Sayfalar", "Ürünler, kılavuzlar, videolar, blog, iletişim ve teklif sayfalarının metinleri.", new[] { "Products.", "Manuals.", "Blog.", "Videos.", "Contact.", "Quote." }),
         new ContentTextGroup("legal", "Yasal Metinler", "KVKK / gizlilik ve çerez politikası metinleri.", new[] { "Legal." })
     };
 

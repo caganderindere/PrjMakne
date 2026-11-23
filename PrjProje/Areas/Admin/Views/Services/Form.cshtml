@@ -1,6 +1,6 @@
-@model CapabilityEditModel
+@model ServiceEditModel
 @{
-    ViewData["Title"] = Model.Id == 0 ? "Yeni Üretim Kabiliyeti" : "Üretim Kabiliyeti Düzenle";
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Hizmet" : "Hizmeti Düzenle";
 }
 <form method="post" asp-action="Save" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
@@ -8,22 +8,22 @@
     <div asp-validation-summary="All" class="alert alert-danger small"></div>
     <div class="row g-4">
         <div class="col-xl-8">
-            <partial name="_LangTabs" model="@("capability")" />
+            <partial name="_LangTabs" model="@("service")" />
             <div class="tab-content tab-pane-box">
                 @for (var i = 0; i < Model.Translations.Count; i++)
                 {
                     var code = Model.Translations[i].LanguageCode;
-                    <div class="tab-pane fade @(i == 0 ? "show active" : null)" id="capability-@code" role="tabpanel">
+                    <div class="tab-pane fade @(i == 0 ? "show active" : null)" id="service-@code" role="tabpanel">
                         <input type="hidden" asp-for="Translations[i].LanguageCode" />
                         <div class="row g-3">
                             <div class="col-md-7">
                                 <label asp-for="Translations[i].Title" class="form-label"></label>
-                                <input asp-for="Translations[i].Title" class="form-control" data-slug-source="slug-capability-@code" />
+                                <input asp-for="Translations[i].Title" class="form-control" data-slug-source="slug-service-@code" />
                                 <span asp-validation-for="Translations[i].Title"></span>
                             </div>
                             <div class="col-md-5">
                                 <label asp-for="Translations[i].Slug" class="form-label"></label>
-                                <input asp-for="Translations[i].Slug" class="form-control" id="slug-capability-@code" placeholder="otomatik" />
+                                <input asp-for="Translations[i].Slug" class="form-control" id="slug-service-@code" placeholder="otomatik" />
                             </div>
                             <div class="col-12">
                                 <label asp-for="Translations[i].Summary" class="form-label"></label>
@@ -88,8 +88,8 @@
                     <div class="form-text">Detay sayfasında "Bu süreçle ürettiğimiz parçalar" olarak listelenir.</div>
                 </div>
                 <label asp-for="ImageFile" class="form-label"></label>
-                <img id="capabilityPreview" src="@(Model.Image is null ? null : ViewHelpers.SmallImage(Model.Image))" class="image-preview" alt="" hidden="@(Model.Image is null)" />
-                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" data-preview="capabilityPreview" />
+                <img id="servicePreview" src="@(Model.Image is null ? null : ViewHelpers.SmallImage(Model.Image))" class="image-preview" alt="" hidden="@(Model.Image is null)" />
+                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" data-preview="servicePreview" />
                 @if (Model.Image is not null)
                 {
                     <div class="form-check mt-2">

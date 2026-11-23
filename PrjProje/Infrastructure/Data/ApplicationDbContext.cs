@@ -26,8 +26,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<GalleryCategoryTranslation> GalleryCategoryTranslations => Set<GalleryCategoryTranslation>();
     public DbSet<GalleryItem> GalleryItems => Set<GalleryItem>();
     public DbSet<GalleryItemTranslation> GalleryItemTranslations => Set<GalleryItemTranslation>();
-    public DbSet<Capability> Capabilities => Set<Capability>();
-    public DbSet<CapabilityTranslation> CapabilityTranslations => Set<CapabilityTranslation>();
+    public DbSet<Service> Services => Set<Service>();
+    public DbSet<ServiceTranslation> ServiceTranslations => Set<ServiceTranslation>();
     public DbSet<Document> Documents => Set<Document>();
     public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
     public DbSet<QuoteRequest> QuoteRequests => Set<QuoteRequest>();
