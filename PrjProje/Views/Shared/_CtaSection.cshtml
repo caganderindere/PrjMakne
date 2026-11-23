@@ -1,15 +1,13 @@
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-inner">
-            <div>
-                <span class="eyebrow eyebrow-light">@L["Cta.Eyebrow"]</span>
-                <h2 class="cta-title">@L["Cta.Title"]</h2>
-                <p class="cta-text">@L["Cta.Text"]</p>
-            </div>
-            <div class="d-flex flex-wrap gap-3">
-                <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-brand btn-lg"><i class="fa-solid fa-file-signature me-2" aria-hidden="true"></i>@L["Common.RequestQuote"]</a>
-                <a href="@Url.Localized(SiteRoutes.Contact)" class="btn btn-outline-light btn-lg">@L["Nav.Contact"]</a>
-            </div>
+<section class="cta-band">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">@L["Cta.Eyebrow"]</p>
+            <h2>@L["Cta.Title"]</h2>
+            <p>@L["Cta.Text"]</p>
+        </div>
+        <div class="cta-actions">
+            <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-primary btn-lg">@L["Common.RequestQuote"]</a>
+            <a href="@Url.Localized(SiteRoutes.Contact)" class="btn btn-ghost-light btn-lg">@L["Nav.Contact"]</a>
         </div>
     </div>
 </section>

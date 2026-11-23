@@ -1,10 +1,15 @@
 using System.Globalization;
+using Microsoft.AspNetCore.Html;
 using PrjProje.Infrastructure.Services.Support;
 
 namespace PrjProje.Web.Infrastructure;
 
 public static class ViewHelpers
 {
+    /// <summary>An icon from the sprite (images/icons.svg): Lucide line icons, plus brand logos such as "whatsapp".</summary>
+    public static IHtmlContent Icon(string name, string? cssClass = null) =>
+        new HtmlString($"<svg class=\"icon{(cssClass is null ? null : " " + cssClass)}\" aria-hidden=\"true\" focusable=\"false\"><use href=\"/images/icons.svg#{name}\"></use></svg>");
+
     /// <summary>Returns the small (mobile/card) variant generated next to every uploaded WebP image.</summary>
     public static string SmallImage(string path) =>
         path.StartsWith("/uploads/", StringComparison.OrdinalIgnoreCase) && path.EndsWith(".webp", StringComparison.OrdinalIgnoreCase)

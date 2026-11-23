@@ -21,4 +21,11 @@ public class WhatsAppLinkTests
     [InlineData("")]
     [InlineData(" - ")]
     public void Missing_number_gives_no_link(string? number) => Assert.Null(WhatsAppLink.Build(number, "Merhaba"));
+
+    [Theory]
+    [InlineData("905317960029", "+90 531 796 00 29")]
+    [InlineData("0531 796 00 29", "+90 531 796 00 29")]
+    [InlineData("+49 151 2345678", "+491512345678")]
+    [InlineData("", null)]
+    public void Display_groups_turkish_numbers(string input, string? expected) => Assert.Equal(expected, WhatsAppLink.Display(input));
 }

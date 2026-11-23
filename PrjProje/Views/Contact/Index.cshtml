@@ -1,27 +1,80 @@
 @model ContactViewModel
 @{
-    var header = new PageHeaderModel(L["Contact.Title"], L["Contact.Lead"], L["Nav.Contact"]);
+    var header = new PageHeaderModel(L["Contact.Title"], L["Contact.Lead"]);
     var lang = Languages.Current;
     var settings = Model.Settings;
+    var phoneHref = "tel:" + new string(settings.Phone.Where(c => char.IsDigit(c) || c == '+').ToArray());
+    var whatsAppHref = WhatsAppLink.Build(settings.WhatsApp, settings.GetWhatsAppMessage(lang));
 }
 <partial name="_PageHeader" model="header" />
 
 <section class="section">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-5">
-                <h2 class="content-title">@L["Contact.InfoTitle"]</h2>
-                <ul class="contact-list list-unstyled">
+    <div class="container form-layout">
+        <div class="form-card">
+            <h2>@L["Contact.FormTitle"]</h2>
+            @if (TempData["FormSuccess"] is string success)
+            {
+                <div class="alert alert-success" role="status">@ViewHelpers.Icon("circle-check")<span>@success</span></div>
+            }
+            <form method="post" action="@Url.Localized(SiteRoutes.Contact)" asp-antiforgery="true" novalidate>
+                <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+                <partial name="_SpamProtection" />
+                <div class="form-grid">
+                    <div class="field">
+                        <label asp-for="Form.FullName" class="required"></label>
+                        <input asp-for="Form.FullName" autocomplete="name" required />
+                        <span asp-validation-for="Form.FullName" class="field-error"></span>
+                    </div>
+                    <div class="field">
+                        <label asp-for="Form.Company"></label>
+                        <input asp-for="Form.Company" autocomplete="organization" />
+                        <span asp-validation-for="Form.Company" class="field-error"></span>
+                    </div>
+                    <div class="field">
+                        <label asp-for="Form.Email" class="required"></label>
+                        <input asp-for="Form.Email" type="email" autocomplete="email" required />
+                        <span asp-validation-for="Form.Email" class="field-error"></span>
+                    </div>
+                    <div class="field">
+                        <label asp-for="Form.Phone"></label>
+                        <input asp-for="Form.Phone" type="tel" autocomplete="tel" />
+                        <span asp-validation-for="Form.Phone" class="field-error"></span>
+                    </div>
+                    <div class="field field-full">
+                        <label asp-for="Form.Subject" class="required"></label>
+                        <input asp-for="Form.Subject" required />
+                        <span asp-validation-for="Form.Subject" class="field-error"></span>
+                    </div>
+                    <div class="field field-full">
+                        <label asp-for="Form.Message" class="required"></label>
+                        <textarea asp-for="Form.Message" rows="5" required></textarea>
+                        <span asp-validation-for="Form.Message" class="field-error"></span>
+                    </div>
+                    <div class="field field-full">
+                        <div class="check">
+                            <input asp-for="Form.PrivacyConsent" required />
+                            <label asp-for="Form.PrivacyConsent">@L["Form.PrivacyConsentText"] <a href="@Url.Localized(SiteRoutes.Privacy)" target="_blank">@L["Legal.PrivacyTitle"]</a></label>
+                        </div>
+                        <span asp-validation-for="Form.PrivacyConsent" class="field-error"></span>
+                    </div>
+                    <div class="field-full">
+                        <button type="submit" class="btn btn-primary btn-lg">@ViewHelpers.Icon("send")@L["Form.Send"]</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <aside>
+            <div class="side-card">
+                <h2>@L["Contact.InfoTitle"]</h2>
+                <ul class="contact-list">
+                    <li>@ViewHelpers.Icon("map-pin")<div><strong>@L["Contact.Address"]</strong><address>@settings.GetAddress(lang)</address></div></li>
+                    <li>@ViewHelpers.Icon("phone")<div><strong>@L["Contact.Phone"]</strong><a href="@phoneHref">@settings.Phone</a></div></li>
+                    @if (whatsAppHref is not null)
+                    {
+                        <li>@ViewHelpers.Icon("whatsapp")<div><strong>WhatsApp</strong><a href="@whatsAppHref" target="_blank" rel="noopener" data-whatsapp>@WhatsAppLink.Display(settings.WhatsApp)</a></div></li>
+                    }
                     <li>
-                        <span class="contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-                        <div><strong>@L["Contact.Address"]</strong><address class="mb-0">@settings.GetAddress(lang)</address></div>
-                    </li>
-                    <li>
-                        <span class="contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-                        <div><strong>@L["Contact.Phone"]</strong><a href="tel:@settings.Phone.Replace(" ", "")">@settings.Phone</a></div>
-                    </li>
-                    <li>
-                        <span class="contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+                        @ViewHelpers.Icon("mail")
                         <div>
                             <strong>@L["Contact.Email"]</strong>
                             <a href="mailto:@settings.Email">@settings.Email</a>
@@ -31,76 +84,16 @@
                             }
                         </div>
                     </li>
-                    <li>
-                        <span class="contact-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></span>
-                        <div><strong>@L["Contact.WorkingHours"]</strong><span>@settings.GetWorkingHours(lang)</span></div>
-                    </li>
+                    <li>@ViewHelpers.Icon("clock")<div><strong>@L["Contact.WorkingHours"]</strong><span>@settings.GetWorkingHours(lang)</span></div></li>
                 </ul>
             </div>
-            <div class="col-lg-7">
-                <div class="form-card contact-form-card">
-                    <h2 class="content-title">@L["Contact.FormTitle"]</h2>
-                    @if (TempData["FormSuccess"] is string success)
-                    {
-                        <div class="alert alert-success d-flex gap-2" role="status"><i class="fa-solid fa-circle-check mt-1" aria-hidden="true"></i><span>@success</span></div>
-                    }
-                    <form method="post" action="@Url.Localized(SiteRoutes.Contact)" asp-antiforgery="true" novalidate>
-                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
-                        <partial name="_SpamProtection" />
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label asp-for="Form.FullName" class="form-label required"></label>
-                                <input asp-for="Form.FullName" class="form-control" autocomplete="name" required />
-                                <span asp-validation-for="Form.FullName" class="invalid-text"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="Form.Company" class="form-label"></label>
-                                <input asp-for="Form.Company" class="form-control" autocomplete="organization" />
-                                <span asp-validation-for="Form.Company" class="invalid-text"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="Form.Email" class="form-label required"></label>
-                                <input asp-for="Form.Email" type="email" class="form-control" autocomplete="email" required />
-                                <span asp-validation-for="Form.Email" class="invalid-text"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="Form.Phone" class="form-label"></label>
-                                <input asp-for="Form.Phone" type="tel" class="form-control" autocomplete="tel" />
-                                <span asp-validation-for="Form.Phone" class="invalid-text"></span>
-                            </div>
-                            <div class="col-12">
-                                <label asp-for="Form.Subject" class="form-label required"></label>
-                                <input asp-for="Form.Subject" class="form-control" required />
-                                <span asp-validation-for="Form.Subject" class="invalid-text"></span>
-                            </div>
-                            <div class="col-12">
-                                <label asp-for="Form.Message" class="form-label required"></label>
-                                <textarea asp-for="Form.Message" class="form-control" rows="4" required></textarea>
-                                <span asp-validation-for="Form.Message" class="invalid-text"></span>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input asp-for="Form.PrivacyConsent" class="form-check-input" required />
-                                    <label asp-for="Form.PrivacyConsent" class="form-check-label">
-                                        @L["Form.PrivacyConsentText"] <a href="@Url.Localized(SiteRoutes.Privacy)" target="_blank">@L["Legal.PrivacyTitle"]</a>
-                                    </label>
-                                </div>
-                                <span asp-validation-for="Form.PrivacyConsent" class="invalid-text"></span>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i>@L["Form.Send"]</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </aside>
     </div>
 </section>
 
 @if (!string.IsNullOrWhiteSpace(settings.MapEmbedUrl))
 {
-    <section class="map-section" aria-label="@L["Contact.Map"]">
-        <iframe src="@settings.MapEmbedUrl" title="@L["Contact.Map"]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <section class="container map-section" aria-label="@L["Contact.Map"]">
+        <iframe class="map-frame" src="@settings.MapEmbedUrl" title="@L["Contact.Map"]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </section>
 }

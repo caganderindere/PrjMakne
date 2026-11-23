@@ -14,7 +14,6 @@ public class FileUploadOptions
 
     public long MaxImageBytes { get; set; } = 8 * 1024 * 1024;
     public long MaxDocumentBytes { get; set; } = 20 * 1024 * 1024;
-    public long MaxAttachmentBytes { get; set; } = 10 * 1024 * 1024;
     public int MaxImageWidth { get; set; } = 1920;
     public int SmallImageWidth { get; set; } = 640;
     public int WebpQuality { get; set; } = 82;
@@ -28,21 +27,6 @@ public sealed class FileStorageService : IFileStorageService
 
     private static readonly string[] ImageExtensions = { ".jpg", ".jpeg", ".png", ".webp", ".gif" };
 
-    private static readonly Dictionary<string, Func<byte[], bool>> AttachmentSignatures = new(StringComparer.OrdinalIgnoreCase)
-    {
-        [".pdf"] = IsPdf,
-        [".jpg"] = IsJpeg,
-        [".jpeg"] = IsJpeg,
-        [".png"] = IsPng,
-        [".zip"] = header => StartsWith(header, 0x50, 0x4B, 0x03, 0x04),
-        [".dwg"] = header => StartsWith(header, 0x41, 0x43, 0x31),
-        [".dxf"] = IsPlainText,
-        [".step"] = IsPlainText,
-        [".stp"] = IsPlainText,
-        [".igs"] = IsPlainText,
-        [".iges"] = IsPlainText
-    };
-
 
     private readonly IWebHostEnvironment _environment;
     private readonly FileUploadOptions _options;
@@ -54,8 +38,6 @@ public sealed class FileStorageService : IFileStorageService
         _options = options.Value;
         _logger = logger;
     }
-
-    public static IReadOnlyCollection<string> AllowedAttachmentExtensions => AttachmentSignatures.Keys;
 
     public async Task<ServiceResult<StoredFile>> SaveImageAsync(IFormFile file, ImageFolder folder, CancellationToken cancellationToken = default)
     {
@@ -136,28 +118,15 @@ public sealed class FileStorageService : IFileStorageService
         return ServiceResult<StoredFile>.Success(new StoredFile($"/{relativeFolder}/{fileName}", file.Length, file.FileName));
     }
 
-    public Task<ServiceResult<StoredFile>> SavePrivateAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default) =>
-        SavePrivateAsync(file, AttachmentSignatures, cancellationToken);
-
-    private async Task<ServiceResult<StoredFile>> SavePrivateAsync(IFormFile file, IReadOnlyDictionary<string, Func<byte[], bool>> signatures, CancellationToken cancellationToken)
+    public async Task<ServiceResult<StoredFile>> SavePrivateAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default)
     {
-        var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
-        if (file.Length == 0 || !signatures.TryGetValue(extension, out var signatureCheck))
-        {
-            return ServiceResult<StoredFile>.Failure("Validation.FileType");
-        }
-
-        if (file.Length > _options.MaxAttachmentBytes)
-        {
-            return ServiceResult<StoredFile>.Failure("Validation.FileSize");
-        }
-
         var header = await ReadHeaderAsync(file, cancellationToken);
-        if (!signatureCheck(header))
+        if (QuoteAttachmentRules.Validate(file.FileName, file.Length, header) is { } error)
         {
-            return ServiceResult<StoredFile>.Failure("Validation.FileContent");
+            return ServiceResult<StoredFile>.Failure(error);
         }
 
+        var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
         var relativeFolder = $"{DateTime.UtcNow:yyyy}/{DateTime.UtcNow:MM}";
         var physicalFolder = Path.Combine(PrivateRootPath, relativeFolder.Replace('/', Path.DirectorySeparatorChar));
         Directory.CreateDirectory(physicalFolder);
@@ -282,14 +251,4 @@ public sealed class FileStorageService : IFileStorageService
         StartsWith(header, 0x52, 0x49, 0x46, 0x46) && header.Length >= 12 &&
         header[8] == 0x57 && header[9] == 0x45 && header[10] == 0x42 && header[11] == 0x50;
 
-    /// <summary>CAD exchange formats (DXF, STEP, IGES) are plain text; reject binaries, executables and markup.</summary>
-    private static bool IsPlainText(byte[] header)
-    {
-        if (header.Length == 0 || StartsWith(header, 0x4D, 0x5A) || header[0] == (byte)'<')
-        {
-            return false;
-        }
-
-        return !header.Contains((byte)0);
-    }
 }

@@ -7,20 +7,18 @@
   <data name="Nav.Home" xml:space="preserve"><value>Home</value></data>
   <data name="Nav.About" xml:space="preserve"><value>About</value></data>
   <data name="Nav.AboutUs" xml:space="preserve"><value>About Us</value></data>
-  <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Products</value></data>
-  <data name="Nav.Services" xml:space="preserve"><value>Manufacturing</value></data>
-  <data name="Nav.Certificates" xml:space="preserve"><value>Quality</value></data>
-  <data name="Nav.Videos" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Nav.Services" xml:space="preserve"><value>Services</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Certificates</value></data>
+  <data name="Nav.Videos" xml:space="preserve"><value>Videos</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>Contact</value></data>
-  <data name="Nav.Quote" xml:space="preserve"><value>Request a Quote</value></data>
+  <data name="Nav.Quote" xml:space="preserve"><value>Get a Quote</value></data>
   <data name="Common.RequestQuote" xml:space="preserve"><value>Get a Quote</value></data>
   <data name="Common.SkipToContent" xml:space="preserve"><value>Skip to content</value></data>
   <data name="Common.MainNavigation" xml:space="preserve"><value>Main navigation</value></data>
   <data name="Common.ToggleNavigation" xml:space="preserve"><value>Toggle navigation</value></data>
   <data name="Common.Language" xml:space="preserve"><value>Language selection</value></data>
-  <data name="Common.SecurityClearance" xml:space="preserve"><value>MoND Facility Security Clearance</value></data>
   <data name="Common.ViewDetails" xml:space="preserve"><value>View Details</value></data>
   <data name="Common.ReadMore" xml:space="preserve"><value>Read More</value></data>
   <data name="Common.Explore" xml:space="preserve"><value>Explore</value></data>
@@ -63,7 +61,7 @@
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
   <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
   <data name="Home.ServicesLead" xml:space="preserve"><value>Within our integrated facility, we keep every critical step under our own control, from raw material to finished product.</value></data>
-  <data name="Home.AllCapabilities" xml:space="preserve"><value>All Capabilities</value></data>
+  <data name="Home.AllServices" xml:space="preserve"><value>All Services</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>All Articles</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Featured</value></data>
   <data name="Home.FeaturedTitle" xml:space="preserve"><value>Featured Products</value></data>
@@ -104,13 +102,12 @@
   <data name="Home.Industry4" xml:space="preserve"><value>Defense</value></data>
   <data name="Home.Industry5" xml:space="preserve"><value>Infrastructure</value></data>
   <data name="Home.Industry6" xml:space="preserve"><value>Industrial Equipment</value></data>
-  <data name="Cta.Eyebrow" xml:space="preserve"><value>Let's discuss your project</value></data>
-  <data name="Cta.Title" xml:space="preserve"><value>Contact us for your manufacturing needs</value></data>
-  <data name="Cta.Text" xml:space="preserve"><value>Share your technical drawing or sample, and our engineering team will get back to you promptly.</value></data>
-  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery, as well as defense components, entirely in Türkiye at its 25,000 m² facility in Ankara.</value></data>
+  <data name="Cta.Eyebrow" xml:space="preserve"><value>Let's talk about your project</value></data>
+  <data name="Cta.Title" xml:space="preserve"><value>Get a quote for your powder coating line</value></data>
+  <data name="Cta.Text" xml:space="preserve"><value>Tell us the product, capacity or plant you need, and our technical team will get back to you.</value></data>
+  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina A.Ş. manufactures electrostatic powder coating guns, spray booths, curing ovens, conveyors and pretreatment lines, and builds turnkey powder coating plants.</value></data>
   <data name="Footer.Corporate" xml:space="preserve"><value>Company</value></data>
   <data name="Footer.Rights" xml:space="preserve"><value>All rights reserved.</value></data>
-  <data name="Footer.Developer" xml:space="preserve"><value>Developed by</value></data>
   <data name="Cookie.Message" xml:space="preserve"><value>Besides the cookies this website needs to work, with your consent we use Google Analytics cookies to measure visits.</value></data>
   <data name="Cookie.Reject" xml:space="preserve"><value>Reject</value></data>
   <data name="Cookie.Settings" xml:space="preserve"><value>Cookie Preferences</value></data>
@@ -197,7 +194,7 @@
   <data name="Services.FlowFinishing" xml:space="preserve"><value>Finishing</value></data>
   <data name="Services.FlowQuality" xml:space="preserve"><value>Quality Control</value></data>
   <data name="Services.FlowShipping" xml:space="preserve"><value>Shipment</value></data>
-  <data name="Services.OtherCapabilities" xml:space="preserve"><value>Other Capabilities</value></data>
+  <data name="Services.OtherServices" xml:space="preserve"><value>Other Services</value></data>
   <data name="Services.SpecsTitle" xml:space="preserve"><value>Technical Capacity</value></data>
   <data name="Services.GalleryTitle" xml:space="preserve"><value>From Our Facility</value></data>
   <data name="Services.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
@@ -244,7 +241,7 @@
   <data name="DocumentType.Standard" xml:space="preserve"><value>Standards</value></data>
   <data name="DocumentType.Authorization" xml:space="preserve"><value>Authorizations</value></data>
   <data name="DocumentType.Catalog" xml:space="preserve"><value>Product Catalogues</value></data>
-  <data name="Nav.Manuals" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Nav.Manuals" xml:space="preserve"><value>User Manuals</value></data>
   <data name="Manuals.Title" xml:space="preserve"><value>Product Catalogue</value></data>
   <data name="Manuals.Lead" xml:space="preserve"><value>Browse our product groups and technical details page by page, or download them as PDF</value></data>
   <data name="Manuals.MetaTitle" xml:space="preserve"><value>Product Catalogue</value></data>
@@ -259,9 +256,9 @@
   <data name="Manuals.EmptyTitle" xml:space="preserve"><value>Catalogues coming soon</value></data>
   <data name="Manuals.EmptyText" xml:space="preserve"><value>Our product catalogues will be published here soon.</value></data>
   <data name="Contact.MetaTitle" xml:space="preserve"><value>Contact Us</value></data>
-  <data name="Contact.MetaDescription" xml:space="preserve"><value>Get in touch with PRJ Proje Makina in Sincan 1st Organized Industrial Zone, Ankara, by phone, e-mail or our contact form.</value></data>
+  <data name="Contact.MetaDescription" xml:space="preserve"><value>Contact PRJ Proje Makina A.Ş. in Arnavutköy, Istanbul: phone, email, WhatsApp and contact form.</value></data>
   <data name="Contact.Title" xml:space="preserve"><value>Contact Us</value></data>
-  <data name="Contact.Lead" xml:space="preserve"><value>Our team is ready to help with your questions and projects.</value></data>
+  <data name="Contact.Lead" xml:space="preserve"><value>Get in touch about products, service or a new plant project.</value></data>
   <data name="Contact.InfoTitle" xml:space="preserve"><value>Contact Details</value></data>
   <data name="Contact.Address" xml:space="preserve"><value>Address</value></data>
   <data name="Contact.Phone" xml:space="preserve"><value>Phone</value></data>
@@ -271,23 +268,23 @@
   <data name="Contact.Map" xml:space="preserve"><value>PRJ Proje Makina location map</value></data>
   <data name="Contact.Success" xml:space="preserve"><value>Thank you. Your message has been received and we will get back to you shortly.</value></data>
   <data name="Quote.MetaTitle" xml:space="preserve"><value>Request a Quote</value></data>
-  <data name="Quote.MetaDescription" xml:space="preserve"><value>Request a quotation from PRJ Proje Makina for steel, rubber and plastic components and securely upload your technical drawings.</value></data>
+  <data name="Quote.MetaDescription" xml:space="preserve"><value>Request a quote from PRJ Proje Makina for powder coating guns, spray booths, curing ovens or a turnkey powder coating plant.</value></data>
   <data name="Quote.Title" xml:space="preserve"><value>Request a Quote</value></data>
-  <data name="Quote.Lead" xml:space="preserve"><value>Tell us what you need, and our technical team will prepare a tailored quotation.</value></data>
+  <data name="Quote.Lead" xml:space="preserve"><value>Share the product, capacity and plant details; our technical team will prepare your quote.</value></data>
   <data name="Quote.ContactSection" xml:space="preserve"><value>Contact Information</value></data>
-  <data name="Quote.ProductSection" xml:space="preserve"><value>Product &amp; Request Details</value></data>
+  <data name="Quote.ProductSection" xml:space="preserve"><value>Product and Request</value></data>
   <data name="Quote.ProductPlaceholder" xml:space="preserve"><value>Select from the list or type</value></data>
-  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>e.g. 500 pcs</value></data>
-  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>Accepted files: PDF, DWG, DXF, STEP, STP, IGS, IGES, JPG, PNG, ZIP · Max. 10 MB</value></data>
+  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>e.g. 2 units</value></data>
+  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>Allowed files: PDF, DWG, DXF, STEP, STP, JPG, PNG, ZIP · Up to 10 MB</value></data>
   <data name="Quote.Submit" xml:space="preserve"><value>Submit Quote Request</value></data>
   <data name="Quote.ProductMessage" xml:space="preserve"><value>I would like to request a quote for this product: {0}</value></data>
-  <data name="Quote.CapabilityMessage" xml:space="preserve"><value>I would like to request a quote for this manufacturing capability: {0}</value></data>
+  <data name="Quote.ServiceMessage" xml:space="preserve"><value>I would like to request a quote for this service: {0}</value></data>
   <data name="Quote.Success" xml:space="preserve"><value>Thank you. Your quote request has been received and our sales team will contact you shortly.</value></data>
   <data name="Quote.ProcessTitle" xml:space="preserve"><value>How it works</value></data>
   <data name="Quote.Step1" xml:space="preserve"><value>We review your request and technical files.</value></data>
   <data name="Quote.Step2" xml:space="preserve"><value>If needed, our engineers clarify the details with you.</value></data>
   <data name="Quote.Step3" xml:space="preserve"><value>We send our quotation, including price and lead time.</value></data>
-  <data name="Quote.Step4" xml:space="preserve"><value>Once approved, we schedule production.</value></data>
+  <data name="Quote.Step4" xml:space="preserve"><value>Once you approve, we plan manufacturing and installation.</value></data>
   <data name="Quote.ConfidentialTitle" xml:space="preserve"><value>Confidentiality</value></data>
   <data name="Quote.ConfidentialText" xml:space="preserve"><value>Drawings and files you share are used solely to prepare your quotation and are never shared with third parties.</value></data>
   <data name="Form.FullName" xml:space="preserve"><value>Full Name</value></data>
@@ -360,4 +357,19 @@
   <data name="Home.VideoPlay" xml:space="preserve"><value>Play video</value></data>
   <data name="Nav.ContactUs" xml:space="preserve"><value>Contact Us</value></data>
   <data name="Common.WhatsApp" xml:space="preserve"><value>Chat on WhatsApp</value></data>
+  <data name="Nav.AllProducts" xml:space="preserve"><value>All Products</value></data>
+  <data name="Nav.ProductCategories" xml:space="preserve"><value>Product groups</value></data>
+  <data name="Nav.TurnkeyTitle" xml:space="preserve"><value>Turnkey plants</value></data>
+  <data name="Nav.TurnkeyText" xml:space="preserve"><value>From site survey to installation and service, one team builds your powder coating plant.</value></data>
+  <data name="Nav.Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="Nav.CloseMenu" xml:space="preserve"><value>Close menu</value></data>
+  <data name="Nav.Call" xml:space="preserve"><value>Call</value></data>
+  <data name="Common.Phone" xml:space="preserve"><value>Phone</value></data>
+  <data name="Common.Email" xml:space="preserve"><value>Email</value></data>
+  <data name="Common.Address" xml:space="preserve"><value>Address</value></data>
+  <data name="Common.WorkingHours" xml:space="preserve"><value>Working hours</value></data>
+  <data name="Footer.Products" xml:space="preserve"><value>Products</value></data>
+  <data name="Footer.Contact" xml:space="preserve"><value>Contact</value></data>
+  <data name="Footer.Follow" xml:space="preserve"><value>Follow us</value></data>
+  <data name="MobileBar.Label" xml:space="preserve"><value>Quick contact</value></data>
 </root>

@@ -4,6 +4,7 @@
     if (Model.Image is not null) images.Add(Model.Image);
     images.AddRange(Model.Images.Where(i => i != Model.Image));
     var quoteUrl = $"{Url.Localized(SiteRoutes.Quote)}?product={Model.Id}";
+    ViewData["QuoteHref"] = quoteUrl;
     // Picked up by the layout: product-specific WhatsApp message plus the "ask marketing" bubble.
     ViewData["WhatsAppText"] = L["Products.WhatsAppTemplate", Model.Name, $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}"].Value;
 }

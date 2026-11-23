@@ -1,19 +1,35 @@
 ﻿@inject PrjProje.Application.Interfaces.ISiteSettingsService SettingsService
 @inject PrjProje.Application.Interfaces.IProductService ProductService
+@inject PrjProje.Application.Interfaces.IServicePageService ServicePageService
+@inject PrjProje.Application.Interfaces.IBlogService BlogService
+@inject PrjProje.Application.Interfaces.IDocumentService DocumentService
+@inject PrjProje.Application.Interfaces.IGalleryService GalleryService
 @inject PrjProje.Application.Interfaces.ISiteContentService SiteContentService
-@inject Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider FileVersions
 @using PrjProje.Domain.Enums
 @{
     var lang = Languages.Current;
     var seo = ViewData[PageSeo.ViewDataKey] as PageSeo ?? new PageSeo { Title = L["Home.MetaTitle"], CanonicalPath = Context.Request.Path };
     var settings = await SettingsService.GetAsync();
     var categories = await ProductService.GetCategoriesAsync(lang);
+    var documents = await DocumentService.GetPublicDocumentsAsync(lang);
+
+    // Sections without content stay out of the menu (an empty blog, no manuals uploaded yet, ...).
+    var hasServices = (await ServicePageService.GetServicesAsync(lang)).Count > 0;
+    var hasBlog = (await BlogService.GetLatestAsync(lang, 1)).Count > 0;
+    var hasVideos = (await GalleryService.GetGalleryAsync(lang)).Items.Count > 0;
+    var hasManuals = documents.Any(d => d.DocumentType == DocumentType.Catalog);
+    var hasCertificates = documents.Any(d => d.DocumentType != DocumentType.Catalog);
+
     var announcements = await SiteContentService.GetCurrentAnnouncementsAsync(lang);
     var bar = announcements.FirstOrDefault(a => a.DisplayType == AnnouncementDisplay.Bar);
     var popup = announcements.FirstOrDefault(a => a.DisplayType == AnnouncementDisplay.Popup);
     static bool IsExternal(string url) => !url.StartsWith('/');
+
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
-    string Active(params string[] names) => names.Contains(controller) ? "active" : string.Empty;
+    string? Current(params string[] names) => names.Contains(controller) ? "page" : null;
+    var phoneHref = "tel:" + new string(settings.Phone.Where(c => char.IsDigit(c) || c == '+').ToArray());
+    var whatsAppHref = WhatsAppLink.Build(settings.WhatsApp, ViewData["WhatsAppText"] as string ?? settings.GetWhatsAppMessage(lang));
+    var quoteHref = ViewData["QuoteHref"] as string ?? Url.Localized(SiteRoutes.Quote);
     ViewData["Settings"] = settings;
 }
 <!DOCTYPE html>
@@ -21,16 +37,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#111317" />
+    <meta name="theme-color" content="#1C2127" />
     <partial name="_SeoHead" model="seo" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="~/css/tokens.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="icon" href="~/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon-96.png" />
+    <link rel="icon" href="~/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="~/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
     <link rel="manifest" href="~/site.webmanifest" />
     @await RenderSectionAsync("Head", required: false)
@@ -41,218 +55,237 @@
     @if (bar is not null)
     {
         <div class="announcement-bar" role="region" aria-label="@L["Announcement.Label"]" data-announcement="@($"{bar.Id}-{bar.Version}")">
-            <div class="container">
-                <i class="fa-solid fa-bullhorn announcement-icon" aria-hidden="true"></i>
+            <div class="container announcement-inner">
                 <p class="announcement-text">@bar.Message</p>
                 @if (bar.LinkUrl is not null)
                 {
-                    <a href="@bar.LinkUrl" class="announcement-link" target="@(IsExternal(bar.LinkUrl) ? "_blank" : null)" rel="@(IsExternal(bar.LinkUrl) ? "noopener" : null)">@(bar.LinkText ?? L["Announcement.More"].Value) <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="@bar.LinkUrl" class="announcement-link" target="@(IsExternal(bar.LinkUrl) ? "_blank" : null)" rel="@(IsExternal(bar.LinkUrl) ? "noopener" : null)">@(bar.LinkText ?? L["Announcement.More"].Value)@ViewHelpers.Icon("arrow-right")</a>
                 }
-                <button type="button" class="announcement-close" data-announcement-close aria-label="@L["Announcement.Close"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+                <button type="button" class="icon-button announcement-close" data-announcement-close aria-label="@L["Announcement.Close"]">@ViewHelpers.Icon("x")</button>
             </div>
         </div>
     }
 
-    <div class="topbar d-none d-lg-block">
-        <div class="container d-flex justify-content-between align-items-center">
-            <ul class="topbar-info list-unstyled d-flex gap-4 mb-0">
-                <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:@settings.Phone.Replace(" ", "")">@settings.Phone</a></li>
-                <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:@settings.Email">@settings.Email</a></li>
-                <li><i class="fa-solid fa-clock" aria-hidden="true"></i>@settings.GetWorkingHours(lang)</li>
-            </ul>
-            <div class="d-flex align-items-center gap-3">
-                <span class="topbar-badge"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> @L["Common.SecurityClearance"]</span>
-                @foreach (var social in settings.GetSocialLinks())
-                {
-                    <a href="@social.Url" class="topbar-social" target="_blank" rel="noopener" aria-label="@social.Label"><i class="@social.Icon" aria-hidden="true"></i></a>
-                }
+    <header class="site-header" data-header>
+        <div class="container header-inner">
+            <a class="brand" href="@Url.Localized(SiteRoutes.Home)">
+                <img src="~/images/brand/prj-logo-horizontal.svg" alt="@settings.CompanyName" width="200" height="37" />
+            </a>
+
+            <nav class="main-nav" id="mainNav" aria-label="@L["Common.MainNavigation"]" data-nav>
+                <div class="nav-panel-head">
+                    <span class="nav-panel-title">@L["Nav.Menu"]</span>
+                    <button type="button" class="icon-button" data-nav-close aria-label="@L["Nav.CloseMenu"]">@ViewHelpers.Icon("x")</button>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item has-sub has-mega">
+                        <a class="nav-link" href="@Url.Localized(SiteRoutes.Products)" aria-current="@Current("Products")">@L["Nav.Products"]</a>
+                        <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-products" aria-label="@L["Nav.Products"]">@ViewHelpers.Icon("chevron-down")</button>
+                        <div class="sub mega" id="sub-products">
+                            <div class="container mega-inner">
+                                <div>
+                                    <p class="mega-title">@L["Nav.ProductCategories"]</p>
+                                    <ul class="mega-grid">
+                                        @foreach (var category in categories)
+                                        {
+                                            <li>
+                                                <a class="mega-card" href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)">
+                                                    <span class="mega-thumb">
+                                                        @if (category.Image is not null)
+                                                        {
+                                                            <img src="@ViewHelpers.SmallImage(category.Image)" alt="" loading="lazy" width="96" height="72" />
+                                                        }
+                                                    </span>
+                                                    <span class="mega-name">@category.Name</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <aside class="mega-aside">
+                                    <p class="mega-aside-title">@L["Nav.TurnkeyTitle"]</p>
+                                    <p>@L["Nav.TurnkeyText"]</p>
+                                    @if (hasServices)
+                                    {
+                                        <a class="link-arrow" href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]@ViewHelpers.Icon("arrow-right")</a>
+                                    }
+                                    <a class="btn btn-primary" href="@Url.Localized(SiteRoutes.Products)">@L["Nav.AllProducts"]</a>
+                                </aside>
+                            </div>
+                        </div>
+                    </li>
+                    @if (hasServices)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Services)" aria-current="@Current("Services")">@L["Nav.Services"]</a></li>
+                    }
+                    <li class="nav-item has-sub">
+                        <a class="nav-link" href="@Url.Localized(SiteRoutes.About)" aria-current="@Current("About", "Certificates")">@L["Nav.About"]</a>
+                        @if (hasCertificates)
+                        {
+                            <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-about" aria-label="@L["Nav.About"]">@ViewHelpers.Icon("chevron-down")</button>
+                            <ul class="sub dropdown" id="sub-about">
+                                <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
+                                <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
+                            </ul>
+                        }
+                    </li>
+                    @if (hasVideos)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Videos)" aria-current="@Current("Videos")">@L["Nav.Videos"]</a></li>
+                    }
+                    @if (hasManuals)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Manuals)" aria-current="@Current("Manuals")">@L["Nav.Manuals"]</a></li>
+                    }
+                    @if (hasBlog)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Blog)" aria-current="@Current("Blog")">@L["Nav.Blog"]</a></li>
+                    }
+                    <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Contact)" aria-current="@Current("Contact")">@L["Nav.Contact"]</a></li>
+                </ul>
+                <div class="nav-panel-foot">
+                    <a class="btn btn-primary btn-block" href="@quoteHref">@L["Common.RequestQuote"]</a>
+                    <a class="nav-panel-phone" href="@phoneHref">@ViewHelpers.Icon("phone")@settings.Phone</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <a class="header-phone" href="@phoneHref">@ViewHelpers.Icon("phone")<span>@settings.Phone</span></a>
+                <partial name="_LanguageMenu" model="seo" />
+                <a class="btn btn-primary header-quote" href="@quoteHref">@L["Common.RequestQuote"]</a>
+                <button type="button" class="icon-button nav-toggle" aria-controls="mainNav" aria-expanded="false" data-nav-open aria-label="@L["Nav.Menu"]">@ViewHelpers.Icon("menu")</button>
             </div>
         </div>
-    </div>
-
-    <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-xl" aria-label="@L["Common.MainNavigation"]">
-            <div class="container">
-                <a class="navbar-brand" href="@Url.Localized(SiteRoutes.Home)">
-                    <img src="~/images/logo.png" alt="PRJ Proje Makina" width="221" height="48" class="brand-logo" />
-                </a>
-                <div class="d-flex align-items-center gap-2 d-xl-none">
-                    <partial name="_LanguageMenu" model="seo" />
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="@L["Common.ToggleNavigation"]">
-                        <span class="toggler-bar"></span><span class="toggler-bar"></span><span class="toggler-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link @Active("Home")" href="@Url.Localized(SiteRoutes.Home)">@L["Nav.Home"]</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("About", "Certificates")" href="@Url.Localized(SiteRoutes.About)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.About"]<small class="nav-hint" aria-hidden="true">@L["Nav.AboutUs"] · @L["Nav.Certificates"]</small></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("About")" href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
-                                <li><a class="dropdown-item @Active("Certificates")" href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Products", "Manuals")" href="@Url.Localized(SiteRoutes.Products)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Products"]<small class="nav-hint" aria-hidden="true">@string.Join(" · ", categories.Select(c => c.Name))</small></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item fw-semibold" href="@Url.Localized(SiteRoutes.Products)">@L["Products.AllProducts"]</a></li>
-                                <li><a class="dropdown-item fw-semibold @Active("Manuals")" href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                @foreach (var category in categories)
-                                {
-                                    <li><a class="dropdown-item" href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)">@category.Name</a></li>
-                                }
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Services")" href="@Url.Localized(SiteRoutes.Services)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Services"]<small class="nav-hint" aria-hidden="true">@L["Nav.Services"]</small></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("Services")" href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Videos", "Blog")" href="@Url.Localized(SiteRoutes.Videos)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Media"]<small class="nav-hint" aria-hidden="true">@L["Nav.Videos"] · @L["Nav.Blog"]</small></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("Videos")" href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Videos"]</a></li>
-                                <li><a class="dropdown-item @Active("Blog")" href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Contact")" href="@Url.Localized(SiteRoutes.Contact)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Contact"]<small class="nav-hint" aria-hidden="true">@L["Nav.ContactUs"] · @L["Nav.Careers"]</small></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item @Active("Contact")" href="@Url.Localized(SiteRoutes.Contact)">@L["Nav.ContactUs"]</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="d-flex align-items-center gap-3 nav-actions">
-                        <div class="d-none d-xl-block"><partial name="_LanguageMenu" model="seo" /></div>
-                        <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-brand"><i class="fa-solid fa-file-signature me-2" aria-hidden="true"></i>@L["Common.RequestQuote"]</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
     </header>
+    <div class="nav-backdrop" data-nav-close hidden></div>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
         @RenderBody()
     </main>
 
     <footer class="site-footer">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <a href="@Url.Localized(SiteRoutes.Home)" class="footer-logo">
-                        <img src="~/images/logo.png" alt="PRJ Proje Makina" width="194" height="42" loading="lazy" />
-                    </a>
-                    <p class="footer-about">@L["Footer.About"]</p>
-                    <div class="footer-social">
-                        @foreach (var social in settings.GetSocialLinks())
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="~/images/brand/prj-logo-negative.svg" alt="@settings.CompanyName" width="150" height="112" loading="lazy" />
+                <p>@L["Footer.About"]</p>
+                @if (settings.GetSocialLinks().Any())
+                {
+                    <p class="footer-label">@L["Footer.Follow"]</p>
+                    <ul class="social-list">
+                        @foreach (var (_, url, label) in settings.GetSocialLinks())
                         {
-                            <a href="@social.Url" target="_blank" rel="noopener" aria-label="@social.Label"><i class="@social.Icon" aria-hidden="true"></i></a>
+                            <li><a href="@url" target="_blank" rel="noopener" aria-label="@label">@ViewHelpers.Icon(label.ToLowerInvariant())</a></li>
                         }
-                    </div>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <h2 class="footer-title">@L["Footer.Corporate"]</h2>
-                    <ul class="footer-links">
-                        <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.About"]</a></li>
+                    </ul>
+                }
+            </div>
+            <div>
+                <p class="footer-title">@L["Footer.Products"]</p>
+                <ul class="footer-links">
+                    @foreach (var category in categories)
+                    {
+                        <li><a href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)">@category.Name</a></li>
+                    }
+                </ul>
+            </div>
+            <div>
+                <p class="footer-title">@L["Footer.Corporate"]</p>
+                <ul class="footer-links">
+                    <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
+                    @if (hasServices)
+                    {
                         <li><a href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></li>
+                    }
+                    @if (hasCertificates)
+                    {
                         <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
+                    }
+                    @if (hasVideos)
+                    {
                         <li><a href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Videos"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <h2 class="footer-title">@L["Nav.Products"]</h2>
-                    <ul class="footer-links">
-                        @foreach (var category in categories)
-                        {
-                            <li><a href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)">@category.Name</a></li>
-                        }
+                    }
+                    @if (hasManuals)
+                    {
                         <li><a href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Quote)">@L["Common.RequestQuote"]</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h2 class="footer-title">@L["Nav.Contact"]</h2>
-                    <address class="footer-contact">
-                        <p><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>@settings.GetAddress(lang)</span></p>
-                        <p><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:@settings.Phone.Replace(" ", "")">@settings.Phone</a></p>
-                        <p><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:@settings.Email">@settings.Email</a></p>
-                        <p><i class="fa-solid fa-clock" aria-hidden="true"></i><span>@settings.GetWorkingHours(lang)</span></p>
-                    </address>
-                </div>
+                    }
+                    @if (hasBlog)
+                    {
+                        <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
+                    }
+                    <li><a href="@Url.Localized(SiteRoutes.Quote)">@L["Common.RequestQuote"]</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-title">@L["Footer.Contact"]</p>
+                <address class="footer-contact">
+                    <p>@ViewHelpers.Icon("map-pin")<span>@settings.GetAddress(lang)</span></p>
+                    <p>@ViewHelpers.Icon("phone")<a href="@phoneHref">@settings.Phone</a></p>
+                    <p>@ViewHelpers.Icon("mail")<a href="mailto:@settings.Email">@settings.Email</a></p>
+                    <p>@ViewHelpers.Icon("clock")<span>@settings.GetWorkingHours(lang)</span></p>
+                </address>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-                <span>&copy; @DateTime.Now.Year @settings.CompanyName. @L["Footer.Rights"]</span>
-                <span class="d-flex gap-3">
-                    <a href="@Url.Localized(SiteRoutes.Privacy)">@L["Legal.PrivacyTitle"]</a>
-                    <a href="@Url.Localized(SiteRoutes.Cookies)">@L["Legal.CookiesTitle"]</a>
-                    <a href="#" role="button" data-cookie-settings>@L["Cookie.Settings"]</a>
-                    <span>@L["Footer.Developer"] <a href="https://caganderindere.com.tr" target="_blank" rel="noopener">caganderindere.com.tr</a></span>
-                </span>
+            <div class="container footer-bottom-inner">
+                <p>© @DateTime.UtcNow.Year @settings.CompanyName @L["Footer.Rights"]</p>
+                <ul class="footer-legal">
+                    <li><a href="@Url.Localized(SiteRoutes.Privacy)">@L["Legal.PrivacyTitle"]</a></li>
+                    <li><a href="@Url.Localized(SiteRoutes.Cookies)">@L["Legal.CookiesTitle"]</a></li>
+                    <li><button type="button" class="link-button" data-cookie-settings>@L["Cookie.Settings"]</button></li>
+                </ul>
             </div>
         </div>
     </footer>
+
+    @if (whatsAppHref is not null)
+    {
+        <a href="@whatsAppHref" class="whatsapp-float" target="_blank" rel="noopener" aria-label="@L["Common.WhatsApp"]" title="@L["Common.WhatsApp"]" data-whatsapp>@ViewHelpers.Icon("whatsapp")</a>
+    }
+
+    <nav class="mobile-bar" aria-label="@L["MobileBar.Label"]">
+        <a href="@phoneHref">@ViewHelpers.Icon("phone")<span>@L["Nav.Call"]</span></a>
+        @if (whatsAppHref is not null)
+        {
+            <a href="@whatsAppHref" target="_blank" rel="noopener" data-whatsapp>@ViewHelpers.Icon("whatsapp")<span>WhatsApp</span></a>
+        }
+        <a href="@quoteHref" class="is-primary">@ViewHelpers.Icon("send")<span>@L["Nav.Quote"]</span></a>
+    </nav>
 
     @if (popup is not null)
     {
         <div class="announcement-popup" role="dialog" aria-modal="true" aria-labelledby="announcementPopupText" data-announcement="@($"{popup.Id}-{popup.Version}")" data-popup hidden>
             <div class="announcement-popup-backdrop" data-announcement-close></div>
-            <div class="announcement-popup-box @(popup.Image is not null ? "has-image" : null)" tabindex="-1">
-                <button type="button" class="announcement-popup-close" data-announcement-close aria-label="@L["Announcement.Close"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="announcement-popup-box" tabindex="-1">
+                <button type="button" class="icon-button announcement-popup-close" data-announcement-close aria-label="@L["Announcement.Close"]">@ViewHelpers.Icon("x")</button>
                 @if (popup.Image is not null)
                 {
-                    <div class="announcement-popup-media"><img src="@popup.Image" alt="" class="announcement-popup-image" loading="lazy" /></div>
+                    <img src="@popup.Image" alt="" class="announcement-popup-image" loading="lazy" />
                 }
                 <div class="announcement-popup-body">
-                    <span class="announcement-popup-badge"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>@L["Announcement.Label"]</span>
-                    <p class="announcement-popup-text @(popup.Message.Length > 140 ? "is-long" : null)" id="announcementPopupText">@popup.Message</p>
+                    <p class="eyebrow">@L["Announcement.Label"]</p>
+                    <p class="announcement-popup-text" id="announcementPopupText">@popup.Message</p>
                     <div class="announcement-popup-actions">
                         @if (popup.LinkUrl is not null)
                         {
-                            <a href="@popup.LinkUrl" class="btn btn-brand" target="@(IsExternal(popup.LinkUrl) ? "_blank" : null)" rel="@(IsExternal(popup.LinkUrl) ? "noopener" : null)">@(popup.LinkText ?? L["Announcement.More"].Value) <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i></a>
+                            <a href="@popup.LinkUrl" class="btn btn-primary" target="@(IsExternal(popup.LinkUrl) ? "_blank" : null)" rel="@(IsExternal(popup.LinkUrl) ? "noopener" : null)">@(popup.LinkText ?? L["Announcement.More"].Value)</a>
                         }
-                        <button type="button" class="announcement-popup-dismiss" data-announcement-close>@L["Announcement.Dismiss"]</button>
+                        <button type="button" class="btn btn-ghost" data-announcement-close>@L["Announcement.Dismiss"]</button>
                     </div>
                 </div>
             </div>
         </div>
     }
 
-    @if (WhatsAppLink.Build(settings.WhatsApp, ViewData["WhatsAppText"] as string ?? settings.GetWhatsAppMessage(lang)) is { } whatsAppHref)
-    {
-        <a href="@whatsAppHref" class="whatsapp-float" target="_blank" rel="noopener" aria-label="@L["Common.WhatsApp"]" title="@L["Common.WhatsApp"]">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-        </a>
-        @if (ViewData["WhatsAppText"] is string)
-        {
-            <div class="whatsapp-bubble" data-whatsapp-bubble hidden>
-                <button type="button" class="whatsapp-bubble-close" data-whatsapp-bubble-close aria-label="@L["Announcement.Dismiss"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-                <a href="@whatsAppHref" target="_blank" rel="noopener">
-                    <strong>@L["Products.AskMarketingTitle"]</strong>
-                    <span>@L["Products.AskMarketingText"]</span>
-                </a>
-            </div>
-        }
-    }
-
-    <div class="cookie-banner" id="cookieBanner" data-analytics-id="@settings.GoogleAnalyticsId" hidden>
-        <div class="container d-flex flex-column flex-md-row align-items-md-center gap-3">
-            <p class="mb-0 flex-grow-1">
-                <i class="fa-solid fa-cookie-bite me-2 text-brand" aria-hidden="true"></i>@L["Cookie.Message"]
-                <a href="@Url.Localized(SiteRoutes.Cookies)">@L["Cookie.Details"]</a>
-            </p>
-            <div class="d-flex gap-2">
-                <button type="button" class="btn btn-outline-light btn-sm" data-cookie-reject>@L["Cookie.Reject"]</button>
-                <button type="button" class="btn btn-brand btn-sm" data-cookie-accept>@L["Cookie.Accept"]</button>
+    <div class="cookie-banner" id="cookieBanner" data-analytics-id="@settings.GoogleAnalyticsId" role="region" aria-label="@L["Cookie.Settings"]" hidden>
+        <div class="container cookie-inner">
+            <p>@L["Cookie.Message"] <a href="@Url.Localized(SiteRoutes.Cookies)">@L["Cookie.Details"]</a></p>
+            <div class="cookie-actions">
+                <button type="button" class="btn btn-ghost-light" data-cookie-reject>@L["Cookie.Reject"]</button>
+                <button type="button" class="btn btn-primary" data-cookie-accept>@L["Cookie.Accept"]</button>
             </div>
         </div>
     </div>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="~/js/site.js" asp-append-version="true" defer></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

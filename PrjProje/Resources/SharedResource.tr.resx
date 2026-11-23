@@ -7,11 +7,10 @@
   <data name="Nav.Home" xml:space="preserve"><value>Ana Sayfa</value></data>
   <data name="Nav.About" xml:space="preserve"><value>Kurumsal</value></data>
   <data name="Nav.AboutUs" xml:space="preserve"><value>Hakkımızda</value></data>
-  <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Ürünler</value></data>
-  <data name="Nav.Services" xml:space="preserve"><value>Üretim</value></data>
-  <data name="Nav.Certificates" xml:space="preserve"><value>Kalite</value></data>
-  <data name="Nav.Videos" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Nav.Services" xml:space="preserve"><value>Hizmetler</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Belgeler</value></data>
+  <data name="Nav.Videos" xml:space="preserve"><value>Videolar</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>İletişim</value></data>
   <data name="Nav.Quote" xml:space="preserve"><value>Teklif Al</value></data>
@@ -20,7 +19,6 @@
   <data name="Common.MainNavigation" xml:space="preserve"><value>Ana menü</value></data>
   <data name="Common.ToggleNavigation" xml:space="preserve"><value>Menüyü aç/kapat</value></data>
   <data name="Common.Language" xml:space="preserve"><value>Dil seçimi</value></data>
-  <data name="Common.SecurityClearance" xml:space="preserve"><value>MSB Tesis Güvenlik Belgesi</value></data>
   <data name="Common.ViewDetails" xml:space="preserve"><value>Detayları İncele</value></data>
   <data name="Common.ReadMore" xml:space="preserve"><value>Devamını Oku</value></data>
   <data name="Common.Explore" xml:space="preserve"><value>İncele</value></data>
@@ -63,7 +61,7 @@
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Ürün Kategorilerimiz</value></data>
   <data name="Home.ServicesTitle" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
   <data name="Home.ServicesLead" xml:space="preserve"><value>Entegre tesisimizde hammaddeden bitmiş ürüne kadar tüm kritik süreçleri kendi kontrolümüzde tutuyoruz.</value></data>
-  <data name="Home.AllCapabilities" xml:space="preserve"><value>Tüm Kabiliyetler</value></data>
+  <data name="Home.AllServices" xml:space="preserve"><value>Tüm Hizmetler</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>Tüm Yazılar</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Öne Çıkanlar</value></data>
   <data name="Home.FeaturedTitle" xml:space="preserve"><value>Öne Çıkan Ürünler</value></data>
@@ -105,12 +103,11 @@
   <data name="Home.Industry5" xml:space="preserve"><value>Altyapı ve İnşaat</value></data>
   <data name="Home.Industry6" xml:space="preserve"><value>Endüstriyel Ekipman</value></data>
   <data name="Cta.Eyebrow" xml:space="preserve"><value>Projenizi konuşalım</value></data>
-  <data name="Cta.Title" xml:space="preserve"><value>Üretim ihtiyaçlarınız için bizimle iletişime geçin</value></data>
-  <data name="Cta.Text" xml:space="preserve"><value>Teknik çiziminizi veya numunenizi paylaşın; mühendislik ekibimiz size en kısa sürede dönüş yapsın.</value></data>
-  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina; çelik, plastik ve kauçuk iş makinası yedek parçaları ile savunma sanayii parçalarını Ankara'daki 25.000 m² tesisinde %100 yerli olarak üretir.</value></data>
+  <data name="Cta.Title" xml:space="preserve"><value>Toz boya hattınız için teklif alın</value></data>
+  <data name="Cta.Text" xml:space="preserve"><value>Ürün, kapasite veya tesis ihtiyacınızı yazın; teknik ekibimiz size dönüş yapsın.</value></data>
+  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina A.Ş.; elektrostatik toz boya cihazları, boya kabinleri, pişirme fırınları, konveyörler ve kimyasal ön işlem hatları üretir, anahtar teslim toz boya tesisleri kurar.</value></data>
   <data name="Footer.Corporate" xml:space="preserve"><value>Kurumsal</value></data>
   <data name="Footer.Rights" xml:space="preserve"><value>Tüm hakları saklıdır.</value></data>
-  <data name="Footer.Developer" xml:space="preserve"><value>Geliştirici:</value></data>
   <data name="Cookie.Message" xml:space="preserve"><value>Sitemizin çalışması için zorunlu çerezlerin yanında, onay verirseniz ziyaret istatistikleri için Google Analytics çerezlerini kullanıyoruz.</value></data>
   <data name="Cookie.Reject" xml:space="preserve"><value>Reddet</value></data>
   <data name="Cookie.Settings" xml:space="preserve"><value>Çerez Tercihleri</value></data>
@@ -197,7 +194,7 @@
   <data name="Services.FlowFinishing" xml:space="preserve"><value>Yüzey İşlem</value></data>
   <data name="Services.FlowQuality" xml:space="preserve"><value>Kalite Kontrol</value></data>
   <data name="Services.FlowShipping" xml:space="preserve"><value>Sevkiyat</value></data>
-  <data name="Services.OtherCapabilities" xml:space="preserve"><value>Diğer Kabiliyetler</value></data>
+  <data name="Services.OtherServices" xml:space="preserve"><value>Diğer Hizmetler</value></data>
   <data name="Services.SpecsTitle" xml:space="preserve"><value>Teknik Kapasite</value></data>
   <data name="Services.GalleryTitle" xml:space="preserve"><value>Tesisten Görüntüler</value></data>
   <data name="Services.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
@@ -244,7 +241,7 @@
   <data name="DocumentType.Standard" xml:space="preserve"><value>Standartlar</value></data>
   <data name="DocumentType.Authorization" xml:space="preserve"><value>Yetki Belgeleri</value></data>
   <data name="DocumentType.Catalog" xml:space="preserve"><value>Ürün Katalogları</value></data>
-  <data name="Nav.Manuals" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Nav.Manuals" xml:space="preserve"><value>Kullanım Kılavuzları</value></data>
   <data name="Manuals.Title" xml:space="preserve"><value>Ürün Kataloğu</value></data>
   <data name="Manuals.Lead" xml:space="preserve"><value>Ürün gruplarımızı ve teknik bilgileri kataloglarımızda sayfa sayfa inceleyin veya PDF olarak indirin</value></data>
   <data name="Manuals.MetaTitle" xml:space="preserve"><value>Ürün Kataloğu</value></data>
@@ -259,9 +256,9 @@
   <data name="Manuals.EmptyTitle" xml:space="preserve"><value>Kataloglar yakında</value></data>
   <data name="Manuals.EmptyText" xml:space="preserve"><value>Ürün kataloglarımız yakında burada yayınlanacaktır.</value></data>
   <data name="Contact.MetaTitle" xml:space="preserve"><value>İletişim</value></data>
-  <data name="Contact.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ile iletişime geçin: Sincan 1. Organize Sanayi Bölgesi, Ankara. Telefon, e-posta ve iletişim formu.</value></data>
+  <data name="Contact.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina A.Ş. ile iletişime geçin: Arnavutköy, İstanbul. Telefon, e-posta, WhatsApp ve iletişim formu.</value></data>
   <data name="Contact.Title" xml:space="preserve"><value>İletişim</value></data>
-  <data name="Contact.Lead" xml:space="preserve"><value>Sorularınız ve projeleriniz için ekibimiz size yardımcı olmaya hazır.</value></data>
+  <data name="Contact.Lead" xml:space="preserve"><value>Ürünler, servis veya yeni bir tesis projesi için bize ulaşın.</value></data>
   <data name="Contact.InfoTitle" xml:space="preserve"><value>İletişim Bilgileri</value></data>
   <data name="Contact.Address" xml:space="preserve"><value>Adres</value></data>
   <data name="Contact.Phone" xml:space="preserve"><value>Telefon</value></data>
@@ -271,23 +268,23 @@
   <data name="Contact.Map" xml:space="preserve"><value>PRJ Proje Makina konum haritası</value></data>
   <data name="Contact.Success" xml:space="preserve"><value>Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.</value></data>
   <data name="Quote.MetaTitle" xml:space="preserve"><value>Teklif Al</value></data>
-  <data name="Quote.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik parça ihtiyaçlarınız için PRJ Proje Makina'nın teklif isteyin; teknik çizim dosyanızı güvenle yükleyin.</value></data>
+  <data name="Quote.MetaDescription" xml:space="preserve"><value>Toz boya cihazı, boya kabini, pişirme fırını veya anahtar teslim toz boya tesisi için PRJ Proje Makina'dan teklif isteyin.</value></data>
   <data name="Quote.Title" xml:space="preserve"><value>Teklif Al</value></data>
-  <data name="Quote.Lead" xml:space="preserve"><value>İhtiyacınızı paylaşın, teknik ekibimiz size özel teklifinizi hazırlasın.</value></data>
+  <data name="Quote.Lead" xml:space="preserve"><value>Ürün, kapasite ve tesis bilgilerinizi paylaşın; teknik ekibimiz teklifinizi hazırlasın.</value></data>
   <data name="Quote.ContactSection" xml:space="preserve"><value>İletişim Bilgileri</value></data>
-  <data name="Quote.ProductSection" xml:space="preserve"><value>Ürün ve Talep Detayları</value></data>
+  <data name="Quote.ProductSection" xml:space="preserve"><value>Ürün ve Talep</value></data>
   <data name="Quote.ProductPlaceholder" xml:space="preserve"><value>Listeden seçin veya yazın</value></data>
-  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>Örn. 500 adet</value></data>
-  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>İzin verilen dosyalar: PDF, DWG, DXF, STEP, STP, IGS, IGES, JPG, PNG, ZIP · En fazla 10 MB</value></data>
+  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>Örn. 2 adet</value></data>
+  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>İzin verilen dosyalar: PDF, DWG, DXF, STEP, STP, JPG, PNG, ZIP · En fazla 10 MB</value></data>
   <data name="Quote.Submit" xml:space="preserve"><value>Teklif Talebi Gönder</value></data>
   <data name="Quote.ProductMessage" xml:space="preserve"><value>Bu ürün hakkında teklif almak istiyorum: {0}</value></data>
-  <data name="Quote.CapabilityMessage" xml:space="preserve"><value>Bu üretim kabiliyeti için teklif almak istiyorum: {0}</value></data>
+  <data name="Quote.ServiceMessage" xml:space="preserve"><value>Bu hizmet için teklif almak istiyorum: {0}</value></data>
   <data name="Quote.Success" xml:space="preserve"><value>Teklif talebiniz alındı. Satış ekibimiz en kısa sürede sizinle iletişime geçecek.</value></data>
   <data name="Quote.ProcessTitle" xml:space="preserve"><value>Nasıl ilerliyoruz?</value></data>
   <data name="Quote.Step1" xml:space="preserve"><value>Talebinizi ve teknik dosyalarınızı inceliyoruz.</value></data>
   <data name="Quote.Step2" xml:space="preserve"><value>Gerekirse mühendislik ekibimiz detayları sizinle netleştiriyor.</value></data>
   <data name="Quote.Step3" xml:space="preserve"><value>Fiyat ve teslim süresini içeren teklifimizi iletiyoruz.</value></data>
-  <data name="Quote.Step4" xml:space="preserve"><value>Onayınızla üretim planlamasına başlıyoruz.</value></data>
+  <data name="Quote.Step4" xml:space="preserve"><value>Onayınızla imalat ve kurulum planlamasına başlıyoruz.</value></data>
   <data name="Quote.ConfidentialTitle" xml:space="preserve"><value>Gizlilik</value></data>
   <data name="Quote.ConfidentialText" xml:space="preserve"><value>Paylaştığınız çizim ve dosyalar yalnızca teklif hazırlamak amacıyla kullanılır ve üçüncü kişilerle paylaşılmaz.</value></data>
   <data name="Form.FullName" xml:space="preserve"><value>Ad Soyad</value></data>
@@ -360,4 +357,19 @@
   <data name="Home.VideoPlay" xml:space="preserve"><value>Videoyu oynat</value></data>
   <data name="Nav.ContactUs" xml:space="preserve"><value>Bize Ulaşın</value></data>
   <data name="Common.WhatsApp" xml:space="preserve"><value>WhatsApp ile yazın</value></data>
+  <data name="Nav.AllProducts" xml:space="preserve"><value>Tüm Ürünler</value></data>
+  <data name="Nav.ProductCategories" xml:space="preserve"><value>Ürün grupları</value></data>
+  <data name="Nav.TurnkeyTitle" xml:space="preserve"><value>Anahtar teslim tesis</value></data>
+  <data name="Nav.TurnkeyText" xml:space="preserve"><value>Keşiften kuruluma ve servise kadar toz boya tesisinizi tek ekiple kuruyoruz.</value></data>
+  <data name="Nav.Menu" xml:space="preserve"><value>Menü</value></data>
+  <data name="Nav.CloseMenu" xml:space="preserve"><value>Menüyü kapat</value></data>
+  <data name="Nav.Call" xml:space="preserve"><value>Ara</value></data>
+  <data name="Common.Phone" xml:space="preserve"><value>Telefon</value></data>
+  <data name="Common.Email" xml:space="preserve"><value>E-posta</value></data>
+  <data name="Common.Address" xml:space="preserve"><value>Adres</value></data>
+  <data name="Common.WorkingHours" xml:space="preserve"><value>Çalışma saatleri</value></data>
+  <data name="Footer.Products" xml:space="preserve"><value>Ürünler</value></data>
+  <data name="Footer.Contact" xml:space="preserve"><value>İletişim</value></data>
+  <data name="Footer.Follow" xml:space="preserve"><value>Bizi takip edin</value></data>
+  <data name="MobileBar.Label" xml:space="preserve"><value>Hızlı iletişim</value></data>
 </root>

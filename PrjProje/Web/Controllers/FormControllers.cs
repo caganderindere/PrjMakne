@@ -1,6 +1,6 @@
+using PrjProje.Application.Common;
 using PrjProje.Application.Interfaces;
 using PrjProje.Application.Models;
-using PrjProje.Infrastructure.Services.Support;
 using PrjProje.Web.Routing;
 using PrjProje.Web.Seo;
 using PrjProje.Web.ViewModels;
@@ -151,7 +151,7 @@ public class QuoteController : PublicControllerBase
     {
         Form = form,
         Products = await _productService.GetProductOptionsAsync(Lang, cancellationToken),
-        AllowedExtensions = string.Join(",", FileStorageService.AllowedAttachmentExtensions)
+        AllowedExtensions = QuoteAttachmentRules.AcceptAttribute
     };
 
     private void PrepareSeo(bool noIndex)
