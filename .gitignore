@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+*.user
+.superpowers/
+.claude-flow/
+.swarm/
+.playwright-mcp/
+App_Data/
+**/wwwroot/uploads/
+content/images/raw/
+**/appsettings.Production.json
+**/appsettings.Development.json
+node_modules/
+TestResults/
