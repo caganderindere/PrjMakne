@@ -11,7 +11,7 @@
     string Expanded(string[] names) => names.Contains(controller) ? "true" : "false";
     string Show(string[] names) => names.Contains(controller) ? "show" : string.Empty;
     var catalogPages = new[] { "ProductCategories", "Services" };
-    var contentPages = new[] { "ContentTexts", "Blog", "BlogCategories", "Announcements", "References" };
+    var contentPages = new[] { "ContentTexts", "Blog", "BlogCategories", "Announcements", "References", "Redirects" };
     var mediaPages = new[] { "Gallery", "GalleryCategories", "Documents" };
     var systemPages = new[] { "Users", "Settings", "Notifications" };
 }
@@ -63,6 +63,7 @@
                     <a class="@Active("BlogCategories")" asp-area="Admin" asp-controller="BlogCategories" asp-action="Index"><i class="fa-solid fa-tags"></i>Blog Kategorileri</a>
                     <a class="@Active("Announcements")" asp-area="Admin" asp-controller="Announcements" asp-action="Index"><i class="fa-solid fa-bullhorn"></i>Duyurular</a>
                     <a class="@Active("References")" asp-area="Admin" asp-controller="References" asp-action="Index"><i class="fa-solid fa-handshake"></i>Referanslar</a>
+                    <a class="@Active("Redirects")" asp-area="Admin" asp-controller="Redirects" asp-action="Index"><i class="fa-solid fa-route"></i>Yönlendirmeler</a>
                 </div>
                 <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navMedia" aria-controls="navMedia" aria-expanded="@Expanded(mediaPages)">Medya<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                 <div class="collapse @Show(mediaPages)" id="navMedia" data-bs-parent=".admin-nav">

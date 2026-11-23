@@ -158,6 +158,7 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
+app.UseMiddleware<LegacyRedirectMiddleware>();
 app.UseRouting();
 app.UseRequestLocalization();
 app.UseRateLimiter();

@@ -56,6 +56,51 @@ public class ReferencesController : AdminControllerBase
         ResultRedirect(await _referenceService.DeleteAsync(id, cancellationToken), "Referans silindi.");
 }
 
+public class RedirectsController : AdminControllerBase
+{
+    private readonly ILegacyRedirectAdminService _redirectService;
+
+    public RedirectsController(ILegacyRedirectAdminService redirectService)
+    {
+        _redirectService = redirectService;
+    }
+
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
+        View(await _redirectService.GetListAsync(cancellationToken));
+
+    public IActionResult Create() => View("Form", new LegacyRedirectEditModel());
+
+    public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
+    {
+        var model = await _redirectService.GetForEditAsync(id, cancellationToken);
+        return model is null ? NotFound() : View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Save(LegacyRedirectEditModel model, CancellationToken cancellationToken)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _redirectService.SaveAsync(model, cancellationToken);
+            if (result.Succeeded)
+            {
+                Success("Yönlendirme kaydedildi.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            AddErrors(result);
+        }
+
+        return View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
+        ResultRedirect(await _redirectService.DeleteAsync(id, cancellationToken), "Yönlendirme silindi.");
+}
+
 public class AnnouncementsController : AdminControllerBase
 {
     private readonly IAnnouncementAdminService _announcementService;

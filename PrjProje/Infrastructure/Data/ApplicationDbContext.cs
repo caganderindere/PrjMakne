@@ -36,6 +36,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<SiteSetting> SiteSettings => Set<SiteSetting>();
     public DbSet<ActivityLog> ActivityLogs => Set<ActivityLog>();
     public DbSet<Reference> References => Set<Reference>();
+    public DbSet<LegacyRedirect> LegacyRedirects => Set<LegacyRedirect>();
     public DbSet<Announcement> Announcements => Set<Announcement>();
     public DbSet<ContentText> ContentTexts => Set<ContentText>();
 

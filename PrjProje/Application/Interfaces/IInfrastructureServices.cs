@@ -94,3 +94,15 @@ public interface ISpamProtectionService
     string CreateFormToken();
     bool IsLikelySpam(IFormCollection form);
 }
+
+public record LegacyRedirectTarget(int Id, string ToPath, string? ToPathEn);
+
+/// <summary>Old WordPress addresses, held in memory; used on every request that is not a page of the new site.</summary>
+public interface ILegacyRedirectLookup
+{
+    /// <param name="path">A key produced by LegacyPath.Normalize.</param>
+    Task<LegacyRedirectTarget?> FindAsync(string path, CancellationToken cancellationToken = default);
+
+    /// <summary>Counts a redirect without delaying the visitor.</summary>
+    void RecordHit(int id);
+}

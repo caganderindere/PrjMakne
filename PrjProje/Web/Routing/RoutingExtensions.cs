@@ -9,11 +9,7 @@ public static class RoutingExtensions
 
     public static void MapLocalizedRoutes(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapControllerRoute(
-            name: "root",
-            pattern: "",
-            defaults: new { controller = "Home", action = "Index", culture = Languages.Default });
-
+        // "/" has no route: LegacyRedirectMiddleware sends it to /tr (or /en for ?lang=en).
         foreach (var route in SiteRoutes.All)
         {
             foreach (var (languageCode, pattern) in route.Patterns)

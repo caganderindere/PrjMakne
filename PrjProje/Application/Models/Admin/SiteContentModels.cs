@@ -4,6 +4,31 @@ using Microsoft.AspNetCore.Http;
 
 namespace PrjProje.Application.Models.Admin;
 
+public record LegacyRedirectAdminItem(int Id, string FromPath, string ToPath, string? ToPathEn, int HitCount);
+
+public class LegacyRedirectEditModel
+{
+    public int Id { get; set; }
+
+    [Display(Name = "Eski adres")]
+    [Required(ErrorMessage = "{0} zorunludur.")]
+    [StringLength(400, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string FromPath { get; set; } = string.Empty;
+
+    [Display(Name = "Yeni adres (Türkçe)")]
+    [Required(ErrorMessage = "{0} zorunludur.")]
+    [StringLength(400, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    [RegularExpression("^/tr(/.*)?$", ErrorMessage = "{0} /tr ile başlamalıdır (ör. /tr/kurumsal).")]
+    public string ToPath { get; set; } = string.Empty;
+
+    [Display(Name = "Yeni adres (İngilizce)")]
+    [StringLength(400, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    [RegularExpression("^/en(/.*)?$", ErrorMessage = "{0} /en ile başlamalıdır (ör. /en/about-us).")]
+    public string? ToPathEn { get; set; }
+
+    public int HitCount { get; set; }
+}
+
 public record ReferenceAdminItem(int Id, string Name, string Logo, string? WebsiteUrl, int SortOrder, bool IsActive);
 
 public class ReferenceEditModel

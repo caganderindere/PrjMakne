@@ -1,0 +1,33 @@
+@model LegacyRedirectEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Yönlendirme" : "Yönlendirme Düzenle";
+}
+<div class="admin-card" style="max-width:900px">
+    <form method="post" asp-action="Save">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-3">
+            <div class="col-12">
+                <label asp-for="FromPath" class="form-label"></label>
+                <input asp-for="FromPath" class="form-control" placeholder="/urunler/manuel-corona-cihaz-seti/" />
+                <div class="form-text">Eski sitedeki bağlantıyı olduğu gibi yapıştırabilirsiniz; büyük/küçük harf, sondaki / ve ?lang=en fark etmez.@if (Model.Id != 0) { <text> Bu yönlendirme @Model.HitCount kez kullanıldı.</text> }</div>
+                <span asp-validation-for="FromPath"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ToPath" class="form-label"></label>
+                <input asp-for="ToPath" class="form-control" placeholder="/tr/urunler/manuel-corona-cihaz-seti" />
+                <span asp-validation-for="ToPath"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ToPathEn" class="form-label"></label>
+                <input asp-for="ToPathEn" class="form-control" placeholder="/en/products/manual-corona-gun-set" />
+                <div class="form-text">Boş bırakılırsa İngilizce ziyaretçi de Türkçe adrese gider.</div>
+                <span asp-validation-for="ToPathEn"></span>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </form>
+</div>

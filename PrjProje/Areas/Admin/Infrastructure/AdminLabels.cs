@@ -124,6 +124,7 @@ public static class AdminLabels
         "User" => "Kullanıcı",
         "SiteSettings" => "Site ayarları",
         "Reference" => "Referans",
+        "LegacyRedirect" => "Yönlendirme",
         "Announcement" => "Duyuru",
         "ContentText" => "Sayfa içerikleri",
         _ => entity

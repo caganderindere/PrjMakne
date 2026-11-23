@@ -14,6 +14,17 @@ public class ReferenceConfiguration : IEntityTypeConfiguration<Reference>
     }
 }
 
+public class LegacyRedirectConfiguration : IEntityTypeConfiguration<LegacyRedirect>
+{
+    public void Configure(EntityTypeBuilder<LegacyRedirect> builder)
+    {
+        builder.Property(x => x.FromPath).HasMaxLength(400).IsRequired();
+        builder.Property(x => x.ToPath).HasMaxLength(400).IsRequired();
+        builder.Property(x => x.ToPathEn).HasMaxLength(400);
+        builder.HasIndex(x => x.FromPath).IsUnique();
+    }
+}
+
 public class AnnouncementConfiguration : IEntityTypeConfiguration<Announcement>
 {
     public void Configure(EntityTypeBuilder<Announcement> builder)
