@@ -1,9 +1,13 @@
+using System.Net;
+using System.Text.RegularExpressions;
+using PrjProje.Application.Common;
+
 namespace PrjProje.Web.Seo;
 
 public record BreadcrumbItem(string Title, string? Url);
 
 /// <summary>Per-page SEO data rendered by the layout (title, meta, canonical, hreflang, Open Graph, JSON-LD).</summary>
-public class PageSeo
+public partial class PageSeo
 {
     public const string ViewDataKey = "PageSeo";
 
@@ -22,9 +26,44 @@ public class PageSeo
 
     public List<BreadcrumbItem> Breadcrumbs { get; } = new();
 
-    /// <summary>Additional Schema.org objects serialized as JSON-LD.</summary>
-    public List<object> StructuredData { get; } = new();
+    /// <summary>Additional Schema.org objects, each already serialized by <see cref="JsonLd"/>.</summary>
+    public List<string> StructuredData { get; } = new();
 
     public DateTime? PublishedTime { get; set; }
     public DateTime? ModifiedTime { get; set; }
+
+    public string Robots => NoIndex ? "noindex,follow" : "index,follow,max-image-preview:large";
+
+    /// <summary>hreflang links: only languages the page really exists in, plus x-default when there is a Turkish version.</summary>
+    public IReadOnlyList<(string Hreflang, string Path)> HreflangLinks()
+    {
+        var links = Languages.All.Where(Alternates.ContainsKey).Select(code => (code, Alternates[code])).ToList();
+        if (Alternates.TryGetValue(Languages.Default, out var defaultPath))
+        {
+            links.Add(("x-default", defaultPath));
+        }
+
+        return links;
+    }
+
+    /// <summary>A meta description from body text: no HTML, single spaces, at most 160 characters, cut between words.</summary>
+    public static string FallbackDescription(string? text)
+    {
+        const int maxLength = 160;
+        var plain = WebUtility.HtmlDecode(Whitespace().Replace(Tags().Replace(text ?? string.Empty, " "), " ")).Trim();
+        if (plain.Length <= maxLength)
+        {
+            return plain;
+        }
+
+        var cut = plain[..maxLength];
+        var lastSpace = cut.LastIndexOf(' ');
+        return (lastSpace > 0 ? cut[..lastSpace] : cut[..(maxLength - 1)]).TrimEnd(' ', ',', ';', ':', '.') + "…";
+    }
+
+    [GeneratedRegex("<[^>]*>")]
+    private static partial Regex Tags();
+
+    [GeneratedRegex(@"\s+")]
+    private static partial Regex Whitespace();
 }

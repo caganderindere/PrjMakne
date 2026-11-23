@@ -75,14 +75,17 @@ public class SeoController : Controller
         const string sitemapNs = "http://www.sitemaps.org/schemas/sitemap/0.9";
         const string xhtmlNs = "http://www.w3.org/1999/xhtml";
 
+        var dynamicEntries = await _sitemapService.GetDynamicEntriesAsync(cancellationToken);
+        // Without a published post the blog is hidden from the menu, so it stays out of the sitemap too.
+        var hasBlogPosts = dynamicEntries.Any(e => e.PageKey == SiteRoutes.BlogDetail);
         var entries = new List<(IReadOnlyDictionary<string, string> Paths, DateTime? LastModified, string Priority)>();
-        foreach (var key in SiteRoutes.StaticPageKeys)
+        foreach (var key in SiteRoutes.StaticPageKeys.Where(key => key != SiteRoutes.Blog || hasBlogPosts))
         {
             var paths = Languages.All.ToDictionary(lang => lang, lang => SiteRoutes.Path(key, lang));
             entries.Add((paths, null, key == SiteRoutes.Home ? "1.0" : "0.8"));
         }
 
-        foreach (var entry in await _sitemapService.GetDynamicEntriesAsync(cancellationToken))
+        foreach (var entry in dynamicEntries)
         {
             var paths = entry.Slugs.ToDictionary(s => s.Key, s => SiteRoutes.Path(entry.PageKey, s.Key, s.Value));
             entries.Add((paths, entry.LastModified, entry.PageKey == SiteRoutes.ProductDetail ? "0.7" : "0.6"));

@@ -1,4 +1,3 @@
-@using System.Text.Json
 @model PageSeo
 @inject PrjProje.Application.Interfaces.ISiteSettingsService SettingsService
 @{
@@ -9,65 +8,30 @@
     var richTitle = $"{Model.Title} | {L["Seo.TitleSuffix"]}";
     if (title.Length < 30 && title != Model.Title && richTitle.Length <= 60) title = richTitle;
     else if (title.Length > 60 && title != Model.Title) title = Model.Title;
-    var description = ViewHelpers.Truncate(Model.Description ?? L["Home.MetaDescription"], 165);
+    var description = PageSeo.FallbackDescription(Model.Description ?? L["Home.MetaDescription"]);
     var canonical = Url.Absolute(Model.CanonicalPath);
-    var image = Url.Absolute(Model.Image ?? "/images/logo.png");
+    var image = Url.Absolute(Model.Image ?? "/images/brand/og-default.jpg");
+    var baseUrl = Url.Absolute("/").TrimEnd('/');
 
-    var organization = new Dictionary<string, object?>
-    {
-        ["@context"] = "https://schema.org",
-        ["@type"] = "Organization",
-        ["name"] = settings.CompanyName,
-        ["url"] = Url.Absolute(SiteRoutes.Path(SiteRoutes.Home, lang)),
-        ["logo"] = Url.Absolute("/images/logo.png"),
-        ["email"] = settings.Email,
-        ["telephone"] = settings.Phone,
-        ["address"] = new Dictionary<string, object>
-        {
-            ["@type"] = "PostalAddress",
-            ["streetAddress"] = settings.GetAddress(lang),
-            ["addressLocality"] = "Sincan",
-            ["addressRegion"] = "Ankara",
-            ["addressCountry"] = "TR"
-        },
-        ["sameAs"] = settings.GetSocialLinks().Select(s => s.Url).ToArray()
-    };
-
-    var structuredData = new List<object> { organization };
+    var structuredData = new List<string> { JsonLd.Organization(settings, baseUrl) };
     if (Model.Breadcrumbs.Count > 0)
     {
-        structuredData.Add(new Dictionary<string, object>
-        {
-            ["@context"] = "https://schema.org",
-            ["@type"] = "BreadcrumbList",
-            ["itemListElement"] = Model.Breadcrumbs.Select((item, index) => new Dictionary<string, object?>
-            {
-                ["@type"] = "ListItem",
-                ["position"] = index + 1,
-                ["name"] = item.Title,
-                ["item"] = Url.Absolute(item.Url ?? Model.CanonicalPath)
-            }).ToArray()
-        });
+        structuredData.Add(JsonLd.Breadcrumb(Model.Breadcrumbs.Select(item => (item.Title, Url.Absolute(item.Url ?? Model.CanonicalPath)))));
     }
 
     structuredData.AddRange(Model.StructuredData);
-    var jsonOptions = new JsonSerializerOptions { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull };
 }
 <title>@title</title>
 <meta name="description" content="@description" />
-<meta name="robots" content="@(Model.NoIndex ? "noindex,follow" : "index,follow,max-image-preview:large")" />
+<meta name="robots" content="@Model.Robots" />
 @if (!string.IsNullOrWhiteSpace(settings.GoogleSiteVerification))
 {
     <meta name="google-site-verification" content="@settings.GoogleSiteVerification" />
 }
 <link rel="canonical" href="@canonical" />
-@foreach (var (code, path) in Model.Alternates)
+@foreach (var (hreflang, path) in Model.HreflangLinks())
 {
-    <link rel="alternate" hreflang="@code" href="@Url.Absolute(path)" />
-}
-@if (Model.Alternates.TryGetValue(Languages.Default, out var defaultPath))
-{
-    <link rel="alternate" hreflang="x-default" href="@Url.Absolute(defaultPath)" />
+    <link rel="alternate" hreflang="@hreflang" href="@Url.Absolute(path)" />
 }
 <meta property="og:site_name" content="PRJ Proje Makina" />
 <meta property="og:type" content="@Model.OpenGraphType" />
@@ -92,7 +56,8 @@
 <meta name="twitter:title" content="@title" />
 <meta name="twitter:description" content="@description" />
 <meta name="twitter:image" content="@image" />
-@foreach (var item in structuredData)
+@foreach (var json in structuredData)
 {
-    <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(item, jsonOptions))</script>
+    @* "!" keeps the URL tag helper from entity-encoding the "+" in the type. *@
+    <!script type="application/ld+json">@Html.Raw(json)</!script>
 }

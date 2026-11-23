@@ -117,7 +117,7 @@
   <data name="Cookie.Details" xml:space="preserve"><value>Detaylı bilgi</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Kabul et</value></data>
   <data name="About.MetaTitle" xml:space="preserve"><value>Hakkımızda</value></data>
-  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n tarihçesi, vizyonu, misyonu, 25.000 m² üretim tesisi ve yerli üretim anlayışı hakkında bilgi alın.</value></data>
+  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın tarihçesi, vizyonu, misyonu, 25.000 m² üretim tesisi ve yerli üretim anlayışı hakkında bilgi alın.</value></data>
   <data name="About.Title" xml:space="preserve"><value>Hakkımızda</value></data>
   <data name="About.Lead" xml:space="preserve"><value>Çelik, plastik ve kauçuk üretiminde mühendislik, kapasite ve güvenilirliği bir araya getiriyoruz.</value></data>
   <data name="About.WhoEyebrow" xml:space="preserve"><value>Biz Kimiz?</value></data>
@@ -205,7 +205,7 @@
   <data name="Services.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
   <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Savunma sanayii ürünlerine ait teknik detaylar, çizimler ve üretim parametreleri kamuya açık olarak paylaşılmaz; yalnızca yetkili kurumlarla mevzuat çerçevesinde paylaşılır.</value></data>
   <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
-  <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
+  <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
   <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.Lead" xml:space="preserve"><value>Kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
   <data name="Blog.SearchLabel" xml:space="preserve"><value>Blogda ara</value></data>
@@ -271,7 +271,7 @@
   <data name="Contact.Map" xml:space="preserve"><value>PRJ Proje Makina konum haritası</value></data>
   <data name="Contact.Success" xml:space="preserve"><value>Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.</value></data>
   <data name="Quote.MetaTitle" xml:space="preserve"><value>Teklif Al</value></data>
-  <data name="Quote.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik parça ihtiyaçlarınız için PRJ Proje Makina'nÄ±n teklif isteyin; teknik çizim dosyanızı güvenle yükleyin.</value></data>
+  <data name="Quote.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik parça ihtiyaçlarınız için PRJ Proje Makina'nın teklif isteyin; teknik çizim dosyanızı güvenle yükleyin.</value></data>
   <data name="Quote.Title" xml:space="preserve"><value>Teklif Al</value></data>
   <data name="Quote.Lead" xml:space="preserve"><value>İhtiyacınızı paylaşın, teknik ekibimiz size özel teklifinizi hazırlasın.</value></data>
   <data name="Quote.ContactSection" xml:space="preserve"><value>İletişim Bilgileri</value></data>

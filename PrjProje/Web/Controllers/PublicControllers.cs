@@ -161,7 +161,7 @@ public class ProductsController : PublicControllerBase
         }));
     }
 
-    public async Task<IActionResult> Detail(string slug, CancellationToken cancellationToken)
+    public async Task<IActionResult> Detail(string slug, [FromServices] ISiteSettingsService settingsService, CancellationToken cancellationToken)
     {
         var product = await _productService.GetDetailAsync(Lang, slug, cancellationToken);
         if (product is null)
@@ -185,19 +185,8 @@ public class ProductsController : PublicControllerBase
         }
 
         seo.Breadcrumbs.Add(new BreadcrumbItem(product.Name, null));
-        seo.StructuredData.Add(new Dictionary<string, object?>
-        {
-            ["@context"] = "https://schema.org",
-            ["@type"] = "Product",
-            ["name"] = product.Name,
-            ["description"] = product.ShortDescription,
-            ["image"] = product.Image is null ? null : Url.Absolute(product.Image),
-            ["category"] = product.CategoryName,
-            ["model"] = product.Variants.Count > 0 ? product.Variants : null,
-            ["brand"] = new Dictionary<string, object> { ["@type"] = "Brand", ["name"] = "PRJ" },
-            ["manufacturer"] = new Dictionary<string, object> { ["@type"] = "Organization", ["name"] = "PRJ Proje Makina" },
-            ["url"] = Url.Absolute(seo.CanonicalPath)
-        });
+        var settings = await settingsService.GetAsync(cancellationToken);
+        seo.StructuredData.Add(JsonLd.Product(product, Url.Absolute(seo.CanonicalPath), product.Image is null ? null : Url.Absolute(product.Image), settings.CompanyName));
 
         return View(product);
     }
@@ -301,7 +290,7 @@ public class BlogController : PublicControllerBase
         });
     }
 
-    public async Task<IActionResult> Detail(string slug, CancellationToken cancellationToken)
+    public async Task<IActionResult> Detail(string slug, [FromServices] ISiteSettingsService settingsService, CancellationToken cancellationToken)
     {
         var post = await _blogService.GetDetailAsync(Lang, slug, cancellationToken);
         if (post is null)
@@ -316,25 +305,9 @@ public class BlogController : PublicControllerBase
         seo.ModifiedTime = post.LastModified;
         seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Blog"], Url.Localized(SiteRoutes.Blog)));
         seo.Breadcrumbs.Add(new BreadcrumbItem(post.Title, null));
-        seo.StructuredData.Add(new Dictionary<string, object?>
-        {
-            ["@context"] = "https://schema.org",
-            ["@type"] = "BlogPosting",
-            ["headline"] = post.Title,
-            ["description"] = post.Summary,
-            ["image"] = post.CoverImage is null ? null : Url.Absolute(post.CoverImage),
-            ["datePublished"] = post.PublishedDate.ToString("O"),
-            ["dateModified"] = post.LastModified.ToString("O"),
-            ["inLanguage"] = Lang,
-            ["author"] = new Dictionary<string, object> { ["@type"] = "Organization", ["name"] = post.AuthorName },
-            ["publisher"] = new Dictionary<string, object>
-            {
-                ["@type"] = "Organization",
-                ["name"] = "PRJ Proje Makina",
-                ["logo"] = new Dictionary<string, object> { ["@type"] = "ImageObject", ["url"] = Url.Absolute("/images/logo.png") }
-            },
-            ["mainEntityOfPage"] = Url.Absolute(seo.CanonicalPath)
-        });
+        var settings = await settingsService.GetAsync(cancellationToken);
+        seo.StructuredData.Add(JsonLd.BlogPosting(post.Title, post.Summary, post.CoverImage is null ? null : Url.Absolute(post.CoverImage),
+            post.PublishedDate, post.LastModified, Lang, post.AuthorName, settings.CompanyName, Url.Absolute("/").TrimEnd('/'), Url.Absolute(seo.CanonicalPath)));
 
         return View(post);
     }
