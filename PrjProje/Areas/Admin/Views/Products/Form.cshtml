@@ -40,16 +40,8 @@
                                 <textarea asp-for="Translations[i].Description" class="form-control" rows="8" data-rich-editor></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="Translations[i].Material" class="form-label"></label>
-                                <input asp-for="Translations[i].Material" class="form-control" />
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="Translations[i].ProductionMethod" class="form-label"></label>
-                                <input asp-for="Translations[i].ProductionMethod" class="form-control" />
-                            </div>
-                            <div class="col-md-6">
                                 <label asp-for="Translations[i].SpecificationsText" class="form-label"></label>
-                                <textarea asp-for="Translations[i].SpecificationsText" class="form-control font-monospace" rows="6" placeholder="Malzeme: EPDM&#10;Sertlik: 70 Shore A"></textarea>
+                                <textarea asp-for="Translations[i].SpecificationsText" class="form-control font-monospace" rows="6" placeholder="Özellik: Değer"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label asp-for="Translations[i].ApplicationAreas" class="form-label"></label>
@@ -109,17 +101,27 @@
                 </div>
                 <div class="notice-warning mb-3" id="restrictedWarning" hidden>
                     <i class="fa-solid fa-user-lock me-1"></i>
-                    <strong>Kısıtlı kategori.</strong> Teknik özellikler sitede gösterilmez. Hassas askeri teknik detayları, üretim parametrelerini veya teknik çizimleri hiçbir alana girmeyin.
+                    <strong>Kısıtlı kategori.</strong> Bu kategorideki ürünlerin teknik özellikleri sitede gösterilmez.
                 </div>
-                <div class="mb-3">
-                    <label asp-for="OemNumber" class="form-label"></label>
-                    <input asp-for="OemNumber" class="form-control" />
-                    <span asp-validation-for="OemNumber"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="ServiceCode" class="form-label"></label>
-                    <input asp-for="ServiceCode" class="form-control" />
-                    <span asp-validation-for="ServiceCode"></span>
+                <div class="mb-3" data-variant-editor>
+                    <label class="form-label" for="newVariant">@Html.DisplayNameFor(m => m.Variants)</label>
+                    <ul class="variant-list" data-sortable-list>
+                        @foreach (var code in Model.Variants.Where(v => !string.IsNullOrWhiteSpace(v)))
+                        {
+                            <li>
+                                <input type="text" name="Variants" value="@code" class="form-control form-control-sm" maxlength="@ProductEditModel.ProductVariantMaxLength" aria-label="Model kodu" />
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-move="up" aria-label="Yukarı taşı"><i class="fa-solid fa-arrow-up"></i></button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-move="down" aria-label="Aşağı taşı"><i class="fa-solid fa-arrow-down"></i></button>
+                                <button type="button" class="btn btn-sm btn-outline-danger" data-variant-remove aria-label="Kaldır"><i class="fa-solid fa-xmark"></i></button>
+                            </li>
+                        }
+                    </ul>
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="newVariant" class="form-control" maxlength="@ProductEditModel.ProductVariantMaxLength" placeholder="ör. B 400" data-variant-input />
+                        <button type="button" class="btn btn-outline-secondary" data-variant-add><i class="fa-solid fa-plus me-1"></i>Ekle</button>
+                    </div>
+                    <div class="form-text">Model kodları her dilde aynıdır. Sitede bu sırayla gösterilir; aramada "YB 500", "yb500" ve "YB-500" aynı sayılır.</div>
+                    <span asp-validation-for="Variants"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="SortOrder" class="form-label"></label>

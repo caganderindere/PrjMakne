@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<ProductTranslation> ProductTranslations => Set<ProductTranslation>();
     public DbSet<ProductImage> ProductImages => Set<ProductImage>();
     public DbSet<ProductSpecification> ProductSpecifications => Set<ProductSpecification>();
+    public DbSet<ProductVariant> ProductVariants => Set<ProductVariant>();
     public DbSet<BlogCategory> BlogCategories => Set<BlogCategory>();
     public DbSet<BlogCategoryTranslation> BlogCategoryTranslations => Set<BlogCategoryTranslation>();
     public DbSet<BlogPost> BlogPosts => Set<BlogPost>();

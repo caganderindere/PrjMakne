@@ -169,26 +169,11 @@ public class ProductsController : PublicControllerBase
             return NotFound();
         }
 
-        // Suppliers search Google by part number: the codes lead the description. The title is the name as entered
-        // (OEM no + name), and _SeoHead appends "| PRJ Proje Makina".
-        string[] SplitCodes(string? codes) =>
-            codes?.Split([',', ';', '/', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? [];
-        var oemNumbers = SplitCodes(product.OemNumber);
-        var serviceCodes = SplitCodes(product.ServiceCode);
-        var codeLines = new List<string>();
-        if (oemNumbers.Length > 0)
-        {
-            codeLines.Add($"{L["Products.OemNumber"]}: {string.Join(", ", oemNumbers)}.");
-        }
-
-        if (serviceCodes.Length > 0)
-        {
-            codeLines.Add($"{L["Products.ServiceCode"]}: {string.Join(", ", serviceCodes)}.");
-        }
-
+        // Buyers search by model ("B 400 toz boya"), so the model codes lead the description; _SeoHead appends the company name to the title.
+        var modelLine = product.Variants.Count > 0 ? $"{L["Products.Variants"]}: {string.Join(", ", product.Variants)}." : null;
         var seo = SetSeo(
             product.Name,
-            string.Join(" ", codeLines.Append(product.MetaDescription ?? product.ShortDescription ?? string.Empty)).Trim(),
+            string.Join(" ", new[] { modelLine, product.MetaDescription ?? product.ShortDescription }.Where(s => !string.IsNullOrEmpty(s))),
             SiteRoutes.ProductDetail, product.AlternateSlugs, SiteRoutes.Products);
         seo.Image = product.Image;
         seo.OpenGraphType = "product";
@@ -208,9 +193,7 @@ public class ProductsController : PublicControllerBase
             ["description"] = product.ShortDescription,
             ["image"] = product.Image is null ? null : Url.Absolute(product.Image),
             ["category"] = product.CategoryName,
-            ["material"] = product.Material,
-            ["mpn"] = product.OemNumber,
-            ["sku"] = serviceCodes.FirstOrDefault(),
+            ["model"] = product.Variants.Count > 0 ? product.Variants : null,
             ["brand"] = new Dictionary<string, object> { ["@type"] = "Brand", ["name"] = "PRJ" },
             ["manufacturer"] = new Dictionary<string, object> { ["@type"] = "Organization", ["name"] = "PRJ Proje Makina" },
             ["url"] = Url.Absolute(seo.CanonicalPath)

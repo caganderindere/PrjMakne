@@ -76,6 +76,38 @@
         });
     });
 
+    // Product form: model codes are added as rows of the sortable list above; Enter adds instead of submitting.
+    document.querySelectorAll("[data-variant-editor]").forEach(function (editor) {
+        var list = editor.querySelector("[data-sortable-list]");
+        var input = editor.querySelector("[data-variant-input]");
+        function add() {
+            var code = input.value.trim().replace(/\s+/g, " ");
+            if (!code) return;
+            var item = document.createElement("li");
+            item.innerHTML = '<input type="text" name="Variants" class="form-control form-control-sm" aria-label="Model kodu" />' +
+                '<button type="button" class="btn btn-sm btn-outline-secondary" data-move="up" aria-label="Yukarı taşı"><i class="fa-solid fa-arrow-up"></i></button>' +
+                '<button type="button" class="btn btn-sm btn-outline-secondary" data-move="down" aria-label="Aşağı taşı"><i class="fa-solid fa-arrow-down"></i></button>' +
+                '<button type="button" class="btn btn-sm btn-outline-danger" data-variant-remove aria-label="Kaldır"><i class="fa-solid fa-xmark"></i></button>';
+            var field = item.querySelector("input");
+            field.value = code;
+            field.maxLength = input.maxLength;
+            list.appendChild(item);
+            input.value = "";
+            input.focus();
+        }
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                add();
+            }
+        });
+        editor.querySelector("[data-variant-add]").addEventListener("click", add);
+        list.addEventListener("click", function (event) {
+            var remove = event.target.closest("[data-variant-remove]");
+            if (remove) remove.closest("li").remove();
+        });
+    });
+
     // Restricted category warning on the product form
     var categorySelect = document.querySelector("[data-restricted-ids]");
     if (categorySelect) {

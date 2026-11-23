@@ -47,8 +47,7 @@ public sealed class ProductAdminService : IProductAdminService
             var term = filter.Search.Trim();
             query = query.Where(p =>
                 p.Translations.Any(t => t.Name.Contains(term)) ||
-                (p.OemNumber != null && p.OemNumber.Contains(term)) ||
-                (p.ServiceCode != null && p.ServiceCode.Contains(term)));
+                p.Variants.Any(v => v.Code.Contains(term)));
         }
 
         var total = await query.CountAsync(cancellationToken);
@@ -91,6 +90,7 @@ public sealed class ProductAdminService : IProductAdminService
             .Include(p => p.Translations)
             .Include(p => p.Images)
             .Include(p => p.Specifications)
+            .Include(p => p.Variants)
             .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
 
         if (product is null)
@@ -102,8 +102,7 @@ public sealed class ProductAdminService : IProductAdminService
         {
             Id = product.Id,
             CategoryId = product.CategoryId,
-            OemNumber = product.OemNumber,
-            ServiceCode = product.ServiceCode,
+            Variants = product.Variants.OrderBy(v => v.SortOrder).Select(v => (string?)v.Code).ToList(),
             IsActive = product.IsActive,
             IsFeatured = product.IsFeatured,
             SortOrder = product.SortOrder,
@@ -126,8 +125,6 @@ public sealed class ProductAdminService : IProductAdminService
                     Slug = t?.Slug,
                     ShortDescription = t?.ShortDescription,
                     Description = t?.Description,
-                    Material = t?.Material,
-                    ProductionMethod = t?.ProductionMethod,
                     ApplicationAreas = t?.ApplicationAreas,
                     MetaDescription = t?.MetaDescription,
                     SpecificationsText = string.Join(Environment.NewLine, specs)
@@ -175,6 +172,7 @@ public sealed class ProductAdminService : IProductAdminService
                 .Include(p => p.Translations)
                 .Include(p => p.Images)
                 .Include(p => p.Specifications)
+                .Include(p => p.Variants)
                 .FirstOrDefaultAsync(p => p.Id == model.Id, cancellationToken);
 
             if (product is null)
@@ -205,13 +203,12 @@ public sealed class ProductAdminService : IProductAdminService
 
         product.Image = image.Value;
         product.CategoryId = model.CategoryId;
-        product.OemNumber = AdminHelpers.Clean(model.OemNumber);
-        product.ServiceCode = AdminHelpers.Clean(model.ServiceCode);
         product.IsActive = model.IsActive;
         product.IsFeatured = model.IsFeatured;
         product.SortOrder = model.SortOrder;
 
         SyncImages(product, model.ExistingImages, newGalleryPaths);
+        SyncVariants(product, model.Variants);
         await SyncTranslationsAsync(product, model.Translations, cancellationToken);
 
         await _db.SaveChangesAsync(cancellationToken);
@@ -259,6 +256,15 @@ public sealed class ProductAdminService : IProductAdminService
         _cache.Invalidate();
         await _activityLogger.LogAsync(product.IsActive ? "Activated" : "Deactivated", "Product", id, null, cancellationToken);
         return ServiceResult.Success();
+    }
+
+    /// <summary>Variants carry nothing but their code and order, so the list is simply replaced.</summary>
+    private void SyncVariants(Product product, IEnumerable<string?> codes)
+    {
+        _db.ProductVariants.RemoveRange(product.Variants);
+        product.Variants = ProductSearch.DistinctCodes(codes)
+            .Select((code, index) => new ProductVariant { Code = code, SortOrder = index })
+            .ToList();
     }
 
     private void SyncImages(Product product, IEnumerable<ProductImageItem> existingInputs, IReadOnlyList<string> newPaths)
@@ -323,8 +329,6 @@ public sealed class ProductAdminService : IProductAdminService
                 cancellationToken);
             translation.ShortDescription = AdminHelpers.Clean(input.ShortDescription);
             translation.Description = AdminHelpers.Clean(_sanitizer.Sanitize(input.Description));
-            translation.Material = AdminHelpers.Clean(input.Material);
-            translation.ProductionMethod = AdminHelpers.Clean(input.ProductionMethod);
             translation.ApplicationAreas = AdminHelpers.Clean(input.ApplicationAreas);
             // The SEO title is always generated from the name and codes; clear any value saved before that rule.
             translation.MetaTitle = null;

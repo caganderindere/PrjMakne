@@ -105,14 +105,6 @@ public class ProductTranslationInput
     [Display(Name = "Detaylı Açıklama")]
     public string? Description { get; set; }
 
-    [Display(Name = "Malzeme")]
-    [StringLength(500, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
-    public string? Material { get; set; }
-
-    [Display(Name = "Üretim Yöntemi")]
-    [StringLength(500, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
-    public string? ProductionMethod { get; set; }
-
     [Display(Name = "Kullanım Alanları (her satıra bir alan)")]
     [StringLength(2000, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
     public string? ApplicationAreas { get; set; }
@@ -142,13 +134,9 @@ public class ProductEditModel : IValidatableObject
     [Range(1, int.MaxValue, ErrorMessage = "Lütfen bir kategori seçin.")]
     public int CategoryId { get; set; }
 
-    [Display(Name = "OEM No (birden fazlaysa virgülle ayırın)")]
-    [StringLength(500, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
-    public string? OemNumber { get; set; }
-
-    [Display(Name = "Servis Kodu / Service Name (birden fazlaysa virgülle ayırın)")]
-    [StringLength(100,ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
-    public string? ServiceCode { get; set; }
+    /// <summary>Model codes in display order ("B 300", "YB 500"); the same in every language.</summary>
+    [Display(Name = "Modeller / Varyantlar")]
+    public List<string?> Variants { get; set; } = new();
 
     [Display(Name = "Aktif")]
     public bool IsActive { get; set; } = true;
@@ -179,8 +167,20 @@ public class ProductEditModel : IValidatableObject
     [BindNever]
     public IReadOnlyList<int> RestrictedCategoryIds { get; set; } = Array.Empty<int>();
 
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) =>
-        TranslationValidation.Validate(Translations, t => t.LanguageCode, t => t.Name, nameof(ProductTranslationInput.Name), "ürün adı");
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        foreach (var result in TranslationValidation.Validate(Translations, t => t.LanguageCode, t => t.Name, nameof(ProductTranslationInput.Name), "ürün adı"))
+        {
+            yield return result;
+        }
+
+        if (Variants.Any(v => v?.Trim().Length > ProductVariantMaxLength))
+        {
+            yield return new ValidationResult($"Model kodu en fazla {ProductVariantMaxLength} karakter olabilir.", new[] { nameof(Variants) });
+        }
+    }
+
+    public const int ProductVariantMaxLength = 50;
 }
 
 public class BlogTranslationInput

@@ -804,14 +804,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("bit");
 
-                    b.Property<string>("OemNumber")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("ServiceCode")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
@@ -997,10 +989,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("Material")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<string>("MetaDescription")
                         .HasMaxLength(170)
                         .HasColumnType("nvarchar(170)");
@@ -1016,10 +1004,6 @@ namespace PrjProje.Infrastructure.Data.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProductionMethod")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ShortDescription")
                         .HasMaxLength(500)
@@ -1039,6 +1023,33 @@ namespace PrjProje.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("ProductTranslations");
+                });
+
+            modelBuilder.Entity("PrjProje.Domain.Entities.ProductVariant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId", "Code")
+                        .IsUnique();
+
+                    b.ToTable("ProductVariants");
                 });
 
             modelBuilder.Entity("PrjProje.Domain.Entities.QuoteRequest", b =>
@@ -1536,6 +1547,17 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("PrjProje.Domain.Entities.ProductVariant", b =>
+                {
+                    b.HasOne("PrjProje.Domain.Entities.Product", "Product")
+                        .WithMany("Variants")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("PrjProje.Domain.Entities.QuoteRequest", b =>
                 {
                     b.HasOne("PrjProje.Domain.Entities.Product", "Product")
@@ -1613,6 +1635,8 @@ namespace PrjProje.Infrastructure.Data.Migrations
                     b.Navigation("Specifications");
 
                     b.Navigation("Translations");
+
+                    b.Navigation("Variants");
                 });
 
             modelBuilder.Entity("PrjProje.Domain.Entities.ProductCategory", b =>

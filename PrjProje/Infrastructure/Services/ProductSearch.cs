@@ -4,7 +4,7 @@ using System.Text;
 namespace PrjProje.Infrastructure.Services;
 
 /// <summary>
-/// Ranks products against a free-text query in memory: part codes (OEM / service code) first, then the product name,
+/// Ranks products against a free-text query in memory: variant codes ("B 400", "YB 500") first, then the product name,
 /// then category and descriptive fields. Text is folded so "kaucuk", "KAUÇUK" and "Kauçuk" match the same way.
 /// </summary>
 /// <remarks>shortcut: scores every product of a language per search; move to SQL full-text if the catalogue grows past a few thousand products.</remarks>
@@ -12,13 +12,14 @@ public static class ProductSearch
 {
     public sealed class Document
     {
-        public Document(string name, string? categoryName, string? details, string? oemNumber, string? serviceCode)
+        /// <param name="variantCodes">Comma-separated, e.g. "B 300, B 400, YB 500".</param>
+        public Document(string name, string? categoryName, string? details, string? variantCodes)
         {
             Name = new Field(name);
             Category = new Field(categoryName);
             Details = new Field(details);
-            CodeText = new Field($"{oemNumber} {serviceCode}");
-            Codes = $"{oemNumber},{serviceCode}"
+            CodeText = new Field(variantCodes);
+            Codes = (variantCodes ?? string.Empty)
                 .Split([',', ';', '/', '\n'], StringSplitOptions.RemoveEmptyEntries)
                 .Select(Compact)
                 .Where(code => code.Length > 0)
@@ -78,7 +79,7 @@ public static class ProductSearch
     {
         var score = 0;
 
-        // Buyers paste part numbers in many formats (spaces, dashes, dots), so codes are compared without separators.
+        // Buyers type model codes in many formats (spaces, dashes, dots), so codes are compared without separators.
         if (query.Compact.Length >= 3)
         {
             foreach (var code in document.Codes)
@@ -166,6 +167,14 @@ public static class ProductSearch
 
         return builder.ToString();
     }
+
+    /// <summary>Trims and collapses spaces, then drops empties and codes equal to an earlier one in another format ("YB 500" / "yb-500").</summary>
+    public static IReadOnlyList<string> DistinctCodes(IEnumerable<string?> codes) =>
+        codes
+            .Select(code => string.Join(' ', (code ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries)))
+            .Where(code => Compact(code).Length > 0)
+            .DistinctBy(Compact)
+            .ToList();
 
     private static string Compact(string? value) => Normalize(value).Replace(" ", string.Empty);
 

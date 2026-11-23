@@ -170,12 +170,9 @@
   <data name="Products.ResultCount" xml:space="preserve"><value>{0} ürün listeleniyor</value></data>
   <data name="Products.EmptyTitle" xml:space="preserve"><value>Ürün bulunamadı</value></data>
   <data name="Products.EmptyText" xml:space="preserve"><value>Arama kriterlerinize uygun ürün bulunamadı. İhtiyacınızı bize iletin, size özel çözüm sunalım.</value></data>
-  <data name="Products.Material" xml:space="preserve"><value>Malzeme</value></data>
-  <data name="Products.ProductionMethod" xml:space="preserve"><value>Üretim Yöntemi</value></data>
-  <data name="Products.OemNumber" xml:space="preserve"><value>OEM No</value></data>
-  <data name="Products.ServiceCode" xml:space="preserve"><value>Servis Kodu</value></data>
   <data name="Products.Origin" xml:space="preserve"><value>Menşei</value></data>
   <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — %100 yerli üretim</value></data>
+  <data name="Products.Variants" xml:space="preserve"><value>Modeller</value></data>
   <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Bu Ürün İçin Teklif Al</value></data>
   <data name="Products.Description" xml:space="preserve"><value>Ürün Açıklaması</value></data>
   <data name="Products.Specifications" xml:space="preserve"><value>Teknik Özellikler</value></data>

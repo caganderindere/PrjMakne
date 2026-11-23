@@ -42,10 +42,8 @@ public class ProductDetailDto
     public string Slug { get; init; } = string.Empty;
     public string? ShortDescription { get; init; }
     public string? Description { get; init; }
-    public string? Material { get; init; }
-    public string? ProductionMethod { get; init; }
-    public string? OemNumber { get; init; }
-    public string? ServiceCode { get; init; }
+    /// <summary>Model codes in display order, e.g. "B 300", "YB 500".</summary>
+    public IReadOnlyList<string> Variants { get; init; } = Array.Empty<string>();
     public IReadOnlyList<string> ApplicationAreas { get; init; } = Array.Empty<string>();
     public string? MetaDescription { get; init; }
     public string? Image { get; init; }

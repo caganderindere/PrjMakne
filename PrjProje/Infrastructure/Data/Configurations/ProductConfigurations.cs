@@ -38,8 +38,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     public void Configure(EntityTypeBuilder<Product> builder)
     {
         builder.Property(x => x.Image).HasMaxLength(300);
-        builder.Property(x => x.OemNumber).HasMaxLength(500);
-        builder.Property(x => x.ServiceCode).HasMaxLength(100);
         builder.HasIndex(x => new { x.IsActive, x.CategoryId, x.SortOrder });
         builder.HasOne(x => x.Category)
             .WithMany(x => x.Products)
@@ -56,8 +54,6 @@ public class ProductTranslationConfiguration : IEntityTypeConfiguration<ProductT
         builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
         builder.Property(x => x.Slug).HasMaxLength(220).IsRequired();
         builder.Property(x => x.ShortDescription).HasMaxLength(500);
-        builder.Property(x => x.Material).HasMaxLength(500);
-        builder.Property(x => x.ProductionMethod).HasMaxLength(500);
         builder.Property(x => x.ApplicationAreas).HasMaxLength(2000);
         builder.Property(x => x.MetaTitle).HasMaxLength(70);
         builder.Property(x => x.MetaDescription).HasMaxLength(170);
@@ -77,6 +73,19 @@ public class ProductImageConfiguration : IEntityTypeConfiguration<ProductImage>
         builder.Property(x => x.ImagePath).HasMaxLength(300).IsRequired();
         builder.HasOne(x => x.Product)
             .WithMany(x => x.Images)
+            .HasForeignKey(x => x.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
+}
+
+public class ProductVariantConfiguration : IEntityTypeConfiguration<ProductVariant>
+{
+    public void Configure(EntityTypeBuilder<ProductVariant> builder)
+    {
+        builder.Property(x => x.Code).HasMaxLength(50).IsRequired();
+        builder.HasIndex(x => new { x.ProductId, x.Code }).IsUnique();
+        builder.HasOne(x => x.Product)
+            .WithMany(x => x.Variants)
             .HasForeignKey(x => x.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
     }

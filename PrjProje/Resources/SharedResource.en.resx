@@ -170,12 +170,9 @@
   <data name="Products.ResultCount" xml:space="preserve"><value>{0} products found</value></data>
   <data name="Products.EmptyTitle" xml:space="preserve"><value>No products found</value></data>
   <data name="Products.EmptyText" xml:space="preserve"><value>No products match your search. Tell us what you need and we will offer a tailored solution.</value></data>
-  <data name="Products.Material" xml:space="preserve"><value>Material</value></data>
-  <data name="Products.ProductionMethod" xml:space="preserve"><value>Manufacturing Process</value></data>
-  <data name="Products.OemNumber" xml:space="preserve"><value>OEM No.</value></data>
-  <data name="Products.ServiceCode" xml:space="preserve"><value>Service Code</value></data>
   <data name="Products.Origin" xml:space="preserve"><value>Origin</value></data>
   <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — 100% domestically manufactured</value></data>
+  <data name="Products.Variants" xml:space="preserve"><value>Models</value></data>
   <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Request a Quote for This Product</value></data>
   <data name="Products.Description" xml:space="preserve"><value>Product Description</value></data>
   <data name="Products.Specifications" xml:space="preserve"><value>Technical Specifications</value></data>

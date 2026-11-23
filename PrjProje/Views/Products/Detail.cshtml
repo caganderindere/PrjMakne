@@ -45,32 +45,23 @@
             <div class="col-lg-6">
                 <a href="@Url.Localized(SiteRoutes.ProductCategory, Model.CategorySlug)" class="product-category-tag"><i class="@Model.CategoryIcon me-2" aria-hidden="true"></i>@Model.CategoryName</a>
                 <h1 class="product-title">@Model.Name</h1>
-                @if (!string.IsNullOrEmpty(Model.OemNumber) || !string.IsNullOrEmpty(Model.ServiceCode))
+                @if (Model.Variants.Count > 0)
                 {
-                    <dl class="product-codes">
-                        @if (!string.IsNullOrEmpty(Model.OemNumber))
-                        {
-                            <div><dt>@L["Products.OemNumber"]:</dt><dd>@Model.OemNumber</dd></div>
-                        }
-                        @if (!string.IsNullOrEmpty(Model.ServiceCode))
-                        {
-                            <div><dt>@L["Products.ServiceCode"]:</dt><dd>@Model.ServiceCode</dd></div>
-                        }
-                    </dl>
+                    <div class="product-variants">
+                        <span class="product-variants-label">@L["Products.Variants"]</span>
+                        <ul class="product-variant-list">
+                            @foreach (var code in Model.Variants)
+                            {
+                                <li>@code</li>
+                            }
+                        </ul>
+                    </div>
                 }
                 @if (!string.IsNullOrEmpty(Model.ShortDescription))
                 {
                     <p class="lead-text">@Model.ShortDescription</p>
                 }
                 <dl class="product-facts">
-                    @if (!string.IsNullOrEmpty(Model.Material))
-                    {
-                        <div><dt>@L["Products.Material"]</dt><dd>@Model.Material</dd></div>
-                    }
-                    @if (!string.IsNullOrEmpty(Model.ProductionMethod))
-                    {
-                        <div><dt>@L["Products.ProductionMethod"]</dt><dd>@Model.ProductionMethod</dd></div>
-                    }
                     <div><dt>@L["Products.Origin"]</dt><dd>@L["Products.OriginValue"]</dd></div>
                 </dl>
                 <div class="d-flex flex-wrap gap-3 mt-4">

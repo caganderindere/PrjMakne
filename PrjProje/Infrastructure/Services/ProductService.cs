@@ -123,8 +123,6 @@ public sealed class ProductService : IProductService
             {
                 Translation = t,
                 t.Product.Image,
-                t.Product.OemNumber,
-                t.Product.ServiceCode,
                 t.Product.CategoryId,
                 t.Product.CreatedDate,
                 t.Product.UpdatedDate,
@@ -135,6 +133,7 @@ public sealed class ProductService : IProductService
                     .Select(ct => new { ct.Name, ct.Slug })
                     .FirstOrDefault(),
                 Images = t.Product.Images.OrderBy(i => i.SortOrder).Select(i => i.ImagePath).ToList(),
+                Variants = t.Product.Variants.OrderBy(v => v.SortOrder).Select(v => v.Code).ToList(),
                 Specifications = t.Product.Specifications
                     .Where(s => s.LanguageCode == languageCode)
                     .OrderBy(s => s.SortOrder)
@@ -164,10 +163,7 @@ public sealed class ProductService : IProductService
             Slug = translation.Slug,
             ShortDescription = translation.ShortDescription,
             Description = translation.Description,
-            Material = translation.Material,
-            ProductionMethod = translation.ProductionMethod,
-            OemNumber = product.OemNumber,
-            ServiceCode = product.ServiceCode,
+            Variants = product.Variants,
             ApplicationAreas = SplitLines(translation.ApplicationAreas),
             MetaDescription = translation.MetaDescription,
             Image = product.Image,
@@ -215,11 +211,9 @@ public sealed class ProductService : IProductService
                     t.Name,
                     t.Slug,
                     t.ShortDescription,
-                    t.Material,
                     t.ApplicationAreas,
                     t.Product.Image,
-                    t.Product.OemNumber,
-                    t.Product.ServiceCode,
+                    Variants = t.Product.Variants.OrderBy(v => v.SortOrder).Select(v => v.Code).ToList(),
                     t.Product.SortOrder,
                     CategoryName = t.Product.Category.Translations.Where(ct => ct.LanguageCode == languageCode).Select(ct => ct.Name).FirstOrDefault() ?? string.Empty,
                     CategorySlug = t.Product.Category.Translations.Where(ct => ct.LanguageCode == languageCode).Select(ct => ct.Slug).FirstOrDefault() ?? string.Empty,
@@ -231,7 +225,7 @@ public sealed class ProductService : IProductService
                 .Select(r => new SearchEntry(
                     new ProductListItemDto(r.ProductId, r.Name, r.Slug, r.ShortDescription, r.Image, r.CategoryName, r.CategorySlug, r.IconClass),
                     r.SortOrder,
-                    new ProductSearch.Document(r.Name, r.CategoryName, $"{r.ShortDescription} {r.Material} {r.ApplicationAreas}", r.OemNumber, r.ServiceCode)))
+                    new ProductSearch.Document(r.Name, r.CategoryName, $"{r.ShortDescription} {r.ApplicationAreas}", string.Join(", ", r.Variants))))
                 .ToList();
         });
 

@@ -162,13 +162,11 @@ a.stat-card:hover { border-color: var(--ad-red); color: var(--ad-text); }
 .home-sections-list li.is-hidden { opacity: .55; }
 .home-sections-list .section-name { flex-grow: 1; font-weight: 600; }
 .home-sections-list .btn { padding: .15rem .45rem; }
+.variant-list { list-style: none; padding: 0; margin: 0 0 .5rem; }
+.variant-list li { display: flex; align-items: center; gap: .4rem; margin-bottom: .35rem; }
+.variant-list .btn { padding: .15rem .45rem; }
 /* asp-validation-summary renders an empty box when the form has no errors */
 .validation-summary-valid { display: none; }
-
-/* Business cards */
-.card-thumb { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-.qr-thumb { width: 48px; height: 48px; border: 1px solid var(--ad-border); border-radius: 4px; }
-.qr-large { display: block; width: 100%; max-width: 220px; margin: 1rem auto; border: 1px solid var(--ad-border); border-radius: 4px; }
 
 /* System health: dashboard strip and Developer page */
 .is-ok { --health: #198754; --health-soft: rgba(25, 135, 84, .1); }
