@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Kartvizit — PRJ Proje Makina A.Ş.</title>
+<link rel="stylesheet" href="../brand.css">
+<style>
+    /* 85 × 55 mm trim with 3 mm bleed on every side for print */
+    @page { size: 91mm 61mm; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--prj-steel-100); font-family: var(--font-body); display: flex; flex-wrap: wrap; gap: 8mm; padding: 8mm; }
+    .card { width: 91mm; height: 61mm; padding: 3mm; position: relative; }
+    .trim { width: 85mm; height: 55mm; position: relative; padding: 6mm; }
+    .front { background: var(--prj-anthracite); }
+    .front .trim { display: flex; align-items: center; justify-content: center; }
+    .front img { width: 46mm; }
+    .front::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5mm; background: var(--prj-red); }
+    .back { background: #fff; }
+    .back .name { font-family: var(--font-heading); font-weight: 600; font-size: 11pt; color: var(--prj-anthracite); margin: 0; }
+    .back .role { font-size: 7.5pt; color: var(--prj-red); text-transform: uppercase; letter-spacing: var(--tracking-caps); margin: 1mm 0 5mm; font-weight: 600; }
+    .back dl { margin: 0; font-size: 7pt; line-height: 1.55; color: var(--prj-steel-700); }
+    .back dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .back dd { margin: 0; }
+    .back img { position: absolute; right: 6mm; top: 6mm; width: 12mm; }
+    .back .rule { position: absolute; left: 6mm; bottom: 6mm; width: 10mm; height: 0.8mm; background: var(--prj-red); }
+    @media print { body { background: #fff; padding: 0; gap: 0; } .card { break-after: page; } }
+</style>
+</head>
+<body>
+<section class="card front"><div class="trim"><img src="../logo/prj-logo-negative.svg" alt="PRJ Proje Makina A.Ş."></div></section>
+<section class="card back">
+    <div class="trim">
+        <img src="../logo/prj-monogram.svg" alt="">
+        <p class="name">[Ad Soyad]</p>
+        <p class="role">[Unvan]</p>
+        <dl>
+            <dt>Telefon</dt><dd>+90 212 544 01 04</dd>
+            <dt>Cep</dt><dd>[+90 5xx xxx xx xx]</dd>
+            <dt>E-posta</dt><dd>[ad.soyad]@prestijteknikmakine.com.tr</dd>
+            <dt>Adres</dt><dd>Mehmet Akif Ersoy Mah. Candener Sok. No:15-A<br>Taşoluk, 34281 Arnavutköy / İstanbul</dd>
+        </dl>
+        <span class="rule"></span>
+    </div>
+</section>
+</body>
+</html>

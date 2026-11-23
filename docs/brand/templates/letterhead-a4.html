@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Antetli Kağıt — PRJ Proje Makina A.Ş.</title>
+<link rel="stylesheet" href="../brand.css">
+<style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--prj-steel-100); font-family: var(--font-body); color: var(--color-text); }
+    .sheet { width: 210mm; height: 297mm; margin: 0 auto; background: #fff; position: relative; padding: 18mm 20mm 0; }
+    .head { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 6mm; border-bottom: 0.6mm solid var(--prj-red); }
+    .head img { height: 15mm; }
+    .head address { font-style: normal; font-size: 8pt; line-height: 1.5; text-align: right; color: var(--prj-steel-600); }
+    .body { padding-top: 14mm; font-size: 10.5pt; line-height: 1.6; }
+    .body .muted { color: var(--prj-steel-400); }
+    .foot { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--prj-steel-500); border-top: 0.2mm solid var(--prj-steel-200); padding-top: 3mm; }
+    .foot strong { font-family: var(--font-heading); font-weight: 600; color: var(--prj-anthracite); }
+    @media print { body { background: #fff; } .sheet { margin: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+    <header class="head">
+        <img src="../logo/prj-logo-horizontal.svg" alt="PRJ Proje Makina A.Ş.">
+        <address>
+            Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk<br>
+            34281 Arnavutköy / İstanbul<br>
+            +90 212 544 01 04 · info@prestijteknikmakine.com.tr
+        </address>
+    </header>
+    <main class="body">
+        <p class="muted">[Tarih]</p>
+        <p class="muted">[Alıcı firma, yetkili, adres]</p>
+        <p class="muted">[Metin]</p>
+    </main>
+    <footer class="foot">
+        <span><strong>PRJ Proje Makina A.Ş.</strong></span>
+        <span>www.prestijteknikmakine.com.tr</span>
+    </footer>
+</div>
+</body>
+</html>

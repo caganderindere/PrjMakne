@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marka Rehberi — PRJ Proje Makina A.Ş.</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+    @page { size: A4 landscape; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); color: var(--color-text); background: var(--prj-steel-100); line-height: var(--leading-normal); }
+    .page { width: 297mm; min-height: 210mm; margin: 0 auto 8mm; background: #fff; padding: 16mm 18mm; position: relative; break-after: page; }
+    .page::after { content: attr(data-n); position: absolute; right: 18mm; bottom: 10mm; font-size: 8pt; color: var(--prj-steel-500); }
+    h1, h2, h3 { margin: 0; }
+    .eyebrow { font-family: var(--font-heading); font-weight: 600; font-size: 9pt; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--prj-red); }
+    h2 { font-family: var(--font-display); font-weight: 700; font-size: 30pt; text-transform: uppercase; line-height: 1.05; margin: 2mm 0 6mm; }
+    h3 { font-family: var(--font-heading); font-weight: 600; font-size: 12pt; margin-bottom: 2mm; }
+    p, li { font-size: 9.5pt; max-width: 120mm; }
+    .grid { display: grid; gap: 8mm; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .tile { border: 0.3mm solid var(--prj-steel-200); border-radius: var(--radius-md); padding: 8mm; display: flex; align-items: center; justify-content: center; min-height: 42mm; }
+    .tile.dark { background: var(--prj-anthracite); border-color: var(--prj-anthracite); }
+    .tile img { max-width: 100%; max-height: 34mm; }
+    figcaption { font-size: 8pt; color: var(--prj-steel-600); margin-top: 2mm; }
+    figure { margin: 0; }
+
+    .cover { background: var(--prj-anthracite); color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    .cover::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 10mm 10mm; }
+    .cover > * { position: relative; }
+    .cover img { width: 70mm; }
+    .cover h1 { font-family: var(--font-display); font-weight: 700; font-size: 54pt; text-transform: uppercase; line-height: 1; }
+    .cover .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 6mm; background: var(--prj-red); }
+    .cover p { color: var(--prj-steel-300); }
+
+    .space { position: relative; display: inline-block; padding: 11mm; background: repeating-linear-gradient(45deg, var(--prj-red-soft), var(--prj-red-soft) 2mm, #fff 2mm, #fff 4mm); }
+    .space img { display: block; width: 60mm; background: #fff; }
+    .space span { position: absolute; font-size: 8pt; font-weight: 600; color: var(--prj-red); }
+
+    .dont { position: relative; }
+    .dont .tile { min-height: 34mm; }
+    .dont .tile img { max-height: 24mm; }
+    .dont figcaption::before { content: "✕ "; color: var(--prj-red); font-weight: 700; }
+
+    .swatch { border-radius: var(--radius-md); overflow: hidden; border: 0.3mm solid var(--prj-steel-200); }
+    .swatch .chip { height: 26mm; }
+    .swatch dl { margin: 0; padding: 3mm 4mm; font-size: 8pt; display: grid; grid-template-columns: 12mm 1fr; row-gap: 0.5mm; }
+    .swatch dt { color: var(--prj-steel-500); }
+    .swatch dd { margin: 0; font-family: ui-monospace, Consolas, monospace; }
+    .swatch h3 { padding: 3mm 4mm 0; font-size: 10pt; }
+    .steel { display: grid; grid-template-columns: repeat(10, 1fr); margin-top: 8mm; }
+    .steel div { height: 14mm; font-size: 7pt; padding: 1mm; display: flex; align-items: flex-end; }
+
+    .type-sample { border-top: 0.3mm solid var(--prj-steel-200); padding: 4mm 0; display: grid; grid-template-columns: 50mm 1fr; align-items: baseline; gap: 6mm; }
+    .type-sample small { font-size: 8pt; color: var(--prj-steel-600); }
+
+    .motif { height: 40mm; border-radius: var(--radius-md); background-color: var(--prj-anthracite); background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 6mm 6mm; }
+    .particles { height: 40mm; border-radius: var(--radius-md); background: radial-gradient(circle at 20% 60%, rgba(255,255,255,.25) 0 0.4mm, transparent 0.5mm) 0 0 / 7mm 6mm, radial-gradient(circle at 70% 30%, rgba(255,255,255,.18) 0 0.3mm, transparent 0.4mm) 0 0 / 5mm 5mm, var(--prj-anthracite); }
+    .product-card { height: 40mm; border-radius: var(--radius-md); background: var(--prj-steel-50); border: 0.3mm solid var(--prj-steel-200); display: flex; align-items: center; justify-content: center; color: var(--prj-steel-400); font-size: 8pt; }
+    .icons { display: flex; gap: 6mm; align-items: center; height: 40mm; justify-content: center; border: 0.3mm solid var(--prj-steel-200); border-radius: var(--radius-md); }
+    .icons svg { width: 9mm; height: 9mm; stroke: var(--prj-anthracite); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+    .templates img { width: 100%; border: 0.3mm solid var(--prj-steel-200); border-radius: var(--radius-sm); }
+    @media print { body { background: #fff; } .page { margin: 0; } }
+</style>
+</head>
+<body>
+
+<section class="page cover" data-n="">
+    <img src="logo/prj-logo-negative.svg" alt="PRJ Proje Makina A.Ş.">
+    <div>
+        <p class="eyebrow">Kurumsal Kimlik</p>
+        <h1>Marka<br>Rehberi</h1>
+        <p>Logo, renk, tipografi ve uygulama kuralları · Sürüm 1.0 · 2026</p>
+    </div>
+    <span class="bar"></span>
+</section>
+
+<section class="page" data-n="2">
+    <p class="eyebrow">01 · Logo</p>
+    <h2>Logo ailesi</h2>
+    <div class="grid cols-3">
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt=""></div><figcaption><strong>Ana logo.</strong> İlk tercih; monogram ve "PROJE MAKİNA A.Ş" yazısı birlikte. <code>prj-logo.svg</code></figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo-horizontal.svg" alt=""></div><figcaption><strong>Yatay logo.</strong> Site başlığı, antetli kağıt, e-posta imzası gibi alçak alanlar. <code>prj-logo-horizontal.svg</code></figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-monogram.svg" alt=""></div><figcaption><strong>Monogram.</strong> Favicon, uygulama ikonu, sosyal medya profil görseli. <code>prj-monogram.svg</code></figcaption></figure>
+        <figure><div class="tile dark"><img src="logo/prj-logo-negative.svg" alt=""></div><figcaption><strong>Negatif.</strong> Antrasit veya fotoğraf üzerinde, tek renk beyaz. <code>prj-logo-negative.svg</code></figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo-mono-black.svg" alt=""></div><figcaption><strong>Tek renk siyah.</strong> Faks, damga, gravür, tek renk baskı. <code>prj-logo-mono-black.svg</code></figcaption></figure>
+        <figure>
+            <h3>Logo kaynağı</h3>
+            <p>Vektörler, mevcut logo görselinden birebir yeniden çizildi; harf formları, J'deki krem vurgu ve P'deki beyaz kesik korunur. Logo kırmızısı <strong>#FF0000</strong> yalnızca logo dosyalarında kullanılır.</p>
+        </figure>
+    </div>
+</section>
+
+<section class="page" data-n="3">
+    <p class="eyebrow">01 · Logo</p>
+    <h2>Koruma alanı ve en küçük boyut</h2>
+    <div class="grid cols-2">
+        <div>
+            <div class="space">
+                <img src="logo/prj-logo.svg" alt="">
+                <span style="top:4mm;left:50%">x</span><span style="left:4mm;top:50%">x</span>
+            </div>
+            <p><strong>x</strong> = P harfinin dikey gövde kalınlığı. Logonun dört yanında en az <strong>x</strong> kadar boşluk bırakılır; bu alana yazı, kenar veya başka görsel girmez.</p>
+        </div>
+        <div>
+            <h3>En küçük boyut</h3>
+            <ul>
+                <li>Ana logo: ekranda 120 px, baskıda 30 mm genişlik.</li>
+                <li>Yatay logo: ekranda 140 px, baskıda 35 mm genişlik.</li>
+                <li>Monogram: ekranda 24 px, baskıda 8 mm genişlik.</li>
+                <li>Daha küçük alanlarda (16–32 px) favicon dosyaları kullanılır.</li>
+            </ul>
+            <h3 style="margin-top:6mm">Zemin</h3>
+            <ul>
+                <li>Renkli logo beyaz, açık gri (Çelik 50–100) veya antrasit zeminde.</li>
+                <li>Fotoğraf üzerinde yalnızca negatif logo, sakin bir alanda.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="page" data-n="4">
+    <p class="eyebrow">01 · Logo</p>
+    <h2>Yanlış kullanımlar</h2>
+    <div class="grid cols-4 dont">
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt="" style="transform:scaleX(1.5)"></div><figcaption>Logoyu esnetmeyin, oranını bozmayın.</figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt="" style="filter:hue-rotate(200deg)"></div><figcaption>Renkleri değiştirmeyin.</figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt="" style="transform:rotate(-12deg)"></div><figcaption>Döndürmeyin, eğmeyin.</figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt="" style="filter:drop-shadow(2mm 2mm 1mm rgba(0,0,0,.6))"></div><figcaption>Gölge, parlama, 3B efekt eklemeyin.</figcaption></figure>
+        <figure><div class="tile" style="background:repeating-linear-gradient(60deg,#e30613 0 4mm,#1a73e8 4mm 8mm)"><img src="logo/prj-logo.svg" alt=""></div><figcaption>Karışık zeminde kullanmayın.</figcaption></figure>
+        <figure><div class="tile" style="background:var(--prj-red)"><img src="logo/prj-logo.svg" alt=""></div><figcaption>Kırmızı logoyu kırmızı zemine koymayın.</figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-monogram.svg" alt="" style="max-height:18mm"><span style="font-family:Georgia;font-size:14pt;margin-left:3mm">Prj Makina</span></div><figcaption>Monograma yeni yazı eklemeyin.</figcaption></figure>
+        <figure><div class="tile"><img src="logo/prj-logo.svg" alt="" style="opacity:.35"></div><figcaption>Şeffaflaştırmayın; filigran gerekiyorsa tek renk kullanın.</figcaption></figure>
+    </div>
+</section>
+
+<section class="page" data-n="5">
+    <p class="eyebrow">02 · Renk</p>
+    <h2>Renk paleti</h2>
+    <div class="grid cols-4">
+        <div class="swatch"><div class="chip" style="background:#E30613"></div><h3>PRJ Kırmızı</h3><dl><dt>HEX</dt><dd>#E30613</dd><dt>RGB</dt><dd>227 6 19</dd><dt>CMYK</dt><dd>0 97 92 11</dd><dt>Kullanım</dt><dd>Buton, bağlantı, vurgu</dd></dl></div>
+        <div class="swatch"><div class="chip" style="background:#B8050F"></div><h3>Kırmızı (hover)</h3><dl><dt>HEX</dt><dd>#B8050F</dd><dt>RGB</dt><dd>184 5 15</dd><dt>CMYK</dt><dd>0 97 92 28</dd><dt>Kullanım</dt><dd>Üzerine gelme, basılı durum</dd></dl></div>
+        <div class="swatch"><div class="chip" style="background:#1C2127"></div><h3>Antrasit</h3><dl><dt>HEX</dt><dd>#1C2127</dd><dt>RGB</dt><dd>28 33 39</dd><dt>CMYK</dt><dd>28 15 0 85</dd><dt>Kullanım</dt><dd>Koyu zemin, ana metin</dd></dl></div>
+        <div class="swatch"><div class="chip" style="background:#FEFFB5"></div><h3>Toz Krem</h3><dl><dt>HEX</dt><dd>#FEFFB5</dd><dt>RGB</dt><dd>254 255 181</dd><dt>CMYK</dt><dd>0 0 29 0</dd><dt>Kullanım</dt><dd>Yalnızca koyu zeminde, küçük vurgu</dd></dl></div>
+    </div>
+    <div class="steel">
+        <div style="background:#F4F6F8">50</div><div style="background:#E9EDF1">100</div><div style="background:#D5DBE1">200</div><div style="background:#B7C0C9">300</div><div style="background:#8D98A4">400</div>
+        <div style="background:#6B7682;color:#fff">500</div><div style="background:#525C67;color:#fff">600</div><div style="background:#3D454E;color:#fff">700</div><div style="background:#2A3038;color:#fff">800</div><div style="background:#1C2127;color:#fff">900</div>
+    </div>
+    <p style="margin-top:6mm;max-width:none"><strong>Çelik gri skalası</strong> çizgi, zemin ve ikincil metin içindir; beyaz üzerinde metin için en az Çelik 600 kullanılır. <strong>Erişilebilirlik:</strong> PRJ Kırmızı beyazla 4,9:1, Antrasit 16:1 kontrast verir (WCAG AA ≥ 4,5:1). Logo kırmızısı #FF0000 beyazla yalnızca ~4:1 verdiği için arayüz metinlerinde ve butonlarda kullanılmaz. CMYK değerleri yaklaşıktır; basımdan önce matbaa provası alınır.</p>
+</section>
+
+<section class="page" data-n="6">
+    <p class="eyebrow">03 · Tipografi</p>
+    <h2>Yazı karakterleri</h2>
+    <div class="type-sample"><small>Barlow Condensed Bold 700<br>Büyük başlık, hero, rakam</small><span style="font-family:var(--font-display);font-weight:700;font-size:34pt;text-transform:uppercase;line-height:1">Anahtar Teslim Toz Boya Tesisleri</span></div>
+    <div class="type-sample"><small>Barlow SemiBold 600<br>Bölüm ve kart başlıkları</small><span style="font-family:var(--font-heading);font-weight:600;font-size:18pt">Elektrostatik Toz Boya Cihazları</span></div>
+    <div class="type-sample"><small>Barlow SemiBold 600 · büyük harf<br>Üst etiket (eyebrow), menü</small><span class="eyebrow" style="font-size:10pt">Ürünler · Hizmetler · Kurumsal</span></div>
+    <div class="type-sample"><small>Inter Regular 400 / 600<br>Metin, form, tablo</small><span style="font-size:11pt;max-width:150mm">Keşif, projelendirme, imalat, kurulum ve servis adımlarının tamamı tek ekipten yürütülür. <strong>Teknik özellikler</strong> tablo halinde verilir.</span></div>
+    <div class="type-sample"><small>Türkçe karakter kontrolü</small><span style="font-family:var(--font-heading);font-weight:600;font-size:16pt">Ğğ Şş İı Çç Öö Üü · ÇIĞ ÖNCESİ ŞİŞE</span></div>
+    <p style="margin-top:6mm;max-width:none">Fontlar SIL Open Font License ile ücretsizdir ve sitede kendi sunucumuzdan yayınlanır (<code>wwwroot/fonts</code>). Ofis belgelerinde Barlow ve Inter kurulu değilse yerine Arial kullanılır.</p>
+</section>
+
+<section class="page" data-n="7">
+    <p class="eyebrow">04 · Görsel dil</p>
+    <h2>Görsel dil</h2>
+    <div class="grid cols-4">
+        <figure><div class="motif"></div><figcaption><strong>İnce çizgi grid.</strong> Teknik çizim kağıdını anımsatan arka plan motifi; koyu zeminde %5–8 opaklıkta.</figcaption></figure>
+        <figure><div class="particles"></div><figcaption><strong>Toz parçacıkları.</strong> Yalnızca ana sayfa hero bölümünde, düşük yoğunlukta.</figcaption></figure>
+        <figure><div class="product-card">ÜRÜN GÖRSELİ · 4:3</div><figcaption><strong>Ürün kartları.</strong> Beyaz veya Çelik 50 zemin, aynı oran (4:3), ürün ortalanmış, gölgesiz.</figcaption></figure>
+        <figure>
+            <div class="icons">
+                <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            </div>
+            <figcaption><strong>İkonlar.</strong> Tek çizgi seti (Lucide, 1,75 px çizgi, yuvarlatılmış uç); dolgulu ikon kullanılmaz.</figcaption>
+        </figure>
+    </div>
+    <div class="grid cols-2" style="margin-top:8mm">
+        <div><h3>Fotoğraf</h3><p>Gerçek ürün ve tesis fotoğrafları; stok fotoğraf kullanılmaz. Sanayi ortamı net, ışık doğal, renk düzeltmesi nötr. İnsan varsa iş başında ve güvenlik ekipmanıyla.</p></div>
+        <div><h3>Ton</h3><p>Mühendislik güveni ve yerli üretici çevikliği: kısa cümleler, somut bilgi, abartısız dil. Kaynağı olmayan rakam veya iddia yazılmaz.</p></div>
+    </div>
+</section>
+
+<section class="page" data-n="8">
+    <p class="eyebrow">05 · Uygulamalar</p>
+    <h2>Şablonlar</h2>
+    <div class="grid cols-4 templates">
+        <figure><img src="templates/previews/letterhead-a4.png" alt=""><figcaption><strong>Antetli kağıt (A4).</strong> <code>templates/letterhead-a4.html</code>, tarayıcıdan PDF olarak yazdırılır.</figcaption></figure>
+        <figure><img src="templates/previews/business-card.png" alt=""><figcaption><strong>Kartvizit (85 × 55 mm, 3 mm taşma payı).</strong> <code>templates/business-card.html</code></figcaption></figure>
+        <figure><img src="templates/previews/email-signature.png" alt=""><figcaption><strong>E-posta imzası.</strong> Tablo düzeni ve PNG logo; tüm e-posta programlarında aynı görünür. <code>templates/email-signature.html</code></figcaption></figure>
+        <figure><img src="templates/previews/social-post-1080.png" alt=""><figcaption><strong>Sosyal medya gönderisi (1080 × 1080).</strong> Fotoğraf, kategori ve başlık değişir; düzen sabit. <code>templates/social-post-1080.html</code></figcaption></figure>
+    </div>
+</section>
+
+</body>
+</html>

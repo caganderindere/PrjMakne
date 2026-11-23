@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Sosyal Medya Gönderisi 1080×1080 — PRJ Proje Makina A.Ş.</title>
+<link rel="stylesheet" href="../brand.css">
+<style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--prj-steel-100); }
+    /* 1080 × 1080 artboard. Replace the photo and the two text lines; keep the layout and the logo position. */
+    .post { width: 1080px; height: 1080px; position: relative; overflow: hidden; background: var(--prj-anthracite); font-family: var(--font-body); color: #fff; }
+    .photo { position: absolute; inset: 0 0 360px 0; background: linear-gradient(135deg, var(--prj-steel-700), var(--prj-steel-900)); display: flex; align-items: center; justify-content: center; color: var(--prj-steel-400); font-size: 28px; letter-spacing: var(--tracking-caps); }
+    /* Fine engineering grid: the brand's background motif */
+    .photo::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 40px 40px; }
+    .panel { position: absolute; left: 0; right: 0; bottom: 0; height: 360px; padding: 64px 72px; }
+    .panel::before { content: ""; position: absolute; left: 72px; top: 0; width: 120px; height: 8px; background: var(--prj-red); }
+    .eyebrow { font-family: var(--font-heading); font-weight: 600; font-size: 26px; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--prj-red); margin: 0 0 16px; }
+    .headline { font-family: var(--font-display); font-weight: 700; font-size: 84px; line-height: 1.02; margin: 0; text-transform: uppercase; max-width: 760px; }
+    .logo { position: absolute; right: 72px; bottom: 64px; width: 150px; }
+</style>
+</head>
+<body>
+<div class="post">
+    <div class="photo">[ÜRÜN / TESİS FOTOĞRAFI]</div>
+    <div class="panel">
+        <p class="eyebrow">[Kategori]</p>
+        <h1 class="headline">[Başlık en fazla iki satır]</h1>
+    </div>
+    <img class="logo" src="../logo/prj-logo-negative.svg" alt="PRJ Proje Makina A.Ş.">
+</div>
+</body>
+</html>
