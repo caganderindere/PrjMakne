@@ -16,21 +16,6 @@ public record ContactMessageDto(
     bool IsRead,
     DateTime CreatedDate);
 
-public record JobApplicationDto(
-    int Id,
-    string FullName,
-    string Email,
-    string Phone,
-    string? City,
-    string Position,
-    string? Message,
-    string ResumeOriginalName,
-    long ResumeSize,
-    string LanguageCode,
-    string? IpAddress,
-    bool IsRead,
-    DateTime CreatedDate);
-
 public record QuoteRequestListItem(
     int Id,
     string FullName,
@@ -93,24 +78,6 @@ public class DashboardDto
     public IReadOnlyList<ActivityLogDto> RecentActivities { get; init; } = Array.Empty<ActivityLogDto>();
     public IReadOnlyList<QuoteRequestListItem> RecentQuotes { get; init; } = Array.Empty<QuoteRequestListItem>();
     public IReadOnlyList<ContactMessageDto> RecentMessages { get; init; } = Array.Empty<ContactMessageDto>();
-}
-
-public record FairLeadListItem(int FairId, string FairName, string Email, bool MarketingConsent, DateTime CreatedDate);
-
-/// <summary>The marketing summary on the analytics page: what came in from the site over the last 30 days.</summary>
-public class MarketingSummaryDto
-{
-    public int QuotesLast30Days { get; init; }
-    public int NewQuotes { get; init; }
-    public int MessagesLast30Days { get; init; }
-    public int UnreadMessages { get; init; }
-    public int UnreadApplications { get; init; }
-    public int WhatsAppToday { get; init; }
-    public int WhatsAppLast30Days { get; init; }
-    public int FairLeadsLast30Days { get; init; }
-    public int FairLeadsWithConsent { get; init; }
-    public IReadOnlyList<QuoteRequestListItem> RecentQuotes { get; init; } = Array.Empty<QuoteRequestListItem>();
-    public IReadOnlyList<FairLeadListItem> RecentFairLeads { get; init; } = Array.Empty<FairLeadListItem>();
 }
 
 /// <summary>Ordered by severity, so the worst of several checks is simply their Max().</summary>

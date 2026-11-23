@@ -43,24 +43,6 @@ public class WhatsAppClickDay
     public int Count { get; set; }
 }
 
-/// <summary>A job application from the careers page; the CV sits in private storage, never under wwwroot.</summary>
-public class JobApplication : BaseEntity
-{
-    public string FullName { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Phone { get; set; } = string.Empty;
-    public string? City { get; set; }
-    public string Position { get; set; } = string.Empty;
-    public string? Message { get; set; }
-    public string ResumePath { get; set; } = string.Empty;
-    public string ResumeOriginalName { get; set; } = string.Empty;
-    public long ResumeSize { get; set; }
-    public bool PrivacyConsent { get; set; }
-    public string LanguageCode { get; set; } = string.Empty;
-    public string? IpAddress { get; set; }
-    public bool IsRead { get; set; }
-}
-
 public class QuoteRequest : BaseEntity
 {
     public string FullName { get; set; } = string.Empty;

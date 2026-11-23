@@ -14,8 +14,6 @@
     static bool IsExternal(string url) => !url.StartsWith('/');
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
     string Active(params string[] names) => names.Contains(controller) ? "active" : string.Empty;
-    // The opening animation greets home page visitors only; deep links from search go straight to the content.
-    var showIntro = controller == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index";
     ViewData["Settings"] = settings;
 }
 <!DOCTYPE html>
@@ -24,10 +22,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#111317" />
-    @if (showIntro)
-    {
-        <script src="~/js/intro.js" asp-append-version="true"></script>
-    }
     <partial name="_SeoHead" model="seo" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,22 +33,9 @@
     <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon-96.png" />
     <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
     <link rel="manifest" href="~/site.webmanifest" />
-    @* The 3D scenes import their shared module from here: the hash changes whenever the file does (see hero-3d.js). *@
-    <meta name="three-studio" content="@FileVersions.AddFileVersionToPath(Context.Request.PathBase, "/js/three-studio.js")" />
     @await RenderSectionAsync("Head", required: false)
 </head>
 <body>
-    @if (showIntro)
-    {
-        <div class="intro" aria-hidden="true">
-            <div class="intro-brand">
-                <span class="intro-cut">
-                    <img src="~/images/logo.png" alt="" width="221" height="48" />
-                    <span class="intro-laser"></span>
-                </span>
-            </div>
-        </div>
-    }
     <a class="skip-link" href="#main">@L["Common.SkipToContent"]</a>
 
     @if (bar is not null)
@@ -124,10 +105,9 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Manufacturing", "Defense")" href="@Url.Localized(SiteRoutes.Manufacturing)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Manufacturing"]<small class="nav-hint" aria-hidden="true">@L["Nav.Capabilities"] · @L["Nav.Defense"]</small></a>
+                            <a class="nav-link dropdown-toggle @Active("Manufacturing")" href="@Url.Localized(SiteRoutes.Manufacturing)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Manufacturing"]<small class="nav-hint" aria-hidden="true">@L["Nav.Capabilities"]</small></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item @Active("Manufacturing")" href="@Url.Localized(SiteRoutes.Manufacturing)">@L["Nav.Capabilities"]</a></li>
-                                <li><a class="dropdown-item @Active("Defense")" href="@Url.Localized(SiteRoutes.Defense)">@L["Nav.Defense"]</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -138,10 +118,9 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @Active("Contact", "Careers")" href="@Url.Localized(SiteRoutes.Contact)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Contact"]<small class="nav-hint" aria-hidden="true">@L["Nav.ContactUs"] · @L["Nav.Careers"]</small></a>
+                            <a class="nav-link dropdown-toggle @Active("Contact")" href="@Url.Localized(SiteRoutes.Contact)" role="button" data-bs-toggle="dropdown" aria-expanded="false">@L["Nav.Contact"]<small class="nav-hint" aria-hidden="true">@L["Nav.ContactUs"] · @L["Nav.Careers"]</small></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item @Active("Contact")" href="@Url.Localized(SiteRoutes.Contact)">@L["Nav.ContactUs"]</a></li>
-                                <li><a class="dropdown-item @Active("Careers")" href="@Url.Localized(SiteRoutes.Careers)">@L["Nav.Careers"]</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -178,7 +157,6 @@
                     <ul class="footer-links">
                         <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.About"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Manufacturing)">@L["Nav.Manufacturing"]</a></li>
-                        <li><a href="@Url.Localized(SiteRoutes.Defense)">@L["Nav.Defense"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Quality)">@L["Nav.Quality"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Gallery)">@L["Nav.Gallery"]</a></li>
                         <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
@@ -244,15 +222,12 @@
         </div>
     }
 
-    @if (CardLinks.WhatsApp(settings.WhatsApp) is { } whatsApp)
+    @if (WhatsAppLink.Build(settings.WhatsApp, ViewData["WhatsAppText"] as string ?? settings.GetWhatsAppMessage(lang)) is { } whatsAppHref)
     {
-        var productMessage = ViewData["WhatsAppText"] as string;
-        var whatsAppMessage = productMessage ?? settings.GetWhatsAppMessage(lang);
-        var whatsAppHref = string.IsNullOrWhiteSpace(whatsAppMessage) ? whatsApp : $"{whatsApp}?text={Uri.EscapeDataString(whatsAppMessage.Trim())}";
         <a href="@whatsAppHref" class="whatsapp-float" target="_blank" rel="noopener" aria-label="@L["Common.WhatsApp"]" title="@L["Common.WhatsApp"]">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
         </a>
-        @if (productMessage is not null)
+        @if (ViewData["WhatsAppText"] is string)
         {
             <div class="whatsapp-bubble" data-whatsapp-bubble hidden>
                 <button type="button" class="whatsapp-bubble-close" data-whatsapp-bubble-close aria-label="@L["Announcement.Dismiss"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>

@@ -21,14 +21,10 @@
             <div class="col-md-6">
                 <label asp-for="Role" class="form-label"></label>
                 <select asp-for="Role" class="form-select">
-                    <option value="@Roles.Employee">Personel</option>
                     <option value="@Roles.Editor">Editör</option>
-                    <option value="@Roles.HumanResources">İnsan Kaynakları</option>
-                    <option value="@Roles.Marketing">Pazarlama</option>
-                    <option value="@Roles.RnD">Ar-Ge Ekibi</option>
                     <option value="@Roles.Admin">Yönetici</option>
                 </select>
-                <div class="form-text">Personel yalnızca modülleri (toplantı tutanakları) kullanır ve tutanaklara katılımcı olarak eklenebilir. İnsan Kaynakları rolü panelde yalnızca iş başvurularını görür. Pazarlama; analiz, teklif talepleri, iletişim mesajları, iş başvuruları, fuarlar ve dijital kartvizitleri görür. Ar-Ge Ekibi kullanıcı yönetimi hariç her şeye erişir. Kullanıcı ekleme, silme ve şifre/rol değiştirme yalnızca Yönetici'dedir.</div>
+                <div class="form-text">Editör ürünleri, içerikleri, medyayı, teklif taleplerini ve mesajları yönetir. Kullanıcılar ve site ayarları yalnızca Yönetici'dedir.</div>
             </div>
             <div class="col-md-6 d-flex align-items-end">
                 <div class="form-check form-switch">

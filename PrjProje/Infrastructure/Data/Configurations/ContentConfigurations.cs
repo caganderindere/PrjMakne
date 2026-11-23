@@ -181,24 +181,6 @@ public class WhatsAppClickDayConfiguration : IEntityTypeConfiguration<WhatsAppCl
     public void Configure(EntityTypeBuilder<WhatsAppClickDay> builder) => builder.HasKey(x => x.Day);
 }
 
-public class JobApplicationConfiguration : IEntityTypeConfiguration<JobApplication>
-{
-    public void Configure(EntityTypeBuilder<JobApplication> builder)
-    {
-        builder.Property(x => x.FullName).HasMaxLength(120).IsRequired();
-        builder.Property(x => x.Email).HasMaxLength(150).IsRequired();
-        builder.Property(x => x.Phone).HasMaxLength(30).IsRequired();
-        builder.Property(x => x.City).HasMaxLength(80);
-        builder.Property(x => x.Position).HasMaxLength(120).IsRequired();
-        builder.Property(x => x.Message).HasMaxLength(4000);
-        builder.Property(x => x.ResumePath).HasMaxLength(300).IsRequired();
-        builder.Property(x => x.ResumeOriginalName).HasMaxLength(200).IsRequired();
-        builder.Property(x => x.LanguageCode).HasMaxLength(5);
-        builder.Property(x => x.IpAddress).HasMaxLength(45);
-        builder.HasIndex(x => new { x.IsRead, x.CreatedDate });
-    }
-}
-
 public class QuoteRequestConfiguration : IEntityTypeConfiguration<QuoteRequest>
 {
     public void Configure(EntityTypeBuilder<QuoteRequest> builder)

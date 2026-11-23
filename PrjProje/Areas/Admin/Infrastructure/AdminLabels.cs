@@ -121,14 +121,11 @@ public static class AdminLabels
         "Capability" => "Üretim kabiliyeti",
         "ContactMessage" => "İletişim mesajı",
         "QuoteRequest" => "Teklif talebi",
-        "JobApplication" => "İş başvurusu",
-        "MeetingMinute" => "Toplantı tutanağı",
         "User" => "Kullanıcı",
         "SiteSettings" => "Site ayarları",
         "Reference" => "Referans",
         "Announcement" => "Duyuru",
         "ContentText" => "Sayfa içerikleri",
-        "DeveloperTicket" => "Geliştirici bildirimi",
         _ => entity
     };
 

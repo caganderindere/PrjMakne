@@ -279,29 +279,6 @@ public class ManufacturingController : PublicControllerBase
     }
 }
 
-public class DefenseController : PublicControllerBase
-{
-    private readonly IProductService _productService;
-
-    public DefenseController(IProductService productService)
-    {
-        _productService = productService;
-    }
-
-    public async Task<IActionResult> Index(CancellationToken cancellationToken)
-    {
-        var categories = await _productService.GetCategoriesAsync(Lang, cancellationToken);
-        var category = categories.FirstOrDefault(c => c.IsRestricted);
-        var products = category is null
-            ? Array.Empty<ProductListItemDto>()
-            : (await _productService.GetProductsAsync(Lang, new ProductFilter { CategorySlug = category.Slug, PageSize = 24 }, cancellationToken)).Items;
-
-        var seo = SetSeo(L["Defense.MetaTitle"], L["Defense.MetaDescription"], SiteRoutes.Defense);
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Defense"], null));
-        return View(new DefenseViewModel { Category = category, Products = products });
-    }
-}
-
 public class BlogController : PublicControllerBase
 {
     private readonly IBlogService _blogService;

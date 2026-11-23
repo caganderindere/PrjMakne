@@ -53,22 +53,6 @@ public interface ISiteContentService
     Task<IReadOnlyList<AnnouncementDto>> GetCurrentAnnouncementsAsync(string languageCode, CancellationToken cancellationToken = default);
 }
 
-public interface IBusinessCardService
-{
-    /// <summary>A published card in the given language, or null when it is missing or switched off.</summary>
-    Task<BusinessCardDto?> GetAsync(string slug, string languageCode, CancellationToken cancellationToken = default);
-
-    Task CountViewAsync(int id, CancellationToken cancellationToken = default);
-}
-
-public interface IFairService
-{
-    /// <summary>A published fair in the given language, or null when it is missing or switched off.</summary>
-    Task<FairDto?> GetAsync(string slug, string languageCode, CancellationToken cancellationToken = default);
-
-    Task SaveLeadAsync(FairDto fair, string email, bool marketingConsent, string languageCode, CancellationToken cancellationToken = default);
-}
-
 public interface ISitemapService
 {
     Task<IReadOnlyList<SitemapEntry>> GetDynamicEntriesAsync(CancellationToken cancellationToken = default);
@@ -79,7 +63,6 @@ public interface IContactService
     Task<ServiceResult> SubmitAsync(ContactFormModel form, RequestContext context, CancellationToken cancellationToken = default);
 
     /// <summary>Saves a job application and its CV; errors are resource keys for the CV field.</summary>
-    Task<ServiceResult> SubmitApplicationAsync(JobApplicationFormModel form, RequestContext context, CancellationToken cancellationToken = default);
 
     /// <summary>Counts a click on the WhatsApp button for today.</summary>
     Task RecordWhatsAppClickAsync(CancellationToken cancellationToken = default);

@@ -47,12 +47,9 @@ builder.Services
         options.DataAnnotationLocalizerProvider = (_, factory) => factory.Create(typeof(SharedResource)));
 
 builder.Services.AddAuthorizationBuilder()
-    .AddPolicy(Policies.FullAccess, policy => policy.RequireRole(Roles.Admin, Roles.RnD))
+    .AddPolicy(Policies.FullAccess, policy => policy.RequireRole(Roles.Admin))
     .AddPolicy(Policies.UserManagement, policy => policy.RequireRole(Roles.Admin))
-    .AddPolicy(Policies.ContentManagement, policy => policy.RequireRole(Roles.Admin, Roles.Editor, Roles.RnD))
-    .AddPolicy(Policies.HumanResources, policy => policy.RequireRole(Roles.Admin, Roles.HumanResources, Roles.RnD, Roles.Marketing))
-    .AddPolicy(Policies.Marketing, policy => policy.RequireRole(Roles.Admin, Roles.RnD, Roles.Marketing))
-    .AddPolicy(Policies.CardManagement, policy => policy.RequireRole(Roles.Admin, Roles.RnD, Roles.Editor, Roles.Marketing))
+    .AddPolicy(Policies.ContentManagement, policy => policy.RequireRole(Roles.Admin, Roles.Editor))
     .AddPolicy(Policies.Staff, policy => policy.RequireRole(Roles.All.ToArray()));
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -111,14 +108,6 @@ builder.Services.AddRateLimiter(options =>
             return RateLimitPartition.GetNoLimiter(string.Empty);
         }
 
-        // Visitors at a stand share one Wi-Fi or carrier IP, so the normal form quota would lock them out.
-        if (path.StartsWithSegments("/tr/fuar", StringComparison.OrdinalIgnoreCase) ||
-            path.StartsWithSegments("/en/fair", StringComparison.OrdinalIgnoreCase))
-        {
-            return RateLimitPartition.GetFixedWindowLimiter($"{RateLimitPolicies.Fair}:{ip}",
-                _ => new FixedWindowRateLimiterOptions { PermitLimit = 200, Window = TimeSpan.FromMinutes(10), QueueLimit = 0 });
-        }
-
         return RateLimitPartition.GetFixedWindowLimiter($"{RateLimitPolicies.Forms}:{ip}",
             _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromMinutes(10), QueueLimit = 0 });
     });
@@ -169,8 +158,6 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
-app.UseCloudflareRealIp();
-app.UseRequestMetrics();
 app.UseRouting();
 app.UseRequestLocalization();
 app.UseRateLimiter();
@@ -184,7 +171,7 @@ app.MapAreaControllerRoute(
     pattern: "admin/{controller=Dashboard}/{action=Index}/{id?}");
 app.MapControllers();
 app.MapLocalizedRoutes();
-// For uptime monitors (Cloudflare/UptimeRobot); a body is returned so status code pages do not replace the 503.
+// For uptime monitors (e.g. UptimeRobot); a body is returned so status code pages do not replace the 503.
 app.MapGet("/healthz", async (ApplicationDbContext db, CancellationToken ct) =>
     await db.Database.CanConnectAsync(ct) ? Results.Text("ok") : Results.Text("db unreachable", statusCode: 503));
 

@@ -53,12 +53,6 @@ public class CapabilityDetailViewModel
     public IReadOnlyList<DocumentDto> Certificates { get; init; } = Array.Empty<DocumentDto>();
 }
 
-public class DefenseViewModel
-{
-    public ProductCategoryDto? Category { get; init; }
-    public IReadOnlyList<ProductListItemDto> Products { get; init; } = Array.Empty<ProductListItemDto>();
-}
-
 public class BlogListViewModel
 {
     public PagedResult<BlogPostListItemDto> Posts { get; init; } = new(Array.Empty<BlogPostListItemDto>(), 0, 1, 9);
@@ -77,12 +71,6 @@ public class ContactViewModel
 {
     public ContactFormModel Form { get; set; } = new();
     public SiteSettingsDto Settings { get; set; } = new();
-}
-
-public class CareersViewModel
-{
-    public JobApplicationFormModel Form { get; set; } = new();
-    public string AllowedExtensions { get; } = string.Join(",", FileStorageService.AllowedResumeExtensions);
 }
 
 public class QuoteViewModel

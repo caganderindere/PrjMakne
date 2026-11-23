@@ -28,13 +28,8 @@ public abstract class StaffControllerBase : Controller
         base.OnActionExecuting(context);
     }
 
-    /// <summary>Where a user lands after signing in: the dashboard needs a content role, marketing starts on the analytics
-    /// page, human resources on the applications and staff with only the modules on the meeting minutes.</summary>
-    protected IActionResult RedirectToHome(Func<string, bool> isInRole) =>
-        isInRole(Roles.Admin) || isInRole(Roles.RnD) || isInRole(Roles.Editor) ? RedirectToAction("Index", "Dashboard")
-        : isInRole(Roles.Marketing) ? RedirectToAction("Index", "Analytics")
-        : isInRole(Roles.HumanResources) ? RedirectToAction("Index", "Applications")
-        : RedirectToAction("Index", "Meetings");
+    /// <summary>Where a user lands after signing in: both panel roles start on the dashboard.</summary>
+    protected IActionResult RedirectToHome(Func<string, bool> isInRole) => RedirectToAction("Index", "Dashboard");
 
     protected const long LargeUploadLimit = 100 * 1024 * 1024;
 

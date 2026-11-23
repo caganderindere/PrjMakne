@@ -13,7 +13,6 @@ public enum ImageFolder
     Site,
     References,
     Announcements,
-    BusinessCards,
     Catalogs
 }
 
@@ -38,7 +37,6 @@ public interface IFileStorageService
     Task<ServiceResult<StoredFile>> SavePrivateAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default);
 
     /// <summary>Stores a job applicant's CV (PDF or Word) outside the web root, next to the private attachments.</summary>
-    Task<ServiceResult<StoredFile>> SaveResumeAsync(IFormFile file, CancellationToken cancellationToken = default);
 
     string? GetPrivateAttachmentPhysicalPath(string relativePath);
 
@@ -65,29 +63,6 @@ public interface IContentCache
     void Invalidate();
 }
 
-public enum TurnstileForm
-{
-    Login,
-    Contact,
-    Quote,
-    Fair
-}
-
-public record CloudflareSettings(
-    bool UseProxy, string? SiteKey, string? Secret, bool SecretUnreadable,
-    bool ProtectLogin, bool ProtectContact, bool ProtectQuote, bool ProtectFair, bool TurnstileDisabled)
-{
-    public bool Protects(TurnstileForm form) =>
-        !TurnstileDisabled && !string.IsNullOrEmpty(SiteKey) && Secret is not null && form switch
-        {
-            TurnstileForm.Login => ProtectLogin,
-            TurnstileForm.Contact => ProtectContact,
-            TurnstileForm.Quote => ProtectQuote,
-            TurnstileForm.Fair => ProtectFair,
-            _ => false
-        };
-}
-
 public enum NotificationKind
 {
     /// <summary>Quote requests and contact messages.</summary>
@@ -112,18 +87,6 @@ public interface INotificationService
 
     /// <summary>Queues a notification to the addresses set for this kind; does nothing when e-mail is not set up.</summary>
     Task NotifyAsync(NotificationKind kind, string subject, string body, string? replyTo, CancellationToken cancellationToken = default);
-}
-
-public interface ICloudflareService
-{
-    Task<CloudflareSettings> GetAsync(CancellationToken cancellationToken = default);
-    Task<ServiceResult> SaveAsync(Models.Admin.CloudflareEditModel model, CancellationToken cancellationToken = default);
-
-    /// <summary>False only for a visitor Turnstile rejected; true when the form is unprotected or Cloudflare cannot answer.</summary>
-    Task<bool> VerifyAsync(TurnstileForm form, HttpContext context, CancellationToken cancellationToken = default);
-
-    /// <summary>Checks the saved keys against the submitted widget; returns the problem, or null when they work.</summary>
-    Task<string?> TestAsync(HttpContext context, CancellationToken cancellationToken = default);
 }
 
 public interface ISpamProtectionService

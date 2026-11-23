@@ -45,9 +45,6 @@ public class SiteSettingsDto
     /// <summary>GA4 measurement ID (G-XXXXXXXXXX); empty disables analytics. It loads only after the visitor accepts cookies.</summary>
     public string? GoogleAnalyticsId { get; set; }
 
-    /// <summary>Looker Studio embed URL of the GA4 report shown on the admin dashboard; empty hides it.</summary>
-    public string? LookerStudioReportUrl { get; set; }
-
     // Home page / About page figures (numbers only; units and labels come from the texts).
     public string StatFacility { get; set; } = "25000";
     public string StatEmployees { get; set; } = "150";

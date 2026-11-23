@@ -290,46 +290,6 @@ public sealed class ContactService : IContactService
         }
     }
 
-    public async Task<ServiceResult> SubmitApplicationAsync(JobApplicationFormModel form, RequestContext context, CancellationToken cancellationToken = default)
-    {
-        if (!CareerAreas.Turkish.ContainsKey(form.Position))
-        {
-            return ServiceResult.Failure("Validation.Required");
-        }
-
-        var resume = await _fileStorage.SaveResumeAsync(form.Resume!, cancellationToken);
-        if (!resume.Succeeded)
-        {
-            return ServiceResult.Failure(resume.Errors.ToArray());
-        }
-
-        var application = new JobApplication
-        {
-            FullName = form.FullName.Trim(),
-            Email = form.Email.Trim(),
-            Phone = form.Phone.Trim(),
-            City = string.IsNullOrWhiteSpace(form.City) ? null : form.City.Trim(),
-            Position = form.Position,
-            Message = string.IsNullOrWhiteSpace(form.Message) ? null : form.Message.Trim(),
-            ResumePath = resume.Value!.RelativePath,
-            ResumeOriginalName = resume.Value.OriginalName,
-            ResumeSize = resume.Value.Size,
-            PrivacyConsent = form.PrivacyConsent,
-            LanguageCode = Languages.IsSupported(context.LanguageCode) ? context.LanguageCode : Languages.Default,
-            IpAddress = context.IpAddress
-        };
-
-        _db.JobApplications.Add(application);
-        await _db.SaveChangesAsync(cancellationToken);
-        await _activityLogger.LogAsync("Received", "JobApplication", application.Id, $"{application.FullName} - {CareerAreas.Name(application.Position)}", cancellationToken);
-        // The CV itself stays out of the mail: it is personal data and is downloaded from the panel.
-        await _notifications.NotifyAsync(NotificationKind.HumanResources,
-            $"Yeni iş başvurusu: {application.FullName} ({CareerAreas.Name(application.Position)})",
-            $"Ad Soyad: {application.FullName}\nAlan: {CareerAreas.Name(application.Position)}\nE-posta: {application.Email}\nTelefon: {application.Phone}\nŞehir: {application.City ?? "-"}\n\n{application.Message}\n\nCV, yönetim panelinde İnsan Kaynakları bölümünden indirilebilir.",
-            application.Email, cancellationToken);
-        return ServiceResult.Success();
-    }
-
     public async Task<ServiceResult> SubmitAsync(ContactFormModel form, RequestContext context, CancellationToken cancellationToken = default)
     {
         var message = new ContactMessage

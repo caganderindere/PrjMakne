@@ -43,15 +43,6 @@ public sealed class FileStorageService : IFileStorageService
         [".iges"] = IsPlainText
     };
 
-    // CVs: PDF, Word (.docx is a zip package, .doc an OLE compound file).
-    private static readonly Dictionary<string, Func<byte[], bool>> ResumeSignatures = new(StringComparer.OrdinalIgnoreCase)
-    {
-        [".pdf"] = IsPdf,
-        [".docx"] = header => StartsWith(header, 0x50, 0x4B, 0x03, 0x04),
-        [".doc"] = header => StartsWith(header, 0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1)
-    };
-
-    public static IReadOnlyCollection<string> AllowedResumeExtensions => ResumeSignatures.Keys;
 
     private readonly IWebHostEnvironment _environment;
     private readonly FileUploadOptions _options;
@@ -147,9 +138,6 @@ public sealed class FileStorageService : IFileStorageService
 
     public Task<ServiceResult<StoredFile>> SavePrivateAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default) =>
         SavePrivateAsync(file, AttachmentSignatures, cancellationToken);
-
-    public Task<ServiceResult<StoredFile>> SaveResumeAsync(IFormFile file, CancellationToken cancellationToken = default) =>
-        SavePrivateAsync(file, ResumeSignatures, cancellationToken);
 
     private async Task<ServiceResult<StoredFile>> SavePrivateAsync(IFormFile file, IReadOnlyDictionary<string, Func<byte[], bool>> signatures, CancellationToken cancellationToken)
     {

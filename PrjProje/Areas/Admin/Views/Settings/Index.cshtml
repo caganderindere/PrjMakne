@@ -83,10 +83,6 @@
                 <input asp-for="GoogleAnalyticsId" class="form-control mb-1" placeholder="G-XXXXXXXXXX" />
                 <span asp-validation-for="GoogleAnalyticsId" class="text-danger small d-block"></span>
                 <div class="form-text mb-3">Analytics → Yönetici → Veri akışları → Web akışı'nda yazar. Ziyaretçi çerezleri kabul ederse yüklenir. Boş bırakılırsa takip kapalı.</div>
-                <label class="form-label" asp-for="LookerStudioReportUrl">Analiz sayfası ziyaretçi raporu (Looker Studio adresi)</label>
-                <input asp-for="LookerStudioReportUrl" class="form-control mb-1" placeholder="https://lookerstudio.google.com/reporting/..." />
-                <span asp-validation-for="LookerStudioReportUrl" class="text-danger small d-block"></span>
-                <div class="form-text">Looker Studio'da raporu açıp adres çubuğundaki bağlantıyı yapıştırın; Analiz sayfasında gösterilir. Raporu görmek için tarayıcıda rapora erişimi olan Google hesabıyla oturum açık olmalıdır.</div>
                 <div class="form-text mt-2">Hero başlığı, slogan ve diğer metinler için: <a asp-controller="ContentTexts" asp-action="Index" asp-route-group="home">Sayfa İçerikleri → Ana Sayfa</a></div>
             </div>
         </div>

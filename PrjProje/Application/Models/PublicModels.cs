@@ -144,17 +144,5 @@ public record SitemapEntry(string PageKey, IReadOnlyDictionary<string, string> S
 
 public record ReferenceDto(string Name, string Logo, string? WebsiteUrl);
 
-public record BusinessCardDto(
-    int Id, string Slug, string FirstName, string LastName,
-    string? Title, string? Department, string? Note,
-    string? Mobile, string? Phone, string? WhatsApp, string? Email,
-    string? LinkedIn, string? Instagram, string? Website, string? ExtraLinks, string? Photo)
-{
-    public string FullName => $"{FirstName} {LastName}".Trim();
-    public string Initials => $"{FirstName.FirstOrDefault()}{LastName.FirstOrDefault()}".ToUpper(new System.Globalization.CultureInfo("tr-TR"));
-}
-
-public record FairDto(int Id, string Slug, string Title, string? Intro, string BrochurePdf, bool EmailRequired, bool ShowMarketingConsent, string? ExtraLinks);
-
 /// <summary><see cref="Version"/> changes whenever the announcement is edited, so a visitor who closed it sees the new version.</summary>
 public record AnnouncementDto(int Id, AnnouncementDisplay DisplayType, string Message, string? LinkUrl, string? LinkText, string? Image, string Version);

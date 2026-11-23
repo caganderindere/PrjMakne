@@ -9,26 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PrjProje.Areas.Admin.Controllers;
 
-[Authorize(Policy = Policies.FullAccess)]
-public class DeveloperController : AdminControllerBase
-{
-    private readonly IDeveloperService _developerService;
-    private readonly IPerformanceService _performanceService;
-
-    public DeveloperController(IDeveloperService developerService, IPerformanceService performanceService)
-    {
-        _developerService = developerService;
-        _performanceService = performanceService;
-    }
-
-    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
-        View(await _developerService.GetReportAsync(cancellationToken));
-
-    public async Task<IActionResult> Performance(int days, CancellationToken cancellationToken) =>
-        Json(await _performanceService.GetReportAsync(days, cancellationToken));
-}
-
-[Authorize(Policy = Policies.Marketing)]
+[Authorize(Policy = Policies.ContentManagement)]
 public class MessagesController : StaffControllerBase
 {
     private readonly IContactAdminService _contactService;
@@ -56,57 +37,7 @@ public class MessagesController : StaffControllerBase
         ResultRedirect(await _contactService.DeleteAsync(id, cancellationToken), "Mesaj silindi.");
 }
 
-[Authorize(Policy = Policies.HumanResources)]
-public class ApplicationsController : StaffControllerBase
-{
-    private readonly IJobApplicationAdminService _applicationService;
-    private readonly IActivityLogger _activityLogger;
-
-    public ApplicationsController(IJobApplicationAdminService applicationService, IActivityLogger activityLogger)
-    {
-        _applicationService = applicationService;
-        _activityLogger = activityLogger;
-    }
-
-    public async Task<IActionResult> Index(bool? unread, int page = 1, CancellationToken cancellationToken = default)
-    {
-        ViewBag.Unread = unread;
-        return View(await _applicationService.GetListAsync(unread, page, cancellationToken));
-    }
-
-    public async Task<IActionResult> Detail(int id, CancellationToken cancellationToken)
-    {
-        var application = await _applicationService.GetAndMarkReadAsync(id, cancellationToken);
-        if (application is null)
-        {
-            return NotFound();
-        }
-
-        // KVKK: applications are personal data, so every look at one is recorded with who did it (by id only: editors see the log).
-        await _activityLogger.LogAsync("Viewed", "JobApplication", id, null, cancellationToken);
-        return View(application);
-    }
-
-    public async Task<IActionResult> Resume(int id, CancellationToken cancellationToken)
-    {
-        var resume = await _applicationService.GetResumeAsync(id, cancellationToken);
-        if (resume is null)
-        {
-            return NotFound();
-        }
-
-        await _activityLogger.LogAsync("ResumeDownloaded", "JobApplication", id, null, cancellationToken);
-        // Always served as a download with a neutral content type, never rendered inline.
-        return PhysicalFile(resume.PhysicalPath, "application/octet-stream", resume.DownloadName);
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
-        ResultRedirect(await _applicationService.DeleteAsync(id, cancellationToken), "Başvuru ve CV silindi.");
-}
-
-[Authorize(Policy = Policies.Marketing)]
+[Authorize(Policy = Policies.ContentManagement)]
 public class QuotesController : StaffControllerBase
 {
     private readonly IQuoteAdminService _quoteService;
@@ -262,21 +193,6 @@ public class SettingsController : AdminControllerBase
         if (!string.IsNullOrEmpty(model.GoogleAnalyticsId) && !System.Text.RegularExpressions.Regex.IsMatch(model.GoogleAnalyticsId, "^G-[A-Z0-9]{4,20}$"))
         {
             ModelState.AddModelError(nameof(model.GoogleAnalyticsId), "Ölçüm kimliği G- ile başlamalıdır (ör. G-AB12CD34EF).");
-        }
-
-        // People paste the address bar link (/reporting/...); only the /embed/ form may be shown in a frame.
-        const string lookerStudio = "https://lookerstudio.google.com/";
-        model.LookerStudioReportUrl = model.LookerStudioReportUrl?.Trim();
-        if (!string.IsNullOrEmpty(model.LookerStudioReportUrl))
-        {
-            if (!model.LookerStudioReportUrl.StartsWith(lookerStudio, StringComparison.OrdinalIgnoreCase))
-            {
-                ModelState.AddModelError(nameof(model.LookerStudioReportUrl), "Rapor adresi https://lookerstudio.google.com/ ile başlamalıdır.");
-            }
-            else if (model.LookerStudioReportUrl.StartsWith(lookerStudio + "reporting/", StringComparison.OrdinalIgnoreCase))
-            {
-                model.LookerStudioReportUrl = lookerStudio + "embed/" + model.LookerStudioReportUrl[lookerStudio.Length..];
-            }
         }
 
         // Stored as "" rather than null, otherwise clearing the mobile video would bring its default back.

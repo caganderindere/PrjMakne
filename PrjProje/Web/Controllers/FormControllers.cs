@@ -15,11 +15,9 @@ public class ContactController : PublicControllerBase
     private readonly ISiteSettingsService _settingsService;
     private readonly ISpamProtectionService _spamProtection;
 
-    private readonly ICloudflareService _cloudflare;
 
-    public ContactController(IContactService contactService, ISiteSettingsService settingsService, ISpamProtectionService spamProtection, ICloudflareService cloudflare)
+    public ContactController(IContactService contactService, ISiteSettingsService settingsService, ISpamProtectionService spamProtection)
     {
-        _cloudflare = cloudflare;
         _contactService = contactService;
         _settingsService = settingsService;
         _spamProtection = spamProtection;
@@ -40,11 +38,6 @@ public class ContactController : PublicControllerBase
         {
             TempData["FormSuccess"] = L["Contact.Success"].Value;
             return Redirect(Url.Localized(SiteRoutes.Contact));
-        }
-
-        if (ModelState.IsValid && !await _cloudflare.VerifyAsync(TurnstileForm.Contact, HttpContext, cancellationToken))
-        {
-            ModelState.AddModelError(string.Empty, L["Validation.Turnstile"]);
         }
 
         if (!ModelState.IsValid)
@@ -88,14 +81,12 @@ public class QuoteController : PublicControllerBase
     private readonly IProductService _productService;
     private readonly ISpamProtectionService _spamProtection;
 
-    private readonly ICloudflareService _cloudflare;
 
     private readonly ICapabilityService _capabilityService;
 
-    public QuoteController(IQuoteService quoteService, IProductService productService, ISpamProtectionService spamProtection, ICloudflareService cloudflare, ICapabilityService capabilityService)
+    public QuoteController(IQuoteService quoteService, IProductService productService, ISpamProtectionService spamProtection, ICapabilityService capabilityService)
     {
         _capabilityService = capabilityService;
-        _cloudflare = cloudflare;
         _quoteService = quoteService;
         _productService = productService;
         _spamProtection = spamProtection;
@@ -137,11 +128,6 @@ public class QuoteController : PublicControllerBase
             return Redirect(Url.Localized(SiteRoutes.Quote));
         }
 
-        if (ModelState.IsValid && !await _cloudflare.VerifyAsync(TurnstileForm.Quote, HttpContext, cancellationToken))
-        {
-            ModelState.AddModelError(string.Empty, L["Validation.Turnstile"]);
-        }
-
         if (ModelState.IsValid)
         {
             var result = await _quoteService.SubmitAsync(form, CreateRequestContext(), cancellationToken);
@@ -176,76 +162,8 @@ public class QuoteController : PublicControllerBase
     }
 }
 
-public class CareersController : PublicControllerBase
-{
-    private const long MaxRequestBytes = 12 * 1024 * 1024;
-
-    private readonly IContactService _contactService;
-    private readonly ISpamProtectionService _spamProtection;
-    private readonly ICloudflareService _cloudflare;
-
-    public CareersController(IContactService contactService, ISpamProtectionService spamProtection, ICloudflareService cloudflare)
-    {
-        _contactService = contactService;
-        _spamProtection = spamProtection;
-        _cloudflare = cloudflare;
-    }
-
-    [HttpGet]
-    public IActionResult Index()
-    {
-        PrepareSeo();
-        return View(new CareersViewModel());
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    [RequestSizeLimit(MaxRequestBytes)]
-    [RequestFormLimits(MultipartBodyLengthLimit = MaxRequestBytes)]
-    public async Task<IActionResult> Index([Bind(Prefix = nameof(CareersViewModel.Form))] JobApplicationFormModel form, CancellationToken cancellationToken)
-    {
-        if (_spamProtection.IsLikelySpam(Request.Form))
-        {
-            TempData["FormSuccess"] = L["Careers.Success"].Value;
-            return Redirect(Url.Localized(SiteRoutes.Careers));
-        }
-
-        // Same Turnstile switch as the contact form, so the admin panel needs no new setting.
-        if (ModelState.IsValid && !await _cloudflare.VerifyAsync(TurnstileForm.Contact, HttpContext, cancellationToken))
-        {
-            ModelState.AddModelError(string.Empty, L["Validation.Turnstile"]);
-        }
-
-        if (ModelState.IsValid)
-        {
-            var result = await _contactService.SubmitApplicationAsync(form, CreateRequestContext(), cancellationToken);
-            if (result.Succeeded)
-            {
-                TempData["FormSuccess"] = L["Careers.Success"].Value;
-                return Redirect(Url.Localized(SiteRoutes.Careers));
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError($"{nameof(CareersViewModel.Form)}.{nameof(JobApplicationFormModel.Resume)}", L[error]);
-            }
-        }
-
-        PrepareSeo();
-        return View(new CareersViewModel { Form = form });
-    }
-
-    private void PrepareSeo()
-    {
-        var seo = SetSeo(L["Careers.MetaTitle"], L["Careers.MetaDescription"], SiteRoutes.Careers);
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Contact"], Url.Localized(SiteRoutes.Contact)));
-        seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Careers"], null));
-    }
-}
-
 public static class RateLimitPolicies
 {
     public const string Forms = "forms";
     public const string Login = "login";
-    public const string Fair = "fair";
 }

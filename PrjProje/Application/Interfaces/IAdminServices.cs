@@ -92,14 +92,6 @@ public interface IContactAdminService
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
 }
 
-public interface IJobApplicationAdminService
-{
-    Task<PagedResult<JobApplicationDto>> GetListAsync(bool? unreadOnly, int page, CancellationToken cancellationToken = default);
-    Task<JobApplicationDto?> GetAndMarkReadAsync(int id, CancellationToken cancellationToken = default);
-    Task<QuoteAttachment?> GetResumeAsync(int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
-}
-
 public interface IQuoteAdminService
 {
     Task<PagedResult<QuoteRequestListItem>> GetListAsync(QuoteStatus? status, int page, CancellationToken cancellationToken = default);
@@ -126,51 +118,12 @@ public interface IReferenceAdminService
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
 }
 
-/// <summary>
-/// Meeting minutes. Every method takes the signed-in user's id: minutes exist for a user only when they wrote them or were
-/// ticked as a participant; anyone else gets the same answer as for minutes that do not exist.
-/// </summary>
-public interface IMeetingMinuteService
-{
-    Task<PagedResult<MeetingMinuteListItem>> GetListAsync(string userId, string? search, int page, CancellationToken cancellationToken = default);
-    Task<MeetingMinuteDto?> GetAsync(int id, string userId, CancellationToken cancellationToken = default);
-    Task<MeetingMinuteEditModel?> GetForEditAsync(int id, string userId, CancellationToken cancellationToken = default);
-
-    /// <summary>Active panel users to tick as participants, plus anyone already ticked on <paramref name="selectedIds"/>.</summary>
-    Task<IReadOnlyList<UserOption>> GetUserOptionsAsync(IEnumerable<string> selectedIds, CancellationToken cancellationToken = default);
-
-    /// <summary>Names offered for participants without a panel account: the ones listed in recent minutes.</summary>
-    Task<IReadOnlyList<string>> GetParticipantSuggestionsAsync(CancellationToken cancellationToken = default);
-
-    /// <summary>New minutes get the next number of the current year; the writer is the user saving them first.</summary>
-    Task<ServiceResult<int>> SaveAsync(MeetingMinuteEditModel model, string userId, string userName, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteAsync(int id, string userId, CancellationToken cancellationToken = default);
-}
-
 public interface IAnnouncementAdminService
 {
     Task<IReadOnlyList<AnnouncementAdminItem>> GetListAsync(CancellationToken cancellationToken = default);
     Task<AnnouncementEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
     Task<ServiceResult<int>> SaveAsync(AnnouncementEditModel model, CancellationToken cancellationToken = default);
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
-}
-
-public interface IBusinessCardAdminService
-{
-    Task<IReadOnlyList<BusinessCardAdminItem>> GetListAsync(CancellationToken cancellationToken = default);
-    Task<BusinessCardEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult<int>> SaveAsync(BusinessCardEditModel model, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
-}
-
-public interface IFairAdminService
-{
-    Task<IReadOnlyList<FairAdminItem>> GetListAsync(CancellationToken cancellationToken = default);
-    Task<FairEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult<int>> SaveAsync(FairEditModel model, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
-    Task<FairLeadsModel?> GetLeadsAsync(int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteLeadAsync(int leadId, CancellationToken cancellationToken = default);
 }
 
 public interface IContentTextAdminService
@@ -183,33 +136,4 @@ public interface IContentTextAdminService
 public interface IDashboardService
 {
     Task<DashboardDto> GetAsync(CancellationToken cancellationToken = default);
-
-    Task<MarketingSummaryDto> GetMarketingAsync(CancellationToken cancellationToken = default);
-}
-
-public interface IDeveloperService
-{
-    /// <summary>The quick checks shown on the dashboard.</summary>
-    Task<IReadOnlyList<HealthCheck>> GetChecksAsync(CancellationToken cancellationToken = default);
-
-    Task<DeveloperReport> GetReportAsync(CancellationToken cancellationToken = default);
-}
-
-public interface IPerformanceService
-{
-    /// <summary>Totals of the last 1, 7 or 30 days; any other value falls back to 1.</summary>
-    Task<PerformanceReport> GetReportAsync(int days, CancellationToken cancellationToken = default);
-}
-
-public interface IDeveloperTicketService
-{
-    Task<PagedResult<TicketListItem>> GetListAsync(TicketViewer viewer, TicketStatus? status, int page, CancellationToken cancellationToken = default);
-    Task<TicketDetail?> GetAsync(TicketViewer viewer, int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult> CreateAsync(TicketViewer viewer, string userName, TicketCreateModel model, CancellationToken cancellationToken = default);
-    Task<ServiceResult> UpdateAsync(TicketUpdateModel model, CancellationToken cancellationToken = default);
-    Task<QuoteAttachment?> GetAttachmentAsync(TicketViewer viewer, int id, CancellationToken cancellationToken = default);
-    Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
-
-    /// <summary>Shown in the menu on every admin page, so it returns 0 instead of failing when the database is down.</summary>
-    Task<int> CountNewAsync(CancellationToken cancellationToken = default);
 }

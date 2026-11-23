@@ -4,11 +4,12 @@ namespace PrjProje.Tests;
 
 public class RolesTests
 {
+    [Fact]
+    public void Only_admin_and_editor_exist() => Assert.Equal(["Admin", "Editor"], Roles.All);
+
     [Theory]
-    [InlineData(new[] { Roles.Employee }, Roles.Employee)]
-    [InlineData(new[] { Roles.Marketing }, Roles.Marketing)]
-    [InlineData(new[] { Roles.Employee, Roles.Admin }, Roles.Admin)]
-    [InlineData(new[] { Roles.HumanResources, Roles.RnD }, Roles.RnD)]
+    [InlineData(new[] { Roles.Editor }, Roles.Editor)]
+    [InlineData(new[] { Roles.Editor, Roles.Admin }, Roles.Admin)]
     [InlineData(new string[0], Roles.Editor)]
     public void Primary_picks_the_widest_role(string[] held, string expected) =>
         Assert.Equal(expected, Roles.Primary(held.Contains));

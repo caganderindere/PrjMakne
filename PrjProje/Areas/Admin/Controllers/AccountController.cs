@@ -13,11 +13,9 @@ public class AccountController : StaffControllerBase
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IActivityLogger _activityLogger;
-    private readonly ICloudflareService _cloudflare;
 
-    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IActivityLogger activityLogger, ICloudflareService cloudflare)
+    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IActivityLogger activityLogger)
     {
-        _cloudflare = cloudflare;
         _signInManager = signInManager;
         _userManager = userManager;
         _activityLogger = activityLogger;
@@ -42,12 +40,6 @@ public class AccountController : StaffControllerBase
     {
         if (!ModelState.IsValid)
         {
-            return View(model);
-        }
-
-        if (!await _cloudflare.VerifyAsync(TurnstileForm.Login, HttpContext, HttpContext.RequestAborted))
-        {
-            ModelState.AddModelError(string.Empty, "Güvenlik doğrulaması tamamlanamadı, lütfen tekrar deneyin.");
             return View(model);
         }
 
@@ -79,10 +71,6 @@ public class AccountController : StaffControllerBase
             : RedirectToHome(roles.Contains);
     }
 
-    // Human resources, marketing and module-only staff have no dashboard: a denied panel address (e.g. /admin after sign-in) sends them to their own start page.
-    private bool HasNoDashboard() => User.Identity?.IsAuthenticated == true
-        && !User.IsInRole(Roles.Admin) && !User.IsInRole(Roles.RnD) && !User.IsInRole(Roles.Editor);
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
@@ -93,7 +81,7 @@ public class AccountController : StaffControllerBase
 
     [AllowAnonymous]
     [Route("admin/account/access-denied")]
-    public IActionResult AccessDenied() => HasNoDashboard() ? RedirectToHome(User.IsInRole) : View();
+    public IActionResult AccessDenied() => View();
 
     [HttpGet]
     public IActionResult ChangePassword()

@@ -9,21 +9,14 @@ namespace PrjProje.Areas.Admin.Controllers;
 public class DashboardController : AdminControllerBase
 {
     private readonly IDashboardService _dashboardService;
-    private readonly IDeveloperService _developerService;
 
-    public DashboardController(IDashboardService dashboardService, IDeveloperService developerService)
+    public DashboardController(IDashboardService dashboardService)
     {
         _dashboardService = dashboardService;
-        _developerService = developerService;
     }
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
-        if (Roles.HasFullAccess(User))
-        {
-            ViewBag.HealthChecks = await _developerService.GetChecksAsync(cancellationToken);
-        }
-
         return View(await _dashboardService.GetAsync(cancellationToken));
     }
 }

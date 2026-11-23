@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 namespace PrjProje.Infrastructure.Services.Support;
 
 /// <summary>
-/// Panel-managed SMTP settings and the e-mails sent when a form arrives. Like the Cloudflare secret, the SMTP password
+/// Panel-managed SMTP settings and the e-mails sent when a form arrives. The SMTP password
 /// is stored encrypted and never reaches a view. Sending runs in the background, so a slow or broken mail server
 /// never delays or fails the visitor's form.
 /// </summary>

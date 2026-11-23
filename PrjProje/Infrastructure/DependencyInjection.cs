@@ -66,9 +66,6 @@ public static class DependencyInjection
         services.AddScoped<IContactService, ContactService>();
         services.AddScoped<IQuoteService, QuoteService>();
         services.AddScoped<ISiteContentService, SiteContentService>();
-        services.AddScoped<IBusinessCardService, BusinessCardService>();
-        services.AddScoped<IFairService, FairService>();
-        services.AddHttpClient<ICloudflareService, CloudflareService>();
         services.AddScoped<INotificationService, EmailNotificationService>();
 
         services.AddScoped<IProductAdminService, ProductAdminService>();
@@ -80,23 +77,14 @@ public static class DependencyInjection
         services.AddScoped<IDocumentAdminService, DocumentAdminService>();
         services.AddScoped<ICapabilityAdminService, CapabilityAdminService>();
         services.AddScoped<IContactAdminService, ContactAdminService>();
-        services.AddScoped<IJobApplicationAdminService, JobApplicationAdminService>();
         services.AddScoped<IQuoteAdminService, QuoteAdminService>();
         services.AddScoped<IUserAdminService, UserAdminService>();
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddSingleton<RecentLogStore>();
         services.AddSingleton<ILoggerProvider>(provider => provider.GetRequiredService<RecentLogStore>());
-        services.AddScoped<IDeveloperService, DeveloperService>();
-        services.AddSingleton<RequestMetricsRecorder>();
-        services.AddHostedService<RequestMetricsFlushService>();
-        services.AddScoped<IPerformanceService, PerformanceService>();
-        services.AddScoped<IDeveloperTicketService, DeveloperTicketService>();
         services.AddScoped<IReferenceAdminService, ReferenceAdminService>();
-        services.AddScoped<IMeetingMinuteService, MeetingMinuteService>();
         services.AddScoped<IAnnouncementAdminService, AnnouncementAdminService>();
         services.AddScoped<IContentTextAdminService, ContentTextAdminService>();
-        services.AddScoped<IBusinessCardAdminService, BusinessCardAdminService>();
-        services.AddScoped<IFairAdminService, FairAdminService>();
 
         return services;
     }

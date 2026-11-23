@@ -52,38 +52,18 @@ public class ServiceResult<T> : ServiceResult
 public static class Roles
 {
     public const string Admin = "Admin";
+
+    /// <summary>Content editors: catalogue, pages, media, quotes and messages; no users or site settings.</summary>
     public const string Editor = "Editor";
 
-    /// <summary>Human resources staff: sees only the job applications, nothing else in the panel.</summary>
-    public const string HumanResources = "HumanResources";
+    public static readonly IReadOnlyList<string> All = new[] { Admin, Editor };
 
-    /// <summary>R&amp;D team: everything the admin can do except managing users and their roles.</summary>
-    public const string RnD = "RnD";
+    public static string Name(string role) => role == Admin ? "Yönetici" : "Editör";
 
-    /// <summary>Marketing: analytics, quotes, contact messages, job applications, fairs and business cards.</summary>
-    public const string Marketing = "Marketing";
+    /// <summary>A user has one role; this picks the widest should they ever hold both. Editor is the fallback for none.</summary>
+    public static string Primary(Func<string, bool> isInRole) => isInRole(Admin) ? Admin : Editor;
 
-    /// <summary>Staff who only use the modules (meeting minutes): they can be picked as participants and see nothing else.</summary>
-    public const string Employee = "Employee";
-
-    public static readonly IReadOnlyList<string> All = new[] { Admin, Editor, HumanResources, RnD, Marketing, Employee };
-
-    public static string Name(string role) => role switch
-    {
-        Admin => "Yönetici",
-        HumanResources => "İnsan Kaynakları",
-        RnD => "Ar-Ge Ekibi",
-        Marketing => "Pazarlama",
-        Employee => "Personel",
-        _ => "Editör"
-    };
-
-    /// <summary>A user has one role; this picks the widest should they ever hold several. Editor is the fallback for none.</summary>
-    public static string Primary(Func<string, bool> isInRole) =>
-        new[] { Admin, RnD, Editor, Marketing, HumanResources, Employee }.FirstOrDefault(isInRole) ?? Editor;
-
-    /// <summary>Admin or R&amp;D: the whole panel apart from user management.</summary>
-    public static bool HasFullAccess(ClaimsPrincipal user) => user.IsInRole(Admin) || user.IsInRole(RnD);
+    public static bool HasFullAccess(ClaimsPrincipal user) => user.IsInRole(Admin);
 }
 
 /// <summary>Claims the panel adds to the sign-in cookie (see PanelClaimsFactory).</summary>
@@ -97,19 +77,14 @@ public static class PanelClaims
 
 public static class Policies
 {
-    /// <summary>Admin and R&amp;D: every page except user management.</summary>
+    /// <summary>Site settings and e-mail notifications: admin only.</summary>
     public const string FullAccess = "FullAccess";
 
     /// <summary>Creating, editing and deleting panel users (and so their roles and passwords): admin only.</summary>
     public const string UserManagement = "UserManagement";
 
-    /// <summary>Analytics, quotes, contact messages and fairs: admin, R&amp;D and marketing.</summary>
-    public const string Marketing = "Marketing";
-
-    /// <summary>Digital business cards: the content roles plus marketing.</summary>
-    public const string CardManagement = "CardManagement";
+    /// <summary>Catalogue, content, media, quotes and messages: admin and editor.</summary>
     public const string ContentManagement = "ContentManagement";
-    public const string HumanResources = "HumanResources";
 
     /// <summary>Any panel user, whatever the role (account pages).</summary>
     public const string Staff = "Staff";
