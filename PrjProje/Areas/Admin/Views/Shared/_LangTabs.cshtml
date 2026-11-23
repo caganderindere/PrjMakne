@@ -1,0 +1,13 @@
+@model string
+@* Model: unique prefix for tab ids *@
+<ul class="nav nav-tabs lang-tabs" role="tablist">
+    @for (var i = 0; i < Languages.All.Count; i++)
+    {
+        var code = Languages.All[i];
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(i == 0 ? "active" : null)" data-bs-toggle="tab" data-bs-target="#@Model-@code" type="button" role="tab">
+                <span class="flag">@code.ToUpperInvariant()</span>@Languages.DisplayName(code)@(code == Languages.Default ? " *" : "")
+            </button>
+        </li>
+    }
+</ul>

@@ -1,0 +1,75 @@
+@model ContentTextPageModel
+@{
+    ViewData["Title"] = "Sayfa İçerikleri";
+    var searching = !string.IsNullOrEmpty(Model.Search);
+    static int Rows(string? text) => Math.Clamp(((text?.Length ?? 0) / 55) + 1 + (text?.Count(c => c == '\n') ?? 0), 1, 10);
+}
+<div class="admin-card">
+    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-start mb-3">
+        <p class="text-muted small mb-0" style="max-width:720px">
+            Sitedeki sabit metinleri buradan değiştirebilirsiniz. Değişiklik kaydedildiği anda sitede görünür.
+            Bir kutuyu <strong>boşaltıp kaydederseniz</strong> metin varsayılan haline döner.
+            <code>{0}</code> gibi ifadeler otomatik doldurulan alanlardır, silmeyin.
+        </p>
+        <form method="get" class="d-flex gap-2" role="search">
+            <input type="search" name="q" value="@Model.Search" class="form-control form-control-sm" placeholder="Tüm metinlerde ara..." style="min-width:240px" />
+            <button type="submit" class="btn btn-sm btn-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+
+    <ul class="nav nav-pills content-text-tabs mb-3">
+        @foreach (var group in Model.Groups)
+        {
+            <li class="nav-item">
+                <a class="nav-link @(!searching && group.Id == Model.Group.Id ? "active" : null)" asp-action="Index" asp-route-group="@group.Id">@group.Title</a>
+            </li>
+        }
+    </ul>
+
+    @if (searching)
+    {
+        <div class="alert alert-light border small">"<strong>@Model.Search</strong>" için @Model.Rows.Count sonuç. <a asp-action="Index" asp-route-group="@Model.Group.Id">Aramayı temizle</a></div>
+    }
+    else
+    {
+        <p class="small text-muted">@Model.Group.Description</p>
+    }
+
+    <form method="post" asp-action="Save">
+        <input type="hidden" name="group" value="@Model.Group.Id" />
+        <input type="hidden" name="q" value="@Model.Search" />
+        <div class="table-responsive">
+            <table class="table admin-table content-text-table">
+                <thead><tr><th style="width:22%">Alan</th><th><span class="lang-badge">TR</span> Türkçe</th><th><span class="lang-badge">EN</span> English</th></tr></thead>
+                <tbody>
+                    @for (var i = 0; i < Model.Rows.Count; i++)
+                    {
+                        var row = Model.Rows[i];
+                        <tr>
+                            <td>
+                                <input type="hidden" name="rows[@i].Key" value="@row.Key" />
+                                <code class="small text-break">@row.Key</code>
+                                @if (row.IsCustomized)
+                                {
+                                    <span class="badge bg-warning text-dark ms-1">Değiştirildi</span>
+                                }
+                            </td>
+                            <td><textarea name="rows[@i].ValueTr" class="form-control form-control-sm" rows="@Rows(row.ValueTr)" title="Varsayılan: @row.DefaultTr">@row.ValueTr</textarea></td>
+                            <td><textarea name="rows[@i].ValueEn" class="form-control form-control-sm" rows="@Rows(row.ValueEn)" title="Default: @row.DefaultEn">@row.ValueEn</textarea></td>
+                        </tr>
+                    }
+                    @if (Model.Rows.Count == 0)
+                    {
+                        <tr><td colspan="3" class="text-center text-muted py-5">Metin bulunamadı.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (Model.Rows.Count > 0)
+        {
+            <div class="content-text-actions">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Değişiklikleri Kaydet</button>
+            </div>
+        }
+    </form>
+</div>

@@ -1,0 +1,113 @@
+@model BusinessCardDto
+@{
+    Layout = null;
+    var site = (SiteSettingsDto)ViewBag.Settings;
+    var mobile = CardLinks.Phone(Model.Mobile);
+    var phone = CardLinks.Phone(Model.Phone);
+    var website = CardLinks.Web(Model.Website);
+    var linkedIn = CardLinks.LinkedIn(Model.LinkedIn);
+    var instagram = CardLinks.Instagram(Model.Instagram);
+    var vcard = Url.Localized(SiteRoutes.BusinessCardContact, Model.Slug);
+    var subtitle = string.Join(" · ", new[] { Model.Title, Model.Department }.Where(t => !string.IsNullOrWhiteSpace(t)));
+    string Bare(string url) => url.Replace("https://", "").Replace("http://", "").TrimEnd('/');
+
+    // Every way to reach the person, in the order a visitor most likely needs them.
+    var rows = new List<(string Icon, string Label, string Value, string Url, bool External)>();
+    if (mobile is not null) rows.Add(("fa-solid fa-mobile-screen", L["Card.Mobile"], Model.Mobile!, $"tel:{mobile}", false));
+    if (phone is not null) rows.Add(("fa-solid fa-phone", L["Card.Office"], Model.Phone!, $"tel:{phone}", false));
+    if (!string.IsNullOrWhiteSpace(Model.Email)) rows.Add(("fa-solid fa-envelope", L["Card.Email"], Model.Email!, $"mailto:{Model.Email}", false));
+    if (linkedIn is not null) rows.Add(("fa-brands fa-linkedin-in", "LinkedIn", L["Card.ViewProfile"], linkedIn, true));
+    if (instagram is not null) rows.Add(("fa-brands fa-instagram", "Instagram", L["Card.ViewProfile"], instagram, true));
+    if (website is not null) rows.Add(("fa-solid fa-globe", L["Card.Website"], Bare(website), website, true));
+    foreach (var (label, url) in CardLinks.ExtraLinks(Model.ExtraLinks)) rows.Add(("fa-solid fa-link", label, Bare(url), url, true));
+}
+<!DOCTYPE html>
+<html lang="@Languages.Current">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>@Model.FullName | @site.CompanyName</title>
+    <meta name="description" content="@(subtitle.Length == 0 ? site.CompanyName : $"{subtitle} | {site.CompanyName}")" />
+    <meta name="robots" content="noindex" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="@Model.FullName | @site.CompanyName" />
+    <meta property="og:description" content="@subtitle" />
+    @if (Model.Photo is not null)
+    {
+        <meta property="og:image" content="@Url.Absolute(Model.Photo)" />
+    }
+    <meta name="theme-color" content="#17191e" />
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon-96.png" />
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/card.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="card">
+        <header class="card-top">
+            <span class="card-stripes" aria-hidden="true"></span>
+            <a href="@Url.Localized(SiteRoutes.Home)" class="card-logo"><img src="~/images/logo-light.png" alt="@site.CompanyName" width="140" height="30" /></a>
+            <nav class="card-lang" aria-label="Language">
+                @foreach (var language in Languages.All)
+                {
+                    <a href="@Url.Localized(SiteRoutes.BusinessCard, language, Model.Slug)" lang="@language" aria-current="@(language == Languages.Current ? "true" : null)">@language.ToUpperInvariant()</a>
+                }
+            </nav>
+        </header>
+
+        <section class="card-id">
+            <div class="card-photo">
+                @if (Model.Photo is not null)
+                {
+                    <img src="@ViewHelpers.SmallImage(Model.Photo)" alt="@Model.FullName" width="132" height="132" />
+                }
+                else
+                {
+                    <span>@Model.Initials</span>
+                }
+            </div>
+            <h1 class="card-name">@Model.FirstName <strong>@Model.LastName</strong></h1>
+            @if (!string.IsNullOrWhiteSpace(Model.Title))
+            {
+                <p class="card-title">@Model.Title</p>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.Department))
+            {
+                <p class="card-dept">@Model.Department</p>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.Note))
+            {
+                <p class="card-note">@Model.Note</p>
+            }
+        </section>
+
+        <ul class="card-links">
+            @foreach (var row in rows)
+            {
+                <li>
+                    <a href="@row.Url" target="@(row.External ? "_blank" : null)" rel="@(row.External ? "noopener" : null)">
+                        <span class="card-ico"><i class="@row.Icon" aria-hidden="true"></i></span>
+                        <span class="card-link-text">
+                            <span class="card-link-label">@row.Label</span>
+                            <span class="card-link-value">@row.Value</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <div class="card-actions">
+            <a href="@vcard" class="card-save"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>@L["Card.SaveContact"]</a>
+        </div>
+
+        <footer class="card-foot">
+            <span class="card-foot-mark">@site.CompanyName</span>
+            <span>@L["Card.Tagline"]</span>
+        </footer>
+    </main>
+</body>
+</html>

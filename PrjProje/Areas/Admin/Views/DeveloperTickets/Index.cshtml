@@ -1,0 +1,45 @@
+@model PagedResult<TicketListItem>
+@{
+    ViewData["Title"] = "Geliştiriciye Bildir";
+    TicketStatus? status = ViewBag.Status;
+    var pager = (Model.Page, Model.TotalPages, (Func<int, string>)(p => Url.Action("Index", new { status, page = p })!));
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <div class="btn-group flex-wrap">
+            <a asp-action="Index" class="btn btn-sm @(status is null ? "btn-dark" : "btn-outline-dark")">Tümü</a>
+            @foreach (var value in Enum.GetValues<TicketStatus>())
+            {
+                <a asp-action="Index" asp-route-status="@value" class="btn btn-sm @(status == value ? "btn-dark" : "btn-outline-dark")">@AdminLabels.Status(value)</a>
+            }
+        </div>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Bildirim</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th>#</th><th>Başlık</th><th>Tür</th><th>Önem</th><th>Durum</th><th>Gönderen</th><th>Tarih</th></tr></thead>
+            <tbody>
+                @foreach (var ticket in Model.Items)
+                {
+                    <tr class="@(ticket.Status == TicketStatus.New ? "unread" : null)">
+                        <td class="text-muted">@ticket.Id</td>
+                        <td>
+                            <a asp-action="Detail" asp-route-id="@ticket.Id">@ticket.Title</a>
+                            @if (ticket.HasAttachment) { <i class="fa-solid fa-paperclip ms-1" title="Ekran görüntüsü var"></i> }
+                        </td>
+                        <td class="text-nowrap"><i class="fa-solid @AdminLabels.KindIcon(ticket.Type) me-1" aria-hidden="true"></i>@AdminLabels.Kind(ticket.Type)</td>
+                        <td><span class="badge @AdminLabels.PriorityBadge(ticket.Priority)">@AdminLabels.Priority(ticket.Priority)</span></td>
+                        <td><span class="badge @AdminLabels.StatusBadge(ticket.Status)">@AdminLabels.Status(ticket.Status)</span></td>
+                        <td class="small">@ticket.CreatedByName</td>
+                        <td class="small text-nowrap">@ticket.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Henüz bildirim yok. Bir arıza yakaladıysanız veya bir isteğiniz varsa "Yeni Bildirim" ile yazabilirsiniz.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_AdminPager" model="pager" />
+</div>

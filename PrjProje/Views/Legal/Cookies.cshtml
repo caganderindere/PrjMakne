@@ -1,0 +1,32 @@
+@{
+    var header = new PageHeaderModel(L["Legal.CookiesTitle"], L["Legal.CookiesLead"]);
+    var sections = Enumerable.Range(1, 5);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 rich-content legal-content">
+                <p>@L["Legal.CookiesIntro"]</p>
+                @foreach (var index in sections)
+                {
+                    <h2>@L[$"Legal.Cookies{index}Title"]</h2>
+                    <p>@L[$"Legal.Cookies{index}Text"]</p>
+                }
+                <div class="table-responsive">
+                    <table class="table spec-table">
+                        <thead><tr><th>@L["Legal.CookieName"]</th><th>@L["Legal.CookiePurpose"]</th></tr></thead>
+                        <tbody>
+                            <tr><td>PrjProje.Antiforgery</td><td>@L["Legal.CookieAntiforgery"]</td></tr>
+                            <tr><td>.AspNetCore.Mvc.CookieTempDataProvider</td><td>@L["Legal.CookieTempData"]</td></tr>
+                            <tr><td>PrjProje.Auth</td><td>@L["Legal.CookieAuth"]</td></tr>
+                            <tr><td>prj-analytics-consent (localStorage)</td><td>@L["Legal.CookieConsent"]</td></tr>
+                            <tr><td>_ga, _ga_*</td><td>@L["Legal.CookieAnalytics"]</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

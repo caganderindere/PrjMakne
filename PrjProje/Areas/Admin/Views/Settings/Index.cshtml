@@ -1,0 +1,125 @@
+@model SiteSettingsDto
+@{
+    ViewData["Title"] = "Site Ayarları";
+}
+<form method="post" asp-action="Index" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="alert alert-danger small"></div>
+    <div class="row g-4">
+        <div class="col-xl-6">
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">İletişim Bilgileri</h2>
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label" asp-for="CompanyName">Firma Adı</label><input asp-for="CompanyName" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="Phone">Telefon</label><input asp-for="Phone" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="Email">E-posta</label><input asp-for="Email" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="SalesEmail">Satış E-postası</label><input asp-for="SalesEmail" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="Fax">Faks</label><input asp-for="Fax" class="form-control" /></div>
+                    <div class="col-12"><label class="form-label" asp-for="AddressTr"><span class="lang-badge">TR</span> Adres</label><input asp-for="AddressTr" class="form-control" /></div>
+                    <div class="col-12"><label class="form-label" asp-for="AddressEn"><span class="lang-badge">EN</span> Adres</label><input asp-for="AddressEn" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="WorkingHoursTr"><span class="lang-badge">TR</span> Çalışma Saatleri</label><input asp-for="WorkingHoursTr" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="WorkingHoursEn"><span class="lang-badge">EN</span> Çalışma Saatleri</label><input asp-for="WorkingHoursEn" class="form-control" /></div>
+                    <div class="col-12">
+                        <label class="form-label" asp-for="MapEmbedUrl">Google Maps Embed URL</label>
+                        <input asp-for="MapEmbedUrl" class="form-control" placeholder="https://www.google.com/maps/embed?pb=..." />
+                        <span asp-validation-for="MapEmbedUrl"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Sosyal Medya</h2>
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label" asp-for="LinkedInUrl">LinkedIn</label><input asp-for="LinkedInUrl" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="InstagramUrl">Instagram</label><input asp-for="InstagramUrl" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="FacebookUrl">Facebook</label><input asp-for="FacebookUrl" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="YouTubeUrl">YouTube</label><input asp-for="YouTubeUrl" class="form-control" /></div>
+                    <div class="col-md-6"><label class="form-label" asp-for="XUrl">X (Twitter)</label><input asp-for="XUrl" class="form-control" /></div>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp Butonu</h2>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label" asp-for="WhatsApp">Pazarlama Sorumlusunun Numarası</label>
+                        <input asp-for="WhatsApp" class="form-control" placeholder="+90 5xx xxx xx xx" />
+                        <div class="form-text">Sitenin sağ altındaki WhatsApp butonu bu numaraya yazar. Ülke koduyla girin. Boş bırakılırsa buton görünmez.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" asp-for="WhatsAppMessageTr"><span class="lang-badge">TR</span> Hazır Mesaj</label>
+                        <textarea asp-for="WhatsAppMessageTr" class="form-control" rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" asp-for="WhatsAppMessageEn"><span class="lang-badge">EN</span> Hazır Mesaj</label>
+                        <textarea asp-for="WhatsAppMessageEn" class="form-control" rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="col-12 form-text mt-0">Ziyaretçi sitenin Türkçe sürümündeyse TR, İngilizce sürümündeyse EN mesajla sohbet açılır; ziyaretçi göndermeden önce mesajı değiştirebilir.</div>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Ana Sayfa ve SEO</h2>
+                <label class="form-label" for="heroImageFile">Hero Görseli (fabrika / üretim fotoğrafı, en az 1920px genişlik önerilir)</label>
+                @if (!string.IsNullOrEmpty(Model.HeroImage))
+                {
+                    <img src="@ViewHelpers.SmallImage(Model.HeroImage)" class="image-preview" alt="" />
+                    <div class="form-check mb-2">
+                        <input type="checkbox" name="removeHeroImage" value="true" id="removeHeroImage" class="form-check-input" />
+                        <label class="form-check-label" for="removeHeroImage">Görseli kaldır</label>
+                    </div>
+                }
+                <input type="file" name="heroImageFile" id="heroImageFile" class="form-control mb-3" accept=".jpg,.jpeg,.png,.webp" />
+                <label class="form-label" asp-for="HeroVideoMobile">Mobil Hero Videosu (dikey MP4)</label>
+                <input asp-for="HeroVideoMobile" class="form-control mb-1" placeholder="/videos/heromobil.mp4" />
+                <div class="form-text mb-3">Telefonlarda hero metni yerine tam genişlik video gösterilir. Boş bırakılırsa fotoğraf ve metin kalır.</div>
+                <label class="form-label" asp-for="HeroVideo">Masaüstü Hero Videosu (MP4)</label>
+                <input asp-for="HeroVideo" class="form-control mb-1" placeholder="/videos/hero.mp4" />
+                <div class="form-text mb-3">Boş bırakılırsa masaüstünde fotoğraf gösterilir.</div>
+                <label class="form-label" asp-for="ExportCountries">İhracat Ülkeleri (ISO kodları, virgülle)</label>
+                <input asp-for="ExportCountries" class="form-control mb-1" placeholder="DE,FR,IT,..." />
+                <div class="form-text mb-3">Ana sayfadaki dünya haritasında işaretlenir.</div>
+                <label class="form-label" asp-for="GoogleSiteVerification">Google Search Console doğrulama kodu</label>
+                <input asp-for="GoogleSiteVerification" class="form-control mb-3" />
+                <label class="form-label" asp-for="GoogleAnalyticsId">Google Analytics 4 ölçüm kimliği</label>
+                <input asp-for="GoogleAnalyticsId" class="form-control mb-1" placeholder="G-XXXXXXXXXX" />
+                <span asp-validation-for="GoogleAnalyticsId" class="text-danger small d-block"></span>
+                <div class="form-text mb-3">Analytics → Yönetici → Veri akışları → Web akışı'nda yazar. Ziyaretçi çerezleri kabul ederse yüklenir. Boş bırakılırsa takip kapalı.</div>
+                <label class="form-label" asp-for="LookerStudioReportUrl">Analiz sayfası ziyaretçi raporu (Looker Studio adresi)</label>
+                <input asp-for="LookerStudioReportUrl" class="form-control mb-1" placeholder="https://lookerstudio.google.com/reporting/..." />
+                <span asp-validation-for="LookerStudioReportUrl" class="text-danger small d-block"></span>
+                <div class="form-text">Looker Studio'da raporu açıp adres çubuğundaki bağlantıyı yapıştırın; Analiz sayfasında gösterilir. Raporu görmek için tarayıcıda rapora erişimi olan Google hesabıyla oturum açık olmalıdır.</div>
+                <div class="form-text mt-2">Hero başlığı, slogan ve diğer metinler için: <a asp-controller="ContentTexts" asp-action="Index" asp-route-group="home">Sayfa İçerikleri → Ana Sayfa</a></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Ana Sayfa Rakamları</h2>
+                <p class="small text-muted">Ana sayfadaki sayaçlarda ve Kurumsal sayfasında gösterilir. Yalnızca sayı girin; birimler (m², +, %) otomatik eklenir.</p>
+                <div class="row g-3">
+                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatFacility">Tesis Alanı (m²)</label><input asp-for="StatFacility" class="form-control" inputmode="numeric" /></div>
+                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatEmployees">Çalışan (+)</label><input asp-for="StatEmployees" class="form-control" inputmode="numeric" /></div>
+                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatCountries">İhracat Ülkesi (+)</label><input asp-for="StatCountries" class="form-control" inputmode="numeric" /></div>
+                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatDomestic">Yerlilik (%)</label><input asp-for="StatDomestic" class="form-control" inputmode="numeric" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Ana Sayfa Bölümleri</h2>
+                <p class="small text-muted">Okları kullanarak sırayı değiştirin, kutucuğu kaldırarak bölümü gizleyin. Hero, rakamlar ve en alttaki teklif çağrısı sabittir.</p>
+                <ul class="home-sections-list" data-sortable-list>
+                    @foreach (var (key, visible) in Model.GetHomeSections())
+                    {
+                        <li class="@(visible ? null : "is-hidden")">
+                            <input type="hidden" name="homeSectionOrder" value="@key" />
+                            <input type="checkbox" class="form-check-input mt-0" name="homeSectionVisible" value="@key" id="section-@key" checked="@visible" />
+                            <label class="section-name" for="section-@key">@AdminLabels.HomeSection(key)</label>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-move="up" aria-label="Yukarı taşı"><i class="fa-solid fa-arrow-up"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-move="down" aria-label="Aşağı taşı"><i class="fa-solid fa-arrow-down"></i></button>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-brand btn-lg"><i class="fa-solid fa-floppy-disk me-1"></i>Ayarları Kaydet</button>
+</form>

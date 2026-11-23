@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav.Home" xml:space="preserve"><value>Ana Sayfa</value></data>
+  <data name="Nav.About" xml:space="preserve"><value>Kurumsal</value></data>
+  <data name="Nav.AboutUs" xml:space="preserve"><value>Hakkımızda</value></data>
+  <data name="Nav.Capabilities" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
+  <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
+  <data name="Nav.Products" xml:space="preserve"><value>Ürünler</value></data>
+  <data name="Nav.Manufacturing" xml:space="preserve"><value>Üretim</value></data>
+  <data name="Nav.Defense" xml:space="preserve"><value>Savunma Sanayii</value></data>
+  <data name="Nav.Quality" xml:space="preserve"><value>Kalite</value></data>
+  <data name="Nav.Gallery" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
+  <data name="Nav.Contact" xml:space="preserve"><value>İletişim</value></data>
+  <data name="Nav.Quote" xml:space="preserve"><value>Teklif Al</value></data>
+  <data name="Common.RequestQuote" xml:space="preserve"><value>Teklif Al</value></data>
+  <data name="Common.SkipToContent" xml:space="preserve"><value>İçeriğe geç</value></data>
+  <data name="Common.MainNavigation" xml:space="preserve"><value>Ana menü</value></data>
+  <data name="Common.ToggleNavigation" xml:space="preserve"><value>Menüyü aç/kapat</value></data>
+  <data name="Common.Language" xml:space="preserve"><value>Dil seçimi</value></data>
+  <data name="Common.SecurityClearance" xml:space="preserve"><value>MSB Tesis Güvenlik Belgesi</value></data>
+  <data name="Common.ViewDetails" xml:space="preserve"><value>Detayları İncele</value></data>
+  <data name="Common.ReadMore" xml:space="preserve"><value>Devamını Oku</value></data>
+  <data name="Common.Explore" xml:space="preserve"><value>İncele</value></data>
+  <data name="Common.Search" xml:space="preserve"><value>Ara</value></data>
+  <data name="Common.ClearFilter" xml:space="preserve"><value>Filtreyi temizle</value></data>
+  <data name="Common.Pagination" xml:space="preserve"><value>Sayfalama</value></data>
+  <data name="Common.Previous" xml:space="preserve"><value>Önceki</value></data>
+  <data name="Common.Next" xml:space="preserve"><value>Sonraki</value></data>
+  <data name="Stats.Facility" xml:space="preserve"><value>Üretim Tesisi</value></data>
+  <data name="Stats.Employees" xml:space="preserve"><value>Uzman Çalışan</value></data>
+  <data name="Stats.Countries" xml:space="preserve"><value>İhracat Ülkesi</value></data>
+  <data name="Stats.Domestic" xml:space="preserve"><value>Yerli Üretim</value></data>
+  <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
+  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Çelik, Kauçuk ve Plastik Parça Üretimi</value></data>
+  <data name="Home.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina, Ankara'daki 25.000 m² tesisinde iş makinası yedek parçaları ve savunma sanayii parçalarını %100 yerli üretir; 20'den fazla ülkeye ihracat yapar.</value></data>
+  <data name="Home.HeroEyebrow" xml:space="preserve"><value>25.000 m² Entegre Tesis · Ankara</value></data>
+  <data name="Home.HeroTitle" xml:space="preserve"><value>Ankara'dan Dünyaya</value></data>
+  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>Güçlü Üretim</value></data>
+  <data name="Announcement.Label" xml:space="preserve"><value>Duyuru</value></data>
+  <data name="Announcement.More" xml:space="preserve"><value>Detaylı bilgi</value></data>
+  <data name="Announcement.Close" xml:space="preserve"><value>Duyuruyu kapat</value></data>
+  <data name="Announcement.Dismiss" xml:space="preserve"><value>Kapat</value></data>
+  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Partnerlerimiz</value></data>
+  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Referanslarımız</value></data>
+  <data name="Home.ReferencesLead" xml:space="preserve"><value>Dünyanın önde gelen iş makinası üreticileri ve savunma sanayii kuruluşları PRJ Proje Makina kalitesine güveniyor.</value></data>
+  <data name="Home.HeroSubtitle" xml:space="preserve"><value>Kauçuk, plastik ve çelik parçaları tasarımdan sevkiyata kadar tek çatı altında, %100 yerli olarak üretiyoruz.</value></data>
+  <data name="Home.ModelAlt" xml:space="preserve"><value>Metal-kauçuk titreşim takozunun 3B modeli: çelik saplamalı üst plaka, kauçuk gövde ve çelik taban flanşı.</value></data>
+  <data name="Home.ExploreProducts" xml:space="preserve"><value>Ürünleri İncele</value></data>
+  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarımdan sevkiyata tek çatı</value></data>
+  <data name="Home.BadgeExport" xml:space="preserve"><value>20+ ülkeye ihracat</value></data>
+  <data name="Home.StatsLabel" xml:space="preserve"><value>Firma istatistikleri</value></data>
+  <data name="Home.AboutTitle" xml:space="preserve"><value>Mühendislik gücüyle üreten bir sanayi kuruluşu</value></data>
+  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina, Ankara Sincan 1. Organize Sanayi Bölgesi'ndeki 25.000 m²'lik tesislerinde çelik, plastik ve kauçuk iş makinası yedek parçaları üretmektedir.</value></data>
+  <data name="Home.AboutText" xml:space="preserve"><value>Tasarımdan üretime, kalite kontrolden sevkiyata kadar tüm süreçleri kendi bünyemizde yönetiyor; 150'den fazla uzman çalışanımızla yurt içi ve uluslararası müşterilerimize güvenilir çözümler sunuyoruz.</value></data>
+  <data name="Home.AboutPoint1" xml:space="preserve"><value>Milli Savunma Bakanlığı Tesis Güvenlik Belgesi</value></data>
+  <data name="Home.AboutPoint2" xml:space="preserve"><value>CNC, hidrolik pres, lazer kesim, fırın boya ve çelik döküm tesisleri</value></data>
+  <data name="Home.AboutPoint3" xml:space="preserve"><value>%100 yerli ve milli üretim</value></data>
+  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Entegre üretim tesisi</value></data>
+  <data name="Home.LearnMore" xml:space="preserve"><value>Detaylı İncele</value></data>
+  <data name="Home.CategoriesTitle" xml:space="preserve"><value>Ürün Kategorilerimiz</value></data>
+  <data name="Home.CapabilitiesTitle" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
+  <data name="Home.CapabilitiesLead" xml:space="preserve"><value>Entegre tesisimizde hammaddeden bitmiş ürüne kadar tüm kritik süreçleri kendi kontrolümüzde tutuyoruz.</value></data>
+  <data name="Home.AllCapabilities" xml:space="preserve"><value>Tüm Kabiliyetler</value></data>
+  <data name="Home.DefenseTitle" xml:space="preserve"><value>Savunma sanayiine yerli ve milli güç</value></data>
+  <data name="Home.DefenseText" xml:space="preserve"><value>Milli Savunma Bakanlığı Tesis Güvenlik Belgesi'ne sahip olan PRJ Proje Makina, ülkemizin savunma sanayiindeki atılımlarına paralel olarak çeşitli savunma sanayii parçalarını %100 yerli ve milli olarak üretmektedir.</value></data>
+  <data name="Home.ExportEyebrow" xml:space="preserve"><value>Global İhracat</value></data>
+  <data name="Home.ExportTitle" xml:space="preserve"><value>Ankara'dan dünyaya</value></data>
+  <data name="Home.ExportText" xml:space="preserve"><value>Avrupa, Orta Doğu, Kuzey Afrika ve Orta Asya'daki iş ortaklarımıza düzenli olarak ihracat yapıyor, uluslararası standartlarda üretim ve lojistik çözümleri sunuyoruz.</value></data>
+  <data name="Home.ExportMapLabel" xml:space="preserve"><value>İhracat yapılan ülkeleri gösteren dünya haritası</value></data>  <data name="Home.BlogTitle" xml:space="preserve"><value>Haberler ve Makaleler</value></data>
+  <data name="Home.ExportRegions" xml:space="preserve"><value>Bölge</value></data>
+  <data name="Home.ExportRegion.all" xml:space="preserve"><value>Tümü</value></data>
+  <data name="Home.ExportRegion.europe" xml:space="preserve"><value>Avrupa</value></data>
+  <data name="Home.ExportRegion.middleeast" xml:space="preserve"><value>Orta Doğu</value></data>
+  <data name="Home.ExportRegion.africa" xml:space="preserve"><value>Kuzey Afrika</value></data>
+  <data name="Home.ExportRegion.asia" xml:space="preserve"><value>Orta Asya</value></data>
+  <data name="Home.ExportRegion.other" xml:space="preserve"><value>Diğer</value></data>
+  <data name="Home.AllPosts" xml:space="preserve"><value>Tüm Yazılar</value></data>
+  <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Öne Çıkanlar</value></data>
+  <data name="Home.FeaturedTitle" xml:space="preserve"><value>Öne Çıkan Ürünler</value></data>
+  <data name="Home.FeaturedLead" xml:space="preserve"><value>Sahada kendini kanıtlamış, en çok tercih edilen ürünlerimizden bir seçki.</value></data>
+  <data name="Home.ProcessEyebrow" xml:space="preserve"><value>Süreç</value></data>
+  <data name="Home.ProcessTitle" xml:space="preserve"><value>Tasarımdan sevkiyata tek çatı altında</value></data>
+  <data name="Home.ProcessLead" xml:space="preserve"><value>Bir parçanın fikirden sahaya uzanan yolculuğu; her adım kendi tesisimizde, tek ekip tarafından yürütülür.</value></data>
+  <data name="Home.ProcessStep" xml:space="preserve"><value>Adım</value></data>
+  <data name="Home.Process1Title" xml:space="preserve"><value>Tasarım ve Mühendislik</value></data>
+  <data name="Home.Process1Text" xml:space="preserve"><value>Çizim, numune veya tersine mühendislikle ürünü birlikte tanımlıyoruz.</value></data>
+  <data name="Home.Process2Title" xml:space="preserve"><value>Hammadde ve Döküm</value></data>
+  <data name="Home.Process2Text" xml:space="preserve"><value>Çelik döküm ve kauçuk hamur karışımlarını kendi tesisimizde hazırlıyoruz.</value></data>
+  <data name="Home.Process3Title" xml:space="preserve"><value>İşleme ve Şekillendirme</value></data>
+  <data name="Home.Process3Text" xml:space="preserve"><value>CNC, lazer kesim, büküm ve hidrolik preslerle hassas üretim.</value></data>
+  <data name="Home.Process4Title" xml:space="preserve"><value>Yüzey İşlem ve Kalite</value></data>
+  <data name="Home.Process4Text" xml:space="preserve"><value>Fırın boya ve kaplama sonrası boyutsal ve fiziksel testler.</value></data>
+  <data name="Home.Process5Title" xml:space="preserve"><value>Paketleme ve Sevkiyat</value></data>
+  <data name="Home.Process5Text" xml:space="preserve"><value>İhracata uygun paketleme ile yurt içi ve dünya geneline teslimat.</value></data>
+  <data name="Home.WhyEyebrow" xml:space="preserve"><value>Neden PRJ Proje Makina?</value></data>
+  <data name="Home.WhyTitle" xml:space="preserve"><value>Güvenilir bir üretim ortağı</value></data>
+  <data name="Home.Why1Title" xml:space="preserve"><value>Entegre Üretim</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>Döküm, işleme, kauçuk ve boya tek tesiste; dış kaynak bağımlılığı yok.</value></data>
+  <data name="Home.Why2Title" xml:space="preserve"><value>Kısa Teslim Süresi</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Kendi kapasitemizi planladığımız için teslim tarihlerine sadık kalıyoruz.</value></data>
+  <data name="Home.Why3Title" xml:space="preserve"><value>Ölçülebilir Kalite</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>Hammaddeden sevkiyata kadar her parti test edilir ve kayıt altına alınır.</value></data>
+  <data name="Home.Why4Title" xml:space="preserve"><value>Mühendislik Desteği</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Malzeme seçiminden tasarım iyileştirmeye kadar teknik danışmanlık.</value></data>
+  <data name="Home.Why5Title" xml:space="preserve"><value>Güvenlik Belgeli Tesis</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>MSB Tesis Güvenlik Belgesi ile gizlilik gerektiren projelere hazırız.</value></data>
+  <data name="Home.Why6Title" xml:space="preserve"><value>İhracat Deneyimi</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>20'den fazla ülkeye düzenli sevkiyat ve uluslararası dokümantasyon.</value></data>
+  <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Sektörler</value></data>
+  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Hizmet verdiğimiz sektörler</value></data>
+  <data name="Home.Industry1" xml:space="preserve"><value>İş Makinaları</value></data>
+  <data name="Home.Industry2" xml:space="preserve"><value>Madencilik</value></data>
+  <data name="Home.Industry3" xml:space="preserve"><value>Tarım Makinaları</value></data>
+  <data name="Home.Industry4" xml:space="preserve"><value>Savunma Sanayii</value></data>
+  <data name="Home.Industry5" xml:space="preserve"><value>Altyapı ve İnşaat</value></data>
+  <data name="Home.Industry6" xml:space="preserve"><value>Endüstriyel Ekipman</value></data>
+  <data name="Home.MapZoomIn" xml:space="preserve"><value>Yakınlaştır</value></data>
+  <data name="Home.MapZoomOut" xml:space="preserve"><value>Uzaklaştır</value></data>
+  <data name="Home.MapReset" xml:space="preserve"><value>Haritayı sıfırla</value></data>
+  <data name="Cta.Eyebrow" xml:space="preserve"><value>Projenizi konuşalım</value></data>
+  <data name="Cta.Title" xml:space="preserve"><value>Üretim ihtiyaçlarınız için bizimle iletişime geçin</value></data>
+  <data name="Cta.Text" xml:space="preserve"><value>Teknik çiziminizi veya numunenizi paylaşın; mühendislik ekibimiz size en kısa sürede dönüş yapsın.</value></data>
+  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina; çelik, plastik ve kauçuk iş makinası yedek parçaları ile savunma sanayii parçalarını Ankara'daki 25.000 m² tesisinde %100 yerli olarak üretir.</value></data>
+  <data name="Footer.Corporate" xml:space="preserve"><value>Kurumsal</value></data>
+  <data name="Footer.Rights" xml:space="preserve"><value>Tüm hakları saklıdır.</value></data>
+  <data name="Footer.Developer" xml:space="preserve"><value>Geliştirici:</value></data>
+  <data name="Cookie.Message" xml:space="preserve"><value>Sitemizin çalışması için zorunlu çerezlerin yanında, onay verirseniz ziyaret istatistikleri için Google Analytics çerezlerini kullanıyoruz.</value></data>
+  <data name="Cookie.Reject" xml:space="preserve"><value>Reddet</value></data>
+  <data name="Cookie.Settings" xml:space="preserve"><value>Çerez Tercihleri</value></data>
+  <data name="Cookie.Details" xml:space="preserve"><value>Detaylı bilgi</value></data>
+  <data name="Cookie.Accept" xml:space="preserve"><value>Kabul et</value></data>
+  <data name="About.MetaTitle" xml:space="preserve"><value>Hakkımızda</value></data>
+  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n tarihçesi, vizyonu, misyonu, 25.000 m² üretim tesisi ve yerli üretim anlayışı hakkında bilgi alın.</value></data>
+  <data name="About.Title" xml:space="preserve"><value>Hakkımızda</value></data>
+  <data name="About.Lead" xml:space="preserve"><value>Çelik, plastik ve kauçuk üretiminde mühendislik, kapasite ve güvenilirliği bir araya getiriyoruz.</value></data>
+  <data name="About.WhoEyebrow" xml:space="preserve"><value>Biz Kimiz?</value></data>
+  <data name="About.WhoTitle" xml:space="preserve"><value>Entegre üretimin güvenilir adresi</value></data>
+  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina, Ankara Sincan 1. Organize Sanayi Bölgesi'ndeki 25.000 m²'lik tesislerinde çelik, plastik ve kauçuk iş makinası yedek parçaları üretmektedir.</value></data>
+  <data name="About.WhoText1" xml:space="preserve"><value>Bünyemizde çok sayıda CNC makinesi, hidrolik presler, kauçuk hamur karıştırma makineleri, lazer kesim ve büküm makineleri, 2 adet fırın boya tesisi, kaplama tesisi ve çelik döküm tesisi bulunmaktadır.</value></data>
+  <data name="About.WhoText2" xml:space="preserve"><value>Tasarımdan üretime, kalite kontrolden sevkiyata kadar birçok süreci kendi bünyemizde gerçekleştiriyor; bu sayede maliyet, kalite ve teslim süresi üzerinde tam kontrol sağlıyoruz.</value></data>
+  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Tarihçe</value></data>
+  <data name="About.HistoryTitle" xml:space="preserve"><value>Büyüme yolculuğumuz</value></data>
+  <data name="About.History1Title" xml:space="preserve"><value>Kuruluş ve kauçuk üretimi</value></data>
+  <data name="About.History1Text" xml:space="preserve"><value>İş makinaları için kauçuk yedek parça üretimiyle başlayan yolculuğumuzda, kendi hamur karışımlarımızı geliştirdik.</value></data>
+  <data name="About.History2Title" xml:space="preserve"><value>Çelik ve metal işleme yatırımları</value></data>
+  <data name="About.History2Text" xml:space="preserve"><value>CNC işleme, lazer kesim ve büküm yatırımlarıyla çelik parça üretimine geçtik.</value></data>
+  <data name="About.History3Title" xml:space="preserve"><value>Çelik döküm ve yüzey işlemleri</value></data>
+  <data name="About.History3Text" xml:space="preserve"><value>Çelik döküm tesisi, fırın boya hatları ve kaplama tesisiyle entegre üretim yapısına ulaştık.</value></data>
+  <data name="About.History4Title" xml:space="preserve"><value>Savunma sanayii</value></data>
+  <data name="About.History4Text" xml:space="preserve"><value>Milli Savunma Bakanlığı Tesis Güvenlik Belgesi'ni alarak savunma sanayii projelerinde yer almaya başladık.</value></data>
+  <data name="About.History5Title" xml:space="preserve"><value>Global ihracat</value></data>
+  <data name="About.History5Text" xml:space="preserve"><value>Bugün 150'den fazla uzman çalışanımızla 20'den fazla ülkeye ihracat yapıyoruz.</value></data>
+  <data name="About.VisionTitle" xml:space="preserve"><value>Vizyon</value></data>
+  <data name="About.VisionText" xml:space="preserve"><value>Çelik, plastik ve kauçuk parça üretiminde teknolojiyi ve yerli mühendisliği esas alan, dünya çapında tercih edilen bir çözüm ortağı olmak.</value></data>
+  <data name="About.MissionTitle" xml:space="preserve"><value>Misyon</value></data>
+  <data name="About.MissionText" xml:space="preserve"><value>Müşterilerimizin ihtiyaçlarına uygun, yüksek kaliteli ve sürdürülebilir ürünleri zamanında teslim etmek; ülkemizin sanayi ve savunma gücüne katkı sağlamak.</value></data>
+  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Üretim Tesisimiz</value></data>
+  <data name="About.FacilityTitle" xml:space="preserve"><value>25.000 m² entegre üretim alanı</value></data>
+  <data name="About.FacilityText" xml:space="preserve"><value>Tesisimizde metal, kauçuk ve plastik üretimini aynı çatı altında birleştirerek kısa teslim süreleri ve tutarlı kalite sağlıyoruz.</value></data>
+  <data name="About.FacilityCnc" xml:space="preserve"><value>Çok sayıda CNC tezgâhı</value></data>
+  <data name="About.FacilityPress" xml:space="preserve"><value>Hidrolik presler</value></data>
+  <data name="About.FacilityRubber" xml:space="preserve"><value>Kauçuk hamur karıştırma</value></data>
+  <data name="About.FacilityLaser" xml:space="preserve"><value>Lazer kesim ve büküm</value></data>
+  <data name="About.FacilityPaint" xml:space="preserve"><value>2 adet fırın boya tesisi</value></data>
+  <data name="About.FacilityCoating" xml:space="preserve"><value>Kaplama tesisi</value></data>
+  <data name="About.FacilityCasting" xml:space="preserve"><value>Çelik döküm tesisi</value></data>
+  <data name="About.FacilityQuality" xml:space="preserve"><value>Kalite kontrol laboratuvarı</value></data>
+  <data name="About.HrTitle" xml:space="preserve"><value>İnsan Kaynakları</value></data>
+  <data name="About.HrText" xml:space="preserve"><value>150'den fazla uzman çalışanımız, sürekli eğitim ve iş güvenliği kültürüyle üretimimizin en değerli parçasıdır.</value></data>
+  <data name="About.DomesticTitle" xml:space="preserve"><value>Yerli ve Milli Üretim</value></data>
+  <data name="About.DomesticText" xml:space="preserve"><value>Tasarım ve üretim kabiliyetlerimizi ülkemizde geliştirerek dışa bağımlılığı azaltan %100 yerli çözümler sunuyoruz.</value></data>
+  <data name="About.ExportTitle" xml:space="preserve"><value>Global İhracat</value></data>
+  <data name="About.ExportText" xml:space="preserve"><value>Avrupa'dan Orta Asya'ya uzanan geniş bir coğrafyada 20'den fazla ülkeye ihracat yapıyoruz.</value></data>
+  <data name="Products.MetaTitle" xml:space="preserve"><value>Ürünler</value></data>
+  <data name="Products.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik ürünler, iş makinası yedek parçaları ve savunma sanayii ürünlerimizi inceleyin.</value></data>
+  <data name="Products.Title" xml:space="preserve"><value>Ürünlerimiz</value></data>
+  <data name="Products.Lead" xml:space="preserve"><value>İş makinaları ve endüstriyel uygulamalar için yüksek dayanımlı çelik, kauçuk ve plastik parçalar.</value></data>
+  <data name="Products.AllProducts" xml:space="preserve"><value>Tüm Ürünler</value></data>
+  <data name="Products.Categories" xml:space="preserve"><value>Kategoriler</value></data>
+  <data name="Products.SearchLabel" xml:space="preserve"><value>Ürün ara</value></data>
+  <data name="Products.SearchPlaceholder" xml:space="preserve"><value>Ürün adı, malzeme, OEM no veya servis kodu…</value></data>
+  <data name="Products.CustomProduction" xml:space="preserve"><value>Aradığınız ürünü bulamadınız mı? Çiziminize veya numunenize göre üretim yapıyoruz.</value></data>
+  <data name="Products.ResultCount" xml:space="preserve"><value>{0} ürün listeleniyor</value></data>
+  <data name="Products.EmptyTitle" xml:space="preserve"><value>Ürün bulunamadı</value></data>
+  <data name="Products.EmptyText" xml:space="preserve"><value>Arama kriterlerinize uygun ürün bulunamadı. İhtiyacınızı bize iletin, size özel çözüm sunalım.</value></data>
+  <data name="Products.Material" xml:space="preserve"><value>Malzeme</value></data>
+  <data name="Products.ProductionMethod" xml:space="preserve"><value>Üretim Yöntemi</value></data>
+  <data name="Products.OemNumber" xml:space="preserve"><value>OEM No</value></data>
+  <data name="Products.ServiceCode" xml:space="preserve"><value>Servis Kodu</value></data>
+  <data name="Products.Origin" xml:space="preserve"><value>Menşei</value></data>
+  <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — %100 yerli üretim</value></data>
+  <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Bu Ürün İçin Teklif Al</value></data>
+  <data name="Products.Description" xml:space="preserve"><value>Ürün Açıklaması</value></data>
+  <data name="Products.Specifications" xml:space="preserve"><value>Teknik Özellikler</value></data>
+  <data name="Products.ApplicationAreas" xml:space="preserve"><value>Kullanım Alanları</value></data>
+  <data name="Products.QuoteBoxTitle" xml:space="preserve"><value>Fiyat ve teslim süresi</value></data>
+  <data name="Products.QuoteBoxText" xml:space="preserve"><value>Miktar ve teknik detayları paylaşın, satış ekibimiz size özel teklifini hazırlasın.</value></data>
+  <data name="Products.AskMarketingTitle" xml:space="preserve"><value>Pazarlama ekibimize danışın</value></data>
+  <data name="Products.AskMarketingText" xml:space="preserve"><value>Bu ürünle ilgili sorularınızı WhatsApp üzerinden hemen yanıtlayalım.</value></data>
+  <data name="Products.WhatsAppTemplate" xml:space="preserve"><value>Merhaba, "{0}" ürünü hakkında bilgi almak istiyorum.
+{1}</value></data>
+  <data name="Products.Related" xml:space="preserve"><value>İlgili Ürünler</value></data>
+  <data name="Products.ShowImage" xml:space="preserve"><value>Görsel {0}</value></data>
+  <data name="Manufacturing.MetaTitle" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
+  <data name="Manufacturing.MetaDescription" xml:space="preserve"><value>CNC işleme, hidrolik pres, kauçuk üretimi, lazer kesim, büküm, fırın boya, kaplama ve çelik döküm kabiliyetlerimiz.</value></data>
+  <data name="Manufacturing.Title" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
+  <data name="Manufacturing.Lead" xml:space="preserve"><value>Tasarımdan sevkiyata kadar tüm süreçler tek çatı altında.</value></data>
+  <data name="Manufacturing.IntroEyebrow" xml:space="preserve"><value>Entegre Üretim</value></data>
+  <data name="Manufacturing.IntroTitle" xml:space="preserve"><value>Kontrol bizde, kalite sizde</value></data>
+  <data name="Manufacturing.IntroText" xml:space="preserve"><value>Kritik üretim adımlarını dış kaynağa bırakmadan yönetiyor, her siparişte izlenebilirlik ve tekrarlanabilir kalite sağlıyoruz.</value></data>
+  <data name="Manufacturing.FlowDesign" xml:space="preserve"><value>Tasarım</value></data>
+  <data name="Manufacturing.FlowProduction" xml:space="preserve"><value>Üretim</value></data>
+  <data name="Manufacturing.FlowFinishing" xml:space="preserve"><value>Yüzey İşlem</value></data>
+  <data name="Manufacturing.FlowQuality" xml:space="preserve"><value>Kalite Kontrol</value></data>
+  <data name="Manufacturing.FlowShipping" xml:space="preserve"><value>Sevkiyat</value></data>
+  <data name="Manufacturing.OtherCapabilities" xml:space="preserve"><value>Diğer Kabiliyetler</value></data>
+  <data name="Manufacturing.SpecsTitle" xml:space="preserve"><value>Teknik Kapasite</value></data>
+  <data name="Manufacturing.GalleryTitle" xml:space="preserve"><value>Tesisten Görüntüler</value></data>
+  <data name="Manufacturing.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
+  <data name="Manufacturing.CertificatesTitle" xml:space="preserve"><value>Sertifikalar ve Belgeler</value></data>
+  <data name="Manufacturing.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
+  <data name="Defense.MetaTitle" xml:space="preserve"><value>Savunma Sanayii</value></data>
+  <data name="Defense.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina, MSB Tesis Güvenlik Belgesi ile savunma sanayii parçalarını %100 yerli ve milli olarak üretir.</value></data>
+  <data name="Defense.Title" xml:space="preserve"><value>Savunma Sanayii</value></data>
+  <data name="Defense.Lead" xml:space="preserve"><value>Ülkemizin savunma gücüne yerli ve milli üretimle katkı sağlıyoruz.</value></data>
+  <data name="Defense.IntroEyebrow" xml:space="preserve"><value>Yerli ve Milli Üretim</value></data>
+  <data name="Defense.IntroTitle" xml:space="preserve"><value>Güvenilir savunma sanayii tedarikçisi</value></data>
+  <data name="Defense.IntroLead" xml:space="preserve"><value>PRJ Proje Makina, Milli Savunma Bakanlığı Tesis Güvenlik Belgesi'ne sahip bir üretici olarak savunma sanayii projelerinde yer almaktadır.</value></data>
+  <data name="Defense.IntroText" xml:space="preserve"><value>Ülkemizin savunma sanayiindeki atılımlarına paralel olarak; 122 mm roket sistemi parçaları ve MK serisi uçak bombalarının kuyruk kompleleri gibi çeşitli savunma sanayii parçalarını %100 yerli ve milli olarak üretmekteyiz.</value></data>
+  <data name="Defense.ClearanceText" xml:space="preserve"><value>Tesisimiz, gizlilik dereceli projelerde çalışabilmek için gerekli fiziki ve personel güvenliği şartlarını karşılamaktadır.</value></data>
+  <data name="Defense.PointClearance" xml:space="preserve"><value>MSB Tesis Güvenlik Belgesi</value></data>
+  <data name="Defense.PointDomestic" xml:space="preserve"><value>%100 Yerli Üretim</value></data>
+  <data name="Defense.PointConfidentiality" xml:space="preserve"><value>Gizlilik ve Güvenlik</value></data>
+  <data name="Defense.PointQuality" xml:space="preserve"><value>Şartnameye Tam Uyum</value></data>
+  <data name="Defense.PointTraceability" xml:space="preserve"><value>İzlenebilirlik</value></data>
+  <data name="Defense.PrincipleDomestic" xml:space="preserve"><value>Hammadde tedarikinden son ürüne kadar üretimin tamamı ülkemizde gerçekleştirilir.</value></data>
+  <data name="Defense.PrincipleConfidentiality" xml:space="preserve"><value>Proje bilgileri, ilgili mevzuat çerçevesinde yalnızca yetkili personel tarafından işlenir.</value></data>
+  <data name="Defense.PrincipleQuality" xml:space="preserve"><value>Üretim, kurum ve müşteri şartnamelerine tam uyumla gerçekleştirilir ve belgelenir.</value></data>
+  <data name="Defense.PrincipleTraceability" xml:space="preserve"><value>Her parti hammaddeden sevkiyata kadar kayıt altında tutularak izlenebilir.</value></data>
+  <data name="Defense.ProductsTitle" xml:space="preserve"><value>Savunma Sanayii Ürün Grupları</value></data>
+  <data name="Defense.ConfidentialityNotice" xml:space="preserve"><value>Savunma sanayii ürünlerine ait teknik detaylar, çizimler ve üretim parametreleri kamuya açık olarak paylaşılmaz; yalnızca yetkili kurumlarla mevzuat çerçevesinde paylaşılır.</value></data>
+  <data name="Defense.ScrollHint" xml:space="preserve"><value>Parçalarına ayırmak için kaydırın</value></data>
+  <data name="Defense.LinerEyebrow" xml:space="preserve"><value>İçeriden bakış</value></data>
+  <data name="Defense.LinerTitle" xml:space="preserve"><value>Çelik gövdenin içinde, kendi kauçuğumuz</value></data>
+  <data name="Defense.ReadyTitle" xml:space="preserve"><value>Gizlilik dereceli projelere hazır</value></data>
+  <data name="Defense.FinaleEyebrow" xml:space="preserve"><value>Her parçada</value></data>
+  <data name="Defense.HudPhases" xml:space="preserve"><value>Beklemede|İnceleme|Hazır|Ateşleme|Uçuş</value></data>
+  <data name="Defense.HudAltitude" xml:space="preserve"><value>İrtifa</value></data>
+  <data name="Defense.HudSpeed" xml:space="preserve"><value>Hız</value></data>
+  <data name="Defense.ModelAlt" xml:space="preserve"><value>Kaydırdıkça katmanlarına ayrılan, yeniden birleşip ateşlenen temsili bir roketin 3B modeli</value></data>
+  <data name="Defense.ModelPartNose" xml:space="preserve"><value>CNC işlenmiş burun konisi</value></data>
+  <data name="Defense.ModelPartBody" xml:space="preserve"><value>Isıl işlemli çelik gövde</value></data>
+  <data name="Defense.ModelPartLiner" xml:space="preserve"><value>Kendi karışımımız kauçuk yalıtım</value></data>
+  <data name="Defense.ModelPartAft" xml:space="preserve"><value>Hassas işlenmiş nozul ve kanatçıklar</value></data>
+  <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
+  <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.Lead" xml:space="preserve"><value>Kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
+  <data name="Blog.SearchLabel" xml:space="preserve"><value>Blogda ara</value></data>
+  <data name="Blog.SearchPlaceholder" xml:space="preserve"><value>Yazılarda ara…</value></data>
+  <data name="Blog.Categories" xml:space="preserve"><value>Kategoriler</value></data>
+  <data name="Blog.AllPosts" xml:space="preserve"><value>Tüm Yazılar</value></data>
+  <data name="Blog.EmptyTitle" xml:space="preserve"><value>Henüz yazı yok</value></data>
+  <data name="Blog.EmptyText" xml:space="preserve"><value>Bu kriterlere uygun yayınlanmış bir yazı bulunamadı.</value></data>
+  <data name="Blog.TagFilter" xml:space="preserve"><value>“{0}” etiketli yazılar</value></data>
+  <data name="Blog.Tags" xml:space="preserve"><value>Etiketler</value></data>
+  <data name="Blog.Share" xml:space="preserve"><value>Paylaş</value></data>
+  <data name="Blog.Related" xml:space="preserve"><value>İlgili Yazılar</value></data>
+  <data name="Gallery.MetaTitle" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Gallery.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina fabrika, üretim, CNC, kauçuk, çelik ve fuar fotoğrafları.</value></data>
+  <data name="Gallery.Title" xml:space="preserve"><value>Galeri</value></data>
+  <data name="Gallery.Lead" xml:space="preserve"><value>Tesisimizden, üretim hatlarımızdan ve etkinliklerimizden kareler.</value></data>
+  <data name="Gallery.FilterLabel" xml:space="preserve"><value>Galeri kategorileri</value></data>
+  <data name="Gallery.All" xml:space="preserve"><value>Tümü</value></data>
+  <data name="Gallery.EmptyTitle" xml:space="preserve"><value>Galeri hazırlanıyor</value></data>
+  <data name="Gallery.EmptyText" xml:space="preserve"><value>Yakında tesisimizden fotoğraflar burada yer alacak.</value></data>
+  <data name="Quality.MetaTitle" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
+  <data name="Quality.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina kalite politikası, sertifikaları, kalite belgeleri ve yetki belgeleri.</value></data>
+  <data name="Quality.Title" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
+  <data name="Quality.Lead" xml:space="preserve"><value>Her parçada ölçülebilir, izlenebilir ve belgelenmiş kalite.</value></data>
+  <data name="Quality.PolicyEyebrow" xml:space="preserve"><value>Kalite Politikamız</value></data>
+  <data name="Quality.PolicyTitle" xml:space="preserve"><value>Kalite bir departman değil, üretim kültürümüzdür</value></data>
+  <data name="Quality.PolicyText" xml:space="preserve"><value>Hammadde girişinden sevkiyata kadar her aşamada ölçüm, test ve kayıt süreçlerimizle müşterilerimize tutarlı ve güvenilir ürünler sunuyoruz.</value></data>
+  <data name="Quality.Point1" xml:space="preserve"><value>Hammadde giriş kontrolü ve malzeme sertifikaları</value></data>
+  <data name="Quality.Point2" xml:space="preserve"><value>Proses içi boyutsal ve görsel kontroller</value></data>
+  <data name="Quality.Point3" xml:space="preserve"><value>Sertlik, çekme ve fiziksel testler</value></data>
+  <data name="Quality.Point4" xml:space="preserve"><value>Parti bazında tam izlenebilirlik</value></data>
+  <data name="Quality.EmptyTitle" xml:space="preserve"><value>Belgeler yakında</value></data>
+  <data name="Quality.EmptyText" xml:space="preserve"><value>Sertifika ve kalite belgelerimiz yakında burada yayınlanacaktır.</value></data>
+  <data name="DocumentType.Certificate" xml:space="preserve"><value>Sertifikalar</value></data>
+  <data name="DocumentType.QualityDocument" xml:space="preserve"><value>Kalite Belgeleri</value></data>
+  <data name="DocumentType.Standard" xml:space="preserve"><value>Standartlar</value></data>
+  <data name="DocumentType.Authorization" xml:space="preserve"><value>Yetki Belgeleri</value></data>
+  <data name="DocumentType.Catalog" xml:space="preserve"><value>Ürün Katalogları</value></data>
+  <data name="Nav.Catalog" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Catalog.Title" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Catalog.Lead" xml:space="preserve"><value>Ürün gruplarımızı ve teknik bilgileri kataloglarımızda sayfa sayfa inceleyin veya PDF olarak indirin</value></data>
+  <data name="Catalog.MetaTitle" xml:space="preserve"><value>Ürün Kataloğu</value></data>
+  <data name="Catalog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ürün kataloglarını çevrim içi inceleyin veya PDF olarak indirin.</value></data>
+  <data name="Catalog.Read" xml:space="preserve"><value>İncele</value></data>
+  <data name="Catalog.Download" xml:space="preserve"><value>PDF indir</value></data>
+  <data name="Catalog.Close" xml:space="preserve"><value>Kapat</value></data>
+  <data name="Catalog.Previous" xml:space="preserve"><value>Önceki sayfa</value></data>
+  <data name="Catalog.Next" xml:space="preserve"><value>Sonraki sayfa</value></data>
+  <data name="Catalog.Loading" xml:space="preserve"><value>Katalog yükleniyor…</value></data>
+  <data name="Catalog.Error" xml:space="preserve"><value>Katalog görüntülenemedi. PDF'i indirerek açabilirsiniz.</value></data>
+  <data name="Catalog.EmptyTitle" xml:space="preserve"><value>Kataloglar yakında</value></data>
+  <data name="Catalog.EmptyText" xml:space="preserve"><value>Ürün kataloglarımız yakında burada yayınlanacaktır.</value></data>
+  <data name="Contact.MetaTitle" xml:space="preserve"><value>İletişim</value></data>
+  <data name="Contact.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina ile iletişime geçin: Sincan 1. Organize Sanayi Bölgesi, Ankara. Telefon, e-posta ve iletişim formu.</value></data>
+  <data name="Contact.Title" xml:space="preserve"><value>İletişim</value></data>
+  <data name="Contact.Lead" xml:space="preserve"><value>Sorularınız ve projeleriniz için ekibimiz size yardımcı olmaya hazır.</value></data>
+  <data name="Contact.InfoTitle" xml:space="preserve"><value>İletişim Bilgileri</value></data>
+  <data name="Contact.Address" xml:space="preserve"><value>Adres</value></data>
+  <data name="Contact.Phone" xml:space="preserve"><value>Telefon</value></data>
+  <data name="Contact.Email" xml:space="preserve"><value>E-posta</value></data>
+  <data name="Contact.WorkingHours" xml:space="preserve"><value>Çalışma Saatleri</value></data>
+  <data name="Contact.FormTitle" xml:space="preserve"><value>Bize Yazın</value></data>
+  <data name="Contact.Map" xml:space="preserve"><value>PRJ Proje Makina konum haritası</value></data>
+  <data name="Contact.Success" xml:space="preserve"><value>Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.</value></data>
+  <data name="Quote.MetaTitle" xml:space="preserve"><value>Teklif Al</value></data>
+  <data name="Quote.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik parça ihtiyaçlarınız için PRJ Proje Makina'nÄ±n teklif isteyin; teknik çizim dosyanızı güvenle yükleyin.</value></data>
+  <data name="Quote.Title" xml:space="preserve"><value>Teklif Al</value></data>
+  <data name="Quote.Lead" xml:space="preserve"><value>İhtiyacınızı paylaşın, teknik ekibimiz size özel teklifinizi hazırlasın.</value></data>
+  <data name="Quote.ContactSection" xml:space="preserve"><value>İletişim Bilgileri</value></data>
+  <data name="Quote.ProductSection" xml:space="preserve"><value>Ürün ve Talep Detayları</value></data>
+  <data name="Quote.ProductPlaceholder" xml:space="preserve"><value>Listeden seçin veya yazın</value></data>
+  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>Örn. 500 adet</value></data>
+  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>İzin verilen dosyalar: PDF, DWG, DXF, STEP, STP, IGS, IGES, JPG, PNG, ZIP · En fazla 10 MB</value></data>
+  <data name="Quote.Submit" xml:space="preserve"><value>Teklif Talebi Gönder</value></data>
+  <data name="Quote.ProductMessage" xml:space="preserve"><value>Bu ürün hakkında teklif almak istiyorum: {0}</value></data>
+  <data name="Quote.CapabilityMessage" xml:space="preserve"><value>Bu üretim kabiliyeti için teklif almak istiyorum: {0}</value></data>
+  <data name="Quote.Success" xml:space="preserve"><value>Teklif talebiniz alındı. Satış ekibimiz en kısa sürede sizinle iletişime geçecek.</value></data>
+  <data name="Quote.ProcessTitle" xml:space="preserve"><value>Nasıl ilerliyoruz?</value></data>
+  <data name="Quote.Step1" xml:space="preserve"><value>Talebinizi ve teknik dosyalarınızı inceliyoruz.</value></data>
+  <data name="Quote.Step2" xml:space="preserve"><value>Gerekirse mühendislik ekibimiz detayları sizinle netleştiriyor.</value></data>
+  <data name="Quote.Step3" xml:space="preserve"><value>Fiyat ve teslim süresini içeren teklifimizi iletiyoruz.</value></data>
+  <data name="Quote.Step4" xml:space="preserve"><value>Onayınızla üretim planlamasına başlıyoruz.</value></data>
+  <data name="Quote.ConfidentialTitle" xml:space="preserve"><value>Gizlilik</value></data>
+  <data name="Quote.ConfidentialText" xml:space="preserve"><value>Paylaştığınız çizim ve dosyalar yalnızca teklif hazırlamak amacıyla kullanılır ve üçüncü kişilerle paylaşılmaz.</value></data>
+  <data name="Form.FullName" xml:space="preserve"><value>Ad Soyad</value></data>
+  <data name="Form.Company" xml:space="preserve"><value>Firma</value></data>
+  <data name="Form.CompanyName" xml:space="preserve"><value>Firma Adı</value></data>
+  <data name="Form.Email" xml:space="preserve"><value>E-posta</value></data>
+  <data name="Form.Phone" xml:space="preserve"><value>Telefon</value></data>
+  <data name="Form.Subject" xml:space="preserve"><value>Konu</value></data>
+  <data name="Form.Message" xml:space="preserve"><value>Mesaj</value></data>
+  <data name="Form.Product" xml:space="preserve"><value>Ürün</value></data>
+  <data name="Form.ProductName" xml:space="preserve"><value>Ürün</value></data>
+  <data name="Form.Quantity" xml:space="preserve"><value>Miktar</value></data>
+  <data name="Form.Description" xml:space="preserve"><value>Açıklama</value></data>
+  <data name="Form.Attachment" xml:space="preserve"><value>Teknik Dosya</value></data>
+  <data name="Form.PrivacyConsent" xml:space="preserve"><value>KVKK Onayı</value></data>
+  <data name="Form.PrivacyConsentText" xml:space="preserve"><value>Kişisel verilerimin işlenmesine ilişkin aydınlatma metnini okudum ve onaylıyorum.</value></data>
+  <data name="Form.Send" xml:space="preserve"><value>Gönder</value></data>
+  <data name="Validation.Required" xml:space="preserve"><value>{0} alanı zorunludur.</value></data>
+  <data name="Validation.MaxLength" xml:space="preserve"><value>{0} en fazla {1} karakter olabilir.</value></data>
+  <data name="Validation.Length" xml:space="preserve"><value>{0} en az {2}, en fazla {1} karakter olmalıdır.</value></data>
+  <data name="Validation.Email" xml:space="preserve"><value>Geçerli bir e-posta adresi girin.</value></data>
+  <data name="Validation.Phone" xml:space="preserve"><value>Geçerli bir telefon numarası girin.</value></data>
+  <data name="Validation.Consent" xml:space="preserve"><value>Devam etmek için KVKK aydınlatma metnini onaylamanız gerekir.</value></data>
+  <data name="Validation.FileType" xml:space="preserve"><value>Bu dosya türü desteklenmiyor.</value></data>
+  <data name="Validation.FileSize" xml:space="preserve"><value>Dosya boyutu en fazla 10 MB olabilir.</value></data>
+  <data name="Validation.FileContent" xml:space="preserve"><value>Dosya içeriği, uzantısıyla uyuşmuyor.</value></data>
+  <data name="Legal.PrivacyTitle" xml:space="preserve"><value>KVKK ve Gizlilik Politikası</value></data>
+  <data name="Legal.PrivacyMetaDescription" xml:space="preserve"><value>PRJ Proje Makina kişisel verilerin korunması ve gizlilik politikası.</value></data>
+  <data name="Legal.PrivacyLead" xml:space="preserve"><value>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni.</value></data>
+  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>PRJ Proje Makina olarak, web sitemiz aracılığıyla paylaştığınız kişisel verilerin güvenliğine önem veriyoruz. Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatıyla sizi bilgilendirmek amacıyla hazırlanmıştır.</value></data>
+  <data name="Legal.Privacy1Title" xml:space="preserve"><value>İşlenen kişisel veriler</value></data>
+  <data name="Legal.Privacy1Text" xml:space="preserve"><value>İletişim ve teklif formları aracılığıyla ad soyad, firma adı, e-posta, telefon, mesaj içeriği ve yüklediğiniz teknik dosyalar ile güvenlik amacıyla IP adresiniz işlenmektedir. Çerezlere onay vermeniz hâlinde site kullanımına ilişkin istatistikler Google Analytics aracılığıyla işlenir; ayrıntılar Çerez Politikası'ndadır.</value></data>
+  <data name="Legal.Privacy2Title" xml:space="preserve"><value>İşleme amaçları</value></data>
+  <data name="Legal.Privacy2Text" xml:space="preserve"><value>Verileriniz; taleplerinize yanıt vermek, teklif hazırlamak, ticari ilişkiyi yürütmek ve bilgi güvenliğini sağlamak amaçlarıyla işlenir.</value></data>
+  <data name="Legal.Privacy3Title" xml:space="preserve"><value>Hukuki sebepler</value></data>
+  <data name="Legal.Privacy3Text" xml:space="preserve"><value>Kişisel verileriniz, KVKK'nın 5. maddesinde yer alan açık rıza, bir sözleşmenin kurulması ve veri sorumlusunun meşru menfaati hukuki sebeplerine dayanılarak işlenir.</value></data>
+  <data name="Legal.Privacy4Title" xml:space="preserve"><value>Aktarım</value></data>
+  <data name="Legal.Privacy4Text" xml:space="preserve"><value>Verileriniz, yasal yükümlülükler dışında üçüncü kişilerle paylaşılmaz ve yurt dışına aktarılmaz.</value></data>
+  <data name="Legal.Privacy5Title" xml:space="preserve"><value>Saklama süresi</value></data>
+  <data name="Legal.Privacy5Text" xml:space="preserve"><value>Verileriniz, işleme amacının gerektirdiği süre ve ilgili mevzuatta öngörülen süreler boyunca saklanır, ardından silinir veya anonim hale getirilir.</value></data>
+  <data name="Legal.Privacy6Title" xml:space="preserve"><value>Haklarınız</value></data>
+  <data name="Legal.Privacy6Text" xml:space="preserve"><value>KVKK'nın 11. maddesi kapsamındaki haklarınızı kullanmak için iletişim sayfamızdaki e-posta adresi üzerinden bize başvurabilirsiniz.</value></data>
+  <data name="Legal.CookiesTitle" xml:space="preserve"><value>Çerez Politikası</value></data>
+  <data name="Legal.CookiesMetaDescription" xml:space="preserve"><value>PRJ Proje Makina web sitesinde kullanılan çerezler hakkında bilgi.</value></data>
+  <data name="Legal.CookiesLead" xml:space="preserve"><value>Web sitemizde kullanılan çerezler ve amaçları.</value></data>
+  <data name="Legal.CookiesIntro" xml:space="preserve"><value>Web sitemizde sitenin güvenli ve doğru çalışması için zorunlu çerezler ile, yalnızca onay vermeniz hâlinde ziyaret istatistikleri için analiz çerezleri kullanılmaktadır. Reklam çerezi kullanılmaz.</value></data>
+  <data name="Legal.Cookies1Title" xml:space="preserve"><value>Çerez nedir?</value></data>
+  <data name="Legal.Cookies1Text" xml:space="preserve"><value>Çerezler, ziyaret ettiğiniz web sitesi tarafından tarayıcınıza kaydedilen küçük metin dosyalarıdır.</value></data>
+  <data name="Legal.Cookies2Title" xml:space="preserve"><value>Zorunlu çerezler</value></data>
+  <data name="Legal.Cookies2Text" xml:space="preserve"><value>Form güvenliği (CSRF koruması) ve form sonrası bilgilendirme mesajları için kullanılır. Bu çerezler olmadan formlar çalışmaz.</value></data>
+  <data name="Legal.Cookies3Title" xml:space="preserve"><value>Yönetim paneli çerezleri</value></data>
+  <data name="Legal.Cookies3Text" xml:space="preserve"><value>Yalnızca yetkili personelin yönetim paneline güvenli girişi için kullanılır.</value></data>
+  <data name="Legal.Cookies4Title" xml:space="preserve"><value>Çerezlerin yönetimi</value></data>
+  <data name="Legal.Cookies4Text" xml:space="preserve"><value>Tercihinizi istediğiniz zaman sayfanın altındaki "Çerez Tercihleri" bağlantısından değiştirebilirsiniz. Tarayıcı ayarlarınızdan da çerezleri silebilir veya engelleyebilirsiniz; ancak zorunlu çerezler engellenirse formlar çalışmayabilir.</value></data>
+  <data name="Legal.CookieName" xml:space="preserve"><value>Çerez</value></data>
+  <data name="Legal.CookiePurpose" xml:space="preserve"><value>Amaç</value></data>
+  <data name="Legal.CookieAntiforgery" xml:space="preserve"><value>Form güvenliği (CSRF koruması)</value></data>
+  <data name="Legal.CookieTempData" xml:space="preserve"><value>Form gönderimi sonrası bilgilendirme mesajı</value></data>
+  <data name="Legal.CookieAuth" xml:space="preserve"><value>Yönetim paneli oturumu (yalnızca yetkili personel)</value></data>
+  <data name="Legal.Cookies5Title" xml:space="preserve"><value>Analiz çerezleri (Google Analytics)</value></data>
+  <data name="Legal.Cookies5Text" xml:space="preserve"><value>Yalnızca onay vermeniz hâlinde, sitenin nasıl kullanıldığını (ziyaret edilen sayfalar, ziyaretçinin ülkesi, siteye nereden gelindiği) anonim istatistik olarak ölçmek için Google Analytics kullanılır. Bu veriler Google LLC tarafından yurt dışındaki sunucularda işlenebilir. Onay vermezseniz bu çerezler yüklenmez.</value></data>
+  <data name="Legal.CookieAnalytics" xml:space="preserve"><value>Google Analytics ziyaret istatistikleri (yalnızca onay verilirse, 2 yıl)</value></data>
+  <data name="Legal.CookieConsent" xml:space="preserve"><value>Çerez tercihinizi (kabul / ret) hatırlar</value></data>
+  <data name="Error.NotFoundTitle" xml:space="preserve"><value>Sayfa bulunamadı</value></data>
+  <data name="Error.NotFoundText" xml:space="preserve"><value>Aradığınız sayfa taşınmış, kaldırılmış veya hiç var olmamış olabilir.</value></data>
+  <data name="Error.GenericTitle" xml:space="preserve"><value>Bir hata oluştu</value></data>
+  <data name="Error.GenericText" xml:space="preserve"><value>İsteğiniz işlenirken beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value></data>
+  <data name="Error.BackHome" xml:space="preserve"><value>Ana Sayfaya Dön</value></data>
+  <data name="Card.Email" xml:space="preserve"><value>E-posta</value></data>
+  <data name="Card.SaveContact" xml:space="preserve"><value>Kişiyi rehbere kaydet</value></data>
+  <data name="Card.Mobile" xml:space="preserve"><value>Cep telefonu</value></data>
+  <data name="Card.Office" xml:space="preserve"><value>Ofis</value></data>
+  <data name="Card.ViewProfile" xml:space="preserve"><value>Profili görüntüle</value></data>
+  <data name="Card.Website" xml:space="preserve"><value>Web sitesi</value></data>
+  <data name="Card.Tagline" xml:space="preserve"><value>Kauçuk · Plastik · Çelik · Savunma</value></data>
+  <data name="Home.VideoPause" xml:space="preserve"><value>Videoyu durdur</value></data>
+  <data name="Home.VideoPlay" xml:space="preserve"><value>Videoyu oynat</value></data>
+  <data name="Fair.Lead" xml:space="preserve"><value>Dijital broşürümüzü görüntülemek için e-posta adresinizi girin.</value></data>
+  <data name="Fair.LeadOptional" xml:space="preserve"><value>E-posta adresinizi bırakın, fuar sonrası sizinle iletişime geçelim.</value></data>
+  <data name="Fair.Email" xml:space="preserve"><value>E-posta adresiniz</value></data>
+  <data name="Fair.Marketing" xml:space="preserve"><value>Ürün, kampanya ve haberlerden e-posta ile haberdar olmak istiyorum (isteğe bağlı).</value></data>
+  <data name="Fair.Notice" xml:space="preserve"><value>E-posta adresiniz, broşür talebinizi karşılamak ve fuar sonrası sizinle iletişim kurmak amacıyla işlenir.</value></data>
+  <data name="Fair.Submit" xml:space="preserve"><value>Broşürü göster</value></data>
+  <data name="Fair.Skip" xml:space="preserve"><value>E-posta vermeden devam et</value></data>
+  <data name="Fair.OpenBrochure" xml:space="preserve"><value>Dijital broşürü aç</value></data>
+  <data name="Validation.Turnstile" xml:space="preserve"><value>Güvenlik doğrulaması tamamlanamadı, lütfen tekrar deneyin.</value></data>
+  <data name="Nav.ContactUs" xml:space="preserve"><value>Bize Ulaşın</value></data>
+  <data name="Nav.Careers" xml:space="preserve"><value>İnsan Kaynakları</value></data>
+  <data name="Careers.MetaTitle" xml:space="preserve"><value>İnsan Kaynakları ve Kariyer</value></data>
+  <data name="Careers.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nÄ±n kariyer: kauçuk, plastik ve çelik üretiminde, savunma ve ihracat projelerinde çalışmak için başvurun.</value></data>
+  <data name="Careers.Title" xml:space="preserve"><value>Geleceği Birlikte Üretelim</value></data>
+  <data name="Careers.Lead" xml:space="preserve"><value>Kauçuk, plastik ve çelik parçaları tasarımdan sevkiyata kadar üreten ekibimize katılın.</value></data>
+  <data name="Careers.Intro" xml:space="preserve"><value>Ankara'daki entegre tesisimizde savunma sanayiinden otomotive, iş makinalarından ihracat pazarlarına uzanan projeler üretiyoruz. İşini özenle yapan, öğrenmeye açık ve sorumluluk almaktan çekinmeyen ekip arkadaşları arıyoruz. Açık pozisyon olmasa da başvurunuzu değerlendirmeye alıyoruz.</value></data>
+  <data name="Careers.Apply" xml:space="preserve"><value>Hemen Başvur</value></data>
+  <data name="Careers.BrandLine" xml:space="preserve"><value>Ankara · Entegre Üretim Tesisi</value></data>
+  <data name="Careers.WhyEyebrow" xml:space="preserve"><value>Neden PRJ Proje Makina</value></data>
+  <data name="Careers.WhyTitle" xml:space="preserve"><value>Burada Çalışmak</value></data>
+  <data name="Careers.Why1Title" xml:space="preserve"><value>Güvenli Çalışma</value></data>
+  <data name="Careers.Why1Text" xml:space="preserve"><value>İş sağlığı ve güvenliği her vardiyanın ilk maddesi; ekipman, eğitim ve denetim düzenli olarak yenilenir.</value></data>
+  <data name="Careers.Why2Title" xml:space="preserve"><value>Sürekli Eğitim</value></data>
+  <data name="Careers.Why2Text" xml:space="preserve"><value>Malzeme, kalıp, kalite ve üretim teknikleri üzerine iş başında ve sınıf içi eğitimlerle gelişirsiniz.</value></data>
+  <data name="Careers.Why3Title" xml:space="preserve"><value>Anlamlı Projeler</value></data>
+  <data name="Careers.Why3Text" xml:space="preserve"><value>Savunma sanayii ve ihracat projelerinde, ülkemizin yerli üretimine doğrudan katkı sağlarsınız.</value></data>
+  <data name="Careers.Why4Title" xml:space="preserve"><value>Kariyer Gelişimi</value></data>
+  <data name="Careers.Why4Text" xml:space="preserve"><value>Gösterdiğiniz performansa göre sorumluluk ve gelişim fırsatlarınız da büyür.</value></data>
+  <data name="Careers.ProcessEyebrow" xml:space="preserve"><value>Başvuru Süreci</value></data>
+  <data name="Careers.ProcessTitle" xml:space="preserve"><value>Nasıl İlerliyoruz?</value></data>
+  <data name="Careers.Step1" xml:space="preserve"><value>Formu doldurup CV'nizi yükleyin.</value></data>
+  <data name="Careers.Step2" xml:space="preserve"><value>İnsan kaynakları ekibimiz başvurunuzu inceler.</value></data>
+  <data name="Careers.Step3" xml:space="preserve"><value>Uygun adaylarla yüz yüze ya da telefonla görüşme yapılır.</value></data>
+  <data name="Careers.Step4" xml:space="preserve"><value>Sonuç, başvurunuzdaki e-posta ya da telefonla size iletilir.</value></data>
+  <data name="Careers.PrivacyNote" xml:space="preserve"><value>CV'niz yalnızca insan kaynakları ekibimiz tarafından görülür ve KVKK kapsamında saklanır.</value></data>
+  <data name="Careers.FormTitle" xml:space="preserve"><value>Başvuru Formu</value></data>
+  <data name="Careers.City" xml:space="preserve"><value>Yaşadığınız Şehir</value></data>
+  <data name="Careers.Position" xml:space="preserve"><value>Başvurulan Alan</value></data>
+  <data name="Careers.PositionPick" xml:space="preserve"><value>Seçiniz</value></data>
+  <data name="Careers.CoverLetter" xml:space="preserve"><value>Ön Yazı</value></data>
+  <data name="Careers.CoverLetterHint" xml:space="preserve"><value>Kısaca kendinizden ve deneyiminizden bahsedin (isteğe bağlı).</value></data>
+  <data name="Careers.Resume" xml:space="preserve"><value>CV</value></data>
+  <data name="Careers.ResumeHelp" xml:space="preserve"><value>PDF veya Word, en fazla 10 MB.</value></data>
+  <data name="Careers.Submit" xml:space="preserve"><value>Başvuruyu Gönder</value></data>
+  <data name="Careers.Success" xml:space="preserve"><value>Başvurunuz alındı. İnsan kaynakları ekibimiz değerlendirip sizinle iletişime geçecek.</value></data>
+  <data name="Careers.Area.production" xml:space="preserve"><value>Üretim</value></data>
+  <data name="Careers.Area.quality" xml:space="preserve"><value>Kalite</value></data>
+  <data name="Careers.Area.engineering" xml:space="preserve"><value>Mühendislik / Ar-Ge</value></data>
+  <data name="Careers.Area.sales" xml:space="preserve"><value>Satış ve Dış Ticaret</value></data>
+  <data name="Careers.Area.office" xml:space="preserve"><value>İdari ve Mali İşler</value></data>
+  <data name="Careers.Area.intern" xml:space="preserve"><value>Staj</value></data>
+  <data name="Careers.Area.general" xml:space="preserve"><value>Genel Başvuru</value></data>
+  <data name="Common.WhatsApp" xml:space="preserve"><value>WhatsApp ile yazın</value></data>
+</root>

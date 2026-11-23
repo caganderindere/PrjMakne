@@ -1,0 +1,57 @@
+@using PrjProje.Web.Routing
+@model IReadOnlyList<BusinessCardAdminItem>
+@{
+    ViewData["Title"] = "Dijital Kartvizitler";
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <span class="text-muted small">QR kodu basılı kartvizite koyun; kod kişinin sayfasını açar.</span>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Kartvizit</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th></th><th>Kişi</th><th>Bağlantı</th><th>QR</th><th>Görüntülenme</th><th>Durum</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var card in Model)
+                {
+                    var path = SiteRoutes.Path(SiteRoutes.BusinessCard, Languages.Default, card.Slug);
+                    <tr>
+                        <td>
+                            @if (card.Photo is not null)
+                            {
+                                <img src="@ViewHelpers.SmallImage(card.Photo)" alt="" class="card-thumb" loading="lazy" />
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@card.Id" class="fw-semibold">@card.FullName</a>
+                            <div class="small text-muted">@string.Join(" · ", new[] { card.Title, card.Department }.Where(t => t is not null))</div>
+                        </td>
+                        <td>
+                            <code>@path</code>
+                            <button type="button" class="btn btn-sm btn-link p-0 ms-1" data-copy="@Url.Absolute(path)" title="Bağlantıyı kopyala" aria-label="Bağlantıyı kopyala"><i class="fa-regular fa-copy"></i></button>
+                        </td>
+                        <td><a asp-action="QrPng" asp-route-id="@card.Id" asp-route-download="true" title="QR kodu indir (PNG)"><img src="@Url.Action("QrPng", new { id = card.Id })" alt="QR" class="qr-thumb" loading="lazy" /></a></td>
+                        <td>@card.Views</td>
+                        <td><span class="badge @(card.IsActive ? "bg-success" : "bg-secondary")">@(card.IsActive ? "Yayında" : "Pasif")</span></td>
+                        <td>
+                            <div class="actions">
+                                @if (card.IsActive)
+                                {
+                                    <a href="@path" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary" title="Kartviziti aç"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                }
+                                <a asp-action="Edit" asp-route-id="@card.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@card.Id" data-confirm="“@card.FullName” kartviziti silinsin mi? Basılı QR kodlar çalışmaz hâle gelir.">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Henüz kartvizit eklenmedi.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

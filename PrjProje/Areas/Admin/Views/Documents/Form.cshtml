@@ -1,0 +1,70 @@
+@model DocumentEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Belge" : "Belge Düzenle";
+}
+<div class="admin-card" style="max-width:900px">
+    <form method="post" asp-action="Save" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="FilePath" />
+        <input type="hidden" asp-for="CoverImagePath" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-3">
+            <div class="col-md-8">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="DocumentType" class="form-label"></label>
+                <select asp-for="DocumentType" class="form-select">
+                    @foreach (var type in Enum.GetValues<DocumentType>())
+                    {
+                        <option value="@type">@AdminLabels.Document(type)</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="LanguageCode" class="form-label"></label>
+                <select asp-for="LanguageCode" class="form-select">
+                    <option value="">Tüm diller</option>
+                    @foreach (var code in Languages.All)
+                    {
+                        <option value="@code">@Languages.DisplayName(code)</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="DocumentDate" class="form-label"></label>
+                <input asp-for="DocumentDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="SortOrder" class="form-label"></label>
+                <input asp-for="SortOrder" class="form-control" />
+            </div>
+            <div class="col-md-8">
+                <label asp-for="File" class="form-label"></label>
+                <input asp-for="File" type="file" class="form-control" accept=".pdf,application/pdf" />
+                <div class="form-text">Yalnızca PDF, en fazla 20 MB.@if (Model.FilePath is not null) { <text> Mevcut dosya: <a href="@Model.FilePath" target="_blank">görüntüle</a> (yeni dosya seçerseniz değiştirilir).</text> }</div>
+            </div>
+            <div class="col-md-8">
+                <label asp-for="CoverImage" class="form-label"></label>
+                <input asp-for="CoverImage" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" />
+                <div class="form-text">Yalnızca Ürün Kataloğu türünde gerekir; katalog sayfasında kapak olarak gösterilir. Dikey (A4 oranında) bir görsel kullanın.@if (Model.CoverImagePath is not null) { <text> Mevcut kapak: <a href="@Model.CoverImagePath" target="_blank">görüntüle</a>.</text> }</div>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <div class="form-check form-switch">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </form>
+</div>

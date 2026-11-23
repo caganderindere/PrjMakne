@@ -1,0 +1,32 @@
+@model BlogPostListItemDto
+@{
+    var url = Url.Localized(SiteRoutes.BlogDetail, Model.Slug);
+}
+<article class="blog-card h-100">
+    <a href="@url" class="blog-card-media" tabindex="-1" aria-hidden="true" aria-label="@Model.Title">
+        @if (Model.CoverImage is not null)
+        {
+            <img src="@ViewHelpers.SmallImage(Model.CoverImage)" srcset="@ViewHelpers.SrcSet(Model.CoverImage)" sizes="(max-width: 768px) 100vw, 33vw"
+                 alt="@Model.Title" loading="lazy" decoding="async" width="640" height="400" />
+        }
+        else
+        {
+            <span class="media-placeholder"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>
+        }
+    </a>
+    <div class="blog-card-body">
+        <div class="blog-card-meta">
+            <time datetime="@Model.PublishedDate.ToString("yyyy-MM-dd")">@Model.PublishedDate.ToLocalTime().ToString("d MMMM yyyy")</time>
+            @if (Model.CategoryName is not null)
+            {
+                <span>&middot; @Model.CategoryName</span>
+            }
+        </div>
+        <h3 class="blog-card-title"><a href="@url">@Model.Title</a></h3>
+        @if (!string.IsNullOrEmpty(Model.Summary))
+        {
+            <p class="blog-card-text">@ViewHelpers.Truncate(Model.Summary, 150)</p>
+        }
+        <a href="@url" class="link-arrow mt-auto">@L["Common.ReadMore"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</article>

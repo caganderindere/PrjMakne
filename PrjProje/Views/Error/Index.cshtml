@@ -1,0 +1,12 @@
+@model ErrorViewModel
+<section class="error-page">
+    <div class="container text-center">
+        <span class="error-code">@Model.StatusCode</span>
+        <h1 class="section-title">@(Model.StatusCode == 404 ? L["Error.NotFoundTitle"] : L["Error.GenericTitle"])</h1>
+        <p class="lead-text mx-auto">@(Model.StatusCode == 404 ? L["Error.NotFoundText"] : L["Error.GenericText"])</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+            <a href="@Url.Localized(SiteRoutes.Home)" class="btn btn-brand btn-lg">@L["Error.BackHome"]</a>
+            <a href="@Url.Localized(SiteRoutes.Products)" class="btn btn-outline-dark btn-lg">@L["Nav.Products"]</a>
+        </div>
+    </div>
+</section>

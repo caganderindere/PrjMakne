@@ -1,0 +1,166 @@
+@model ProductEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Ürün" : "Ürün Düzenle";
+}
+<form method="post" asp-action="Save" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" />
+    <div asp-validation-summary="All" class="alert alert-danger small"></div>
+
+    <div class="row g-4">
+        <div class="col-xl-8">
+            <partial name="_LangTabs" model="@("product")" />
+            <div class="tab-content tab-pane-box mb-4">
+                @for (var i = 0; i < Model.Translations.Count; i++)
+                {
+                    var code = Model.Translations[i].LanguageCode;
+                    <div class="tab-pane fade @(i == 0 ? "show active" : null)" id="product-@code" role="tabpanel">
+                        <input type="hidden" asp-for="Translations[i].LanguageCode" />
+                        @if (code != Languages.Default)
+                        {
+                            <p class="small text-muted">Bu dili boş bırakırsanız ürün bu dilde yayınlanmaz.</p>
+                        }
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                <label asp-for="Translations[i].Name" class="form-label"></label>
+                                <input asp-for="Translations[i].Name" class="form-control" data-slug-source="slug-product-@code" />
+                                <span asp-validation-for="Translations[i].Name"></span>
+                            </div>
+                            <div class="col-md-5">
+                                <label asp-for="Translations[i].Slug" class="form-label"></label>
+                                <input asp-for="Translations[i].Slug" class="form-control" id="slug-product-@code" placeholder="otomatik" />
+                                <span asp-validation-for="Translations[i].Slug"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].ShortDescription" class="form-label"></label>
+                                <textarea asp-for="Translations[i].ShortDescription" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Description" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Description" class="form-control" rows="8" data-rich-editor></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].Material" class="form-label"></label>
+                                <input asp-for="Translations[i].Material" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].ProductionMethod" class="form-label"></label>
+                                <input asp-for="Translations[i].ProductionMethod" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].SpecificationsText" class="form-label"></label>
+                                <textarea asp-for="Translations[i].SpecificationsText" class="form-control font-monospace" rows="6" placeholder="Malzeme: EPDM&#10;Sertlik: 70 Shore A"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].ApplicationAreas" class="form-label"></label>
+                                <textarea asp-for="Translations[i].ApplicationAreas" class="form-control" rows="6"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <hr /><h3 class="h6 text-uppercase text-muted">SEO</h3>
+                                <p class="small text-muted mb-0">SEO başlığı otomatik oluşturulur: ürün adı + OEM No (OEM No yoksa Servis Kodu). Kodlar açıklamanın başına da eklenir.</p>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].MetaDescription" class="form-label"></label>
+                                <textarea asp-for="Translations[i].MetaDescription" class="form-control" rows="2" maxlength="170" data-counter="170"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @if (Model.ExistingImages.Count > 0)
+            {
+                <div class="admin-card">
+                    <h2 class="admin-card-title mb-3">Galeri Görselleri</h2>
+                    <div class="image-grid">
+                        @for (var i = 0; i < Model.ExistingImages.Count; i++)
+                        {
+                            <div class="image-grid-item">
+                                <input type="hidden" asp-for="ExistingImages[i].Id" />
+                                <input type="hidden" asp-for="ExistingImages[i].ImagePath" />
+                                <img src="@ViewHelpers.SmallImage(Model.ExistingImages[i].ImagePath)" alt="" loading="lazy" />
+                                <div class="body d-flex gap-2 align-items-center">
+                                    <input asp-for="ExistingImages[i].SortOrder" class="form-control form-control-sm" style="width:70px" title="Sıra" />
+                                    <div class="form-check mb-0">
+                                        <input asp-for="ExistingImages[i].Delete" class="form-check-input" />
+                                        <label asp-for="ExistingImages[i].Delete" class="form-check-label text-danger">Sil</label>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-xl-4">
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Yayın</h2>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label"></label>
+                    <select asp-for="CategoryId" class="form-select" data-restricted-ids="@string.Join(",", Model.RestrictedCategoryIds)">
+                        <option value="0">Seçiniz…</option>
+                        @foreach (var category in Model.CategoryOptions)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryId"></span>
+                </div>
+                <div class="notice-warning mb-3" id="restrictedWarning" hidden>
+                    <i class="fa-solid fa-user-lock me-1"></i>
+                    <strong>Kısıtlı kategori.</strong> Teknik özellikler sitede gösterilmez. Hassas askeri teknik detayları, üretim parametrelerini veya teknik çizimleri hiçbir alana girmeyin.
+                </div>
+                <div class="mb-3">
+                    <label asp-for="OemNumber" class="form-label"></label>
+                    <input asp-for="OemNumber" class="form-control" />
+                    <span asp-validation-for="OemNumber"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ServiceCode" class="form-label"></label>
+                    <input asp-for="ServiceCode" class="form-control" />
+                    <span asp-validation-for="ServiceCode"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SortOrder" class="form-label"></label>
+                    <input asp-for="SortOrder" class="form-control" />
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+                <div class="form-check form-switch">
+                    <input asp-for="IsFeatured" class="form-check-input" />
+                    <label asp-for="IsFeatured" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Görseller</h2>
+                <label asp-for="ImageFile" class="form-label"></label>
+                <img id="productImagePreview" src="@(Model.Image is null ? null : ViewHelpers.SmallImage(Model.Image))" class="image-preview" alt="" hidden="@(Model.Image is null)" />
+                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp,.gif" data-preview="productImagePreview" />
+                @if (Model.Image is not null)
+                {
+                    <div class="form-check mt-2">
+                        <input asp-for="RemoveImage" class="form-check-input" />
+                        <label asp-for="RemoveImage" class="form-check-label">Ana görseli kaldır</label>
+                    </div>
+                }
+                <label asp-for="GalleryFiles" class="form-label mt-3"></label>
+                <input asp-for="GalleryFiles" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp,.gif" multiple />
+                <div class="form-text">Görseller otomatik olarak WebP'ye dönüştürülür ve optimize edilir (en fazla 8 MB).</div>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-brand flex-grow-1"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+            @{
+                var siteSlug = Model.Translations.FirstOrDefault(t => t.LanguageCode == Languages.Default)?.Slug;
+            }
+            @if (Model.Id != 0 && !string.IsNullOrWhiteSpace(siteSlug))
+            {
+                <a href="@PrjProje.Web.Routing.SiteRoutes.Path(PrjProje.Web.Routing.SiteRoutes.ProductDetail, Languages.Default, siteSlug)" target="_blank" rel="noopener" class="btn btn-outline-dark w-100 mt-2"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Ürüne Git</a>
+            }
+        </div>
+    </div>
+</form>

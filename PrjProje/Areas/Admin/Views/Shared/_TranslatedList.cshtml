@@ -1,0 +1,51 @@
+@model IReadOnlyList<TranslatedListItem>
+@{
+    var newLabel = ViewData["NewLabel"] as string ?? "Yeni Kayıt";
+    var deleteConfirm = ViewData["DeleteConfirm"] as string ?? "Bu kaydı silmek istediğinize emin misiniz?";
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <span class="text-muted small">@Model.Count kayıt</span>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>@newLabel</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th></th><th>Ad</th><th>Diller</th><th>Sıra</th><th>Durum</th><th>Güncelleme</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (item.Image is not null)
+                            {
+                                <img src="@ViewHelpers.SmallImage(item.Image)" class="table-thumb" alt="" loading="lazy" />
+                            }
+                            else
+                            {
+                                <span class="table-thumb-placeholder"><i class="fa-regular fa-image"></i></span>
+                            }
+                        </td>
+                        <td><a asp-action="Edit" asp-route-id="@item.Id" class="fw-semibold">@item.Name</a></td>
+                        <td>
+                            @foreach (var code in Languages.All)
+                            {
+                                <span class="lang-badge @(item.Languages.Contains(code) ? null : "missing")">@code.ToUpperInvariant()</span>
+                            }
+                        </td>
+                        <td>@item.SortOrder</td>
+                        <td><span class="badge @(item.IsActive ? "bg-success" : "bg-secondary")">@(item.IsActive ? "Aktif" : "Pasif")</span></td>
+                        <td class="small text-muted">@item.UpdatedDate?.ToLocalTime().ToString("dd.MM.yyyy")</td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id" data-confirm="@deleteConfirm">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

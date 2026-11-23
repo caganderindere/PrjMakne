@@ -1,0 +1,155 @@
+@model DashboardDto
+@{
+    ViewData["Title"] = "Dashboard";
+    var isAdmin = Roles.HasFullAccess(User);
+}
+@if (ViewBag.HealthChecks is IReadOnlyList<HealthCheck> health)
+{
+    var healthState = health.Max(c => c.State);
+    var problems = health.Where(c => c.State != HealthState.Ok).ToList();
+    <a class="health-strip @AdminLabels.HealthClass(healthState)" asp-controller="Developer" asp-action="Index">
+        <span class="health-pulse" aria-hidden="true"></span>
+        <span class="health-strip-main">
+            <strong>@AdminLabels.Health(healthState)</strong>
+            @if (problems.Count > 0)
+            {
+                <span class="health-strip-problems">@string.Join(" ", problems.Select(p => $"{p.Name}: {p.Detail}"))</span>
+            }
+        </span>
+        <span class="health-strip-chips">
+            @foreach (var check in health)
+            {
+                <span class="health-chip @AdminLabels.HealthClass(check.State)" title="@check.Detail">@check.Name</span>
+            }
+        </span>
+        <span class="health-strip-link">Developer <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </a>
+}
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Products" asp-action="Index">
+            <span class="stat-card-icon"><i class="fa-solid fa-boxes-stacked"></i></span>
+            <span><span class="stat-card-value d-block">@Model.TotalProducts</span><span class="stat-card-label">Toplam Ürün</span><span class="stat-card-sub d-block">@Model.ActiveProducts aktif</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Blog" asp-action="Index">
+            <span class="stat-card-icon"><i class="fa-solid fa-newspaper"></i></span>
+            <span><span class="stat-card-value d-block">@Model.BlogPosts</span><span class="stat-card-label">Blog Yazısı</span><span class="stat-card-sub d-block">@Model.PublishedTranslations yayında (dil bazında)</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="@(isAdmin ? "Quotes" : "Dashboard")" asp-action="Index">
+            <span class="stat-card-icon accent"><i class="fa-solid fa-file-signature"></i></span>
+            <span><span class="stat-card-value d-block">@Model.TotalQuotes</span><span class="stat-card-label">Teklif Talebi</span><span class="stat-card-sub d-block">@Model.NewQuotes yeni</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="@(isAdmin ? "Messages" : "Dashboard")" asp-action="Index">
+            <span class="stat-card-icon accent"><i class="fa-solid fa-envelope"></i></span>
+            <span><span class="stat-card-value d-block">@Model.TotalMessages</span><span class="stat-card-label">İletişim Mesajı</span><span class="stat-card-sub d-block">@Model.UnreadMessages okunmamış</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Gallery" asp-action="Index">
+            <span class="stat-card-icon"><i class="fa-regular fa-images"></i></span>
+            <span><span class="stat-card-value d-block">@Model.GalleryItems</span><span class="stat-card-label">Galeri Fotoğrafı</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Documents" asp-action="Index">
+            <span class="stat-card-icon"><i class="fa-solid fa-file-pdf"></i></span>
+            <span><span class="stat-card-value d-block">@Model.Documents</span><span class="stat-card-label">Belge</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="@(isAdmin ? "Settings" : "Dashboard")" asp-action="Index" title="Her ziyaretçi günde bir kez sayılır.">
+            <span class="stat-card-icon accent"><i class="fa-brands fa-whatsapp"></i></span>
+            <span><span class="stat-card-value d-block">@Model.WhatsAppLast30Days</span><span class="stat-card-label">WhatsApp Tıklaması (30 gün)</span><span class="stat-card-sub d-block">bugün @Model.WhatsAppToday</span></span>
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    @if (isAdmin)
+    {
+        <div class="col-xl-7">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2 class="admin-card-title">Son Teklif Talepleri</h2>
+                    <a asp-controller="Quotes" asp-action="Index" class="btn btn-sm btn-outline-secondary">Tümü</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead><tr><th>Firma</th><th>Ürün</th><th>Durum</th><th>Tarih</th></tr></thead>
+                        <tbody>
+                            @foreach (var quote in Model.RecentQuotes)
+                            {
+                                <tr>
+                                    <td><a asp-controller="Quotes" asp-action="Detail" asp-route-id="@quote.Id">@quote.CompanyName</a><div class="small text-muted">@quote.FullName</div></td>
+                                    <td>@(quote.ProductName ?? "-")</td>
+                                    <td><span class="badge @AdminLabels.StatusBadge(quote.Status)">@AdminLabels.Status(quote.Status)</span></td>
+                                    <td class="small text-nowrap">@quote.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                                </tr>
+                            }
+                            @if (Model.RecentQuotes.Count == 0)
+                            {
+                                <tr><td colspan="4" class="text-muted text-center py-4">Henüz teklif talebi yok.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2 class="admin-card-title">Son Mesajlar</h2>
+                    <a asp-controller="Messages" asp-action="Index" class="btn btn-sm btn-outline-secondary">Tümü</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead><tr><th>Gönderen</th><th>Konu</th><th>Tarih</th></tr></thead>
+                        <tbody>
+                            @foreach (var message in Model.RecentMessages)
+                            {
+                                <tr class="@(message.IsRead ? null : "unread")">
+                                    <td>@message.FullName<div class="small text-muted">@message.Email</div></td>
+                                    <td><a asp-controller="Messages" asp-action="Detail" asp-route-id="@message.Id">@message.Subject</a></td>
+                                    <td class="small text-nowrap">@message.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                                </tr>
+                            }
+                            @if (Model.RecentMessages.Count == 0)
+                            {
+                                <tr><td colspan="3" class="text-muted text-center py-4">Henüz mesaj yok.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="@(isAdmin ? "col-xl-5" : "col-12")">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">Son Aktiviteler</h2>
+            <ul class="activity-list">
+                @foreach (var activity in Model.RecentActivities)
+                {
+                    <li>
+                        <span class="activity-dot"></span>
+                        <div>
+                            <strong>@activity.UserName</strong> · @AdminLabels.Entity(activity.EntityType) @AdminLabels.Action(activity.Action)
+                            @if (!string.IsNullOrEmpty(activity.Description))
+                            {
+                                <div class="text-muted small">@activity.Description</div>
+                            }
+                            <div class="text-muted small">@activity.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                        </div>
+                    </li>
+                }
+                @if (Model.RecentActivities.Count == 0)
+                {
+                    <li class="text-muted">Henüz aktivite yok.</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

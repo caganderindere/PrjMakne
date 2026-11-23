@@ -1,0 +1,35 @@
+@model PaginationModel
+@if (Model.TotalPages > 1)
+{
+    string PageUrl(int page)
+    {
+        var query = new Dictionary<string, string?>(Model.Query) { ["page"] = page > 1 ? page.ToString() : null };
+        var parts = query.Where(q => !string.IsNullOrEmpty(q.Value)).Select(q => $"{q.Key}={Uri.EscapeDataString(q.Value!)}");
+        var queryString = string.Join("&", parts);
+        return queryString.Length == 0 ? Model.BasePath : $"{Model.BasePath}?{queryString}";
+    }
+
+    <nav class="mt-5" aria-label="@L["Common.Pagination"]">
+        <ul class="pagination pagination-brand justify-content-center">
+            <li class="page-item @(Model.Page <= 1 ? "disabled" : null)">
+                <a class="page-link" href="@PageUrl(Model.Page - 1)" rel="prev" aria-label="@L["Common.Previous"]"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></a>
+            </li>
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i == 1 || i == Model.TotalPages || Math.Abs(i - Model.Page) <= 2)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : null)">
+                        <a class="page-link" href="@PageUrl(i)" aria-current="@(i == Model.Page ? "page" : null)">@i</a>
+                    </li>
+                }
+                else if (Math.Abs(i - Model.Page) == 3)
+                {
+                    <li class="page-item disabled"><span class="page-link">…</span></li>
+                }
+            }
+            <li class="page-item @(Model.Page >= Model.TotalPages ? "disabled" : null)">
+                <a class="page-link" href="@PageUrl(Model.Page + 1)" rel="next" aria-label="@L["Common.Next"]"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </nav>
+}

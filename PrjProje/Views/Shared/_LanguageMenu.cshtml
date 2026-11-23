@@ -1,0 +1,19 @@
+@model PageSeo
+@{
+    var lang = Languages.Current;
+}
+<div class="dropdown lang-menu">
+    <button class="lang-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="@L["Common.Language"]: @Languages.DisplayName(lang)">
+        <img src="~/images/flags/@(Languages.Flag(lang)).svg" alt="" width="20" height="14" />@lang.ToUpperInvariant()<i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        @foreach (var code in Languages.All)
+        {
+            <li>
+                <a class="dropdown-item @(code == lang ? "active" : null)" href="@Model.LanguageLinks.GetValueOrDefault(code, SiteRoutes.Path(SiteRoutes.Home, code))" hreflang="@code" lang="@code" aria-label="@Languages.DisplayName(code)" aria-current="@(code == lang ? "true" : null)">
+                    <img src="~/images/flags/@(Languages.Flag(code)).svg" alt="" width="20" height="14" />@code.ToUpperInvariant()
+                </a>
+            </li>
+        }
+    </ul>
+</div>

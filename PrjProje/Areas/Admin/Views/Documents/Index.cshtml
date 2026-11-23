@@ -1,0 +1,41 @@
+@model IReadOnlyList<DocumentAdminItem>
+@{
+    ViewData["Title"] = "Belgeler";
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <span class="text-muted small">Kalite sayfasında listelenen sertifika ve belgeler; Ürün Kataloğu türündekiler katalog sayfasında listelenir</span>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Belge</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th>Belge</th><th>Tür</th><th>Dil</th><th>Tarih</th><th>Boyut</th><th>Durum</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var document in Model)
+                {
+                    <tr>
+                        <td><i class="fa-solid fa-file-pdf text-danger me-2"></i><a asp-action="Edit" asp-route-id="@document.Id" class="fw-semibold">@document.Title</a></td>
+                        <td>@AdminLabels.Document(document.DocumentType)</td>
+                        <td>@AdminLabels.Language(document.LanguageCode)</td>
+                        <td>@document.DocumentDate.ToString("dd.MM.yyyy")</td>
+                        <td>@ViewHelpers.FileSize(document.FileSize)</td>
+                        <td><span class="badge @(document.IsActive ? "bg-success" : "bg-secondary")">@(document.IsActive ? "Yayında" : "Gizli")</span></td>
+                        <td>
+                            <div class="actions">
+                                <a href="@document.FilePath" target="_blank" class="btn btn-sm btn-outline-secondary" title="Görüntüle"><i class="fa-solid fa-eye"></i></a>
+                                <a asp-action="Edit" asp-route-id="@document.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@document.Id" data-confirm="Bu belgeyi silmek istediğinize emin misiniz?">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Henüz belge yüklenmedi.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

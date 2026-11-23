@@ -1,0 +1,171 @@
+@inject PrjProje.Application.Interfaces.IDeveloperTicketService DeveloperTickets
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    // Admin and R&D see everything; only the admin manages users.
+    var isAdmin = Roles.HasFullAccess(User);
+    var canManageUsers = User.IsInRole(Roles.Admin);
+    // Human resources staff see only the applications; everything else needs the admin, R&D or editor role.
+    var canManageContent = isAdmin || User.IsInRole(Roles.Editor);
+    // Sessions signed in before the name claim existed fall back to the e-mail until the next sign-in.
+    var displayName = User.FindFirst(PanelClaims.FullName)?.Value ?? User.Identity?.Name;
+    // Marketing: analytics, quotes, messages, applications, fairs and business cards (the same roles as Policies.Marketing).
+    var isMarketing = User.IsInRole(Roles.Marketing);
+    var canSeeMarketing = isAdmin || isMarketing;
+    var roleName = Roles.Name(Roles.Primary(User.IsInRole));
+    var canSeeApplications = canSeeMarketing || User.IsInRole(Roles.HumanResources);
+    var newTickets = isAdmin ? await DeveloperTickets.CountNewAsync() : 0;
+    string Active(params string[] names) => names.Contains(controller) ? "active" : string.Empty;
+    // The group holding the current page starts open; the others stay collapsed to keep the menu short.
+    string Expanded(string[] names) => names.Contains(controller) ? "true" : "false";
+    string Show(string[] names) => names.Contains(controller) ? "show" : string.Empty;
+    var catalogPages = new[] { "ProductCategories", "Capabilities" };
+    var contentPages = new[] { "ContentTexts", "Blog", "BlogCategories", "Announcements", "References" };
+    var mediaPages = new[] { "Gallery", "GalleryCategories", "Documents" };
+    var marketingPages = new[] { "Fairs", "BusinessCards" };
+    var systemPages = new[] { "Users", "Settings", "Notifications", "Cloudflare", "Developer" };
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>@ViewData["Title"] | PRJ Proje Makina Yönetim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar" id="adminSidebar">
+        <a class="admin-brand" asp-area="Admin" asp-controller="@(canManageContent ? "Dashboard" : isMarketing ? "Analytics" : User.IsInRole(Roles.HumanResources) ? "Applications" : "Meetings")" asp-action="Index">
+            <img src="~/images/logo.png" alt="PRJ Proje Makina" width="160" height="35" />
+        </a>
+        <nav class="admin-nav">
+            @* Shortcuts to the pages used every day; everything else sits in a group below. *@
+            @if (canManageContent)
+            {
+                <a class="@Active("Dashboard")" asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+            }
+            @* The analytics page is the marketing team's own start page; other roles do not get it in the menu. *@
+            @if (isMarketing)
+            {
+                <a class="@Active("Analytics")" asp-area="Admin" asp-controller="Analytics" asp-action="Index"><i class="fa-solid fa-chart-line"></i>Analiz</a>
+            }
+            @if (canManageContent)
+            {
+                <a class="@Active("Products")" asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa-solid fa-boxes-stacked"></i>Ürünler</a>
+            }
+            @if (canSeeMarketing)
+            {
+                <a class="@Active("Quotes")" asp-area="Admin" asp-controller="Quotes" asp-action="Index"><i class="fa-solid fa-file-signature"></i>Teklif Talepleri</a>
+                <a class="@Active("Messages")" asp-area="Admin" asp-controller="Messages" asp-action="Index"><i class="fa-solid fa-envelope"></i>İletişim Mesajları</a>
+            }
+            @if (canSeeApplications)
+            {
+                <a class="@Active("Applications")" asp-area="Admin" asp-controller="Applications" asp-action="Index"><i class="fa-solid fa-user-tie"></i>İnsan Kaynakları</a>
+            }
+            @* Every panel role writes minutes. *@
+            <a class="@Active("Meetings")" asp-area="Admin" asp-controller="Meetings" asp-action="Index"><i class="fa-solid fa-file-lines"></i>Toplantı Tutanakları</a>
+            @if (canManageContent)
+            {
+                <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navCatalog" aria-controls="navCatalog" aria-expanded="@Expanded(catalogPages)">Katalog<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="collapse @Show(catalogPages)" id="navCatalog" data-bs-parent=".admin-nav">
+                    <a class="@Active("ProductCategories")" asp-area="Admin" asp-controller="ProductCategories" asp-action="Index"><i class="fa-solid fa-folder-tree"></i>Ürün Kategorileri</a>
+                    <a class="@Active("Capabilities")" asp-area="Admin" asp-controller="Capabilities" asp-action="Index"><i class="fa-solid fa-industry"></i>Üretim Kabiliyetleri</a>
+                </div>
+                <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="@Expanded(contentPages)">İçerik<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="collapse @Show(contentPages)" id="navContent" data-bs-parent=".admin-nav">
+                    <a class="@Active("ContentTexts")" asp-area="Admin" asp-controller="ContentTexts" asp-action="Index"><i class="fa-solid fa-pen-to-square"></i>Sayfa İçerikleri</a>
+                    <a class="@Active("Blog")" asp-area="Admin" asp-controller="Blog" asp-action="Index"><i class="fa-solid fa-newspaper"></i>Blog Yazıları</a>
+                    <a class="@Active("BlogCategories")" asp-area="Admin" asp-controller="BlogCategories" asp-action="Index"><i class="fa-solid fa-tags"></i>Blog Kategorileri</a>
+                    <a class="@Active("Announcements")" asp-area="Admin" asp-controller="Announcements" asp-action="Index"><i class="fa-solid fa-bullhorn"></i>Duyurular</a>
+                    <a class="@Active("References")" asp-area="Admin" asp-controller="References" asp-action="Index"><i class="fa-solid fa-handshake"></i>Referanslar</a>
+                </div>
+                <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navMedia" aria-controls="navMedia" aria-expanded="@Expanded(mediaPages)">Medya<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="collapse @Show(mediaPages)" id="navMedia" data-bs-parent=".admin-nav">
+                    <a class="@Active("Gallery")" asp-area="Admin" asp-controller="Gallery" asp-action="Index"><i class="fa-regular fa-images"></i>Galeri</a>
+                    <a class="@Active("GalleryCategories")" asp-area="Admin" asp-controller="GalleryCategories" asp-action="Index"><i class="fa-solid fa-layer-group"></i>Galeri Kategorileri</a>
+                    <a class="@Active("Documents")" asp-area="Admin" asp-controller="Documents" asp-action="Index"><i class="fa-solid fa-file-pdf"></i>Belgeler</a>
+                </div>
+            }
+            @if (canManageContent || isMarketing)
+            {
+                <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navMarketing" aria-controls="navMarketing" aria-expanded="@Expanded(marketingPages)">Pazarlama<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="collapse @Show(marketingPages)" id="navMarketing" data-bs-parent=".admin-nav">
+                    @if (canSeeMarketing)
+                    {
+                        <a class="@Active("Fairs")" asp-area="Admin" asp-controller="Fairs" asp-action="Index"><i class="fa-solid fa-qrcode"></i>Fuarlar</a>
+                    }
+                    <a class="@Active("BusinessCards")" asp-area="Admin" asp-controller="BusinessCards" asp-action="Index"><i class="fa-solid fa-address-card"></i>Dijital Kartvizitler</a>
+                </div>
+            }
+            @if (isAdmin)
+            {
+                <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navSystem" aria-controls="navSystem" aria-expanded="@Expanded(systemPages)">Sistem<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="collapse @Show(systemPages)" id="navSystem" data-bs-parent=".admin-nav">
+                    @if (canManageUsers)
+                    {
+                        <a class="@Active("Users")" asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="fa-solid fa-users"></i>Kullanıcılar</a>
+                    }
+                    <a class="@Active("Settings")" asp-area="Admin" asp-controller="Settings" asp-action="Index"><i class="fa-solid fa-sliders"></i>Site Ayarları</a>
+                    <a class="@Active("Notifications")" asp-area="Admin" asp-controller="Notifications" asp-action="Index"><i class="fa-solid fa-bell"></i>E-posta Bildirimleri</a>
+                    <a class="@Active("Cloudflare")" asp-area="Admin" asp-controller="Cloudflare" asp-action="Index"><i class="fa-brands fa-cloudflare"></i>Cloudflare</a>
+                    <a class="@Active("Developer")" asp-area="Admin" asp-controller="Developer" asp-action="Index"><i class="fa-solid fa-code"></i>Developer</a>
+                </div>
+            }
+            @if (canManageContent)
+            {
+                @* Kept outside the groups so the new-ticket badge is always visible. *@
+                <a class="@Active("DeveloperTickets")" asp-area="Admin" asp-controller="DeveloperTickets" asp-action="Index"><i class="fa-solid fa-life-ring"></i><span>Geliştiriciye Bildir</span>@if (newTickets > 0) {<span class="admin-nav-badge" aria-label="@newTickets yeni bildirim">@newTickets</span>}</a>
+            }
+        </nav>
+    </aside>
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <button type="button" class="btn btn-light d-lg-none" data-sidebar-toggle aria-label="Menü"><i class="fa-solid fa-bars"></i></button>
+            <h1 class="admin-page-title">@ViewData["Title"]</h1>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                <a href="/" target="_blank" class="btn btn-sm btn-outline-secondary d-none d-sm-inline-block"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Siteyi Gör</a>
+                <span class="small text-muted d-none d-md-inline">Hoş geldin, <strong class="text-body">@displayName</strong></span>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Hesap menüsü: @displayName">
+                        <i class="fa-solid fa-user-shield me-1"></i><span class="d-none d-sm-inline">@roleName</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><span class="dropdown-item-text small"><strong>@displayName</strong><span class="d-block text-muted">@User.Identity?.Name · @roleName</span></span></li>
+                        <li><a class="dropdown-item" asp-area="Admin" asp-controller="Account" asp-action="ChangePassword"><i class="fa-solid fa-key me-2"></i>Şifre Değiştir</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <form method="post" asp-area="Admin" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i>Çıkış Yap</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main class="admin-content">
+            @if (TempData["AdminSuccess"] is string success)
+            {
+                <div class="alert alert-success alert-dismissible fade show"><i class="fa-solid fa-circle-check me-2"></i>@success<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Kapat"></button></div>
+            }
+            @if (TempData["AdminError"] is string error)
+            {
+                <div class="alert alert-danger alert-dismissible fade show"><i class="fa-solid fa-triangle-exclamation me-2"></i>@error<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Kapat"></button></div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+    <div class="admin-backdrop" data-sidebar-toggle></div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/admin.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,29 @@
+@model SimpleCategoryEditModel
+<div class="admin-card" style="max-width:900px">
+    <h2 class="admin-card-title mb-3">@(Model.Id == 0 ? "Yeni Kategori" : "Kategori Düzenle")</h2>
+    <form method="post" asp-action="Save">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-3 mb-3">
+            @for (var i = 0; i < Model.Translations.Count; i++)
+            {
+                var code = Model.Translations[i].LanguageCode;
+                <input type="hidden" asp-for="Translations[i].LanguageCode" />
+                <div class="col-md-6">
+                    <label asp-for="Translations[i].Name" class="form-label"><span class="lang-badge">@code.ToUpperInvariant()</span> Ad@(code == Languages.Default ? " *" : "")</label>
+                    <input asp-for="Translations[i].Name" class="form-control" data-slug-source="slug-simple-@code" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Translations[i].Slug" class="form-label"><span class="lang-badge">@code.ToUpperInvariant()</span> Slug</label>
+                    <input asp-for="Translations[i].Slug" class="form-control" id="slug-simple-@code" placeholder="otomatik" />
+                </div>
+            }
+            <div class="col-md-3">
+                <label asp-for="SortOrder" class="form-label"></label>
+                <input asp-for="SortOrder" class="form-control" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+    </form>
+</div>

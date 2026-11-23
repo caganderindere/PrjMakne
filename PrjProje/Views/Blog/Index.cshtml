@@ -1,0 +1,71 @@
+@model BlogListViewModel
+@{
+    var header = new PageHeaderModel(L["Blog.Title"], L["Blog.Lead"], L["Nav.Blog"]);
+    var basePath = Url.Localized(SiteRoutes.Blog);
+    var pagination = new PaginationModel(Model.Posts.Page, Model.Posts.TotalPages, basePath, new Dictionary<string, string?>
+    {
+        ["category"] = Model.CurrentCategorySlug,
+        ["tag"] = Model.CurrentTag?.Slug,
+        ["q"] = Model.Search
+    });
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row g-4 g-xl-5">
+            <div class="col-lg-8">
+                @if (Model.CurrentTag is not null)
+                {
+                    <p class="text-muted mb-4">@L["Blog.TagFilter", Model.CurrentTag.Name] <a href="@basePath" class="ms-2 small">@L["Common.ClearFilter"]</a></p>
+                }
+                @if (Model.Posts.Items.Count == 0)
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                        <h2>@L["Blog.EmptyTitle"]</h2>
+                        <p>@L["Blog.EmptyText"]</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="row g-4">
+                        @foreach (var post in Model.Posts.Items)
+                        {
+                            <div class="col-md-6">
+                                <partial name="_BlogCard" model="post" />
+                            </div>
+                        }
+                    </div>
+                    <partial name="_Pagination" model="pagination" />
+                }
+            </div>
+            <aside class="col-lg-4">
+                <div class="filter-panel">
+                    <form method="get" action="@basePath" class="search-box" role="search">
+                        <label for="blogSearch" class="visually-hidden">@L["Blog.SearchLabel"]</label>
+                        <input type="search" id="blogSearch" name="q" value="@Model.Search" class="form-control" placeholder="@L["Blog.SearchPlaceholder"]" maxlength="100" />
+                        <button type="submit" class="btn" aria-label="@L["Common.Search"]"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                    </form>
+                    <h2 class="filter-title">@L["Blog.Categories"]</h2>
+                    <ul class="filter-list list-unstyled">
+                        <li>
+                            <a href="@basePath" class="@(Model.CurrentCategorySlug is null ? "active" : null)">
+                                <span>@L["Blog.AllPosts"]</span>
+                            </a>
+                        </li>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li>
+                                <a href="@basePath?category=@Uri.EscapeDataString(category.Slug)" class="@(category.Slug == Model.CurrentCategorySlug ? "active" : null)">
+                                    <span>@category.Name</span>
+                                    <span class="count">@category.PostCount</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

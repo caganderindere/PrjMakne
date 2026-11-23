@@ -1,0 +1,80 @@
+@model PagedResult<ProductAdminListItem>
+@{
+    ViewData["Title"] = "Ürünler";
+    var filter = (AdminListFilter)ViewBag.Filter;
+    var categories = (IReadOnlyList<OptionItem>)ViewBag.Categories;
+    var pager = (Model.Page, Model.TotalPages, (Func<int, string>)(p => Url.Action("Index", new { filter.Search, filter.CategoryId, page = p })!));
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <form method="get" class="d-flex flex-wrap gap-2">
+            <input type="search" name="search" value="@filter.Search" class="form-control" placeholder="Ürün ara…" style="max-width:240px" />
+            <select name="categoryId" class="form-select" style="max-width:240px">
+                <option value="">Tüm kategoriler</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Id" selected="@(filter.CategoryId == category.Id)">@category.Name</option>
+                }
+            </select>
+            <button type="submit" class="btn btn-dark"><i class="fa-solid fa-filter"></i></button>
+        </form>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Ürün</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead>
+                <tr><th></th><th>Ürün</th><th>Kategori</th><th>Diller</th><th>Sıra</th><th>Durum</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Items)
+                {
+                    <tr>
+                        <td>
+                            @if (product.Image is not null)
+                            {
+                                <img src="@ViewHelpers.SmallImage(product.Image)" class="table-thumb" alt="" loading="lazy" />
+                            }
+                            else
+                            {
+                                <span class="table-thumb-placeholder"><i class="fa-regular fa-image"></i></span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@product.Id" class="fw-semibold">@product.Name</a>
+                            @if (product.IsFeatured)
+                            {
+                                <span class="badge bg-dark ms-1">Öne çıkan</span>
+                            }
+                        </td>
+                        <td>@product.CategoryName</td>
+                        <td>
+                            @foreach (var code in Languages.All)
+                            {
+                                <span class="lang-badge @(product.Languages.Contains(code) ? null : "missing")">@code.ToUpperInvariant()</span>
+                            }
+                        </td>
+                        <td>@product.SortOrder</td>
+                        <td>
+                            <form method="post" asp-action="ToggleActive" asp-route-id="@product.Id">
+                                <button type="submit" class="badge border-0 @(product.IsActive ? "bg-success" : "bg-secondary")">@(product.IsActive ? "Aktif" : "Pasif")</button>
+                            </form>
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-dark" title="Düzenle"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@product.Id" data-confirm="Bu ürünü ve tüm görsellerini silmek istediğinize emin misiniz?">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Ürün bulunamadı.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_AdminPager" model="pager" />
+</div>

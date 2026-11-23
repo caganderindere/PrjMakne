@@ -1,0 +1,141 @@
+@model AnnouncementEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Duyuru" : "Duyuru Düzenle";
+}
+<form method="post" asp-action="Save" enctype="multipart/form-data" data-announcement-form>
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" />
+    <div asp-validation-summary="All" class="alert alert-danger small"></div>
+    <div class="row g-4">
+        <div class="col-xl-7">
+            <section class="admin-card">
+                <h2 class="ann-section-title"><span>1</span>Gösterim şekli</h2>
+                <div class="ann-types" role="group" aria-label="@Html.DisplayNameFor(m => m.DisplayType)">
+                    <div>
+                        <input type="radio" class="ann-type-input" asp-for="DisplayType" value="@AnnouncementDisplay.Bar" id="displayBar" />
+                        <label class="ann-type" for="displayBar">
+                            <span class="ann-type-art is-bar" aria-hidden="true"><i></i></span>
+                            <strong>Üst bant</strong>
+                            <small>Tüm sayfalarda menünün üstünde durur. Kısa bilgilendirmeler için.</small>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" class="ann-type-input" asp-for="DisplayType" value="@AnnouncementDisplay.Popup" id="displayPopup" />
+                        <label class="ann-type" for="displayPopup">
+                            <span class="ann-type-art is-popup" aria-hidden="true"><i></i></span>
+                            <strong>Pop-up</strong>
+                            <small>Ziyaretçiye bir kez açılır; duyuru değişmedikçe tekrar gösterilmez.</small>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-card">
+                <h2 class="ann-section-title"><span>2</span>Duyuru metni</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="MessageTr" class="form-label"><span class="lang-badge">TR</span> Türkçe</label>
+                        <textarea asp-for="MessageTr" class="form-control" rows="4" maxlength="500" data-counter="500" placeholder="Ör: 4-7 Haziran'da İstanbul Komatek Fuarı'ndayız! Salon 5, Stand B12"></textarea>
+                        <span asp-validation-for="MessageTr"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="MessageEn" class="form-label"><span class="lang-badge">EN</span> İngilizce</label>
+                        <textarea asp-for="MessageEn" class="form-control" rows="4" maxlength="500" data-counter="500" placeholder="E.g. Visit us at Komatek Istanbul, 4-7 June! Hall 5, Stand B12"></textarea>
+                        <span asp-validation-for="MessageEn"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-card">
+                <h2 class="ann-section-title"><span>3</span>Buton <em>isteğe bağlı</em></h2>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="LinkUrl" class="form-label"></label>
+                        <input asp-for="LinkUrl" class="form-control" placeholder="https://... veya /tr/iletisim" />
+                        <div class="form-text">Boş bırakılırsa buton gösterilmez.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="LinkTextTr" class="form-label"><span class="lang-badge">TR</span> Buton metni</label>
+                        <input asp-for="LinkTextTr" class="form-control" placeholder="Detaylı bilgi" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="LinkTextEn" class="form-label"><span class="lang-badge">EN</span> Buton metni</label>
+                        <input asp-for="LinkTextEn" class="form-control" placeholder="Learn more" />
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-card" data-popup-only>
+                <h2 class="ann-section-title"><span>4</span>Görsel <em>isteğe bağlı</em></h2>
+                <label asp-for="ImageFile" class="form-label">Fuar afişi veya kampanya görseli</label>
+                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" data-preview="announcementPreview" />
+                @if (Model.Image is not null)
+                {
+                    <div class="form-check mt-2">
+                        <input asp-for="RemoveImage" class="form-check-input" />
+                        <label asp-for="RemoveImage" class="form-check-label">Görseli kaldır</label>
+                    </div>
+                }
+            </section>
+
+            <section class="admin-card">
+                <h2 class="ann-section-title"><span data-schedule-step>5</span>Yayın takvimi</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="StartDate" class="form-label"></label>
+                        <input asp-for="StartDate" class="form-control" />
+                        <span asp-validation-for="StartDate"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="EndDate" class="form-label"></label>
+                        <input asp-for="EndDate" class="form-control" />
+                        <div class="form-text">Boş bırakılırsa süresiz yayında kalır.</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="ann-actions">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+
+        <div class="col-xl-5">
+            <aside class="ann-preview" aria-label="Canlı önizleme">
+                <div class="ann-preview-head">
+                    <span>Canlı önizleme</span>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Önizleme dili">
+                        <button type="button" class="btn btn-outline-dark active" data-preview-lang="Tr" aria-pressed="true">TR</button>
+                        <button type="button" class="btn btn-outline-dark" data-preview-lang="En" aria-pressed="false">EN</button>
+                    </div>
+                </div>
+                <div class="ann-stage">
+                    <div class="ann-stage-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="ann-stage-bar" data-preview-bar>
+                        <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+                        <span class="ann-stage-bar-text" data-preview-text></span>
+                        <span class="ann-stage-bar-link" data-preview-link></span>
+                    </div>
+                    <div class="ann-stage-page" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                    <div class="ann-stage-overlay" data-preview-popup>
+                        <div class="ann-stage-popup">
+                            <img id="announcementPreview" src="@(Model.Image is null ? null : ViewHelpers.SmallImage(Model.Image))" alt="" hidden="@(Model.Image is null)" />
+                            <div class="ann-stage-popup-body">
+                                <span class="ann-stage-badge"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i><span data-preview-label></span></span>
+                                <p data-preview-text></p>
+                                <span class="ann-stage-popup-link" data-preview-link></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="ann-status" data-preview-status role="status"></p>
+            </aside>
+        </div>
+    </div>
+</form>

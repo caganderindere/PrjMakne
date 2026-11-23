@@ -1,0 +1,133 @@
+using PrjProje.Application.Common;
+using Microsoft.AspNetCore.Http;
+
+namespace PrjProje.Application.Interfaces;
+
+public enum ImageFolder
+{
+    Products,
+    Categories,
+    Blog,
+    Gallery,
+    Capabilities,
+    Site,
+    References,
+    Announcements,
+    BusinessCards,
+    Catalogs
+}
+
+public record StoredFile(string RelativePath, long Size, string OriginalName);
+
+/// <summary>Admin overrides of the built-in UI texts, read on every localized string lookup.</summary>
+public interface IContentTextStore
+{
+    string? Find(string languageCode, string key);
+    void Invalidate();
+}
+
+public interface IFileStorageService
+{
+    /// <summary>Validates, re-encodes to WebP (stripping metadata/payloads) and stores a public image. Returns the web path.</summary>
+    Task<ServiceResult<StoredFile>> SaveImageAsync(IFormFile file, ImageFolder folder, CancellationToken cancellationToken = default);
+
+    /// <summary>Validates and stores a public PDF document.</summary>
+    Task<ServiceResult<StoredFile>> SaveDocumentAsync(IFormFile file, CancellationToken cancellationToken = default);
+
+    /// <summary>Stores a customer technical file outside the web root; it is only reachable through the admin panel.</summary>
+    Task<ServiceResult<StoredFile>> SavePrivateAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default);
+
+    /// <summary>Stores a job applicant's CV (PDF or Word) outside the web root, next to the private attachments.</summary>
+    Task<ServiceResult<StoredFile>> SaveResumeAsync(IFormFile file, CancellationToken cancellationToken = default);
+
+    string? GetPrivateAttachmentPhysicalPath(string relativePath);
+
+    void DeletePublicFile(string? webPath);
+
+    void DeletePrivateFile(string? relativePath);
+}
+
+public interface IHtmlSanitizerService
+{
+    string Sanitize(string? html);
+}
+
+public interface IActivityLogger
+{
+    Task LogAsync(string action, string entityType, object? entityId, string? description, CancellationToken cancellationToken = default);
+}
+
+public interface IContentCache
+{
+    Task<T> GetOrCreateAsync<T>(string key, Func<Task<T>> factory, TimeSpan? duration = null);
+
+    /// <summary>Evicts every cached content entry (called after any CMS change).</summary>
+    void Invalidate();
+}
+
+public enum TurnstileForm
+{
+    Login,
+    Contact,
+    Quote,
+    Fair
+}
+
+public record CloudflareSettings(
+    bool UseProxy, string? SiteKey, string? Secret, bool SecretUnreadable,
+    bool ProtectLogin, bool ProtectContact, bool ProtectQuote, bool ProtectFair, bool TurnstileDisabled)
+{
+    public bool Protects(TurnstileForm form) =>
+        !TurnstileDisabled && !string.IsNullOrEmpty(SiteKey) && Secret is not null && form switch
+        {
+            TurnstileForm.Login => ProtectLogin,
+            TurnstileForm.Contact => ProtectContact,
+            TurnstileForm.Quote => ProtectQuote,
+            TurnstileForm.Fair => ProtectFair,
+            _ => false
+        };
+}
+
+public enum NotificationKind
+{
+    /// <summary>Quote requests and contact messages.</summary>
+    Sales,
+    HumanResources
+}
+
+public record EmailSettings(
+    string? Host, int Port, bool UseSsl, string? UserName, string? Password, bool PasswordUnreadable,
+    string? From, string? SalesTo, string? HrTo)
+{
+    public bool IsConfigured => !string.IsNullOrWhiteSpace(Host) && !string.IsNullOrWhiteSpace(From) && Password is not null;
+}
+
+public interface INotificationService
+{
+    Task<EmailSettings> GetAsync(CancellationToken cancellationToken = default);
+    Task<ServiceResult> SaveAsync(Models.Admin.EmailEditModel model, CancellationToken cancellationToken = default);
+
+    /// <summary>Sends a test mail right away; returns the problem, or null when it went out.</summary>
+    Task<string?> SendTestAsync(string to, CancellationToken cancellationToken = default);
+
+    /// <summary>Queues a notification to the addresses set for this kind; does nothing when e-mail is not set up.</summary>
+    Task NotifyAsync(NotificationKind kind, string subject, string body, string? replyTo, CancellationToken cancellationToken = default);
+}
+
+public interface ICloudflareService
+{
+    Task<CloudflareSettings> GetAsync(CancellationToken cancellationToken = default);
+    Task<ServiceResult> SaveAsync(Models.Admin.CloudflareEditModel model, CancellationToken cancellationToken = default);
+
+    /// <summary>False only for a visitor Turnstile rejected; true when the form is unprotected or Cloudflare cannot answer.</summary>
+    Task<bool> VerifyAsync(TurnstileForm form, HttpContext context, CancellationToken cancellationToken = default);
+
+    /// <summary>Checks the saved keys against the submitted widget; returns the problem, or null when they work.</summary>
+    Task<string?> TestAsync(HttpContext context, CancellationToken cancellationToken = default);
+}
+
+public interface ISpamProtectionService
+{
+    string CreateFormToken();
+    bool IsLikelySpam(IFormCollection form);
+}

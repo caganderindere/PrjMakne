@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>@ViewData["Title"] | PRJ Proje Makina Yönetim</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body class="auth-body">
+    <div class="auth-split">
+        <aside class="auth-visual" aria-hidden="true">
+            <img src="~/images/logo-light.png" alt="" class="auth-visual-logo" width="220" height="53" />
+            <div class="auth-visual-text">
+                <span class="auth-kicker">25.000 m² Entegre Tesis · Ankara</span>
+                <p class="auth-visual-title">Güvenilir çözümler,<br /><span>güçlü üretim.</span></p>
+            </div>
+        </aside>
+        <main class="auth-panel">
+            <div class="auth-card">
+                <img src="~/images/logo.png" alt="PRJ Proje Makina" class="auth-logo" width="220" height="48" />
+                @RenderBody()
+            </div>
+            <p class="auth-footer">© @DateTime.Now.Year PRJ Proje Makina · Yönetim Paneli</p>
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

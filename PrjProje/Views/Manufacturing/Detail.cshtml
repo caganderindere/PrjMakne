@@ -1,0 +1,103 @@
+@model CapabilityDetailViewModel
+@{
+    var capability = Model.Capability;
+    var header = new PageHeaderModel(capability.Title, capability.Summary, L["Nav.Manufacturing"], capability.Image);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="capability-detail-icon"><i class="@capability.IconClass" aria-hidden="true"></i></div>
+                <div class="rich-content">@Html.Raw(capability.Content)</div>
+                @if (Model.Gallery.Count > 0)
+                {
+                    <div class="content-block mt-5">
+                        <h2 class="content-title">@L["Manufacturing.GalleryTitle"]</h2>
+                        <div class="gallery-grid">
+                            @foreach (var item in Model.Gallery)
+                            {
+                                <a href="@item.ImagePath" class="gallery-item" data-lightbox="capability" data-caption="@item.Title">
+                                    <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@(string.IsNullOrEmpty(item.Title) ? capability.Title : item.Title)" loading="lazy" decoding="async" width="640" height="480" />
+                                    <span class="gallery-item-overlay"><i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i></span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+                @if (Model.Categories.Count > 0)
+                {
+                    <div class="content-block mt-5">
+                        <h2 class="content-title">@L["Manufacturing.RelatedCategories"]</h2>
+                        <div class="row g-4">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <div class="col-md-6">
+                                    <a href="@Url.Localized(SiteRoutes.ProductCategory, category.Slug)" class="category-card h-100">
+                                        @if (category.Image is not null)
+                                        {
+                                            <span class="category-media"><img src="@ViewHelpers.SmallImage(category.Image)" alt="@category.Name" width="640" height="427" loading="lazy" decoding="async" /></span>
+                                        }
+                                        <span class="category-body">
+                                            @if (category.Image is null)
+                                            {
+                                                <span class="category-icon"><i class="@category.IconClass" aria-hidden="true"></i></span>
+                                            }
+                                            <h3 class="category-title">@category.Name</h3>
+                                            <span class="category-link">@L["Common.Explore"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                                        </span>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="@Url.Localized(SiteRoutes.Quote)?capability=@Uri.EscapeDataString(capability.Slug)" class="btn btn-brand btn-lg">@L["Common.RequestQuote"]</a>
+                    <a href="@Url.Localized(SiteRoutes.Products)" class="btn btn-outline-dark btn-lg">@L["Home.ExploreProducts"]</a>
+                </div>
+            </div>
+            <aside class="col-lg-4">
+                @if (capability.Specifications.Count > 0)
+                {
+                    <div class="side-card">
+                        <h2 class="side-card-title">@L["Manufacturing.SpecsTitle"]</h2>
+                        <table class="table spec-table mb-0">
+                            <tbody>
+                                @foreach (var spec in capability.Specifications)
+                                {
+                                    <tr><th scope="row">@spec.Name</th><td>@spec.Value</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                @if (Model.Certificates.Count > 0)
+                {
+                    <div class="side-card">
+                        <h2 class="side-card-title">@L["Manufacturing.CertificatesTitle"]</h2>
+                        <ul class="side-nav list-unstyled mb-0">
+                            @foreach (var document in Model.Certificates)
+                            {
+                                <li><a href="@document.FilePath" target="_blank" rel="noopener"><i class="fa-solid fa-award fa-fw me-2 text-danger" aria-hidden="true"></i>@document.Title</a></li>
+                            }
+                        </ul>
+                        <a href="@Url.Localized(SiteRoutes.Quality)" class="link-arrow mt-3">@L["Manufacturing.AllDocuments"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                }
+                <div class="side-card">
+                    <h2 class="side-card-title">@L["Manufacturing.OtherCapabilities"]</h2>
+                    <ul class="side-nav list-unstyled mb-0">
+                        @foreach (var other in Model.Others)
+                        {
+                            <li><a href="@Url.Localized(SiteRoutes.ManufacturingDetail, other.Slug)"><i class="@other.IconClass fa-fw me-2" aria-hidden="true"></i>@other.Title</a></li>
+                        }
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<partial name="_CtaSection" />

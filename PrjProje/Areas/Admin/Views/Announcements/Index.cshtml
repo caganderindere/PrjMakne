@@ -1,0 +1,64 @@
+@model IReadOnlyList<AnnouncementAdminItem>
+@{
+    ViewData["Title"] = "Duyurular";
+    var now = DateTime.Now;
+    // The site shows only the newest live announcement of each type (the list arrives newest first), so the others are waiting, not live.
+    var shownTypes = new HashSet<AnnouncementDisplay>();
+    var rows = Model.Select(item =>
+    {
+        var (label, css) = !item.IsActive ? ("Pasif", "is-off")
+            : item.StartDate > now ? ("Planlandı", "is-planned")
+            : item.EndDate is not null && item.EndDate <= now ? ("Süresi doldu", "is-off")
+            : shownTypes.Add(item.DisplayType) ? ("Yayında", "is-live")
+            : ("Sırada", "is-queued");
+        return (Item: item, Label: label, Css: css);
+    }).ToList();
+}
+<div class="ann-toolbar">
+    <div class="ann-stats">
+        <div class="ann-stat"><strong>@rows.Count(r => r.Css == "is-live")</strong><span>Yayında</span></div>
+        <div class="ann-stat"><strong>@rows.Count(r => r.Css == "is-planned")</strong><span>Planlandı</span></div>
+        <div class="ann-stat"><strong>@rows.Count(r => r.Css == "is-queued")</strong><span>Sırada</span></div>
+        <div class="ann-stat"><strong>@rows.Count(r => r.Css == "is-off")</strong><span>Pasif / Bitti</span></div>
+    </div>
+    <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Duyuru</a>
+</div>
+
+@if (rows.Any(r => r.Css == "is-queued"))
+{
+    <p class="ann-note"><i class="fa-solid fa-circle-info me-2" aria-hidden="true"></i>Sitede her türden yalnızca başlangıç tarihi en yeni olan duyuru görünür. "Sırada" olanlar, öndeki duyuru bitince yayına girer.</p>
+}
+
+<div class="admin-card p-0">
+    @if (rows.Count == 0)
+    {
+        <div class="ann-empty">
+            <span class="ann-empty-icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
+            <h2 class="admin-card-title">Henüz duyuru yok</h2>
+            <p>Fuar, tatil veya kampanya duyurularını üst bant ya da pop-up olarak, seçtiğiniz tarihlerde gösterin.</p>
+            <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>İlk Duyuruyu Oluştur</a>
+        </div>
+    }
+    @foreach (var row in rows)
+    {
+        var item = row.Item;
+        var isBar = item.DisplayType == AnnouncementDisplay.Bar;
+        <div class="ann-row">
+            <span class="ann-row-icon"><i class="@(isBar ? "fa-solid fa-window-maximize" : "fa-regular fa-window-restore")" aria-hidden="true"></i></span>
+            <div class="ann-row-body">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="ann-row-title">@ViewHelpers.Truncate(item.MessageTr, 110)</a>
+                <div class="ann-row-meta">
+                    <span>@(isBar ? "Üst bant" : "Pop-up")</span>
+                    <span><i class="fa-regular fa-calendar me-1" aria-hidden="true"></i>@item.StartDate.ToString("dd.MM.yyyy HH:mm") – @(item.EndDate?.ToString("dd.MM.yyyy HH:mm") ?? "Süresiz")</span>
+                </div>
+            </div>
+            <span class="ann-pill @row.Css">@row.Label</span>
+            <div class="actions">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" aria-label="Düzenle" title="Düzenle"><i class="fa-solid fa-pen"></i></a>
+                <form method="post" asp-action="Delete" asp-route-id="@item.Id" data-confirm="Bu duyuruyu silmek istediğinize emin misiniz?">
+                    <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Sil" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </div>
+        </div>
+    }
+</div>

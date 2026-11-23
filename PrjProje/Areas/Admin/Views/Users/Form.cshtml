@@ -1,0 +1,56 @@
+@model UserEditModel
+@{
+    var isNew = string.IsNullOrEmpty(Model.Id);
+    ViewData["Title"] = isNew ? "Yeni Kullanıcı" : "Kullanıcı Düzenle";
+}
+<div class="admin-card" style="max-width:720px">
+    <form method="post" asp-action="Save">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Role" class="form-label"></label>
+                <select asp-for="Role" class="form-select">
+                    <option value="@Roles.Employee">Personel</option>
+                    <option value="@Roles.Editor">Editör</option>
+                    <option value="@Roles.HumanResources">İnsan Kaynakları</option>
+                    <option value="@Roles.Marketing">Pazarlama</option>
+                    <option value="@Roles.RnD">Ar-Ge Ekibi</option>
+                    <option value="@Roles.Admin">Yönetici</option>
+                </select>
+                <div class="form-text">Personel yalnızca modülleri (toplantı tutanakları) kullanır ve tutanaklara katılımcı olarak eklenebilir. İnsan Kaynakları rolü panelde yalnızca iş başvurularını görür. Pazarlama; analiz, teklif talepleri, iletişim mesajları, iş başvuruları, fuarlar ve dijital kartvizitleri görür. Ar-Ge Ekibi kullanıcı yönetimi hariç her şeye erişir. Kullanıcı ekleme, silme ve şifre/rol değiştirme yalnızca Yönetici'dedir.</div>
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+                <div class="form-check form-switch">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" autocomplete="new-password" />
+                <div class="form-text">@(isNew ? "Zorunlu." : "Şifresini unutan kullanıcıya geçici şifre vermek için doldurun, değiştirmek istemiyorsanız boş bırakın.") En az 8 karakter, büyük/küçük harf ve rakam. Kullanıcı ilk girişte kendi şifresini belirlemek zorundadır; hesap kilitliyse kilit de kalkar.</div>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" />
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </form>
+</div>

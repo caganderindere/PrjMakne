@@ -1,0 +1,51 @@
+@model TicketCreateModel
+@{
+    ViewData["Title"] = "Yeni Bildirim";
+}
+<div class="row justify-content-center">
+    <div class="col-xl-8">
+        <form method="post" asp-action="Create" enctype="multipart/form-data" class="admin-card ticket-form">
+            <p class="text-muted">Karşılaştığınız arızayı veya isteğinizi yazın, doğrudan geliştiriciye iletilsin. Adınız ve tarih otomatik eklenir.</p>
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger small"></div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="Type" class="form-label"></label>
+                    <select asp-for="Type" class="form-select">
+                        @foreach (var value in Enum.GetValues<TicketType>())
+                        {
+                            <option value="@value">@AdminLabels.Kind(value)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Priority" class="form-label"></label>
+                    <select asp-for="Priority" class="form-select">
+                        @foreach (var value in Enum.GetValues<TicketPriority>())
+                        {
+                            <option value="@value">@AdminLabels.Priority(value)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" maxlength="200" placeholder="Ör: Ürün kaydederken hata alıyorum" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="7" maxlength="4000" placeholder="Ne yapmak istiyordunuz, ne oldu? Hangi sayfada oldu? İstekse nasıl çalışmasını istersiniz?"></textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Screenshot" class="form-label"></label>
+                    <input asp-for="Screenshot" type="file" class="form-control" accept=".png,.jpg,.jpeg" />
+                    <div class="form-text">İsteğe bağlı. PNG veya JPG, en fazla 10 MB.</div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-brand"><i class="fa-solid fa-paper-plane me-1"></i>Gönder</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Vazgeç</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

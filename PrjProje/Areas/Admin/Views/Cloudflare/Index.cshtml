@@ -1,0 +1,99 @@
+@model CloudflareEditModel
+@{
+    ViewData["Title"] = "Cloudflare";
+    var status = (CloudflareStatus)ViewBag.Status;
+}
+<div class="row g-4">
+    <div class="col-xl-8">
+        <form method="post" asp-action="Save">
+            <div asp-validation-summary="All" class="alert alert-danger small"></div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Cloudflare Bağlantısı</h2>
+                <div class="form-check form-switch">
+                    <input asp-for="UseProxy" class="form-check-input" />
+                    <label asp-for="UseProxy" class="form-check-label"></label>
+                </div>
+                <div class="form-text">Alan adını Cloudflare'e geçirirken açın. Ziyaretçinin gerçek IP'si yalnızca Cloudflare sunucularından gelen isteklerde okunur; Cloudflare kullanılmıyorsa açık olması zarar vermez.</div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Turnstile Anahtarları</h2>
+                <p class="small text-muted">Cloudflare panelinde Turnstile bölümünden sitenizin alan adı için oluşturun.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="TurnstileSiteKey" class="form-label"></label>
+                        <input asp-for="TurnstileSiteKey" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="TurnstileSiteKey"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="TurnstileSecret" class="form-label"></label>
+                        <input asp-for="TurnstileSecret" class="form-control" type="password" autocomplete="new-password" placeholder="@(status.HasSecret ? "Kayıtlı; değiştirmek için yenisini yazın" : "")" />
+                        <span asp-validation-for="TurnstileSecret"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Korunan Formlar</h2>
+                <div class="form-check form-switch">
+                    <input asp-for="ProtectLogin" class="form-check-input" />
+                    <label asp-for="ProtectLogin" class="form-check-label"></label>
+                </div>
+                <div class="form-text mb-3">Açmadan önce sağdaki test ile anahtarları doğrulayın; hatalı site key ile giriş ekranı açılamaz.</div>
+                <div class="form-check form-switch mb-2">
+                    <input asp-for="ProtectContact" class="form-check-input" />
+                    <label asp-for="ProtectContact" class="form-check-label"></label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input asp-for="ProtectQuote" class="form-check-input" />
+                    <label asp-for="ProtectQuote" class="form-check-label"></label>
+                </div>
+                <div class="form-check form-switch">
+                    <input asp-for="ProtectFair" class="form-check-input" />
+                    <label asp-for="ProtectFair" class="form-check-label"></label>
+                </div>
+                <div class="form-text mb-3">Fuar formunda yalnızca bot sorunu görülürse açın; standda hız önemlidir.</div>
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-xl-4">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">Durum</h2>
+            <ul class="list-unstyled small mb-0">
+                <li class="mb-2"><span class="badge @(status.ViaCloudflare ? "bg-success" : "bg-secondary")">@(status.ViaCloudflare ? "Evet" : "Hayır")</span> Bu istek Cloudflare'den geldi</li>
+                <li class="mb-2"><span class="badge @(status.HasSecret && !string.IsNullOrEmpty(status.SiteKey) ? "bg-success" : "bg-secondary")">@(status.HasSecret && !string.IsNullOrEmpty(status.SiteKey) ? "Hazır" : "Eksik")</span> Turnstile anahtarları</li>
+                <li class="mb-2">Görünen IP: <code>@status.ClientIp</code></li>
+                @if (!string.IsNullOrEmpty(status.Ray))
+                {
+                    <li class="mb-2">CF-Ray: <code>@status.Ray</code></li>
+                }
+            </ul>
+            @if (status.SecretUnreadable)
+            {
+                <div class="alert alert-warning small mt-3 mb-0">Kayıtlı secret key çözülemedi, Turnstile devre dışı. Secret key'i yeniden girin.</div>
+            }
+            @if (status.TurnstileDisabled)
+            {
+                <div class="alert alert-warning small mt-3 mb-0">Turnstile, sunucudaki <code>Cloudflare:DisableTurnstile</code> ayarıyla kapatılmış.</div>
+            }
+        </div>
+        @if (status.HasSecret && !string.IsNullOrEmpty(status.SiteKey))
+        {
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Anahtarları Test Et</h2>
+                <form method="post" asp-action="TestTurnstile">
+                    <div class="cf-turnstile mb-3" data-sitekey="@status.SiteKey" data-size="flexible"></div>
+                    <button type="submit" class="btn btn-outline-dark w-100">Test Et</button>
+                </form>
+            </div>
+        }
+        <div class="admin-card small text-muted">
+            <strong>Giriş ekranından kilitlenirseniz:</strong> sunucuda <code>Cloudflare:DisableTurnstile</code> ayarını <code>true</code> yapıp uygulamayı yeniden başlatın.
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @if (status.HasSecret && !string.IsNullOrEmpty(status.SiteKey))
+    {
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    }
+}

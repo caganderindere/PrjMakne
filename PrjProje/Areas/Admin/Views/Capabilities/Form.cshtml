@@ -1,0 +1,107 @@
+@model CapabilityEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Üretim Kabiliyeti" : "Üretim Kabiliyeti Düzenle";
+}
+<form method="post" asp-action="Save" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" />
+    <div asp-validation-summary="All" class="alert alert-danger small"></div>
+    <div class="row g-4">
+        <div class="col-xl-8">
+            <partial name="_LangTabs" model="@("capability")" />
+            <div class="tab-content tab-pane-box">
+                @for (var i = 0; i < Model.Translations.Count; i++)
+                {
+                    var code = Model.Translations[i].LanguageCode;
+                    <div class="tab-pane fade @(i == 0 ? "show active" : null)" id="capability-@code" role="tabpanel">
+                        <input type="hidden" asp-for="Translations[i].LanguageCode" />
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                <label asp-for="Translations[i].Title" class="form-label"></label>
+                                <input asp-for="Translations[i].Title" class="form-control" data-slug-source="slug-capability-@code" />
+                                <span asp-validation-for="Translations[i].Title"></span>
+                            </div>
+                            <div class="col-md-5">
+                                <label asp-for="Translations[i].Slug" class="form-label"></label>
+                                <input asp-for="Translations[i].Slug" class="form-control" id="slug-capability-@code" placeholder="otomatik" />
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Summary" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Summary" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Content" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Content" class="form-control" rows="8" data-rich-editor></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Specifications" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Specifications" class="form-control" rows="5" placeholder="Maks. parça çapı: 600 mm&#10;Tolerans: ±0,01 mm&#10;Malzemeler: Çelik, döküm, alüminyum"></textarea>
+                                <span asp-validation-for="Translations[i].Specifications"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].MetaTitle" class="form-label"></label>
+                                <input asp-for="Translations[i].MetaTitle" class="form-control" maxlength="70" data-counter="70" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].MetaDescription" class="form-label"></label>
+                                <textarea asp-for="Translations[i].MetaDescription" class="form-control" rows="2" maxlength="170" data-counter="170"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="admin-card">
+                <div class="mb-3">
+                    <label asp-for="IconClass" class="form-label"></label>
+                    <input asp-for="IconClass" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SortOrder" class="form-label"></label>
+                    <input asp-for="SortOrder" class="form-control" />
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input asp-for="ShowOnHome" class="form-check-input" />
+                    <label asp-for="ShowOnHome" class="form-check-label"></label>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="GalleryCategoryId" class="form-label"></label>
+                    <select asp-for="GalleryCategoryId" asp-items="@(new SelectList(Model.GalleryOptions, "Id", "Name"))" class="form-select">
+                        <option value="">Galeri gösterme</option>
+                    </select>
+                    <div class="form-text">Seçilen kategorideki fotoğraflar detay sayfasında gösterilir.</div>
+                </div>
+                <div class="mb-3">
+                    <span class="form-label d-block">İlgili Ürün Kategorileri</span>
+                    @foreach (var category in Model.CategoryOptions)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ProductCategoryIds" value="@category.Id" id="cat-@category.Id" checked="@Model.ProductCategoryIds.Contains(category.Id)" />
+                            <label class="form-check-label" for="cat-@category.Id">@category.Name</label>
+                        </div>
+                    }
+                    <div class="form-text">Detay sayfasında "Bu süreçle ürettiğimiz parçalar" olarak listelenir.</div>
+                </div>
+                <label asp-for="ImageFile" class="form-label"></label>
+                <img id="capabilityPreview" src="@(Model.Image is null ? null : ViewHelpers.SmallImage(Model.Image))" class="image-preview" alt="" hidden="@(Model.Image is null)" />
+                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" data-preview="capabilityPreview" />
+                @if (Model.Image is not null)
+                {
+                    <div class="form-check mt-2">
+                        <input asp-for="RemoveImage" class="form-check-input" />
+                        <label asp-for="RemoveImage" class="form-check-label">Görseli kaldır</label>
+                    </div>
+                }
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-brand flex-grow-1"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </div>
+</form>

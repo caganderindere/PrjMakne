@@ -1,0 +1,102 @@
+@model BlogPostEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Blog Yazısı" : "Blog Yazısı Düzenle";
+}
+<form method="post" asp-action="Save" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CoverImage" />
+    <div asp-validation-summary="All" class="alert alert-danger small"></div>
+    <div class="row g-4">
+        <div class="col-xl-8">
+            <p class="small text-muted">Her dilin içeriği, durumu ve yayın tarihi birbirinden bağımsızdır. Bir dili boş bırakırsanız yazı o dilde yayınlanmaz.</p>
+            <partial name="_LangTabs" model="@("post")" />
+            <div class="tab-content tab-pane-box">
+                @for (var i = 0; i < Model.Translations.Count; i++)
+                {
+                    var code = Model.Translations[i].LanguageCode;
+                    <div class="tab-pane fade @(i == 0 ? "show active" : null)" id="post-@code" role="tabpanel">
+                        <input type="hidden" asp-for="Translations[i].LanguageCode" />
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label asp-for="Translations[i].Title" class="form-label"></label>
+                                <input asp-for="Translations[i].Title" class="form-control" data-slug-source="slug-post-@code" />
+                                <span asp-validation-for="Translations[i].Title"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Translations[i].Slug" class="form-label"></label>
+                                <input asp-for="Translations[i].Slug" class="form-control" id="slug-post-@code" placeholder="otomatik" />
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Translations[i].Status" class="form-label"></label>
+                                <select asp-for="Translations[i].Status" class="form-select">
+                                    <option value="@PublishStatus.Draft">Taslak</option>
+                                    <option value="@PublishStatus.Published">Yayınla</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Translations[i].PublishedDate" class="form-label"></label>
+                                <input asp-for="Translations[i].PublishedDate" type="datetime-local" class="form-control" />
+                                <div class="form-text">Boşsa yayınlandığı an kullanılır. İleri tarih planlı yayındır.</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Translations[i].TagsText" class="form-label"></label>
+                                <input asp-for="Translations[i].TagsText" class="form-control" placeholder="kauçuk, cnc" />
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Summary" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Summary" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Translations[i].Content" class="form-label"></label>
+                                <textarea asp-for="Translations[i].Content" class="form-control" rows="12" data-rich-editor></textarea>
+                                <span asp-validation-for="Translations[i].Content"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].MetaTitle" class="form-label"></label>
+                                <input asp-for="Translations[i].MetaTitle" class="form-control" maxlength="70" data-counter="70" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Translations[i].MetaDescription" class="form-label"></label>
+                                <textarea asp-for="Translations[i].MetaDescription" class="form-control" rows="2" maxlength="170" data-counter="170"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="admin-card">
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label"></label>
+                    <select asp-for="CategoryId" class="form-select">
+                        <option value="">Kategori yok</option>
+                        @foreach (var category in Model.CategoryOptions)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="AuthorName" class="form-label"></label>
+                    <input asp-for="AuthorName" class="form-control" />
+                    <span asp-validation-for="AuthorName"></span>
+                </div>
+                <label asp-for="CoverImageFile" class="form-label"></label>
+                <img id="coverPreview" src="@(Model.CoverImage is null ? null : ViewHelpers.SmallImage(Model.CoverImage))" class="image-preview" alt="" hidden="@(Model.CoverImage is null)" />
+                <input asp-for="CoverImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp" data-preview="coverPreview" />
+                @if (Model.CoverImage is not null)
+                {
+                    <div class="form-check mt-2">
+                        <input asp-for="RemoveCover" class="form-check-input" />
+                        <label asp-for="RemoveCover" class="form-check-label">Kapak görselini kaldır</label>
+                    </div>
+                }
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-brand flex-grow-1"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <button type="submit" name="publish" value="true" class="btn btn-success flex-grow-1"><i class="fa-solid fa-paper-plane me-1"></i>Yayınla</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </div>
+</form>

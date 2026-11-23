@@ -1,0 +1,177 @@
+@model DeveloperReport
+@{
+    ViewData["Title"] = "Developer";
+    var state = Model.Checks.Max(c => c.State);
+    var problemCount = Model.Checks.Count(c => c.State != HealthState.Ok);
+    var openIssues = Model.ContentIssues.Where(i => i.Count > 0).ToList();
+}
+<section class="health-hero @AdminLabels.HealthClass(state)">
+    <span class="health-pulse" aria-hidden="true"></span>
+    <div>
+        <h2 class="health-hero-title">@AdminLabels.Health(state)</h2>
+        <p class="health-hero-text">
+            @(problemCount == 0 ? $"{Model.Checks.Count} kontrolün tamamı başarılı." : $"{Model.Checks.Count} kontrolden {problemCount} tanesi inceleme bekliyor.")
+            Kontrol zamanı: @DateTime.Now.ToString("HH:mm:ss")
+        </p>
+    </div>
+    <a class="btn btn-sm btn-outline-secondary ms-auto" asp-action="Index"><i class="fa-solid fa-rotate me-1"></i>Yenile</a>
+</section>
+
+<div class="health-grid">
+    @foreach (var check in Model.Checks)
+    {
+        <div class="health-tile @AdminLabels.HealthClass(check.State)">
+            <span class="health-tile-icon"><i class="fa-solid @check.Icon" aria-hidden="true"></i></span>
+            <div class="health-tile-body">
+                <div class="health-tile-name">@check.Name</div>
+                <div class="health-tile-detail">@check.Detail</div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="admin-card" data-performance data-url="@Url.Action("Performance")">
+    <div class="admin-card-header">
+        <div>
+            <h2 class="admin-card-title">Site Performansı</h2>
+            <div class="small text-muted">Statik dosyalar ve bu sayfanın kendi taraması sayılmaz. Veriler 30 gün saklanır, ziyaretçi bilgisi tutulmaz.</div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Zaman aralığı">
+            <button type="button" class="btn btn-sm btn-dark" data-perf-range="1" aria-pressed="true">24 saat</button>
+            <button type="button" class="btn btn-sm btn-outline-dark" data-perf-range="7" aria-pressed="false">7 gün</button>
+            <button type="button" class="btn btn-sm btn-outline-dark" data-perf-range="30" aria-pressed="false">30 gün</button>
+        </div>
+    </div>
+    <p class="scan-summary" data-perf-message aria-live="polite">Veriler yükleniyor…</p>
+    <dl class="perf-stats">
+        <div><dt>Toplam istek</dt><dd data-perf-stat="requests">-</dd></div>
+        <div><dt>Ortalama yanıt</dt><dd data-perf-stat="average">-</dd></div>
+        <div><dt>En yavaş %5 (yaklaşık)</dt><dd data-perf-stat="p95">-</dd></div>
+        <div><dt>Sunucu hatası (5xx)</dt><dd data-perf-stat="errors">-</dd></div>
+        <div><dt>Bellek</dt><dd data-perf-stat="memory">-</dd></div>
+        <div><dt>Açık kalma süresi</dt><dd data-perf-stat="uptime">-</dd></div>
+    </dl>
+    <div class="perf-grid">
+        <figure><figcaption>Yanıt süresi (ms)</figcaption><div class="perf-chart"><canvas data-perf-chart="latency" role="img" aria-label="Zamana göre ortalama ve en yavaş yüzde beş yanıt süresi"></canvas></div></figure>
+        <figure><figcaption>İstek sayısı</figcaption><div class="perf-chart"><canvas data-perf-chart="traffic" role="img" aria-label="Zamana göre istek sayısı"></canvas></div></figure>
+        <figure><figcaption>Hata oranı (%)</figcaption><div class="perf-chart"><canvas data-perf-chart="errors" role="img" aria-label="Zamana göre 4xx ve 5xx hata yüzdesi"></canvas></div></figure>
+        <figure><figcaption>En yüksek bellek (MB)</figcaption><div class="perf-chart"><canvas data-perf-chart="memory" role="img" aria-label="Zamana göre en yüksek bellek kullanımı"></canvas></div></figure>
+    </div>
+    <h3 class="admin-card-title mt-4 mb-2">En Yavaş Sayfalar</h3>
+    <div class="table-responsive">
+        <table class="table admin-table mb-0">
+            <thead><tr><th>Adres kalıbı</th><th class="text-end">İstek</th><th class="text-end">Ortalama</th><th class="text-end">En yavaş %5</th><th class="text-end">Hata</th></tr></thead>
+            <tbody data-perf-routes><tr><td colspan="5" class="text-center text-muted py-4">Henüz veri yok.</td></tr></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="admin-card" data-page-scan>
+    <div class="admin-card-header">
+        <div>
+            <h2 class="admin-card-title">Sayfa Taraması</h2>
+            <div class="small text-muted">Site haritasındaki her sayfa, ziyaretçi gibi açılarak test edilir.</div>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-scan-start><i class="fa-solid fa-magnifying-glass me-1"></i>Yeniden Tara</button>
+    </div>
+    <div class="progress scan-progress" role="progressbar" aria-label="Tarama ilerlemesi"><div class="progress-bar" data-scan-bar></div></div>
+    <p class="scan-summary" data-scan-summary aria-live="polite">Tarama başlıyor…</p>
+    <div class="table-responsive">
+        <table class="table admin-table" data-scan-table hidden>
+            <thead><tr><th>Sayfa</th><th>Durum</th><th class="text-end">Süre</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-xl-6">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">İçerik Kontrolü</h2>
+            @if (!Model.DatabaseChecked)
+            {
+                <p class="text-muted mb-0">Veritabanına ulaşılamadığı için kontrol edilemedi.</p>
+            }
+            else if (openIssues.Count == 0)
+            {
+                <p class="text-muted mb-0"><i class="fa-solid fa-circle-check text-success me-2"></i>Eksik içerik bulunamadı.</p>
+            }
+            else
+            {
+                <ul class="issue-list">
+                    @foreach (var issue in openIssues)
+                    {
+                        <li><a asp-controller="@issue.Controller" asp-action="Index"><span>@issue.Label</span><strong>@issue.Count</strong></a></li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">Kayıp Dosyalar</h2>
+            @if (!Model.DatabaseChecked)
+            {
+                <p class="text-muted mb-0">Veritabanına ulaşılamadığı için kontrol edilemedi.</p>
+            }
+            else if (Model.MissingFiles.Count == 0)
+            {
+                <p class="text-muted mb-0"><i class="fa-solid fa-circle-check text-success me-2"></i>Kayıtlı tüm görsel ve belgeler diskte mevcut.</p>
+            }
+            else
+            {
+                <div class="table-responsive scroll-box">
+                    <table class="table admin-table">
+                        <thead><tr><th>Kaynak</th><th>Dosya</th></tr></thead>
+                        <tbody>
+                            @foreach (var file in Model.MissingFiles)
+                            {
+                                <tr><td class="text-nowrap">@file.Source</td><td class="small text-break">@file.Path</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="admin-card">
+    <div class="admin-card-header mb-3">
+        <h2 class="admin-card-title">Son Hatalar ve Uyarılar</h2>
+        <span class="small text-muted">Uygulama yeniden başlayınca sıfırlanır</span>
+    </div>
+    @if (Model.Logs.Count == 0)
+    {
+        <p class="text-muted mb-0"><i class="fa-solid fa-circle-check text-success me-2"></i>Uygulama açıldığından beri hata veya uyarı yok.</p>
+    }
+    else
+    {
+        <div class="log-list scroll-box">
+            @foreach (var log in Model.Logs)
+            {
+                <details class="log-entry @(log.IsError ? "is-error" : "is-warning")">
+                    <summary>
+                        <span class="log-level">@(log.IsError ? "Hata" : "Uyarı")</span>
+                        <span class="log-message">@log.Message</span>
+                        <time class="log-time">@log.CreatedDate.ToLocalTime().ToString("dd.MM HH:mm:ss")</time>
+                    </summary>
+                    <div class="log-detail">
+                        <div class="small text-muted mb-1">@log.Category</div>
+                        <pre>@(log.Exception ?? log.Message)</pre>
+                    </div>
+                </details>
+            }
+        </div>
+    }
+</div>
+
+<div class="admin-card">
+    <h2 class="admin-card-title mb-3">Sunucu</h2>
+    <dl class="runtime-grid">
+        @foreach (var fact in Model.Runtime)
+        {
+            <div><dt>@fact.Label</dt><dd>@fact.Value</dd></div>
+        }
+    </dl>
+</div>

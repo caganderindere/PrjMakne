@@ -1,0 +1,45 @@
+@model ReferenceEditModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Yeni Referans" : "Referans Düzenle";
+}
+<div class="admin-card" style="max-width:900px">
+    <form method="post" asp-action="Save" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Logo" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-3">
+            <div class="col-md-8">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <div class="form-text">Logonun alternatif metni olarak da kullanılır.</div>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="SortOrder" class="form-label"></label>
+                <input asp-for="SortOrder" class="form-control" />
+            </div>
+            <div class="col-12">
+                <label asp-for="WebsiteUrl" class="form-label"></label>
+                <input asp-for="WebsiteUrl" class="form-control" placeholder="https://" />
+                <div class="form-text">İsteğe bağlı. Girilirse logo bu adrese bağlantı verir.</div>
+                <span asp-validation-for="WebsiteUrl"></span>
+            </div>
+            <div class="col-md-8">
+                <label asp-for="LogoFile" class="form-label"></label>
+                <img id="referencePreview" src="@Model.Logo" class="image-preview image-preview-logo" alt="" hidden="@(Model.Logo is null)" />
+                <input asp-for="LogoFile" type="file" class="form-control" accept=".png,.webp,.jpg,.jpeg" data-preview="referencePreview" />
+                <div class="form-text">Şeffaf arka planlı PNG önerilir, en az 300 px genişlik.@if (Model.Logo is not null) { <text> Yeni dosya seçerseniz mevcut logo değiştirilir.</text> }</div>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <div class="form-check form-switch">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </form>
+</div>

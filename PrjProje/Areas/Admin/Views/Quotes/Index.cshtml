@@ -1,0 +1,49 @@
+@model PagedResult<QuoteRequestListItem>
+@{
+    ViewData["Title"] = "Teklif Talepleri";
+    QuoteStatus? status = ViewBag.Status;
+    var pager = (Model.Page, Model.TotalPages, (Func<int, string>)(p => Url.Action("Index", new { status, page = p })!));
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <div class="btn-group flex-wrap">
+            <a asp-action="Index" class="btn btn-sm @(status is null ? "btn-dark" : "btn-outline-dark")">Tümü</a>
+            @foreach (var value in Enum.GetValues<QuoteStatus>())
+            {
+                <a asp-action="Index" asp-route-status="@value" class="btn btn-sm @(status == value ? "btn-dark" : "btn-outline-dark")">@AdminLabels.Status(value)</a>
+            }
+        </div>
+        <span class="text-muted small">@Model.TotalCount talep</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th>#</th><th>Firma / Kişi</th><th>Ürün</th><th>Dosya</th><th>Durum</th><th>Tarih</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var quote in Model.Items)
+                {
+                    <tr class="@(quote.Status == QuoteStatus.New ? "unread" : null)">
+                        <td class="text-muted">@quote.Id</td>
+                        <td><a asp-action="Detail" asp-route-id="@quote.Id">@quote.CompanyName</a><div class="small text-muted">@quote.FullName · @quote.Email</div></td>
+                        <td>@(quote.ProductName ?? "-")</td>
+                        <td>@if (quote.HasAttachment) { <i class="fa-solid fa-paperclip" title="Teknik dosya var"></i> }</td>
+                        <td><span class="badge @AdminLabels.StatusBadge(quote.Status)">@AdminLabels.Status(quote.Status)</span></td>
+                        <td class="small text-nowrap">@quote.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Detail" asp-route-id="@quote.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-eye"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@quote.Id" data-confirm="Bu teklif talebini ve ekli dosyasını silmek istediğinize emin misiniz?">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Teklif talebi bulunamadı.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_AdminPager" model="pager" />
+</div>

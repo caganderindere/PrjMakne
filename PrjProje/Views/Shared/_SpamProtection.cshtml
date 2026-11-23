@@ -1,0 +1,7 @@
+@using PrjProje.Infrastructure.Services.Support
+@inject PrjProje.Application.Interfaces.ISpamProtectionService SpamProtection
+<div class="hp-field" aria-hidden="true">
+    <label for="@SpamProtectionService.HoneypotField">Website</label>
+    <input type="text" id="@SpamProtectionService.HoneypotField" name="@SpamProtectionService.HoneypotField" tabindex="-1" autocomplete="off" />
+</div>
+<input type="hidden" name="@SpamProtectionService.TokenField" value="@SpamProtection.CreateFormToken()" />

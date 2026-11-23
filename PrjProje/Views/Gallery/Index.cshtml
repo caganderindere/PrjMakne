@@ -1,0 +1,43 @@
+@model GalleryDto
+@{
+    var header = new PageHeaderModel(L["Gallery.Title"], L["Gallery.Lead"], L["Nav.Gallery"]);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        @if (Model.Items.Count == 0)
+        {
+            <div class="empty-state">
+                <i class="fa-regular fa-images" aria-hidden="true"></i>
+                <h2>@L["Gallery.EmptyTitle"]</h2>
+                <p>@L["Gallery.EmptyText"]</p>
+            </div>
+        }
+        else
+        {
+            <div class="gallery-filters" role="group" aria-label="@L["Gallery.FilterLabel"]">
+                <button type="button" class="active" data-gallery-filter="all">@L["Gallery.All"] <span>@Model.Items.Count</span></button>
+                @foreach (var category in Model.Categories)
+                {
+                    <button type="button" data-gallery-filter="@category.Id">@category.Name <span>@category.ItemCount</span></button>
+                }
+            </div>
+            <div class="gallery-grid">
+                @foreach (var item in Model.Items)
+                {
+                    <a href="@item.ImagePath" class="gallery-item" data-lightbox="gallery" data-category="@item.CategoryId" data-caption="@item.Title">
+                        <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@(string.IsNullOrEmpty(item.Title) ? "PRJ Proje Makina" : item.Title)" loading="lazy" decoding="async" width="640" height="480" />
+                        <span class="gallery-item-overlay">
+                            <i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i>
+                            @if (!string.IsNullOrEmpty(item.Title))
+                            {
+                                <span>@item.Title</span>
+                            }
+                        </span>
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</section>

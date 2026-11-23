@@ -1,0 +1,32 @@
+@model ContactMessageDto
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">@Model.Subject</h2>
+            <div class="message-body">@Model.Message</div>
+            <div class="mt-4 d-flex gap-2">
+                <a href="mailto:@Model.Email?subject=@Uri.EscapeDataString("RE: " + Model.Subject)" class="btn btn-brand"><i class="fa-solid fa-reply me-1"></i>E-posta ile Yanıtla</a>
+                <a asp-action="Index" class="btn btn-outline-secondary">Listeye Dön</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="admin-card">
+            <dl class="detail-list mb-0">
+                <dt>Ad Soyad</dt><dd>@Model.FullName</dd>
+                <dt>Firma</dt><dd>@(Model.Company ?? "-")</dd>
+                <dt>E-posta</dt><dd><a href="mailto:@Model.Email">@Model.Email</a></dd>
+                <dt>Telefon</dt><dd>@(Model.Phone ?? "-")</dd>
+                <dt>Dil</dt><dd>@Languages.DisplayName(Model.LanguageCode)</dd>
+                <dt>Tarih</dt><dd>@Model.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
+                <dt>IP Adresi</dt><dd>@(Model.IpAddress ?? "-")</dd>
+            </dl>
+            <form method="post" asp-action="Delete" asp-route-id="@Model.Id" data-confirm="Bu mesajı silmek istediğinize emin misiniz?" class="mt-2">
+                <button type="submit" class="btn btn-outline-danger w-100"><i class="fa-solid fa-trash me-1"></i>Sil</button>
+            </form>
+        </div>
+    </div>
+</div>

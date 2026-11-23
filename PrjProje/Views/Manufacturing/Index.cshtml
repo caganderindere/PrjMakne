@@ -1,0 +1,53 @@
+@model ManufacturingViewModel
+@{
+    var header = new PageHeaderModel(L["Manufacturing.Title"], L["Manufacturing.Lead"], L["Nav.Manufacturing"]);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row g-5 mb-5 align-items-end">
+            <div class="col-lg-7">
+                <span class="eyebrow">@L["Manufacturing.IntroEyebrow"]</span>
+                <h2 class="section-title">@L["Manufacturing.IntroTitle"]</h2>
+            </div>
+            <div class="col-lg-5">
+                <p class="mb-0">@L["Manufacturing.IntroText"]</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            @foreach (var (capability, index) in Model.Capabilities.Select((c, i) => (c, i)))
+            {
+                <div class="col-md-6 col-lg-4">
+                    <a href="@Url.Localized(SiteRoutes.ManufacturingDetail, capability.Slug)" class="process-card h-100">
+                        @if (capability.Image is not null)
+                        {
+                            <span class="process-card-media"><img src="@ViewHelpers.SmallImage(capability.Image)" alt="@capability.Title" loading="lazy" decoding="async" width="640" height="360" /></span>
+                        }
+                        <span class="process-card-body">
+                            <span class="process-number">@((index + 1).ToString("00"))</span>
+                            <i class="@capability.IconClass process-icon" aria-hidden="true"></i>
+                            <span class="process-title">@capability.Title</span>
+                            <span class="process-text">@capability.Summary</span>
+                            <span class="link-arrow">@L["Common.ViewDetails"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark">
+    <div class="container">
+        <div class="row g-4 text-center process-flow">
+            <div class="col-6 col-lg"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>@L["Manufacturing.FlowDesign"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-industry" aria-hidden="true"></i><span>@L["Manufacturing.FlowProduction"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-spray-can" aria-hidden="true"></i><span>@L["Manufacturing.FlowFinishing"]</span></div>
+            <div class="col-6 col-lg"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><span>@L["Manufacturing.FlowQuality"]</span></div>
+            <div class="col-12 col-lg"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>@L["Manufacturing.FlowShipping"]</span></div>
+        </div>
+    </div>
+</section>
+
+<partial name="_CtaSection" />

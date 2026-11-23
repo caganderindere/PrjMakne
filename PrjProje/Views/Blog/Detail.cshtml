@@ -1,0 +1,75 @@
+@model BlogPostDetailDto
+@{
+    var seo = ViewData[PageSeo.ViewDataKey] as PageSeo;
+    var blogPath = Url.Localized(SiteRoutes.Blog);
+}
+<article>
+    @* No page header strip: the post opens with its own title, meta and cover in the reading column. *@
+    <section class="section pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="article-title">@Model.Title</h1>
+                    <div class="article-meta">
+                        @if (Model.CategoryName is not null)
+                        {
+                            <a href="@blogPath?category=@Uri.EscapeDataString(Model.CategorySlug!)"><i class="fa-solid fa-tag me-2" aria-hidden="true"></i>@Model.CategoryName</a>
+                        }
+                        <span><i class="fa-regular fa-calendar me-2" aria-hidden="true"></i><time datetime="@Model.PublishedDate.ToString("yyyy-MM-dd")">@Model.PublishedDate.ToLocalTime().ToString("d MMMM yyyy")</time></span>
+                        <span><i class="fa-regular fa-user me-2" aria-hidden="true"></i>@Model.AuthorName</span>
+                    </div>
+                    @if (Model.CoverImage is not null)
+                    {
+                        <img class="article-cover" src="@Model.CoverImage" srcset="@ViewHelpers.SrcSet(Model.CoverImage)" sizes="(min-width: 992px) 66vw, 100vw" alt="" width="960" height="640" fetchpriority="high" />
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Summary))
+                    {
+                        <p class="lead-text article-summary">@Model.Summary</p>
+                    }
+                    <div class="rich-content article-content">@Html.Raw(Model.Content)</div>
+
+                    @if (Model.Tags.Count > 0)
+                    {
+                        <div class="tag-list">
+                            <span class="me-2 fw-semibold">@L["Blog.Tags"]:</span>
+                            @foreach (var tag in Model.Tags)
+                            {
+                                <a href="@blogPath?tag=@Uri.EscapeDataString(tag.Slug)" class="tag" rel="tag">#@tag.Name</a>
+                            }
+                        </div>
+                    }
+
+                    <div class="share-bar">
+                        <span class="fw-semibold">@L["Blog.Share"]:</span>
+                        @{ var shareUrl = Uri.EscapeDataString(Url.Absolute(seo!.CanonicalPath)); }
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=@shareUrl" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/intent/tweet?url=@shareUrl&amp;text=@Uri.EscapeDataString(Model.Title)" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=@shareUrl" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="mailto:?subject=@Uri.EscapeDataString(Model.Title)&amp;body=@shareUrl" aria-label="E-mail"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+
+@if (Model.RelatedPosts.Count > 0)
+{
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="section-title">@L["Blog.Related"]</h2>
+            </div>
+            <div class="row g-4">
+                @foreach (var post in Model.RelatedPosts)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <partial name="_BlogCard" model="post" />
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+<partial name="_CtaSection" />

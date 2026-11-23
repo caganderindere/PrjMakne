@@ -1,0 +1,79 @@
+@model PagedResult<BlogAdminListItem>
+@{
+    ViewData["Title"] = "Blog Yazıları";
+    var filter = (AdminListFilter)ViewBag.Filter;
+    var categories = (IReadOnlyList<OptionItem>)ViewBag.Categories;
+    var pager = (Model.Page, Model.TotalPages, (Func<int, string>)(p => Url.Action("Index", new { filter.Search, filter.CategoryId, page = p })!));
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <form method="get" class="d-flex flex-wrap gap-2">
+            <input type="search" name="search" value="@filter.Search" class="form-control" placeholder="Başlık ara…" style="max-width:240px" />
+            <select name="categoryId" class="form-select" style="max-width:220px">
+                <option value="">Tüm kategoriler</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Id" selected="@(filter.CategoryId == category.Id)">@category.Name</option>
+                }
+            </select>
+            <button type="submit" class="btn btn-dark"><i class="fa-solid fa-filter"></i></button>
+        </form>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Yazı</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th></th><th>Başlık</th><th>Kategori</th><th>Yazar</th><th>Dil / Durum</th><th>Oluşturma</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var post in Model.Items)
+                {
+                    var allPublished = post.Statuses.Count > 0 && post.Statuses.Values.All(s => s == PublishStatus.Published);
+                    <tr>
+                        <td>
+                            @if (post.CoverImage is not null)
+                            {
+                                <img src="@ViewHelpers.SmallImage(post.CoverImage)" class="table-thumb" alt="" loading="lazy" />
+                            }
+                            else
+                            {
+                                <span class="table-thumb-placeholder"><i class="fa-regular fa-newspaper"></i></span>
+                            }
+                        </td>
+                        <td><a asp-action="Edit" asp-route-id="@post.Id" class="fw-semibold">@post.Title</a></td>
+                        <td>@(post.CategoryName ?? "-")</td>
+                        <td>@post.AuthorName</td>
+                        <td class="text-nowrap">
+                            @foreach (var code in Languages.All)
+                            {
+                                if (post.Statuses.TryGetValue(code, out var status))
+                                {
+                                    <span class="badge @(status == PublishStatus.Published ? "bg-success" : "bg-warning text-dark")" title="@AdminLabels.Publish(status)">@code.ToUpperInvariant() · @AdminLabels.Publish(status)</span>
+                                }
+                                else
+                                {
+                                    <span class="lang-badge missing">@code.ToUpperInvariant()</span>
+                                }
+                            }
+                        </td>
+                        <td class="small text-muted">@post.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy")</td>
+                        <td>
+                            <div class="actions">
+                                <form method="post" asp-action="SetStatus" asp-route-id="@post.Id" asp-route-status="@(allPublished ? PublishStatus.Draft : PublishStatus.Published)">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary" title="@(allPublished ? "Taslağa al" : "Tüm dillerde yayınla")"><i class="fa-solid @(allPublished ? "fa-eye-slash" : "fa-eye")"></i></button>
+                                </form>
+                                <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@post.Id" data-confirm="Bu yazıyı tüm dillerde silmek istediğinize emin misiniz?">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Yazı bulunamadı.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_AdminPager" model="pager" />
+</div>

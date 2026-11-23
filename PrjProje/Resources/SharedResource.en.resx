@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav.Home" xml:space="preserve"><value>Home</value></data>
+  <data name="Nav.About" xml:space="preserve"><value>About</value></data>
+  <data name="Nav.AboutUs" xml:space="preserve"><value>About Us</value></data>
+  <data name="Nav.Capabilities" xml:space="preserve"><value>Capabilities</value></data>
+  <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
+  <data name="Nav.Products" xml:space="preserve"><value>Products</value></data>
+  <data name="Nav.Manufacturing" xml:space="preserve"><value>Manufacturing</value></data>
+  <data name="Nav.Defense" xml:space="preserve"><value>Defense</value></data>
+  <data name="Nav.Quality" xml:space="preserve"><value>Quality</value></data>
+  <data name="Nav.Gallery" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
+  <data name="Nav.Contact" xml:space="preserve"><value>Contact</value></data>
+  <data name="Nav.Quote" xml:space="preserve"><value>Request a Quote</value></data>
+  <data name="Common.RequestQuote" xml:space="preserve"><value>Get a Quote</value></data>
+  <data name="Common.SkipToContent" xml:space="preserve"><value>Skip to content</value></data>
+  <data name="Common.MainNavigation" xml:space="preserve"><value>Main navigation</value></data>
+  <data name="Common.ToggleNavigation" xml:space="preserve"><value>Toggle navigation</value></data>
+  <data name="Common.Language" xml:space="preserve"><value>Language selection</value></data>
+  <data name="Common.SecurityClearance" xml:space="preserve"><value>MoND Facility Security Clearance</value></data>
+  <data name="Common.ViewDetails" xml:space="preserve"><value>View Details</value></data>
+  <data name="Common.ReadMore" xml:space="preserve"><value>Read More</value></data>
+  <data name="Common.Explore" xml:space="preserve"><value>Explore</value></data>
+  <data name="Common.Search" xml:space="preserve"><value>Search</value></data>
+  <data name="Common.ClearFilter" xml:space="preserve"><value>Clear filter</value></data>
+  <data name="Common.Pagination" xml:space="preserve"><value>Pagination</value></data>
+  <data name="Common.Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="Common.Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Stats.Facility" xml:space="preserve"><value>Production Facility</value></data>
+  <data name="Stats.Employees" xml:space="preserve"><value>Skilled Employees</value></data>
+  <data name="Stats.Countries" xml:space="preserve"><value>Export Countries</value></data>
+  <data name="Stats.Domestic" xml:space="preserve"><value>Domestic Production</value></data>
+  <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
+  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Steel, Rubber &amp; Plastic Parts Manufacturing</value></data>
+  <data name="Home.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina manufactures heavy machinery spare parts and defense components at its 25,000 m² facility in Ankara, Türkiye, exporting to more than 20 countries.</value></data>
+  <data name="Home.HeroEyebrow" xml:space="preserve"><value>25,000 m² Integrated Facility · Ankara</value></data>
+  <data name="Home.HeroTitle" xml:space="preserve"><value>Engineered in Ankara,</value></data>
+  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>Trusted Worldwide</value></data>
+  <data name="Announcement.Label" xml:space="preserve"><value>Announcement</value></data>
+  <data name="Announcement.More" xml:space="preserve"><value>Learn more</value></data>
+  <data name="Announcement.Close" xml:space="preserve"><value>Close announcement</value></data>
+  <data name="Announcement.Dismiss" xml:space="preserve"><value>Close</value></data>
+  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Our Partners</value></data>
+  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Our References</value></data>
+  <data name="Home.ReferencesLead" xml:space="preserve"><value>Leading heavy machinery manufacturers and defense organizations trust PRJ Proje Makina quality.</value></data>
+  <data name="Home.HeroSubtitle" xml:space="preserve"><value>We manufacture rubber, plastic and steel components from design to delivery under one roof — 100% in-house.</value></data>
+  <data name="Home.ModelAlt" xml:space="preserve"><value>3D model of a rubber-to-metal anti-vibration mount: steel top plate with a threaded stud, rubber body and steel base flange.</value></data>
+  <data name="Home.ExploreProducts" xml:space="preserve"><value>Explore Products</value></data>
+  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design to delivery under one roof</value></data>
+  <data name="Home.BadgeExport" xml:space="preserve"><value>Exporting to 20+ countries</value></data>
+  <data name="Home.StatsLabel" xml:space="preserve"><value>Company figures</value></data>
+  <data name="Home.AboutTitle" xml:space="preserve"><value>An industrial manufacturer driven by engineering</value></data>
+  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery at its 25,000 m² facility in Ankara Sincan 1st Organized Industrial Zone.</value></data>
+  <data name="Home.AboutText" xml:space="preserve"><value>We manage every process in-house, from design and production to quality control and shipment, and our team of more than 150 specialists delivers reliable solutions to customers in Türkiye and abroad.</value></data>
+  <data name="Home.AboutPoint1" xml:space="preserve"><value>Ministry of National Defense Facility Security Clearance</value></data>
+  <data name="Home.AboutPoint2" xml:space="preserve"><value>CNC, hydraulic press, laser cutting, oven painting and steel casting facilities</value></data>
+  <data name="Home.AboutPoint3" xml:space="preserve"><value>100% indigenous and national manufacturing</value></data>
+  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Integrated production facility</value></data>
+  <data name="Home.LearnMore" xml:space="preserve"><value>Learn More</value></data>
+  <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
+  <data name="Home.CapabilitiesTitle" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
+  <data name="Home.CapabilitiesLead" xml:space="preserve"><value>Within our integrated facility, we keep every critical step under our own control, from raw material to finished product.</value></data>
+  <data name="Home.AllCapabilities" xml:space="preserve"><value>All Capabilities</value></data>
+  <data name="Home.DefenseTitle" xml:space="preserve"><value>Indigenous strength for the defense industry</value></data>
+  <data name="Home.DefenseText" xml:space="preserve"><value>Holding a Ministry of National Defense Facility Security Clearance, PRJ Proje Makina manufactures a range of defense components entirely in Türkiye, in step with the country's advances in the defense industry.</value></data>
+  <data name="Home.ExportEyebrow" xml:space="preserve"><value>Global Export</value></data>
+  <data name="Home.ExportTitle" xml:space="preserve"><value>From Ankara to the world</value></data>
+  <data name="Home.ExportText" xml:space="preserve"><value>We export regularly to partners across Europe, the Middle East, North Africa and Central Asia, providing production and logistics solutions that meet international standards.</value></data>
+  <data name="Home.ExportMapLabel" xml:space="preserve"><value>World map showing our export countries</value></data>  <data name="Home.BlogTitle" xml:space="preserve"><value>News &amp; Insights</value></data>
+  <data name="Home.ExportRegions" xml:space="preserve"><value>Regions</value></data>
+  <data name="Home.ExportRegion.all" xml:space="preserve"><value>All</value></data>
+  <data name="Home.ExportRegion.europe" xml:space="preserve"><value>Europe</value></data>
+  <data name="Home.ExportRegion.middleeast" xml:space="preserve"><value>Middle East</value></data>
+  <data name="Home.ExportRegion.africa" xml:space="preserve"><value>North Africa</value></data>
+  <data name="Home.ExportRegion.asia" xml:space="preserve"><value>Central Asia</value></data>
+  <data name="Home.ExportRegion.other" xml:space="preserve"><value>Other</value></data>
+  <data name="Home.AllPosts" xml:space="preserve"><value>All Articles</value></data>
+  <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Featured</value></data>
+  <data name="Home.FeaturedTitle" xml:space="preserve"><value>Featured Products</value></data>
+  <data name="Home.FeaturedLead" xml:space="preserve"><value>A selection of our most requested, field-proven products.</value></data>
+  <data name="Home.ProcessEyebrow" xml:space="preserve"><value>Process</value></data>
+  <data name="Home.ProcessTitle" xml:space="preserve"><value>From design to delivery under one roof</value></data>
+  <data name="Home.ProcessLead" xml:space="preserve"><value>The journey of a part from idea to the field; every step runs in our own facility, by one team.</value></data>
+  <data name="Home.ProcessStep" xml:space="preserve"><value>Step</value></data>
+  <data name="Home.Process1Title" xml:space="preserve"><value>Design &amp; Engineering</value></data>
+  <data name="Home.Process1Text" xml:space="preserve"><value>We define the part together, from your drawing, a sample or reverse engineering.</value></data>
+  <data name="Home.Process2Title" xml:space="preserve"><value>Materials &amp; Casting</value></data>
+  <data name="Home.Process2Text" xml:space="preserve"><value>Steel castings and rubber compounds are prepared in our own facility.</value></data>
+  <data name="Home.Process3Title" xml:space="preserve"><value>Machining &amp; Forming</value></data>
+  <data name="Home.Process3Text" xml:space="preserve"><value>Precision production with CNC machining, laser cutting, bending and hydraulic presses.</value></data>
+  <data name="Home.Process4Title" xml:space="preserve"><value>Finishing &amp; Quality</value></data>
+  <data name="Home.Process4Text" xml:space="preserve"><value>Oven painting and coating, followed by dimensional and physical testing.</value></data>
+  <data name="Home.Process5Title" xml:space="preserve"><value>Packaging &amp; Shipment</value></data>
+  <data name="Home.Process5Text" xml:space="preserve"><value>Export-grade packaging and delivery across Türkiye and worldwide.</value></data>
+  <data name="Home.WhyEyebrow" xml:space="preserve"><value>Why PRJ Proje Makina?</value></data>
+  <data name="Home.WhyTitle" xml:space="preserve"><value>A manufacturing partner you can rely on</value></data>
+  <data name="Home.Why1Title" xml:space="preserve"><value>Integrated Production</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>Casting, machining, rubber and painting in one facility, with no dependence on subcontractors.</value></data>
+  <data name="Home.Why2Title" xml:space="preserve"><value>Short Lead Times</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Because we plan our own capacity, we deliver on the dates we commit to.</value></data>
+  <data name="Home.Why3Title" xml:space="preserve"><value>Measurable Quality</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>Every batch is tested and documented from raw material to shipment.</value></data>
+  <data name="Home.Why4Title" xml:space="preserve"><value>Engineering Support</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Technical guidance from material selection to design optimisation.</value></data>
+  <data name="Home.Why5Title" xml:space="preserve"><value>Security-Cleared Facility</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>Our MoND Facility Security Clearance allows us to take on confidential programs.</value></data>
+  <data name="Home.Why6Title" xml:space="preserve"><value>Export Experience</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>Regular shipments to more than 20 countries, with full international documentation.</value></data>
+  <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Industries</value></data>
+  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Industries we serve</value></data>
+  <data name="Home.Industry1" xml:space="preserve"><value>Construction Machinery</value></data>
+  <data name="Home.Industry2" xml:space="preserve"><value>Mining</value></data>
+  <data name="Home.Industry3" xml:space="preserve"><value>Agricultural Machinery</value></data>
+  <data name="Home.Industry4" xml:space="preserve"><value>Defense</value></data>
+  <data name="Home.Industry5" xml:space="preserve"><value>Infrastructure</value></data>
+  <data name="Home.Industry6" xml:space="preserve"><value>Industrial Equipment</value></data>
+  <data name="Home.MapZoomIn" xml:space="preserve"><value>Zoom in</value></data>
+  <data name="Home.MapZoomOut" xml:space="preserve"><value>Zoom out</value></data>
+  <data name="Home.MapReset" xml:space="preserve"><value>Reset map</value></data>
+  <data name="Cta.Eyebrow" xml:space="preserve"><value>Let's discuss your project</value></data>
+  <data name="Cta.Title" xml:space="preserve"><value>Contact us for your manufacturing needs</value></data>
+  <data name="Cta.Text" xml:space="preserve"><value>Share your technical drawing or sample, and our engineering team will get back to you promptly.</value></data>
+  <data name="Footer.About" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery, as well as defense components, entirely in Türkiye at its 25,000 m² facility in Ankara.</value></data>
+  <data name="Footer.Corporate" xml:space="preserve"><value>Company</value></data>
+  <data name="Footer.Rights" xml:space="preserve"><value>All rights reserved.</value></data>
+  <data name="Footer.Developer" xml:space="preserve"><value>Developed by</value></data>
+  <data name="Cookie.Message" xml:space="preserve"><value>Besides the cookies this website needs to work, with your consent we use Google Analytics cookies to measure visits.</value></data>
+  <data name="Cookie.Reject" xml:space="preserve"><value>Reject</value></data>
+  <data name="Cookie.Settings" xml:space="preserve"><value>Cookie Preferences</value></data>
+  <data name="Cookie.Details" xml:space="preserve"><value>Learn more</value></data>
+  <data name="Cookie.Accept" xml:space="preserve"><value>Accept</value></data>
+  <data name="About.MetaTitle" xml:space="preserve"><value>About Us</value></data>
+  <data name="About.MetaDescription" xml:space="preserve"><value>Learn about PRJ Proje Makina's history, vision, mission, 25,000 m² production facility and commitment to domestic manufacturing.</value></data>
+  <data name="About.Title" xml:space="preserve"><value>About Us</value></data>
+  <data name="About.Lead" xml:space="preserve"><value>We bring together engineering, capacity and reliability in steel, plastic and rubber manufacturing.</value></data>
+  <data name="About.WhoEyebrow" xml:space="preserve"><value>Who We Are</value></data>
+  <data name="About.WhoTitle" xml:space="preserve"><value>A trusted name in integrated manufacturing</value></data>
+  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery at its 25,000 m² facility in Ankara Sincan 1st Organized Industrial Zone.</value></data>
+  <data name="About.WhoText1" xml:space="preserve"><value>Our facility houses a large fleet of CNC machines, hydraulic presses, rubber compounding mixers, laser cutting and bending machines, two oven-cured paint lines, a coating plant and a steel foundry.</value></data>
+  <data name="About.WhoText2" xml:space="preserve"><value>We carry out most processes in-house, from design and production to quality control and shipment, giving us full control over cost, quality and lead time.</value></data>
+  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Our History</value></data>
+  <data name="About.HistoryTitle" xml:space="preserve"><value>Our journey of growth</value></data>
+  <data name="About.History1Title" xml:space="preserve"><value>Foundation and rubber production</value></data>
+  <data name="About.History1Text" xml:space="preserve"><value>Our journey began with rubber spare parts for heavy machinery, and we soon developed our own rubber compounds.</value></data>
+  <data name="About.History2Title" xml:space="preserve"><value>Investment in steel and metalworking</value></data>
+  <data name="About.History2Text" xml:space="preserve"><value>With investments in CNC machining, laser cutting and bending, we expanded into steel component production.</value></data>
+  <data name="About.History3Title" xml:space="preserve"><value>Steel casting and surface finishing</value></data>
+  <data name="About.History3Text" xml:space="preserve"><value>With a steel foundry, oven paint lines and a coating plant, we became a fully integrated manufacturer.</value></data>
+  <data name="About.History4Title" xml:space="preserve"><value>Defense industry</value></data>
+  <data name="About.History4Text" xml:space="preserve"><value>After obtaining our Ministry of National Defense Facility Security Clearance, we began contributing to defense industry programs.</value></data>
+  <data name="About.History5Title" xml:space="preserve"><value>Global export</value></data>
+  <data name="About.History5Text" xml:space="preserve"><value>Today, with more than 150 specialists, we export to more than 20 countries.</value></data>
+  <data name="About.VisionTitle" xml:space="preserve"><value>Vision</value></data>
+  <data name="About.VisionText" xml:space="preserve"><value>To be a globally preferred solution partner in steel, plastic and rubber component manufacturing, built on technology and domestic engineering.</value></data>
+  <data name="About.MissionTitle" xml:space="preserve"><value>Mission</value></data>
+  <data name="About.MissionText" xml:space="preserve"><value>To deliver high-quality, sustainable products that meet our customers' needs on time, while contributing to Türkiye's industrial and defense capabilities.</value></data>
+  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Our Facility</value></data>
+  <data name="About.FacilityTitle" xml:space="preserve"><value>25,000 m² of integrated production space</value></data>
+  <data name="About.FacilityText" xml:space="preserve"><value>By combining metal, rubber and plastic production under one roof, we achieve short lead times and consistent quality.</value></data>
+  <data name="About.FacilityCnc" xml:space="preserve"><value>Extensive CNC machine fleet</value></data>
+  <data name="About.FacilityPress" xml:space="preserve"><value>Hydraulic presses</value></data>
+  <data name="About.FacilityRubber" xml:space="preserve"><value>Rubber compounding</value></data>
+  <data name="About.FacilityLaser" xml:space="preserve"><value>Laser cutting and bending</value></data>
+  <data name="About.FacilityPaint" xml:space="preserve"><value>Two oven-cured paint lines</value></data>
+  <data name="About.FacilityCoating" xml:space="preserve"><value>Coating plant</value></data>
+  <data name="About.FacilityCasting" xml:space="preserve"><value>Steel foundry</value></data>
+  <data name="About.FacilityQuality" xml:space="preserve"><value>Quality control laboratory</value></data>
+  <data name="About.HrTitle" xml:space="preserve"><value>People &amp; Careers</value></data>
+  <data name="About.HrText" xml:space="preserve"><value>Our 150+ specialists, supported by continuous training and a strong safety culture, are the most valuable part of our operation.</value></data>
+  <data name="About.DomesticTitle" xml:space="preserve"><value>Indigenous and National Manufacturing</value></data>
+  <data name="About.DomesticText" xml:space="preserve"><value>By developing our design and manufacturing capabilities in Türkiye, we provide 100% domestic solutions that reduce reliance on imports.</value></data>
+  <data name="About.ExportTitle" xml:space="preserve"><value>Global Export</value></data>
+  <data name="About.ExportText" xml:space="preserve"><value>We export to more than 20 countries across a region stretching from Europe to Central Asia.</value></data>
+  <data name="Products.MetaTitle" xml:space="preserve"><value>Products</value></data>
+  <data name="Products.MetaDescription" xml:space="preserve"><value>Explore our steel, rubber and plastic products, heavy machinery spare parts and defense industry components.</value></data>
+  <data name="Products.Title" xml:space="preserve"><value>Our Products</value></data>
+  <data name="Products.Lead" xml:space="preserve"><value>High-performance steel, rubber and plastic components for heavy machinery and industrial applications.</value></data>
+  <data name="Products.AllProducts" xml:space="preserve"><value>All Products</value></data>
+  <data name="Products.Categories" xml:space="preserve"><value>Categories</value></data>
+  <data name="Products.SearchLabel" xml:space="preserve"><value>Search products</value></data>
+  <data name="Products.SearchPlaceholder" xml:space="preserve"><value>Product name, material, OEM no. or service code…</value></data>
+  <data name="Products.CustomProduction" xml:space="preserve"><value>Can't find what you need? We manufacture to your drawing or sample.</value></data>
+  <data name="Products.ResultCount" xml:space="preserve"><value>{0} products found</value></data>
+  <data name="Products.EmptyTitle" xml:space="preserve"><value>No products found</value></data>
+  <data name="Products.EmptyText" xml:space="preserve"><value>No products match your search. Tell us what you need and we will offer a tailored solution.</value></data>
+  <data name="Products.Material" xml:space="preserve"><value>Material</value></data>
+  <data name="Products.ProductionMethod" xml:space="preserve"><value>Manufacturing Process</value></data>
+  <data name="Products.OemNumber" xml:space="preserve"><value>OEM No.</value></data>
+  <data name="Products.ServiceCode" xml:space="preserve"><value>Service Code</value></data>
+  <data name="Products.Origin" xml:space="preserve"><value>Origin</value></data>
+  <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — 100% domestically manufactured</value></data>
+  <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Request a Quote for This Product</value></data>
+  <data name="Products.Description" xml:space="preserve"><value>Product Description</value></data>
+  <data name="Products.Specifications" xml:space="preserve"><value>Technical Specifications</value></data>
+  <data name="Products.ApplicationAreas" xml:space="preserve"><value>Applications</value></data>
+  <data name="Products.QuoteBoxTitle" xml:space="preserve"><value>Pricing and lead time</value></data>
+  <data name="Products.QuoteBoxText" xml:space="preserve"><value>Share the quantity and technical details, and our sales team will prepare a tailored quotation.</value></data>
+  <data name="Products.AskMarketingTitle" xml:space="preserve"><value>Ask our marketing team</value></data>
+  <data name="Products.AskMarketingText" xml:space="preserve"><value>Message us on WhatsApp and we'll answer your questions about this product right away.</value></data>
+  <data name="Products.WhatsAppTemplate" xml:space="preserve"><value>Hello, I would like to get information about the "{0}" product.
+{1}</value></data>
+  <data name="Products.Related" xml:space="preserve"><value>Related Products</value></data>
+  <data name="Products.ShowImage" xml:space="preserve"><value>Image {0}</value></data>
+  <data name="Manufacturing.MetaTitle" xml:space="preserve"><value>Manufacturing Capabilities</value></data>
+  <data name="Manufacturing.MetaDescription" xml:space="preserve"><value>Our capabilities in CNC machining, hydraulic pressing, rubber production, laser cutting, bending, oven painting, coating and steel casting.</value></data>
+  <data name="Manufacturing.Title" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
+  <data name="Manufacturing.Lead" xml:space="preserve"><value>Every process, from design to shipment, under one roof.</value></data>
+  <data name="Manufacturing.IntroEyebrow" xml:space="preserve"><value>Integrated Production</value></data>
+  <data name="Manufacturing.IntroTitle" xml:space="preserve"><value>Full control, consistent quality</value></data>
+  <data name="Manufacturing.IntroText" xml:space="preserve"><value>We manage every critical step in-house rather than outsourcing it, ensuring traceability and repeatable quality on every order.</value></data>
+  <data name="Manufacturing.FlowDesign" xml:space="preserve"><value>Design</value></data>
+  <data name="Manufacturing.FlowProduction" xml:space="preserve"><value>Production</value></data>
+  <data name="Manufacturing.FlowFinishing" xml:space="preserve"><value>Finishing</value></data>
+  <data name="Manufacturing.FlowQuality" xml:space="preserve"><value>Quality Control</value></data>
+  <data name="Manufacturing.FlowShipping" xml:space="preserve"><value>Shipment</value></data>
+  <data name="Manufacturing.OtherCapabilities" xml:space="preserve"><value>Other Capabilities</value></data>
+  <data name="Manufacturing.SpecsTitle" xml:space="preserve"><value>Technical Capacity</value></data>
+  <data name="Manufacturing.GalleryTitle" xml:space="preserve"><value>From Our Facility</value></data>
+  <data name="Manufacturing.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
+  <data name="Manufacturing.CertificatesTitle" xml:space="preserve"><value>Certificates &amp; Approvals</value></data>
+  <data name="Manufacturing.AllDocuments" xml:space="preserve"><value>All documents</value></data>
+  <data name="Defense.MetaTitle" xml:space="preserve"><value>Defense Industry</value></data>
+  <data name="Defense.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina manufactures defense components entirely in Türkiye under its MoND Facility Security Clearance.</value></data>
+  <data name="Defense.Title" xml:space="preserve"><value>Defense Industry</value></data>
+  <data name="Defense.Lead" xml:space="preserve"><value>Contributing to Türkiye's defense capabilities through indigenous manufacturing.</value></data>
+  <data name="Defense.IntroEyebrow" xml:space="preserve"><value>Indigenous and National Manufacturing</value></data>
+  <data name="Defense.IntroTitle" xml:space="preserve"><value>A trusted defense industry supplier</value></data>
+  <data name="Defense.IntroLead" xml:space="preserve"><value>As a manufacturer holding a Ministry of National Defense Facility Security Clearance, PRJ Proje Makina takes part in defense industry programs.</value></data>
+  <data name="Defense.IntroText" xml:space="preserve"><value>In line with Türkiye's progress in the defense sector, we manufacture a range of components entirely in Türkiye, including parts for 122 mm rocket systems and tail assemblies for MK-series aircraft bombs.</value></data>
+  <data name="Defense.ClearanceText" xml:space="preserve"><value>Our facility meets the physical and personnel security requirements needed to work on classified programs.</value></data>
+  <data name="Defense.PointClearance" xml:space="preserve"><value>MoND Facility Security Clearance</value></data>
+  <data name="Defense.PointDomestic" xml:space="preserve"><value>100% Domestic Production</value></data>
+  <data name="Defense.PointConfidentiality" xml:space="preserve"><value>Confidentiality &amp; Security</value></data>
+  <data name="Defense.PointQuality" xml:space="preserve"><value>Full Specification Compliance</value></data>
+  <data name="Defense.PointTraceability" xml:space="preserve"><value>Traceability</value></data>
+  <data name="Defense.PrincipleDomestic" xml:space="preserve"><value>Production is carried out entirely in Türkiye, from raw material sourcing to the finished product.</value></data>
+  <data name="Defense.PrincipleConfidentiality" xml:space="preserve"><value>Program information is handled only by authorized personnel, in accordance with applicable regulations.</value></data>
+  <data name="Defense.PrincipleQuality" xml:space="preserve"><value>Production is carried out and documented in full compliance with authority and customer specifications.</value></data>
+  <data name="Defense.PrincipleTraceability" xml:space="preserve"><value>Every batch is recorded and traceable from raw material through to shipment.</value></data>
+  <data name="Defense.ProductsTitle" xml:space="preserve"><value>Defense Product Groups</value></data>
+  <data name="Defense.ConfidentialityNotice" xml:space="preserve"><value>Technical details, drawings and production parameters for defense products are not publicly disclosed; they are shared only with authorized institutions in accordance with applicable regulations.</value></data>
+  <data name="Defense.ScrollHint" xml:space="preserve"><value>Scroll to take it apart</value></data>
+  <data name="Defense.LinerEyebrow" xml:space="preserve"><value>A look inside</value></data>
+  <data name="Defense.LinerTitle" xml:space="preserve"><value>Inside the steel body, our own rubber</value></data>
+  <data name="Defense.ReadyTitle" xml:space="preserve"><value>Ready for classified projects</value></data>
+  <data name="Defense.FinaleEyebrow" xml:space="preserve"><value>In every part</value></data>
+  <data name="Defense.HudPhases" xml:space="preserve"><value>Standby|Inspection|Ready|Ignition|Flight</value></data>
+  <data name="Defense.HudAltitude" xml:space="preserve"><value>Altitude</value></data>
+  <data name="Defense.HudSpeed" xml:space="preserve"><value>Speed</value></data>
+  <data name="Defense.ModelAlt" xml:space="preserve"><value>3D model of a representative rocket that separates into its layers, reassembles and ignites as you scroll</value></data>
+  <data name="Defense.ModelPartNose" xml:space="preserve"><value>CNC-machined nose cone</value></data>
+  <data name="Defense.ModelPartBody" xml:space="preserve"><value>Heat-treated steel body</value></data>
+  <data name="Defense.ModelPartLiner" xml:space="preserve"><value>In-house rubber insulation liner</value></data>
+  <data name="Defense.ModelPartAft" xml:space="preserve"><value>Precision-machined nozzle and fins</value></data>
+  <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.MetaDescription" xml:space="preserve"><value>Company news, technical articles and industry insights from PRJ Proje Makina.</value></data>
+  <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.Lead" xml:space="preserve"><value>Company news, technical articles and industry insights.</value></data>
+  <data name="Blog.SearchLabel" xml:space="preserve"><value>Search the blog</value></data>
+  <data name="Blog.SearchPlaceholder" xml:space="preserve"><value>Search articles…</value></data>
+  <data name="Blog.Categories" xml:space="preserve"><value>Categories</value></data>
+  <data name="Blog.AllPosts" xml:space="preserve"><value>All Articles</value></data>
+  <data name="Blog.EmptyTitle" xml:space="preserve"><value>No articles yet</value></data>
+  <data name="Blog.EmptyText" xml:space="preserve"><value>No published articles match these criteria.</value></data>
+  <data name="Blog.TagFilter" xml:space="preserve"><value>Articles tagged “{0}”</value></data>
+  <data name="Blog.Tags" xml:space="preserve"><value>Tags</value></data>
+  <data name="Blog.Share" xml:space="preserve"><value>Share</value></data>
+  <data name="Blog.Related" xml:space="preserve"><value>Related Articles</value></data>
+  <data name="Gallery.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Gallery.MetaDescription" xml:space="preserve"><value>Photos of the PRJ Proje Makina factory, production lines, CNC machining, rubber and steel production and trade fairs.</value></data>
+  <data name="Gallery.Title" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Gallery.Lead" xml:space="preserve"><value>A look inside our facility, production lines and events.</value></data>
+  <data name="Gallery.FilterLabel" xml:space="preserve"><value>Gallery categories</value></data>
+  <data name="Gallery.All" xml:space="preserve"><value>All</value></data>
+  <data name="Gallery.EmptyTitle" xml:space="preserve"><value>Gallery coming soon</value></data>
+  <data name="Gallery.EmptyText" xml:space="preserve"><value>Photos from our facility will be published here soon.</value></data>
+  <data name="Quality.MetaTitle" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
+  <data name="Quality.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's quality policy, certificates, quality documents and authorizations.</value></data>
+  <data name="Quality.Title" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
+  <data name="Quality.Lead" xml:space="preserve"><value>Measurable, traceable and documented quality in every part.</value></data>
+  <data name="Quality.PolicyEyebrow" xml:space="preserve"><value>Our Quality Policy</value></data>
+  <data name="Quality.PolicyTitle" xml:space="preserve"><value>Quality is not a department, it is how we work</value></data>
+  <data name="Quality.PolicyText" xml:space="preserve"><value>Measurement, testing and record-keeping at every stage, from incoming raw material to shipment, allow us to deliver consistent and reliable products.</value></data>
+  <data name="Quality.Point1" xml:space="preserve"><value>Incoming inspection and material certificates</value></data>
+  <data name="Quality.Point2" xml:space="preserve"><value>In-process dimensional and visual inspection</value></data>
+  <data name="Quality.Point3" xml:space="preserve"><value>Hardness, tensile and physical testing</value></data>
+  <data name="Quality.Point4" xml:space="preserve"><value>Full batch-level traceability</value></data>
+  <data name="Quality.EmptyTitle" xml:space="preserve"><value>Documents coming soon</value></data>
+  <data name="Quality.EmptyText" xml:space="preserve"><value>Our certificates and quality documents will be published here soon.</value></data>
+  <data name="DocumentType.Certificate" xml:space="preserve"><value>Certificates</value></data>
+  <data name="DocumentType.QualityDocument" xml:space="preserve"><value>Quality Documents</value></data>
+  <data name="DocumentType.Standard" xml:space="preserve"><value>Standards</value></data>
+  <data name="DocumentType.Authorization" xml:space="preserve"><value>Authorizations</value></data>
+  <data name="DocumentType.Catalog" xml:space="preserve"><value>Product Catalogues</value></data>
+  <data name="Nav.Catalog" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Catalog.Title" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Catalog.Lead" xml:space="preserve"><value>Browse our product groups and technical details page by page, or download them as PDF</value></data>
+  <data name="Catalog.MetaTitle" xml:space="preserve"><value>Product Catalogue</value></data>
+  <data name="Catalog.MetaDescription" xml:space="preserve"><value>Browse PRJ Proje Makina product catalogues online or download them as PDF.</value></data>
+  <data name="Catalog.Read" xml:space="preserve"><value>Browse</value></data>
+  <data name="Catalog.Download" xml:space="preserve"><value>Download PDF</value></data>
+  <data name="Catalog.Close" xml:space="preserve"><value>Close</value></data>
+  <data name="Catalog.Previous" xml:space="preserve"><value>Previous page</value></data>
+  <data name="Catalog.Next" xml:space="preserve"><value>Next page</value></data>
+  <data name="Catalog.Loading" xml:space="preserve"><value>Loading catalogue…</value></data>
+  <data name="Catalog.Error" xml:space="preserve"><value>The catalogue could not be displayed. You can download the PDF instead.</value></data>
+  <data name="Catalog.EmptyTitle" xml:space="preserve"><value>Catalogues coming soon</value></data>
+  <data name="Catalog.EmptyText" xml:space="preserve"><value>Our product catalogues will be published here soon.</value></data>
+  <data name="Contact.MetaTitle" xml:space="preserve"><value>Contact Us</value></data>
+  <data name="Contact.MetaDescription" xml:space="preserve"><value>Get in touch with PRJ Proje Makina in Sincan 1st Organized Industrial Zone, Ankara, by phone, e-mail or our contact form.</value></data>
+  <data name="Contact.Title" xml:space="preserve"><value>Contact Us</value></data>
+  <data name="Contact.Lead" xml:space="preserve"><value>Our team is ready to help with your questions and projects.</value></data>
+  <data name="Contact.InfoTitle" xml:space="preserve"><value>Contact Details</value></data>
+  <data name="Contact.Address" xml:space="preserve"><value>Address</value></data>
+  <data name="Contact.Phone" xml:space="preserve"><value>Phone</value></data>
+  <data name="Contact.Email" xml:space="preserve"><value>E-mail</value></data>
+  <data name="Contact.WorkingHours" xml:space="preserve"><value>Business Hours</value></data>
+  <data name="Contact.FormTitle" xml:space="preserve"><value>Send Us a Message</value></data>
+  <data name="Contact.Map" xml:space="preserve"><value>PRJ Proje Makina location map</value></data>
+  <data name="Contact.Success" xml:space="preserve"><value>Thank you. Your message has been received and we will get back to you shortly.</value></data>
+  <data name="Quote.MetaTitle" xml:space="preserve"><value>Request a Quote</value></data>
+  <data name="Quote.MetaDescription" xml:space="preserve"><value>Request a quotation from PRJ Proje Makina for steel, rubber and plastic components and securely upload your technical drawings.</value></data>
+  <data name="Quote.Title" xml:space="preserve"><value>Request a Quote</value></data>
+  <data name="Quote.Lead" xml:space="preserve"><value>Tell us what you need, and our technical team will prepare a tailored quotation.</value></data>
+  <data name="Quote.ContactSection" xml:space="preserve"><value>Contact Information</value></data>
+  <data name="Quote.ProductSection" xml:space="preserve"><value>Product &amp; Request Details</value></data>
+  <data name="Quote.ProductPlaceholder" xml:space="preserve"><value>Select from the list or type</value></data>
+  <data name="Quote.QuantityPlaceholder" xml:space="preserve"><value>e.g. 500 pcs</value></data>
+  <data name="Quote.AttachmentHelp" xml:space="preserve"><value>Accepted files: PDF, DWG, DXF, STEP, STP, IGS, IGES, JPG, PNG, ZIP · Max. 10 MB</value></data>
+  <data name="Quote.Submit" xml:space="preserve"><value>Submit Quote Request</value></data>
+  <data name="Quote.ProductMessage" xml:space="preserve"><value>I would like to request a quote for this product: {0}</value></data>
+  <data name="Quote.CapabilityMessage" xml:space="preserve"><value>I would like to request a quote for this manufacturing capability: {0}</value></data>
+  <data name="Quote.Success" xml:space="preserve"><value>Thank you. Your quote request has been received and our sales team will contact you shortly.</value></data>
+  <data name="Quote.ProcessTitle" xml:space="preserve"><value>How it works</value></data>
+  <data name="Quote.Step1" xml:space="preserve"><value>We review your request and technical files.</value></data>
+  <data name="Quote.Step2" xml:space="preserve"><value>If needed, our engineers clarify the details with you.</value></data>
+  <data name="Quote.Step3" xml:space="preserve"><value>We send our quotation, including price and lead time.</value></data>
+  <data name="Quote.Step4" xml:space="preserve"><value>Once approved, we schedule production.</value></data>
+  <data name="Quote.ConfidentialTitle" xml:space="preserve"><value>Confidentiality</value></data>
+  <data name="Quote.ConfidentialText" xml:space="preserve"><value>Drawings and files you share are used solely to prepare your quotation and are never shared with third parties.</value></data>
+  <data name="Form.FullName" xml:space="preserve"><value>Full Name</value></data>
+  <data name="Form.Company" xml:space="preserve"><value>Company</value></data>
+  <data name="Form.CompanyName" xml:space="preserve"><value>Company Name</value></data>
+  <data name="Form.Email" xml:space="preserve"><value>E-mail</value></data>
+  <data name="Form.Phone" xml:space="preserve"><value>Phone</value></data>
+  <data name="Form.Subject" xml:space="preserve"><value>Subject</value></data>
+  <data name="Form.Message" xml:space="preserve"><value>Message</value></data>
+  <data name="Form.Product" xml:space="preserve"><value>Product</value></data>
+  <data name="Form.ProductName" xml:space="preserve"><value>Product</value></data>
+  <data name="Form.Quantity" xml:space="preserve"><value>Quantity</value></data>
+  <data name="Form.Description" xml:space="preserve"><value>Details</value></data>
+  <data name="Form.Attachment" xml:space="preserve"><value>Technical File</value></data>
+  <data name="Form.PrivacyConsent" xml:space="preserve"><value>Privacy Consent</value></data>
+  <data name="Form.PrivacyConsentText" xml:space="preserve"><value>I have read and accept the privacy notice regarding the processing of my personal data.</value></data>
+  <data name="Form.Send" xml:space="preserve"><value>Send Message</value></data>
+  <data name="Validation.Required" xml:space="preserve"><value>{0} is required.</value></data>
+  <data name="Validation.MaxLength" xml:space="preserve"><value>{0} must be at most {1} characters.</value></data>
+  <data name="Validation.Length" xml:space="preserve"><value>{0} must be between {2} and {1} characters.</value></data>
+  <data name="Validation.Email" xml:space="preserve"><value>Please enter a valid e-mail address.</value></data>
+  <data name="Validation.Phone" xml:space="preserve"><value>Please enter a valid phone number.</value></data>
+  <data name="Validation.Consent" xml:space="preserve"><value>Please accept the privacy notice to continue.</value></data>
+  <data name="Validation.FileType" xml:space="preserve"><value>This file type is not supported.</value></data>
+  <data name="Validation.FileSize" xml:space="preserve"><value>The file must not exceed 10 MB.</value></data>
+  <data name="Validation.FileContent" xml:space="preserve"><value>The file content does not match its extension.</value></data>
+  <data name="Legal.PrivacyTitle" xml:space="preserve"><value>Privacy Policy</value></data>
+  <data name="Legal.PrivacyMetaDescription" xml:space="preserve"><value>PRJ Proje Makina privacy policy and personal data protection notice.</value></data>
+  <data name="Legal.PrivacyLead" xml:space="preserve"><value>Information notice on the processing of personal data.</value></data>
+  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>At PRJ Proje Makina, we take the security of the personal data you share through our website seriously. This notice explains how we process your data as data controller under the Turkish Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the GDPR.</value></data>
+  <data name="Legal.Privacy1Title" xml:space="preserve"><value>Personal data we process</value></data>
+  <data name="Legal.Privacy1Text" xml:space="preserve"><value>Through our contact and quote forms we process your name, company, e-mail address, phone number, message content, any technical files you upload and, for security purposes, your IP address. If you consent to cookies, statistics on how the website is used are processed through Google Analytics; see the Cookie Policy for details.</value></data>
+  <data name="Legal.Privacy2Title" xml:space="preserve"><value>Purposes of processing</value></data>
+  <data name="Legal.Privacy2Text" xml:space="preserve"><value>Your data is processed to respond to your enquiries, prepare quotations, manage our business relationship and ensure information security.</value></data>
+  <data name="Legal.Privacy3Title" xml:space="preserve"><value>Legal basis</value></data>
+  <data name="Legal.Privacy3Text" xml:space="preserve"><value>We process your data on the basis of your consent, steps prior to entering into a contract and our legitimate interests.</value></data>
+  <data name="Legal.Privacy4Title" xml:space="preserve"><value>Disclosure</value></data>
+  <data name="Legal.Privacy4Text" xml:space="preserve"><value>Your data is not shared with third parties or transferred abroad, except where required by law.</value></data>
+  <data name="Legal.Privacy5Title" xml:space="preserve"><value>Retention</value></data>
+  <data name="Legal.Privacy5Text" xml:space="preserve"><value>Your data is retained only for as long as necessary for the purposes above or as required by law, and is then deleted or anonymised.</value></data>
+  <data name="Legal.Privacy6Title" xml:space="preserve"><value>Your rights</value></data>
+  <data name="Legal.Privacy6Text" xml:space="preserve"><value>You may exercise your rights of access, rectification, erasure and objection by contacting us at the e-mail address on our contact page.</value></data>
+  <data name="Legal.CookiesTitle" xml:space="preserve"><value>Cookie Policy</value></data>
+  <data name="Legal.CookiesMetaDescription" xml:space="preserve"><value>Information about the cookies used on the PRJ Proje Makina website.</value></data>
+  <data name="Legal.CookiesLead" xml:space="preserve"><value>The cookies we use and why.</value></data>
+  <data name="Legal.CookiesIntro" xml:space="preserve"><value>Our website uses cookies that are strictly necessary for it to work securely and correctly and, only with your consent, analytics cookies to measure visits. We do not use advertising cookies.</value></data>
+  <data name="Legal.Cookies1Title" xml:space="preserve"><value>What are cookies?</value></data>
+  <data name="Legal.Cookies1Text" xml:space="preserve"><value>Cookies are small text files that a website stores in your browser.</value></data>
+  <data name="Legal.Cookies2Title" xml:space="preserve"><value>Strictly necessary cookies</value></data>
+  <data name="Legal.Cookies2Text" xml:space="preserve"><value>These are used for form security (CSRF protection) and post-submission messages. Forms cannot work without them.</value></data>
+  <data name="Legal.Cookies3Title" xml:space="preserve"><value>Administration cookies</value></data>
+  <data name="Legal.Cookies3Text" xml:space="preserve"><value>Used only to keep authorized staff securely signed in to the administration panel.</value></data>
+  <data name="Legal.Cookies4Title" xml:space="preserve"><value>Managing cookies</value></data>
+  <data name="Legal.Cookies4Text" xml:space="preserve"><value>You can change your choice at any time with the "Cookie Preferences" link at the bottom of the page. You can also delete or block cookies in your browser settings, although forms may stop working if strictly necessary cookies are blocked.</value></data>
+  <data name="Legal.CookieName" xml:space="preserve"><value>Cookie</value></data>
+  <data name="Legal.CookiePurpose" xml:space="preserve"><value>Purpose</value></data>
+  <data name="Legal.CookieAntiforgery" xml:space="preserve"><value>Form security (CSRF protection)</value></data>
+  <data name="Legal.CookieTempData" xml:space="preserve"><value>Confirmation message after a form is submitted</value></data>
+  <data name="Legal.CookieAuth" xml:space="preserve"><value>Administration panel session (authorized staff only)</value></data>
+  <data name="Legal.Cookies5Title" xml:space="preserve"><value>Analytics cookies (Google Analytics)</value></data>
+  <data name="Legal.Cookies5Text" xml:space="preserve"><value>Only with your consent, Google Analytics is used to measure how the website is used (pages visited, the visitor's country, where visits come from) as anonymous statistics. This data may be processed by Google LLC on servers outside Türkiye. If you do not consent, these cookies are not loaded.</value></data>
+  <data name="Legal.CookieAnalytics" xml:space="preserve"><value>Google Analytics visit statistics (only with consent, 2 years)</value></data>
+  <data name="Legal.CookieConsent" xml:space="preserve"><value>Remembers your cookie choice (accept / reject)</value></data>
+  <data name="Error.NotFoundTitle" xml:space="preserve"><value>Page not found</value></data>
+  <data name="Error.NotFoundText" xml:space="preserve"><value>The page you are looking for may have been moved, removed or never existed.</value></data>
+  <data name="Error.GenericTitle" xml:space="preserve"><value>Something went wrong</value></data>
+  <data name="Error.GenericText" xml:space="preserve"><value>An unexpected error occurred while processing your request. Please try again later.</value></data>
+  <data name="Error.BackHome" xml:space="preserve"><value>Back to Home</value></data>
+  <data name="Card.Email" xml:space="preserve"><value>Email</value></data>
+  <data name="Card.SaveContact" xml:space="preserve"><value>Save to contacts</value></data>
+  <data name="Card.Mobile" xml:space="preserve"><value>Mobile</value></data>
+  <data name="Card.Office" xml:space="preserve"><value>Office</value></data>
+  <data name="Card.ViewProfile" xml:space="preserve"><value>View profile</value></data>
+  <data name="Card.Website" xml:space="preserve"><value>Website</value></data>
+  <data name="Card.Tagline" xml:space="preserve"><value>Rubber · Plastic · Steel · Defense</value></data>
+  <data name="Home.VideoPause" xml:space="preserve"><value>Pause video</value></data>
+  <data name="Home.VideoPlay" xml:space="preserve"><value>Play video</value></data>
+  <data name="Fair.Lead" xml:space="preserve"><value>Enter your e-mail address to view our digital brochure.</value></data>
+  <data name="Fair.LeadOptional" xml:space="preserve"><value>Leave your e-mail address and we will get in touch after the fair.</value></data>
+  <data name="Fair.Email" xml:space="preserve"><value>Your e-mail address</value></data>
+  <data name="Fair.Marketing" xml:space="preserve"><value>I would like to receive product news and offers by e-mail (optional).</value></data>
+  <data name="Fair.Notice" xml:space="preserve"><value>Your e-mail address is processed to fulfil your brochure request and to contact you after the fair.</value></data>
+  <data name="Fair.Submit" xml:space="preserve"><value>Show brochure</value></data>
+  <data name="Fair.Skip" xml:space="preserve"><value>Continue without e-mail</value></data>
+  <data name="Fair.OpenBrochure" xml:space="preserve"><value>Open digital brochure</value></data>
+  <data name="Validation.Turnstile" xml:space="preserve"><value>The security check could not be completed. Please try again.</value></data>
+  <data name="Nav.ContactUs" xml:space="preserve"><value>Contact Us</value></data>
+  <data name="Nav.Careers" xml:space="preserve"><value>Careers</value></data>
+  <data name="Careers.MetaTitle" xml:space="preserve"><value>Careers</value></data>
+  <data name="Careers.MetaDescription" xml:space="preserve"><value>Careers at PRJ Proje Makina: apply to work in rubber, plastic and steel manufacturing, on defense and export projects.</value></data>
+  <data name="Careers.Title" xml:space="preserve"><value>Let's Build the Future Together</value></data>
+  <data name="Careers.Lead" xml:space="preserve"><value>Join the team that makes rubber, plastic and steel parts from design to delivery.</value></data>
+  <data name="Careers.Intro" xml:space="preserve"><value>At our integrated plant in Ankara we produce for projects that range from the defense industry and automotive to construction machinery and export markets. We are looking for colleagues who take care in their work, keep learning and are ready to take responsibility. Even without an open position, we consider every application.</value></data>
+  <data name="Careers.Apply" xml:space="preserve"><value>Apply Now</value></data>
+  <data name="Careers.BrandLine" xml:space="preserve"><value>Ankara · Integrated Manufacturing Plant</value></data>
+  <data name="Careers.WhyEyebrow" xml:space="preserve"><value>Why PRJ Proje Makina</value></data>
+  <data name="Careers.WhyTitle" xml:space="preserve"><value>Working Here</value></data>
+  <data name="Careers.Why1Title" xml:space="preserve"><value>Safe Workplace</value></data>
+  <data name="Careers.Why1Text" xml:space="preserve"><value>Health and safety comes first on every shift; equipment, training and inspections are renewed regularly.</value></data>
+  <data name="Careers.Why2Title" xml:space="preserve"><value>Continuous Training</value></data>
+  <data name="Careers.Why2Text" xml:space="preserve"><value>You grow through on-the-job and classroom training in materials, tooling, quality and production techniques.</value></data>
+  <data name="Careers.Why3Title" xml:space="preserve"><value>Meaningful Projects</value></data>
+  <data name="Careers.Why3Text" xml:space="preserve"><value>You contribute directly to domestic production on defense industry and export projects.</value></data>
+  <data name="Careers.Why4Title" xml:space="preserve"><value>Career Growth</value></data>
+  <data name="Careers.Why4Text" xml:space="preserve"><value>As your results grow, so do your responsibilities and opportunities to develop.</value></data>
+  <data name="Careers.ProcessEyebrow" xml:space="preserve"><value>Application Process</value></data>
+  <data name="Careers.ProcessTitle" xml:space="preserve"><value>How It Works</value></data>
+  <data name="Careers.Step1" xml:space="preserve"><value>Fill in the form and upload your CV.</value></data>
+  <data name="Careers.Step2" xml:space="preserve"><value>Our human resources team reviews your application.</value></data>
+  <data name="Careers.Step3" xml:space="preserve"><value>Suitable candidates are invited to an interview in person or by phone.</value></data>
+  <data name="Careers.Step4" xml:space="preserve"><value>We let you know the outcome by the e-mail or phone in your application.</value></data>
+  <data name="Careers.PrivacyNote" xml:space="preserve"><value>Your CV is seen only by our human resources team and is kept in line with data protection law.</value></data>
+  <data name="Careers.FormTitle" xml:space="preserve"><value>Application Form</value></data>
+  <data name="Careers.City" xml:space="preserve"><value>City of Residence</value></data>
+  <data name="Careers.Position" xml:space="preserve"><value>Area of Interest</value></data>
+  <data name="Careers.PositionPick" xml:space="preserve"><value>Please select</value></data>
+  <data name="Careers.CoverLetter" xml:space="preserve"><value>Cover Letter</value></data>
+  <data name="Careers.CoverLetterHint" xml:space="preserve"><value>Tell us briefly about yourself and your experience (optional).</value></data>
+  <data name="Careers.Resume" xml:space="preserve"><value>CV</value></data>
+  <data name="Careers.ResumeHelp" xml:space="preserve"><value>PDF or Word, up to 10 MB.</value></data>
+  <data name="Careers.Submit" xml:space="preserve"><value>Send Application</value></data>
+  <data name="Careers.Success" xml:space="preserve"><value>Thank you. Your application has been received; our human resources team will review it and get in touch.</value></data>
+  <data name="Careers.Area.production" xml:space="preserve"><value>Production</value></data>
+  <data name="Careers.Area.quality" xml:space="preserve"><value>Quality</value></data>
+  <data name="Careers.Area.engineering" xml:space="preserve"><value>Engineering / R&amp;D</value></data>
+  <data name="Careers.Area.sales" xml:space="preserve"><value>Sales and Export</value></data>
+  <data name="Careers.Area.office" xml:space="preserve"><value>Administration and Finance</value></data>
+  <data name="Careers.Area.intern" xml:space="preserve"><value>Internship</value></data>
+  <data name="Careers.Area.general" xml:space="preserve"><value>General Application</value></data>
+  <data name="Common.WhatsApp" xml:space="preserve"><value>Chat on WhatsApp</value></data>
+</root>

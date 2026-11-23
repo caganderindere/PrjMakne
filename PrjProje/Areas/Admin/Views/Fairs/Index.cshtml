@@ -1,0 +1,46 @@
+@using PrjProje.Web.Routing
+@model IReadOnlyList<FairAdminItem>
+@{
+    ViewData["Title"] = "Fuarlar";
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <span class="text-muted small">Her fuarın kendi QR kodu ve e-posta listesi vardır. QR kodu standa koyun.</span>
+        <a asp-action="Create" class="btn btn-brand"><i class="fa-solid fa-plus me-1"></i>Yeni Fuar</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th>Fuar</th><th>Bağlantı</th><th>QR</th><th>E-posta</th><th>Toplanan</th><th>Durum</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var fair in Model)
+                {
+                    var path = SiteRoutes.Path(SiteRoutes.Fair, Languages.Default, fair.Slug);
+                    <tr>
+                        <td><a asp-action="Edit" asp-route-id="@fair.Id" class="fw-semibold">@fair.Name</a></td>
+                        <td>
+                            <code>@path</code>
+                            <button type="button" class="btn btn-sm btn-link p-0 ms-1" data-copy="@Url.Absolute(path)" title="Bağlantıyı kopyala" aria-label="Bağlantıyı kopyala"><i class="fa-regular fa-copy"></i></button>
+                        </td>
+                        <td><a asp-action="QrPng" asp-route-id="@fair.Id" asp-route-download="true" title="QR kodu indir (PNG)"><img src="@Url.Action("QrPng", new { id = fair.Id })" alt="QR" class="qr-thumb" loading="lazy" /></a></td>
+                        <td>@(fair.EmailRequired ? "Zorunlu" : "İsteğe bağlı")</td>
+                        <td><a asp-action="Leads" asp-route-id="@fair.Id">@fair.LeadCount</a></td>
+                        <td><span class="badge @(fair.IsActive ? "bg-success" : "bg-secondary")">@(fair.IsActive ? "Yayında" : "Pasif")</span></td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Leads" asp-route-id="@fair.Id" class="btn btn-sm btn-outline-secondary" title="E-posta listesi"><i class="fa-solid fa-envelope"></i></a>
+                                <a asp-action="Edit" asp-route-id="@fair.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@fair.Id" data-confirm="“@fair.Name” silinsin mi? Toplanan @fair.LeadCount e-posta da kalıcı olarak silinir ve basılı QR kodlar çalışmaz.">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-5">Henüz fuar eklenmedi.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

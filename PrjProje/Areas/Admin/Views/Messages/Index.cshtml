@@ -1,0 +1,45 @@
+@model PagedResult<ContactMessageDto>
+@{
+    ViewData["Title"] = "İletişim Mesajları";
+    bool? unread = ViewBag.Unread;
+    var pager = (Model.Page, Model.TotalPages, (Func<int, string>)(p => Url.Action("Index", new { unread, page = p })!));
+}
+<div class="admin-card">
+    <div class="admin-card-header">
+        <div class="btn-group">
+            <a asp-action="Index" class="btn btn-sm @(unread == true ? "btn-outline-dark" : "btn-dark")">Tümü</a>
+            <a asp-action="Index" asp-route-unread="true" class="btn btn-sm @(unread == true ? "btn-dark" : "btn-outline-dark")">Okunmamış</a>
+        </div>
+        <span class="text-muted small">@Model.TotalCount mesaj</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table admin-table">
+            <thead><tr><th>Gönderen</th><th>Firma</th><th>Konu</th><th>Dil</th><th>Tarih</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var message in Model.Items)
+                {
+                    <tr class="@(message.IsRead ? null : "unread")">
+                        <td>@message.FullName<div class="small text-muted">@message.Email</div></td>
+                        <td>@(message.Company ?? "-")</td>
+                        <td><a asp-action="Detail" asp-route-id="@message.Id">@message.Subject</a></td>
+                        <td><span class="lang-badge">@message.LanguageCode.ToUpperInvariant()</span></td>
+                        <td class="small text-nowrap">@message.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Detail" asp-route-id="@message.Id" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-eye"></i></a>
+                                <form method="post" asp-action="Delete" asp-route-id="@message.Id" data-confirm="Bu mesajı silmek istediğinize emin misiniz?">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Items.Count == 0)
+                {
+                    <tr><td colspan="6" class="text-center text-muted py-5">Mesaj bulunamadı.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_AdminPager" model="pager" />
+</div>

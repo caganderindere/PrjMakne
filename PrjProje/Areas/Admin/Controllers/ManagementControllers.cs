@@ -1,0 +1,322 @@
+using System.Security.Claims;
+using PrjProje.Application.Common;
+using PrjProje.Application.Interfaces;
+using PrjProje.Application.Models;
+using PrjProje.Application.Models.Admin;
+using PrjProje.Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace PrjProje.Areas.Admin.Controllers;
+
+[Authorize(Policy = Policies.FullAccess)]
+public class DeveloperController : AdminControllerBase
+{
+    private readonly IDeveloperService _developerService;
+    private readonly IPerformanceService _performanceService;
+
+    public DeveloperController(IDeveloperService developerService, IPerformanceService performanceService)
+    {
+        _developerService = developerService;
+        _performanceService = performanceService;
+    }
+
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
+        View(await _developerService.GetReportAsync(cancellationToken));
+
+    public async Task<IActionResult> Performance(int days, CancellationToken cancellationToken) =>
+        Json(await _performanceService.GetReportAsync(days, cancellationToken));
+}
+
+[Authorize(Policy = Policies.Marketing)]
+public class MessagesController : StaffControllerBase
+{
+    private readonly IContactAdminService _contactService;
+
+    public MessagesController(IContactAdminService contactService)
+    {
+        _contactService = contactService;
+    }
+
+    public async Task<IActionResult> Index(bool? unread, int page = 1, CancellationToken cancellationToken = default)
+    {
+        ViewBag.Unread = unread;
+        return View(await _contactService.GetListAsync(unread, page, cancellationToken));
+    }
+
+    public async Task<IActionResult> Detail(int id, CancellationToken cancellationToken)
+    {
+        var message = await _contactService.GetAndMarkReadAsync(id, cancellationToken);
+        return message is null ? NotFound() : View(message);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
+        ResultRedirect(await _contactService.DeleteAsync(id, cancellationToken), "Mesaj silindi.");
+}
+
+[Authorize(Policy = Policies.HumanResources)]
+public class ApplicationsController : StaffControllerBase
+{
+    private readonly IJobApplicationAdminService _applicationService;
+    private readonly IActivityLogger _activityLogger;
+
+    public ApplicationsController(IJobApplicationAdminService applicationService, IActivityLogger activityLogger)
+    {
+        _applicationService = applicationService;
+        _activityLogger = activityLogger;
+    }
+
+    public async Task<IActionResult> Index(bool? unread, int page = 1, CancellationToken cancellationToken = default)
+    {
+        ViewBag.Unread = unread;
+        return View(await _applicationService.GetListAsync(unread, page, cancellationToken));
+    }
+
+    public async Task<IActionResult> Detail(int id, CancellationToken cancellationToken)
+    {
+        var application = await _applicationService.GetAndMarkReadAsync(id, cancellationToken);
+        if (application is null)
+        {
+            return NotFound();
+        }
+
+        // KVKK: applications are personal data, so every look at one is recorded with who did it (by id only: editors see the log).
+        await _activityLogger.LogAsync("Viewed", "JobApplication", id, null, cancellationToken);
+        return View(application);
+    }
+
+    public async Task<IActionResult> Resume(int id, CancellationToken cancellationToken)
+    {
+        var resume = await _applicationService.GetResumeAsync(id, cancellationToken);
+        if (resume is null)
+        {
+            return NotFound();
+        }
+
+        await _activityLogger.LogAsync("ResumeDownloaded", "JobApplication", id, null, cancellationToken);
+        // Always served as a download with a neutral content type, never rendered inline.
+        return PhysicalFile(resume.PhysicalPath, "application/octet-stream", resume.DownloadName);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
+        ResultRedirect(await _applicationService.DeleteAsync(id, cancellationToken), "Başvuru ve CV silindi.");
+}
+
+[Authorize(Policy = Policies.Marketing)]
+public class QuotesController : StaffControllerBase
+{
+    private readonly IQuoteAdminService _quoteService;
+
+    public QuotesController(IQuoteAdminService quoteService)
+    {
+        _quoteService = quoteService;
+    }
+
+    public async Task<IActionResult> Index(QuoteStatus? status, int page = 1, CancellationToken cancellationToken = default)
+    {
+        ViewBag.Status = status;
+        return View(await _quoteService.GetListAsync(status, page, cancellationToken));
+    }
+
+    public async Task<IActionResult> Detail(int id, CancellationToken cancellationToken)
+    {
+        var quote = await _quoteService.GetAsync(id, cancellationToken);
+        return quote is null ? NotFound() : View(quote);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> UpdateStatus(QuoteStatusUpdateModel model, CancellationToken cancellationToken) =>
+        ResultRedirect(await _quoteService.UpdateStatusAsync(model, cancellationToken), "Teklif durumu güncellendi.", nameof(Detail), new { id = model.Id });
+
+    public async Task<IActionResult> Download(int id, CancellationToken cancellationToken)
+    {
+        var attachment = await _quoteService.GetAttachmentAsync(id, cancellationToken);
+        if (attachment is null)
+        {
+            return NotFound();
+        }
+
+        // Always served as a download with a neutral content type, never rendered inline.
+        return PhysicalFile(attachment.PhysicalPath, "application/octet-stream", attachment.DownloadName);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
+        ResultRedirect(await _quoteService.DeleteAsync(id, cancellationToken), "Teklif talebi silindi.");
+}
+
+[Authorize(Policy = Policies.UserManagement)]
+public class UsersController : AdminControllerBase
+{
+    private readonly IUserAdminService _userService;
+
+    public UsersController(IUserAdminService userService)
+    {
+        _userService = userService;
+    }
+
+    private string CurrentUserId => User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
+        View(await _userService.GetListAsync(cancellationToken));
+
+    public IActionResult Create() => View("Form", new UserEditModel());
+
+    public async Task<IActionResult> Edit(string id)
+    {
+        var model = await _userService.GetForEditAsync(id);
+        return model is null ? NotFound() : View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Save(UserEditModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = string.IsNullOrEmpty(model.Id)
+                ? await _userService.CreateAsync(model)
+                : await _userService.UpdateAsync(model, CurrentUserId);
+
+            if (result.Succeeded)
+            {
+                Success("Kullanıcı kaydedildi.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            AddErrors(result);
+        }
+
+        return View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(string id) =>
+        ResultRedirect(await _userService.DeleteAsync(id, CurrentUserId), "Kullanıcı silindi.");
+}
+
+[Authorize(Policy = Policies.FullAccess)]
+public class SettingsController : AdminControllerBase
+{
+    private readonly ISiteSettingsService _settingsService;
+    private readonly IFileStorageService _fileStorage;
+    private readonly IActivityLogger _activityLogger;
+
+    public SettingsController(ISiteSettingsService settingsService, IFileStorageService fileStorage, IActivityLogger activityLogger)
+    {
+        _settingsService = settingsService;
+        _fileStorage = fileStorage;
+        _activityLogger = activityLogger;
+    }
+
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
+        View(await _settingsService.GetAsync(cancellationToken));
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [RequestSizeLimit(LargeUploadLimit)]
+    [RequestFormLimits(MultipartBodyLengthLimit = LargeUploadLimit)]
+    public async Task<IActionResult> Index(
+        SiteSettingsDto model,
+        IFormFile? heroImageFile,
+        bool removeHeroImage,
+        string[]? homeSectionOrder,
+        string[]? homeSectionVisible,
+        CancellationToken cancellationToken)
+    {
+        var current = await _settingsService.GetAsync(cancellationToken);
+        model.HeroImage = current.HeroImage;
+
+        // "!" marks a hidden section; GetHomeSections() drops unknown keys and appends missing ones.
+        var visible = new HashSet<string>(homeSectionVisible ?? Array.Empty<string>());
+        model.HomeSections = homeSectionOrder is { Length: > 0 }
+            ? string.Join(",", homeSectionOrder.Select(key => visible.Contains(key) ? key : "!" + key))
+            : current.HomeSections;
+
+        foreach (var (name, value) in new[]
+                 {
+                     (nameof(model.StatFacility), model.StatFacility), (nameof(model.StatEmployees), model.StatEmployees),
+                     (nameof(model.StatCountries), model.StatCountries), (nameof(model.StatDomestic), model.StatDomestic)
+                 })
+        {
+            if (SiteSettingsDto.ParseStat(value, -1) < 0)
+            {
+                ModelState.AddModelError(name, "Rakam alanlarına yalnızca sayı girin.");
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(model.MapEmbedUrl) && !model.MapEmbedUrl.StartsWith("https://www.google.com/maps", StringComparison.OrdinalIgnoreCase))
+        {
+            ModelState.AddModelError(nameof(model.MapEmbedUrl), "Harita adresi https://www.google.com/maps ile başlamalıdır.");
+        }
+
+        // The ID ends up in a script URL on every public page, so only the GA4 format is accepted.
+        model.GoogleAnalyticsId = model.GoogleAnalyticsId?.Trim().ToUpperInvariant();
+        if (!string.IsNullOrEmpty(model.GoogleAnalyticsId) && !System.Text.RegularExpressions.Regex.IsMatch(model.GoogleAnalyticsId, "^G-[A-Z0-9]{4,20}$"))
+        {
+            ModelState.AddModelError(nameof(model.GoogleAnalyticsId), "Ölçüm kimliği G- ile başlamalıdır (ör. G-AB12CD34EF).");
+        }
+
+        // People paste the address bar link (/reporting/...); only the /embed/ form may be shown in a frame.
+        const string lookerStudio = "https://lookerstudio.google.com/";
+        model.LookerStudioReportUrl = model.LookerStudioReportUrl?.Trim();
+        if (!string.IsNullOrEmpty(model.LookerStudioReportUrl))
+        {
+            if (!model.LookerStudioReportUrl.StartsWith(lookerStudio, StringComparison.OrdinalIgnoreCase))
+            {
+                ModelState.AddModelError(nameof(model.LookerStudioReportUrl), "Rapor adresi https://lookerstudio.google.com/ ile başlamalıdır.");
+            }
+            else if (model.LookerStudioReportUrl.StartsWith(lookerStudio + "reporting/", StringComparison.OrdinalIgnoreCase))
+            {
+                model.LookerStudioReportUrl = lookerStudio + "embed/" + model.LookerStudioReportUrl[lookerStudio.Length..];
+            }
+        }
+
+        // Stored as "" rather than null, otherwise clearing the mobile video would bring its default back.
+        model.HeroVideo ??= string.Empty;
+        model.HeroVideoMobile ??= string.Empty;
+        foreach (var (name, value) in new[] { (nameof(model.HeroVideo), model.HeroVideo), (nameof(model.HeroVideoMobile), model.HeroVideoMobile) })
+        {
+            if (value.Length > 0 && (!value.StartsWith('/') || !value.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase)))
+            {
+                ModelState.AddModelError(name, "Video yolu / ile başlamalı ve .mp4 ile bitmelidir (ör. /videos/hero.mp4).");
+            }
+        }
+
+        if (heroImageFile is { Length: > 0 })
+        {
+            var upload = await _fileStorage.SaveImageAsync(heroImageFile, ImageFolder.Site, cancellationToken);
+            if (upload.Succeeded)
+            {
+                _fileStorage.DeletePublicFile(current.HeroImage);
+                model.HeroImage = upload.Value!.RelativePath;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, string.Join(" ", upload.Errors));
+            }
+        }
+        else if (removeHeroImage)
+        {
+            _fileStorage.DeletePublicFile(current.HeroImage);
+            model.HeroImage = null;
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        await _settingsService.SaveAsync(model, cancellationToken);
+        await _activityLogger.LogAsync("Updated", "SiteSettings", null, null, cancellationToken);
+        Success("Site ayarları kaydedildi.");
+        return RedirectToAction(nameof(Index));
+    }
+}

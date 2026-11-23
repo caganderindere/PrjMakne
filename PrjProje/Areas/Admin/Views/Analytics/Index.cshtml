@@ -1,0 +1,130 @@
+@model MarketingSummaryDto
+@{
+    ViewData["Title"] = "Analiz";
+    var settings = (SiteSettingsDto)ViewBag.Settings;
+    var reportUrl = settings.LookerStudioReportUrl;
+}
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Quotes" asp-action="Index">
+            <span class="stat-card-icon accent"><i class="fa-solid fa-file-signature"></i></span>
+            <span><span class="stat-card-value d-block">@Model.QuotesLast30Days</span><span class="stat-card-label">Teklif Talebi (30 gün)</span><span class="stat-card-sub d-block">@Model.NewQuotes yeni, bekliyor</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Messages" asp-action="Index">
+            <span class="stat-card-icon accent"><i class="fa-solid fa-envelope"></i></span>
+            <span><span class="stat-card-value d-block">@Model.MessagesLast30Days</span><span class="stat-card-label">İletişim Mesajı (30 gün)</span><span class="stat-card-sub d-block">@Model.UnreadMessages okunmamış</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a class="stat-card" asp-controller="Fairs" asp-action="Index">
+            <span class="stat-card-icon"><i class="fa-solid fa-qrcode"></i></span>
+            <span><span class="stat-card-value d-block">@Model.FairLeadsLast30Days</span><span class="stat-card-label">Fuar Kaydı (30 gün)</span><span class="stat-card-sub d-block">@Model.FairLeadsWithConsent pazarlama izni verdi</span></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card" title="Her ziyaretçi günde bir kez sayılır.">
+            <span class="stat-card-icon accent"><i class="fa-brands fa-whatsapp"></i></span>
+            <span><span class="stat-card-value d-block">@Model.WhatsAppLast30Days</span><span class="stat-card-label">WhatsApp Tıklaması (30 gün)</span><span class="stat-card-sub d-block">bugün @Model.WhatsAppToday</span></span>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-xl-6">
+        <div class="admin-card h-100">
+            <div class="admin-card-header">
+                <h2 class="admin-card-title">Son Teklif Talepleri</h2>
+                <a asp-controller="Quotes" asp-action="Index" class="btn btn-sm btn-outline-secondary">Tümü</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table admin-table">
+                    <thead><tr><th>Firma</th><th>Ürün</th><th>Durum</th><th>Tarih</th></tr></thead>
+                    <tbody>
+                        @foreach (var quote in Model.RecentQuotes)
+                        {
+                            <tr>
+                                <td><a asp-controller="Quotes" asp-action="Detail" asp-route-id="@quote.Id">@quote.CompanyName</a><div class="small text-muted">@quote.FullName</div></td>
+                                <td>@(quote.ProductName ?? "-")</td>
+                                <td><span class="badge @AdminLabels.StatusBadge(quote.Status)">@AdminLabels.Status(quote.Status)</span></td>
+                                <td class="small text-nowrap">@quote.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                            </tr>
+                        }
+                        @if (Model.RecentQuotes.Count == 0)
+                        {
+                            <tr><td colspan="4" class="text-muted text-center py-4">Henüz teklif talebi yok.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="admin-card h-100">
+            <div class="admin-card-header">
+                <h2 class="admin-card-title">Son Fuar Kayıtları</h2>
+                <a asp-controller="Fairs" asp-action="Index" class="btn btn-sm btn-outline-secondary">Fuarlar</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table admin-table">
+                    <thead><tr><th>E-posta</th><th>Fuar</th><th>İzin</th><th>Tarih</th></tr></thead>
+                    <tbody>
+                        @foreach (var lead in Model.RecentFairLeads)
+                        {
+                            <tr>
+                                <td>@lead.Email</td>
+                                <td><a asp-controller="Fairs" asp-action="Leads" asp-route-id="@lead.FairId">@lead.FairName</a></td>
+                                <td><span class="badge @(lead.MarketingConsent ? "bg-success" : "bg-secondary")">@(lead.MarketingConsent ? "Var" : "Yok")</span></td>
+                                <td class="small text-nowrap">@lead.CreatedDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                            </tr>
+                        }
+                        @if (Model.RecentFairLeads.Count == 0)
+                        {
+                            <tr><td colspan="4" class="text-muted text-center py-4">Henüz fuar kaydı yok.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <a class="admin-card h-100 d-flex align-items-center gap-3 text-decoration-none text-body" asp-controller="Applications" asp-action="Index" asp-route-unread="true">
+            <span class="stat-card-icon"><i class="fa-solid fa-user-tie"></i></span>
+            <span>
+                <span class="stat-card-value d-block">@Model.UnreadApplications</span>
+                <span class="stat-card-label">Okunmamış İş Başvurusu</span>
+            </span>
+        </a>
+    </div>
+</div>
+
+@if (string.IsNullOrEmpty(reportUrl))
+{
+    <div class="admin-card">
+        <h2 class="admin-card-title mb-2">Ziyaretçi raporu bağlı değil</h2>
+        <p class="text-muted mb-3">
+            Ziyaretçilerin nereden geldiğini, hangi sayfalara baktığını ve hangi ülkelerden girdiğini burada görmek için
+            Google Analytics verisini gösteren Looker Studio raporunun adresini Site Ayarları'na yapıştırın.
+            @if (string.IsNullOrEmpty(settings.GoogleAnalyticsId))
+            {
+                <span>Google Analytics ölçüm kimliği de henüz girilmemiş, önce o gerekli.</span>
+            }
+        </p>
+        @if (Roles.HasFullAccess(User))
+        {
+            <a asp-controller="Settings" asp-action="Index" class="btn btn-dark btn-sm"><i class="fa-solid fa-sliders me-1"></i>Site Ayarları</a>
+        }
+    </div>
+}
+else
+{
+    <div class="admin-card">
+        <div class="admin-card-header">
+            <h2 class="admin-card-title">Ziyaretçi Raporu</h2>
+            <a href="@reportUrl.Replace("/embed/", "/")" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">Looker Studio'da aç</a>
+        </div>
+        <iframe src="@reportUrl" title="Google Analytics ziyaretçi raporu" class="w-100 border-0" style="height: 80vh; min-height: 600px;" loading="lazy" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div class="form-text mt-2">Rapor görünmüyorsa bu tarayıcıda rapora erişimi olan Google hesabıyla oturum açın.</div>
+    </div>
+}

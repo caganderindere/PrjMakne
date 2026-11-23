@@ -1,0 +1,47 @@
+@model GalleryItemEditModel
+@{
+    ViewData["Title"] = "Fotoğraf Düzenle";
+}
+<div class="admin-card" style="max-width:900px">
+    <form method="post" asp-action="Edit" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImagePath" />
+        <div asp-validation-summary="All" class="alert alert-danger small"></div>
+        <div class="row g-4">
+            <div class="col-md-5">
+                <img id="galleryPreview" src="@ViewHelpers.SmallImage(Model.ImagePath)" class="image-preview w-100" style="max-height:none" alt="" />
+                <label asp-for="ImageFile" class="form-label"></label>
+                <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.webp,.gif" data-preview="galleryPreview" />
+            </div>
+            <div class="col-md-7">
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label"></label>
+                    <select asp-for="CategoryId" class="form-select">
+                        @foreach (var category in Model.CategoryOptions)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+                @for (var i = 0; i < Model.Titles.Count; i++)
+                {
+                    <input type="hidden" asp-for="Titles[i].LanguageCode" />
+                    <div class="mb-3">
+                        <label asp-for="Titles[i].Title" class="form-label"><span class="lang-badge">@Model.Titles[i].LanguageCode.ToUpperInvariant()</span> Başlık</label>
+                        <input asp-for="Titles[i].Title" class="form-control" />
+                    </div>
+                }
+                <div class="mb-3">
+                    <label asp-for="SortOrder" class="form-label"></label>
+                    <input asp-for="SortOrder" class="form-control" style="max-width:140px" />
+                </div>
+                <div class="form-check form-switch mb-4">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+                <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+            </div>
+        </div>
+    </form>
+</div>

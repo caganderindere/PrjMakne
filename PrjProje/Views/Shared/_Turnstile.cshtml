@@ -1,0 +1,10 @@
+@model PrjProje.Application.Interfaces.TurnstileForm
+@inject PrjProje.Application.Interfaces.ICloudflareService Cloudflare
+@{
+    var settings = await Cloudflare.GetAsync();
+}
+@if (settings.Protects(Model))
+{
+    <div class="cf-turnstile my-3" data-sitekey="@settings.SiteKey" data-language="@Languages.Current" data-size="flexible"></div>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+}

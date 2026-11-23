@@ -1,0 +1,94 @@
+@model ProductListViewModel
+@{
+    var category = Model.CurrentCategory;
+    var basePath = category is null ? Url.Localized(SiteRoutes.Products) : Url.Localized(SiteRoutes.ProductCategory, category.Slug);
+    var pagination = new PaginationModel(Model.Products.Page, Model.Products.TotalPages, basePath,
+        new Dictionary<string, string?> { ["q"] = Model.Search });
+    var header = new PageHeaderModel(category?.Name ?? L["Products.Title"], category?.Description ?? L["Products.Lead"], Image: category?.Image);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section pt-5">
+    <div class="container">
+        <div class="row g-4 g-xl-5">
+            <aside class="col-lg-3">
+                <div class="filter-panel">
+                    <partial name="_ProductSearchForm" model='new ProductSearchFormModel(basePath, "productSearch", Model.Search, category?.Slug)' />
+                    <h2 class="filter-title">@L["Products.Categories"]</h2>
+                    <ul class="filter-list list-unstyled">
+                        <li>
+                            <a href="@Url.Localized(SiteRoutes.Products)" class="@(category is null ? "active" : null)">
+                                <span><i class="fa-solid fa-table-cells-large fa-fw me-2" aria-hidden="true"></i>@L["Products.AllProducts"]</span>
+                                <span class="count">@Model.Categories.Sum(c => c.ProductCount)</span>
+                            </a>
+                        </li>
+                        @foreach (var item in Model.Categories)
+                        {
+                            <li>
+                                <a href="@Url.Localized(SiteRoutes.ProductCategory, item.Slug)" class="@(category?.Id == item.Id ? "active" : null)">
+                                    <span><i class="@item.IconClass fa-fw me-2" aria-hidden="true"></i>@item.Name</span>
+                                    <span class="count">@item.ProductCount</span>
+                                </a>
+                            </li>
+                        }
+                        <li>
+                            <a href="@Url.Localized(SiteRoutes.Catalog)">
+                                <span><i class="fa-solid fa-book-open fa-fw me-2" aria-hidden="true"></i>@L["Nav.Catalog"]</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="filter-cta">
+                        <p>@L["Products.CustomProduction"]</p>
+                        <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-brand w-100">@L["Common.RequestQuote"]</a>
+                    </div>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                    <p class="mb-0 text-muted">
+                        @L["Products.ResultCount", Model.Products.TotalCount]
+                        @if (Model.Search is not null)
+                        {
+                            <span> &middot; “@Model.Search”</span>
+                            <a href="@basePath" class="ms-2 small">@L["Common.ClearFilter"]</a>
+                        }
+                    </p>
+                </div>
+                @if (category?.IsRestricted == true)
+                {
+                    <div class="notice notice-dark mb-4">
+                        <i class="fa-solid fa-user-lock" aria-hidden="true"></i>
+                        <span>@L["Defense.ConfidentialityNotice"]</span>
+                    </div>
+                }
+                @if (Model.Products.Items.Count == 0)
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+                        <h2>@L["Products.EmptyTitle"]</h2>
+                        <p>@L["Products.EmptyText"]</p>
+                        <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-brand">@L["Common.RequestQuote"]</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="row g-4">
+                        @foreach (var product in Model.Products.Items)
+                        {
+                            <div class="col-sm-6 col-xl-4">
+                                <partial name="_ProductCard" model="product" />
+                            </div>
+                        }
+                    </div>
+                    <partial name="_Pagination" model="pagination" />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="_CtaSection" />
+
+@section Scripts {
+    <script src="~/js/products-search.js" asp-append-version="true"></script>
+}

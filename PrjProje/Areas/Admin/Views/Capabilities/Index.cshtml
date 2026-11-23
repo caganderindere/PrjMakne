@@ -1,0 +1,7 @@
+@model IReadOnlyList<TranslatedListItem>
+@{
+    ViewData["Title"] = "Üretim Kabiliyetleri";
+    ViewData["NewLabel"] = "Yeni Kabiliyet";
+    ViewData["DeleteConfirm"] = "Bu üretim kabiliyetini silmek istediğinize emin misiniz?";
+}
+<partial name="_TranslatedList" model="Model" />

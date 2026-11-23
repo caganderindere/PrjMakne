@@ -1,0 +1,33 @@
+@model ProductListItemDto
+@{
+    var url = Url.Localized(SiteRoutes.ProductDetail, Model.Slug);
+    var quoteUrl = $"{Url.Localized(SiteRoutes.Quote)}?product={Model.Id}";
+}
+<article class="product-card h-100">
+    <a href="@url" class="product-card-media" tabindex="-1" aria-hidden="true">
+        <span class="product-card-badge"><i class="@Model.CategoryIcon" aria-hidden="true"></i>@Model.CategoryName</span>
+        @if (Model.Image is not null)
+        {
+            <img src="@ViewHelpers.SmallImage(Model.Image)" srcset="@ViewHelpers.SrcSet(Model.Image)" sizes="(max-width: 768px) 100vw, 33vw"
+                 alt="@Model.Name" loading="lazy" decoding="async" width="640" height="640" />
+        }
+        else
+        {
+            <span class="product-card-placeholder"><i class="@Model.CategoryIcon" aria-hidden="true"></i></span>
+        }
+        <span class="product-card-view">@L["Common.ViewDetails"]</span>
+    </a>
+    <div class="product-card-body">
+        <h3 class="product-card-title"><a href="@url">@Model.Name</a></h3>
+        @if (!string.IsNullOrEmpty(Model.ShortDescription))
+        {
+            <p class="product-card-text">@ViewHelpers.Truncate(Model.ShortDescription, 140)</p>
+        }
+        <div class="product-card-actions">
+            <a href="@url" class="link-arrow">@L["Common.ViewDetails"] <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="@quoteUrl" class="product-card-quote" title="@L["Common.RequestQuote"]" aria-label="@L["Common.RequestQuote"]: @Model.Name">
+                <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,107 @@
+@model QuoteViewModel
+@{
+    var header = new PageHeaderModel(L["Quote.Title"], L["Quote.Lead"], L["Common.RequestQuote"]);
+}
+<partial name="_PageHeader" model="header" />
+
+<section class="section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="form-card">
+                    @if (TempData["FormSuccess"] is string success)
+                    {
+                        <div class="alert alert-success d-flex gap-2" role="status"><i class="fa-solid fa-circle-check mt-1" aria-hidden="true"></i><span>@success</span></div>
+                    }
+                    <form method="post" action="@Url.Localized(SiteRoutes.Quote)" enctype="multipart/form-data" asp-antiforgery="true" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                        <partial name="_SpamProtection" />
+                        <input type="hidden" asp-for="Form.ProductId" />
+                        <h2 class="form-section-title">@L["Quote.ContactSection"]</h2>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label asp-for="Form.FullName" class="form-label required"></label>
+                                <input asp-for="Form.FullName" class="form-control" autocomplete="name" required />
+                                <span asp-validation-for="Form.FullName" class="invalid-text"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Form.CompanyName" class="form-label required"></label>
+                                <input asp-for="Form.CompanyName" class="form-control" autocomplete="organization" required />
+                                <span asp-validation-for="Form.CompanyName" class="invalid-text"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Form.Email" class="form-label required"></label>
+                                <input asp-for="Form.Email" type="email" class="form-control" autocomplete="email" required />
+                                <span asp-validation-for="Form.Email" class="invalid-text"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Form.Phone" class="form-label required"></label>
+                                <input asp-for="Form.Phone" type="tel" class="form-control" autocomplete="tel" required />
+                                <span asp-validation-for="Form.Phone" class="invalid-text"></span>
+                            </div>
+                        </div>
+
+                        <h2 class="form-section-title mt-4">@L["Quote.ProductSection"]</h2>
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label asp-for="Form.ProductName" class="form-label"></label>
+                                <input asp-for="Form.ProductName" class="form-control" list="productOptions" placeholder="@L["Quote.ProductPlaceholder"]" data-product-input />
+                                <datalist id="productOptions">
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <option value="@product.Name" data-id="@product.Id"></option>
+                                    }
+                                </datalist>
+                                <span asp-validation-for="Form.ProductName" class="invalid-text"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Form.Quantity" class="form-label"></label>
+                                <input asp-for="Form.Quantity" class="form-control" placeholder="@L["Quote.QuantityPlaceholder"]" />
+                                <span asp-validation-for="Form.Quantity" class="invalid-text"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Form.Description" class="form-label required"></label>
+                                <textarea asp-for="Form.Description" class="form-control" rows="6" required></textarea>
+                                <span asp-validation-for="Form.Description" class="invalid-text"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Form.Attachment" class="form-label"></label>
+                                <input asp-for="Form.Attachment" type="file" class="form-control" accept="@Model.AllowedExtensions" />
+                                <div class="form-text">@L["Quote.AttachmentHelp"]</div>
+                                <span asp-validation-for="Form.Attachment" class="invalid-text"></span>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input asp-for="Form.PrivacyConsent" class="form-check-input" required />
+                                    <label asp-for="Form.PrivacyConsent" class="form-check-label">
+                                        @L["Form.PrivacyConsentText"] <a href="@Url.Localized(SiteRoutes.Privacy)" target="_blank">@L["Legal.PrivacyTitle"]</a>
+                                    </label>
+                                </div>
+                                <span asp-validation-for="Form.PrivacyConsent" class="invalid-text"></span>
+                            </div>
+                            <div class="col-12">
+                                <partial name="_Turnstile" model="PrjProje.Application.Interfaces.TurnstileForm.Quote" />
+                                <button type="submit" class="btn btn-brand btn-lg"><i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i>@L["Quote.Submit"]</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <aside class="col-lg-4">
+                <div class="side-card side-card-dark">
+                    <h2 class="side-card-title">@L["Quote.ProcessTitle"]</h2>
+                    <ol class="steps-list">
+                        <li>@L["Quote.Step1"]</li>
+                        <li>@L["Quote.Step2"]</li>
+                        <li>@L["Quote.Step3"]</li>
+                        <li>@L["Quote.Step4"]</li>
+                    </ol>
+                </div>
+                <div class="side-card">
+                    <h2 class="side-card-title">@L["Quote.ConfidentialTitle"]</h2>
+                    <p class="mb-0">@L["Quote.ConfidentialText"]</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

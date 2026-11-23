@@ -1,0 +1,89 @@
+@model EmailEditModel
+@{
+    ViewData["Title"] = "E-posta Bildirimleri";
+    var settings = (PrjProje.Application.Interfaces.EmailSettings)ViewBag.Settings;
+}
+<div class="row g-4">
+    <div class="col-xl-8">
+        <form method="post" asp-action="Save">
+            <div asp-validation-summary="All" class="alert alert-danger small"></div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">Kime Gitsin?</h2>
+                <p class="small text-muted">Birden fazla adresi virgülle ayırın. Boş bırakılan bildirim gönderilmez. Bildirime yanıt verdiğinizde e-posta doğrudan formu gönderen kişiye gider.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="SalesTo" class="form-label"></label>
+                        <input asp-for="SalesTo" class="form-control" placeholder="satis@prestijteknikmakine.com.tr" />
+                        <div class="form-text">Teklif talepleri ve iletişim mesajları.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="HrTo" class="form-label"></label>
+                        <input asp-for="HrTo" class="form-control" placeholder="ik@prestijteknikmakine.com.tr" />
+                        <div class="form-text">CV e-postaya eklenmez; panelden indirilir.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h2 class="admin-card-title mb-3">SMTP Sunucusu</h2>
+                <p class="small text-muted">Kurumsal e-posta sağlayıcınızın SMTP bilgileri (ör. Microsoft 365: smtp.office365.com, Gmail/Workspace: smtp.gmail.com, port 587).</p>
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <label asp-for="Host" class="form-label"></label>
+                        <input asp-for="Host" class="form-control" autocomplete="off" placeholder="smtp.office365.com" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Port" class="form-label"></label>
+                        <input asp-for="Port" class="form-control" type="number" />
+                        <span asp-validation-for="Port"></span>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input asp-for="UseSsl" class="form-check-input" />
+                            <label asp-for="UseSsl" class="form-check-label"></label>
+                        </div>
+                        <div class="form-text">Port 587 ile açık kalmalıdır. Port 465 (doğrudan SSL) desteklenmez.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" placeholder="@(settings.Password is not null ? "Kayıtlı; değiştirmek için yenisini yazın" : "")" />
+                        @if (settings.PasswordUnreadable)
+                        {
+                            <div class="form-text text-danger">Kayıtlı şifre çözülemedi; lütfen yeniden girin.</div>
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="From" class="form-label"></label>
+                        <input asp-for="From" class="form-control" placeholder="bildirim@prestijteknikmakine.com.tr" />
+                        <div class="form-text">Çoğu sağlayıcıda kullanıcı adıyla aynı olmalıdır.</div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-brand"><i class="fa-solid fa-floppy-disk me-1"></i>Kaydet</button>
+        </form>
+    </div>
+    <div class="col-xl-4">
+        <div class="admin-card">
+            <h2 class="admin-card-title mb-3">Durum</h2>
+            <p class="mb-3">
+                @if (settings.IsConfigured)
+                {
+                    <span class="badge bg-success">Etkin</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Kurulmadı</span>
+                }
+            </p>
+            <form method="post" asp-action="Test">
+                <label for="testTo" class="form-label">Test e-postası gönder</label>
+                <input id="testTo" name="to" type="email" class="form-control mb-2" placeholder="adresiniz@prestijteknikmakine.com.tr" />
+                <button type="submit" class="btn btn-outline-dark w-100" disabled="@(!settings.IsConfigured)"><i class="fa-solid fa-paper-plane me-1"></i>Gönder</button>
+            </form>
+            <p class="form-text mt-3 mb-0">Önce kaydedin, sonra test edin. Bildirimler arka planda gider; e-posta gönderilemezse form yine kaydedilir ve hata sunucu günlüğüne yazılır.</p>
+        </div>
+    </div>
+</div>
