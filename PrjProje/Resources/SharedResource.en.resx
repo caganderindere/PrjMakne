@@ -32,76 +32,76 @@
   <data name="Stats.Countries" xml:space="preserve"><value>Export Countries</value></data>
   <data name="Stats.Domestic" xml:space="preserve"><value>Domestic Production</value></data>
   <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
-  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Steel, Rubber &amp; Plastic Parts Manufacturing</value></data>
-  <data name="Home.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina manufactures heavy machinery spare parts and defense components at its 25,000 m² facility in Ankara, Türkiye, exporting to more than 20 countries.</value></data>
-  <data name="Home.HeroEyebrow" xml:space="preserve"><value>25,000 m² Integrated Facility · Ankara</value></data>
-  <data name="Home.HeroTitle" xml:space="preserve"><value>Engineered in Ankara,</value></data>
-  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>Trusted Worldwide</value></data>
+  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Powder Coating Plants and Equipment</value></data>
+  <data name="Home.MetaDescription" xml:space="preserve"><value>Powder coating guns, paint booths, curing ovens, conveyors and pretreatment lines, designed, built and installed from Istanbul.</value></data>
+  <data name="Home.HeroEyebrow" xml:space="preserve"><value>Electrostatic powder coating systems · Istanbul</value></data>
+  <data name="Home.HeroTitle" xml:space="preserve"><value>We build your powder coating line</value></data>
+  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>from end to end</value></data>
   <data name="Announcement.Label" xml:space="preserve"><value>Announcement</value></data>
   <data name="Announcement.More" xml:space="preserve"><value>Learn more</value></data>
   <data name="Announcement.Close" xml:space="preserve"><value>Close announcement</value></data>
   <data name="Announcement.Dismiss" xml:space="preserve"><value>Close</value></data>
-  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Our Partners</value></data>
-  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Our References</value></data>
-  <data name="Home.ReferencesLead" xml:space="preserve"><value>Leading heavy machinery manufacturers and defense organizations trust PRJ Proje Makina quality.</value></data>
-  <data name="Home.HeroSubtitle" xml:space="preserve"><value>We manufacture rubber, plastic and steel components from design to delivery under one roof — 100% in-house.</value></data>
-  <data name="Home.ModelAlt" xml:space="preserve"><value>3D model of a rubber-to-metal anti-vibration mount: steel top plate with a threaded stud, rubber body and steel base flange.</value></data>
+  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>References</value></data>
+  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Companies we work with</value></data>
+  <data name="Home.ReferencesLead" xml:space="preserve"><value>Manufacturers from many sectors run PRJ Proje Makina equipment on their coating lines.</value></data>
+  <data name="Home.HeroSubtitle" xml:space="preserve"><value>From pretreatment to the curing oven, we design and build guns, booths, conveyors and ovens in our own workshop and install them on site.</value></data>
+  <data name="Home.ModelAlt" xml:space="preserve"><value>PRJ Proje Makina powder coating equipment</value></data>
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Explore Products</value></data>
-  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design to delivery under one roof</value></data>
-  <data name="Home.BadgeExport" xml:space="preserve"><value>Exporting to 20+ countries</value></data>
+  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design, build and installation from one source</value></data>
+  <data name="Home.BadgeExport" xml:space="preserve"><value>After-sales spare parts support</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Company figures</value></data>
-  <data name="Home.AboutTitle" xml:space="preserve"><value>An industrial manufacturer driven by engineering</value></data>
-  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery at its 25,000 m² facility in Ankara Sincan 1st Organized Industrial Zone.</value></data>
-  <data name="Home.AboutText" xml:space="preserve"><value>We manage every process in-house, from design and production to quality control and shipment, and our team of more than 150 specialists delivers reliable solutions to customers in Türkiye and abroad.</value></data>
-  <data name="Home.AboutPoint1" xml:space="preserve"><value>Ministry of National Defense Facility Security Clearance</value></data>
-  <data name="Home.AboutPoint2" xml:space="preserve"><value>CNC, hydraulic press, laser cutting, oven painting and steel casting facilities</value></data>
-  <data name="Home.AboutPoint3" xml:space="preserve"><value>100% indigenous and national manufacturing</value></data>
-  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Integrated production facility</value></data>
+  <data name="Home.AboutTitle" xml:space="preserve"><value>Engineering-led manufacturing in powder coating</value></data>
+  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina works from its Istanbul workshop to build and supply high-quality electrostatic powder coating machinery.</value></data>
+  <data name="Home.AboutText" xml:space="preserve"><value>We do not see ourselves as just an equipment supplier: we develop new machines around our customers' needs and follow every technological advance in the sector. Our first principle is unconditional customer satisfaction.</value></data>
+  <data name="Home.AboutPoint1" xml:space="preserve"><value>One team from feasibility to after-sales support</value></data>
+  <data name="Home.AboutPoint2" xml:space="preserve"><value>A full range from guns to curing ovens</value></data>
+  <data name="Home.AboutPoint3" xml:space="preserve"><value>Spare parts and technical service</value></data>
+  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Our workshop</value></data>
   <data name="Home.LearnMore" xml:space="preserve"><value>Learn More</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
-  <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
-  <data name="Home.ServicesLead" xml:space="preserve"><value>Within our integrated facility, we keep every critical step under our own control, from raw material to finished product.</value></data>
+  <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Services</value></data>
+  <data name="Home.ServicesLead" xml:space="preserve"><value>Alongside turnkey powder coating plants, we offer laser cutting, CNC bending and contract powder coating.</value></data>
   <data name="Home.AllServices" xml:space="preserve"><value>All Services</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>All Articles</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Featured</value></data>
   <data name="Home.FeaturedTitle" xml:space="preserve"><value>Featured Products</value></data>
   <data name="Home.FeaturedLead" xml:space="preserve"><value>A selection of our most requested, field-proven products.</value></data>
   <data name="Home.ProcessEyebrow" xml:space="preserve"><value>Process</value></data>
-  <data name="Home.ProcessTitle" xml:space="preserve"><value>From design to delivery under one roof</value></data>
-  <data name="Home.ProcessLead" xml:space="preserve"><value>The journey of a part from idea to the field; every step runs in our own facility, by one team.</value></data>
+  <data name="Home.ProcessTitle" xml:space="preserve"><value>One team from survey to commissioning</value></data>
+  <data name="Home.ProcessLead" xml:space="preserve"><value>The same team takes a coating line from the first site survey to commissioning.</value></data>
   <data name="Home.ProcessStep" xml:space="preserve"><value>Step</value></data>
-  <data name="Home.Process1Title" xml:space="preserve"><value>Design &amp; Engineering</value></data>
-  <data name="Home.Process1Text" xml:space="preserve"><value>We define the part together, from your drawing, a sample or reverse engineering.</value></data>
-  <data name="Home.Process2Title" xml:space="preserve"><value>Materials &amp; Casting</value></data>
-  <data name="Home.Process2Text" xml:space="preserve"><value>Steel castings and rubber compounds are prepared in our own facility.</value></data>
-  <data name="Home.Process3Title" xml:space="preserve"><value>Machining &amp; Forming</value></data>
-  <data name="Home.Process3Text" xml:space="preserve"><value>Precision production with CNC machining, laser cutting, bending and hydraulic presses.</value></data>
-  <data name="Home.Process4Title" xml:space="preserve"><value>Finishing &amp; Quality</value></data>
-  <data name="Home.Process4Text" xml:space="preserve"><value>Oven painting and coating, followed by dimensional and physical testing.</value></data>
-  <data name="Home.Process5Title" xml:space="preserve"><value>Packaging &amp; Shipment</value></data>
-  <data name="Home.Process5Text" xml:space="preserve"><value>Export-grade packaging and delivery across Türkiye and worldwide.</value></data>
+  <data name="Home.Process1Title" xml:space="preserve"><value>Survey and Feasibility</value></data>
+  <data name="Home.Process1Text" xml:space="preserve"><value>We review your parts, capacity and floor space on site.</value></data>
+  <data name="Home.Process2Title" xml:space="preserve"><value>Engineering</value></data>
+  <data name="Home.Process2Text" xml:space="preserve"><value>We engineer the line layout, equipment selection and energy needs.</value></data>
+  <data name="Home.Process3Title" xml:space="preserve"><value>Manufacturing and Supply</value></data>
+  <data name="Home.Process3Text" xml:space="preserve"><value>We build booths, ovens and conveyors in our workshop and supply the gun sets.</value></data>
+  <data name="Home.Process4Title" xml:space="preserve"><value>Installation and Commissioning</value></data>
+  <data name="Home.Process4Text" xml:space="preserve"><value>We handle logistics and installation and hand the line over running.</value></data>
+  <data name="Home.Process5Title" xml:space="preserve"><value>After-Sales Support</value></data>
+  <data name="Home.Process5Text" xml:space="preserve"><value>Spare parts, maintenance and service keep your line performing.</value></data>
   <data name="Home.WhyEyebrow" xml:space="preserve"><value>Why PRJ Proje Makina?</value></data>
-  <data name="Home.WhyTitle" xml:space="preserve"><value>A manufacturing partner you can rely on</value></data>
-  <data name="Home.Why1Title" xml:space="preserve"><value>Integrated Production</value></data>
-  <data name="Home.Why1Text" xml:space="preserve"><value>Casting, machining, rubber and painting in one facility, with no dependence on subcontractors.</value></data>
-  <data name="Home.Why2Title" xml:space="preserve"><value>Short Lead Times</value></data>
-  <data name="Home.Why2Text" xml:space="preserve"><value>Because we plan our own capacity, we deliver on the dates we commit to.</value></data>
-  <data name="Home.Why3Title" xml:space="preserve"><value>Measurable Quality</value></data>
-  <data name="Home.Why3Text" xml:space="preserve"><value>Every batch is tested and documented from raw material to shipment.</value></data>
-  <data name="Home.Why4Title" xml:space="preserve"><value>Engineering Support</value></data>
-  <data name="Home.Why4Text" xml:space="preserve"><value>Technical guidance from material selection to design optimisation.</value></data>
-  <data name="Home.Why5Title" xml:space="preserve"><value>Security-Cleared Facility</value></data>
-  <data name="Home.Why5Text" xml:space="preserve"><value>Our MoND Facility Security Clearance allows us to take on confidential programs.</value></data>
-  <data name="Home.Why6Title" xml:space="preserve"><value>Export Experience</value></data>
-  <data name="Home.Why6Text" xml:space="preserve"><value>Regular shipments to more than 20 countries, with full international documentation.</value></data>
+  <data name="Home.WhyTitle" xml:space="preserve"><value>A reliable solution partner</value></data>
+  <data name="Home.Why1Title" xml:space="preserve"><value>End-to-End Solutions</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>Pretreatment, booth, guns, conveyor and oven in one project, with one contact.</value></data>
+  <data name="Home.Why2Title" xml:space="preserve"><value>Project-Specific Design</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Besides standard products, we design equipment to your dimensions and process.</value></data>
+  <data name="Home.Why3Title" xml:space="preserve"><value>Built in Our Own Workshop</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>Building in our own workshop keeps quality and lead times under our control.</value></data>
+  <data name="Home.Why4Title" xml:space="preserve"><value>Spare Parts Continuity</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Spare parts for the equipment we supply are kept in stock and shipped quickly.</value></data>
+  <data name="Home.Why5Title" xml:space="preserve"><value>Up-to-Date Technology</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>We follow new developments in the sector and keep improving our machines.</value></data>
+  <data name="Home.Why6Title" xml:space="preserve"><value>Unconditional Customer Satisfaction</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>Our first principle is that customers are fully satisfied with our machines and service.</value></data>
   <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Industries</value></data>
-  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Industries we serve</value></data>
-  <data name="Home.Industry1" xml:space="preserve"><value>Construction Machinery</value></data>
-  <data name="Home.Industry2" xml:space="preserve"><value>Mining</value></data>
-  <data name="Home.Industry3" xml:space="preserve"><value>Agricultural Machinery</value></data>
-  <data name="Home.Industry4" xml:space="preserve"><value>Defense</value></data>
-  <data name="Home.Industry5" xml:space="preserve"><value>Infrastructure</value></data>
-  <data name="Home.Industry6" xml:space="preserve"><value>Industrial Equipment</value></data>
+  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Industries that rely on powder coating</value></data>
+  <data name="Home.Industry1" xml:space="preserve"><value>Metal Goods</value></data>
+  <data name="Home.Industry2" xml:space="preserve"><value>Aluminium Profiles</value></data>
+  <data name="Home.Industry3" xml:space="preserve"><value>Household Appliances</value></data>
+  <data name="Home.Industry4" xml:space="preserve"><value>Automotive Supply</value></data>
+  <data name="Home.Industry5" xml:space="preserve"><value>Furniture</value></data>
+  <data name="Home.Industry6" xml:space="preserve"><value>Agricultural Machinery</value></data>
   <data name="Cta.Eyebrow" xml:space="preserve"><value>Let's talk about your project</value></data>
   <data name="Cta.Title" xml:space="preserve"><value>Get a quote for your powder coating line</value></data>
   <data name="Cta.Text" xml:space="preserve"><value>Tell us the product, capacity or plant you need, and our technical team will get back to you.</value></data>
@@ -114,51 +114,51 @@
   <data name="Cookie.Details" xml:space="preserve"><value>Learn more</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Accept</value></data>
   <data name="About.MetaTitle" xml:space="preserve"><value>About Us</value></data>
-  <data name="About.MetaDescription" xml:space="preserve"><value>Learn about PRJ Proje Makina's history, vision, mission, 25,000 m² production facility and commitment to domestic manufacturing.</value></data>
+  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's mission, vision and approach to electrostatic powder coating equipment, from feasibility to after-sales service.</value></data>
   <data name="About.Title" xml:space="preserve"><value>About Us</value></data>
-  <data name="About.Lead" xml:space="preserve"><value>We bring together engineering, capacity and reliability in steel, plastic and rubber manufacturing.</value></data>
+  <data name="About.Lead" xml:space="preserve"><value>We bring together engineering, manufacturing and after-sales support for electrostatic powder coating equipment.</value></data>
   <data name="About.WhoEyebrow" xml:space="preserve"><value>Who We Are</value></data>
-  <data name="About.WhoTitle" xml:space="preserve"><value>A trusted name in integrated manufacturing</value></data>
-  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina manufactures steel, plastic and rubber spare parts for heavy machinery at its 25,000 m² facility in Ankara Sincan 1st Organized Industrial Zone.</value></data>
-  <data name="About.WhoText1" xml:space="preserve"><value>Our facility houses a large fleet of CNC machines, hydraulic presses, rubber compounding mixers, laser cutting and bending machines, two oven-cured paint lines, a coating plant and a steel foundry.</value></data>
-  <data name="About.WhoText2" xml:space="preserve"><value>We carry out most processes in-house, from design and production to quality control and shipment, giving us full control over cost, quality and lead time.</value></data>
-  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Our History</value></data>
-  <data name="About.HistoryTitle" xml:space="preserve"><value>Our journey of growth</value></data>
-  <data name="About.History1Title" xml:space="preserve"><value>Foundation and rubber production</value></data>
-  <data name="About.History1Text" xml:space="preserve"><value>Our journey began with rubber spare parts for heavy machinery, and we soon developed our own rubber compounds.</value></data>
-  <data name="About.History2Title" xml:space="preserve"><value>Investment in steel and metalworking</value></data>
-  <data name="About.History2Text" xml:space="preserve"><value>With investments in CNC machining, laser cutting and bending, we expanded into steel component production.</value></data>
-  <data name="About.History3Title" xml:space="preserve"><value>Steel casting and surface finishing</value></data>
-  <data name="About.History3Text" xml:space="preserve"><value>With a steel foundry, oven paint lines and a coating plant, we became a fully integrated manufacturer.</value></data>
-  <data name="About.History4Title" xml:space="preserve"><value>Defense industry</value></data>
-  <data name="About.History4Text" xml:space="preserve"><value>After obtaining our Ministry of National Defense Facility Security Clearance, we began contributing to defense industry programs.</value></data>
-  <data name="About.History5Title" xml:space="preserve"><value>Global export</value></data>
-  <data name="About.History5Text" xml:space="preserve"><value>Today, with more than 150 specialists, we export to more than 20 countries.</value></data>
+  <data name="About.WhoTitle" xml:space="preserve"><value>Your partner in powder coating systems</value></data>
+  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina A.Ş. puts all its resources into feasibility, engineering, manufacturing, supply, logistics, installation and after-sales service to deliver solutions that meet your expectations.</value></data>
+  <data name="About.WhoText1" xml:space="preserve"><value>We work from our Istanbul workshop to build and supply electrostatic powder coating machines of the highest quality. Our first and most important principle is unconditional customer satisfaction.</value></data>
+  <data name="About.WhoText2" xml:space="preserve"><value>We do not see ourselves merely as a supplier. We research and develop new machines to suit our customers' requirements, and we follow and apply every technological advance in our sector.</value></data>
+  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Our Approach</value></data>
+  <data name="About.HistoryTitle" xml:space="preserve"><value>How we run a project</value></data>
+  <data name="About.History1Title" xml:space="preserve"><value>Feasibility</value></data>
+  <data name="About.History1Text" xml:space="preserve"><value>We assess the need, the capacity and the investment conditions together.</value></data>
+  <data name="About.History2Title" xml:space="preserve"><value>Engineering</value></data>
+  <data name="About.History2Text" xml:space="preserve"><value>We design the line layout and equipment selection around your process.</value></data>
+  <data name="About.History3Title" xml:space="preserve"><value>Manufacturing and Supply</value></data>
+  <data name="About.History3Text" xml:space="preserve"><value>We build the equipment in our workshop and source the components needed.</value></data>
+  <data name="About.History4Title" xml:space="preserve"><value>Logistics and Installation</value></data>
+  <data name="About.History4Text" xml:space="preserve"><value>We plan delivery, complete installation on site and commission the line.</value></data>
+  <data name="About.History5Title" xml:space="preserve"><value>After-Sales</value></data>
+  <data name="About.History5Text" xml:space="preserve"><value>Spare parts and technical service protect the return on your investment.</value></data>
   <data name="About.VisionTitle" xml:space="preserve"><value>Vision</value></data>
-  <data name="About.VisionText" xml:space="preserve"><value>To be a globally preferred solution partner in steel, plastic and rubber component manufacturing, built on technology and domestic engineering.</value></data>
+  <data name="About.VisionText" xml:space="preserve"><value>To be an original company that is the first choice of national industry and is recognised in international competition, by developing high-quality, reliable equipment and systems that respond to customer needs and minimise total production cost.</value></data>
   <data name="About.MissionTitle" xml:space="preserve"><value>Mission</value></data>
-  <data name="About.MissionText" xml:space="preserve"><value>To deliver high-quality, sustainable products that meet our customers' needs on time, while contributing to Türkiye's industrial and defense capabilities.</value></data>
-  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Our Facility</value></data>
-  <data name="About.FacilityTitle" xml:space="preserve"><value>25,000 m² of integrated production space</value></data>
-  <data name="About.FacilityText" xml:space="preserve"><value>By combining metal, rubber and plastic production under one roof, we achieve short lead times and consistent quality.</value></data>
-  <data name="About.FacilityCnc" xml:space="preserve"><value>Extensive CNC machine fleet</value></data>
-  <data name="About.FacilityPress" xml:space="preserve"><value>Hydraulic presses</value></data>
-  <data name="About.FacilityRubber" xml:space="preserve"><value>Rubber compounding</value></data>
-  <data name="About.FacilityLaser" xml:space="preserve"><value>Laser cutting and bending</value></data>
-  <data name="About.FacilityPaint" xml:space="preserve"><value>Two oven-cured paint lines</value></data>
-  <data name="About.FacilityCoating" xml:space="preserve"><value>Coating plant</value></data>
-  <data name="About.FacilityCasting" xml:space="preserve"><value>Steel foundry</value></data>
-  <data name="About.FacilityQuality" xml:space="preserve"><value>Quality control laboratory</value></data>
-  <data name="About.HrTitle" xml:space="preserve"><value>People &amp; Careers</value></data>
-  <data name="About.HrText" xml:space="preserve"><value>Our 150+ specialists, supported by continuous training and a strong safety culture, are the most valuable part of our operation.</value></data>
-  <data name="About.DomesticTitle" xml:space="preserve"><value>Indigenous and National Manufacturing</value></data>
-  <data name="About.DomesticText" xml:space="preserve"><value>By developing our design and manufacturing capabilities in Türkiye, we provide 100% domestic solutions that reduce reliance on imports.</value></data>
-  <data name="About.ExportTitle" xml:space="preserve"><value>Global Export</value></data>
-  <data name="About.ExportText" xml:space="preserve"><value>We export to more than 20 countries across a region stretching from Europe to Central Asia.</value></data>
+  <data name="About.MissionText" xml:space="preserve"><value>To develop reliable, high-quality solutions in electrostatic powder coating equipment, machinery and accessories through the engineering approach of our expert team, and to help our customers compete globally by offering them the most suitable equipment and service.</value></data>
+  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Our Workshop</value></data>
+  <data name="About.FacilityTitle" xml:space="preserve"><value>From workshop to site under one roof</value></data>
+  <data name="About.FacilityText" xml:space="preserve"><value>We build booths, ovens, conveyors and custom machines in our own workshop and ship them ready for installation.</value></data>
+  <data name="About.FacilityCnc" xml:space="preserve"><value>CNC laser cutting</value></data>
+  <data name="About.FacilityPress" xml:space="preserve"><value>CNC bending</value></data>
+  <data name="About.FacilityRubber" xml:space="preserve"><value>Electrostatic powder coating</value></data>
+  <data name="About.FacilityLaser" xml:space="preserve"><value>Engineering</value></data>
+  <data name="About.FacilityPaint" xml:space="preserve"><value>Supply</value></data>
+  <data name="About.FacilityCoating" xml:space="preserve"><value>Logistics</value></data>
+  <data name="About.FacilityCasting" xml:space="preserve"><value>Installation</value></data>
+  <data name="About.FacilityQuality" xml:space="preserve"><value>After-sales service</value></data>
+  <data name="About.HrTitle" xml:space="preserve"><value>Expert Team</value></data>
+  <data name="About.HrText" xml:space="preserve"><value>Our expert team works with an engineering mindset and puts the customer's need at the centre of every project.</value></data>
+  <data name="About.DomesticTitle" xml:space="preserve"><value>Made in Türkiye</value></data>
+  <data name="About.DomesticText" xml:space="preserve"><value>We design and build our equipment in our Istanbul workshop and supply spare parts quickly.</value></data>
+  <data name="About.ExportTitle" xml:space="preserve"><value>Global Competitiveness</value></data>
+  <data name="About.ExportText" xml:space="preserve"><value>By offering the most suitable equipment, we aim to strengthen our customers' position in global markets.</value></data>
   <data name="Products.MetaTitle" xml:space="preserve"><value>Products</value></data>
-  <data name="Products.MetaDescription" xml:space="preserve"><value>Explore our steel, rubber and plastic products, heavy machinery spare parts and defense industry components.</value></data>
+  <data name="Products.MetaDescription" xml:space="preserve"><value>Explore our range of powder coating guns, paint booths, curing ovens, conveyors, compressed air equipment and pretreatment lines.</value></data>
   <data name="Products.Title" xml:space="preserve"><value>Our Products</value></data>
-  <data name="Products.Lead" xml:space="preserve"><value>High-performance steel, rubber and plastic components for heavy machinery and industrial applications.</value></data>
+  <data name="Products.Lead" xml:space="preserve"><value>Every piece of equipment for powder and wet paint lines, from the gun to the oven.</value></data>
   <data name="Products.AllProducts" xml:space="preserve"><value>All Products</value></data>
   <data name="Products.Categories" xml:space="preserve"><value>Categories</value></data>
   <data name="Products.SearchLabel" xml:space="preserve"><value>Search products</value></data>
@@ -183,7 +183,7 @@
   <data name="Products.Related" xml:space="preserve"><value>Related Products</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Image {0}</value></data>
   <data name="Services.MetaTitle" xml:space="preserve"><value>Manufacturing Capabilities</value></data>
-  <data name="Services.MetaDescription" xml:space="preserve"><value>Our capabilities in CNC machining, hydraulic pressing, rubber production, laser cutting, bending, oven painting, coating and steel casting.</value></data>
+  <data name="Services.MetaDescription" xml:space="preserve"><value>Our turnkey powder coating plants, contract electrostatic powder coating, CNC laser cutting and CNC bending services.</value></data>
   <data name="Services.Title" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
   <data name="Services.Lead" xml:space="preserve"><value>Every process, from design to shipment, under one roof.</value></data>
   <data name="Services.IntroEyebrow" xml:space="preserve"><value>Integrated Production</value></data>
@@ -200,7 +200,7 @@
   <data name="Services.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
   <data name="Services.CertificatesTitle" xml:space="preserve"><value>Certificates &amp; Approvals</value></data>
   <data name="Services.AllDocuments" xml:space="preserve"><value>All documents</value></data>
-  <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Technical details, drawings and production parameters for defense products are not publicly disclosed; they are shared only with authorized institutions in accordance with applicable regulations.</value></data>
+  <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Technical details for products in this category are shared on request, specific to your project.</value></data>
   <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>Company news, technical articles and industry insights from PRJ Proje Makina.</value></data>
   <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
@@ -216,7 +216,7 @@
   <data name="Blog.Share" xml:space="preserve"><value>Share</value></data>
   <data name="Blog.Related" xml:space="preserve"><value>Related Articles</value></data>
   <data name="Videos.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
-  <data name="Videos.MetaDescription" xml:space="preserve"><value>Photos of the PRJ Proje Makina factory, production lines, CNC machining, rubber and steel production and trade fairs.</value></data>
+  <data name="Videos.MetaDescription" xml:space="preserve"><value>Videos of PRJ Proje Makina powder coating plants, booths, ovens and conveyor installations.</value></data>
   <data name="Videos.Title" xml:space="preserve"><value>Gallery</value></data>
   <data name="Videos.Lead" xml:space="preserve"><value>A look inside our facility, production lines and events.</value></data>
   <data name="Videos.FilterLabel" xml:space="preserve"><value>Gallery categories</value></data>
@@ -314,7 +314,7 @@
   <data name="Legal.PrivacyTitle" xml:space="preserve"><value>Privacy Policy</value></data>
   <data name="Legal.PrivacyMetaDescription" xml:space="preserve"><value>PRJ Proje Makina privacy policy and personal data protection notice.</value></data>
   <data name="Legal.PrivacyLead" xml:space="preserve"><value>Information notice on the processing of personal data.</value></data>
-  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>At PRJ Proje Makina, we take the security of the personal data you share through our website seriously. This notice explains how we process your data as data controller under the Turkish Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the GDPR.</value></data>
+  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>At PRJ Proje Makina, we take the security of the personal data you share through our website seriously. This notice explains how we process your data as data controller under the Turkish Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the GDPR. The data controller is PRJ Proje Makina A.Ş. (Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / Istanbul; info@prestijteknikmakine.com.tr).</value></data>
   <data name="Legal.Privacy1Title" xml:space="preserve"><value>Personal data we process</value></data>
   <data name="Legal.Privacy1Text" xml:space="preserve"><value>Through our contact and quote forms we process your name, company, e-mail address, phone number, message content, any technical files you upload and, for security purposes, your IP address. If you consent to cookies, statistics on how the website is used are processed through Google Analytics; see the Cookie Policy for details.</value></data>
   <data name="Legal.Privacy2Title" xml:space="preserve"><value>Purposes of processing</value></data>

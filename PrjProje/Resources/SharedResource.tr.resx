@@ -32,76 +32,76 @@
   <data name="Stats.Countries" xml:space="preserve"><value>İhracat Ülkesi</value></data>
   <data name="Stats.Domestic" xml:space="preserve"><value>Yerli Üretim</value></data>
   <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
-  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Çelik, Kauçuk ve Plastik Parça Üretimi</value></data>
-  <data name="Home.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina, Ankara'daki 25.000 m² tesisinde iş makinası yedek parçaları ve savunma sanayii parçalarını %100 yerli üretir; 20'den fazla ülkeye ihracat yapar.</value></data>
-  <data name="Home.HeroEyebrow" xml:space="preserve"><value>25.000 m² Entegre Tesis · Ankara</value></data>
-  <data name="Home.HeroTitle" xml:space="preserve"><value>Ankara'dan Dünyaya</value></data>
-  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>Güçlü Üretim</value></data>
+  <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Toz Boya Tesisleri ve Ekipmanları</value></data>
+  <data name="Home.MetaDescription" xml:space="preserve"><value>Toz boya tabancaları, boya kabinleri, pişirme fırınları, konveyör ve ön işlem hatları. İstanbul'da tasarım, imalat ve montaj.</value></data>
+  <data name="Home.HeroEyebrow" xml:space="preserve"><value>Elektrostatik toz boya sistemleri · İstanbul</value></data>
+  <data name="Home.HeroTitle" xml:space="preserve"><value>Toz boya tesisinizi</value></data>
+  <data name="Home.HeroTitleAccent" xml:space="preserve"><value>uçtan uca kuruyoruz</value></data>
   <data name="Announcement.Label" xml:space="preserve"><value>Duyuru</value></data>
   <data name="Announcement.More" xml:space="preserve"><value>Detaylı bilgi</value></data>
   <data name="Announcement.Close" xml:space="preserve"><value>Duyuruyu kapat</value></data>
   <data name="Announcement.Dismiss" xml:space="preserve"><value>Kapat</value></data>
-  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Partnerlerimiz</value></data>
-  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Referanslarımız</value></data>
-  <data name="Home.ReferencesLead" xml:space="preserve"><value>Dünyanın önde gelen iş makinası üreticileri ve savunma sanayii kuruluşları PRJ Proje Makina kalitesine güveniyor.</value></data>
-  <data name="Home.HeroSubtitle" xml:space="preserve"><value>Kauçuk, plastik ve çelik parçaları tasarımdan sevkiyata kadar tek çatı altında, %100 yerli olarak üretiyoruz.</value></data>
-  <data name="Home.ModelAlt" xml:space="preserve"><value>Metal-kauçuk titreşim takozunun 3B modeli: çelik saplamalı üst plaka, kauçuk gövde ve çelik taban flanşı.</value></data>
+  <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Referanslar</value></data>
+  <data name="Home.ReferencesTitle" xml:space="preserve"><value>Birlikte çalıştığımız firmalar</value></data>
+  <data name="Home.ReferencesLead" xml:space="preserve"><value>Farklı sektörlerden üreticiler boya hatlarında PRJ Proje Makina ekipmanlarını kullanıyor.</value></data>
+  <data name="Home.HeroSubtitle" xml:space="preserve"><value>Ön işlemden pişirme fırınına kadar tabanca, kabin, konveyör ve fırınları kendi atölyemizde tasarlıyor, üretiyor ve sahada kuruyoruz.</value></data>
+  <data name="Home.ModelAlt" xml:space="preserve"><value>PRJ Proje Makina toz boya ekipmanı görseli</value></data>
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Ürünleri İncele</value></data>
-  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarımdan sevkiyata tek çatı</value></data>
-  <data name="Home.BadgeExport" xml:space="preserve"><value>20+ ülkeye ihracat</value></data>
+  <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarım, imalat ve montaj tek elden</value></data>
+  <data name="Home.BadgeExport" xml:space="preserve"><value>Satış sonrası yedek parça desteği</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Firma istatistikleri</value></data>
-  <data name="Home.AboutTitle" xml:space="preserve"><value>Mühendislik gücüyle üreten bir sanayi kuruluşu</value></data>
-  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina, Ankara Sincan 1. Organize Sanayi Bölgesi'ndeki 25.000 m²'lik tesislerinde çelik, plastik ve kauçuk iş makinası yedek parçaları üretmektedir.</value></data>
-  <data name="Home.AboutText" xml:space="preserve"><value>Tasarımdan üretime, kalite kontrolden sevkiyata kadar tüm süreçleri kendi bünyemizde yönetiyor; 150'den fazla uzman çalışanımızla yurt içi ve uluslararası müşterilerimize güvenilir çözümler sunuyoruz.</value></data>
-  <data name="Home.AboutPoint1" xml:space="preserve"><value>Milli Savunma Bakanlığı Tesis Güvenlik Belgesi</value></data>
-  <data name="Home.AboutPoint2" xml:space="preserve"><value>CNC, hidrolik pres, lazer kesim, fırın boya ve çelik döküm tesisleri</value></data>
-  <data name="Home.AboutPoint3" xml:space="preserve"><value>%100 yerli ve milli üretim</value></data>
-  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Entegre üretim tesisi</value></data>
+  <data name="Home.AboutTitle" xml:space="preserve"><value>Toz boya teknolojisinde mühendislik odaklı üretim</value></data>
+  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina, en yüksek kalitede elektrostatik toz boya makinelerini üretmek ve tedarik etmek için İstanbul'daki atölyesinde çalışıyor.</value></data>
+  <data name="Home.AboutText" xml:space="preserve"><value>Kendimizi yalnızca bir ekipman tedarikçisi olarak görmüyoruz; ihtiyaca uygun yeni makineler geliştiriyor, sektördeki teknolojik gelişmeleri yakından takip ediyoruz. İlk prensibimiz şartsız müşteri memnuniyetidir.</value></data>
+  <data name="Home.AboutPoint1" xml:space="preserve"><value>Fizibiliteden satış sonrası desteğe tek ekip</value></data>
+  <data name="Home.AboutPoint2" xml:space="preserve"><value>Tabancadan fırına geniş ürün yelpazesi</value></data>
+  <data name="Home.AboutPoint3" xml:space="preserve"><value>Yedek parça ve teknik servis desteği</value></data>
+  <data name="Home.AboutVisualCaption" xml:space="preserve"><value>İmalat atölyemiz</value></data>
   <data name="Home.LearnMore" xml:space="preserve"><value>Detaylı İncele</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Ürün Kategorilerimiz</value></data>
-  <data name="Home.ServicesTitle" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
-  <data name="Home.ServicesLead" xml:space="preserve"><value>Entegre tesisimizde hammaddeden bitmiş ürüne kadar tüm kritik süreçleri kendi kontrolümüzde tutuyoruz.</value></data>
+  <data name="Home.ServicesTitle" xml:space="preserve"><value>Hizmetlerimiz</value></data>
+  <data name="Home.ServicesLead" xml:space="preserve"><value>Anahtar teslim toz boya tesislerinin yanında lazer kesim, CNC büküm ve fason toz boyama hizmeti veriyoruz.</value></data>
   <data name="Home.AllServices" xml:space="preserve"><value>Tüm Hizmetler</value></data>
   <data name="Home.AllPosts" xml:space="preserve"><value>Tüm Yazılar</value></data>
   <data name="Home.FeaturedEyebrow" xml:space="preserve"><value>Öne Çıkanlar</value></data>
   <data name="Home.FeaturedTitle" xml:space="preserve"><value>Öne Çıkan Ürünler</value></data>
   <data name="Home.FeaturedLead" xml:space="preserve"><value>Sahada kendini kanıtlamış, en çok tercih edilen ürünlerimizden bir seçki.</value></data>
   <data name="Home.ProcessEyebrow" xml:space="preserve"><value>Süreç</value></data>
-  <data name="Home.ProcessTitle" xml:space="preserve"><value>Tasarımdan sevkiyata tek çatı altında</value></data>
-  <data name="Home.ProcessLead" xml:space="preserve"><value>Bir parçanın fikirden sahaya uzanan yolculuğu; her adım kendi tesisimizde, tek ekip tarafından yürütülür.</value></data>
+  <data name="Home.ProcessTitle" xml:space="preserve"><value>Keşiften devreye almaya tek ekip</value></data>
+  <data name="Home.ProcessLead" xml:space="preserve"><value>Bir boya hattının keşiften devreye almaya uzanan yolculuğunu aynı ekip yönetir.</value></data>
   <data name="Home.ProcessStep" xml:space="preserve"><value>Adım</value></data>
-  <data name="Home.Process1Title" xml:space="preserve"><value>Tasarım ve Mühendislik</value></data>
-  <data name="Home.Process1Text" xml:space="preserve"><value>Çizim, numune veya tersine mühendislikle ürünü birlikte tanımlıyoruz.</value></data>
-  <data name="Home.Process2Title" xml:space="preserve"><value>Hammadde ve Döküm</value></data>
-  <data name="Home.Process2Text" xml:space="preserve"><value>Çelik döküm ve kauçuk hamur karışımlarını kendi tesisimizde hazırlıyoruz.</value></data>
-  <data name="Home.Process3Title" xml:space="preserve"><value>İşleme ve Şekillendirme</value></data>
-  <data name="Home.Process3Text" xml:space="preserve"><value>CNC, lazer kesim, büküm ve hidrolik preslerle hassas üretim.</value></data>
-  <data name="Home.Process4Title" xml:space="preserve"><value>Yüzey İşlem ve Kalite</value></data>
-  <data name="Home.Process4Text" xml:space="preserve"><value>Fırın boya ve kaplama sonrası boyutsal ve fiziksel testler.</value></data>
-  <data name="Home.Process5Title" xml:space="preserve"><value>Paketleme ve Sevkiyat</value></data>
-  <data name="Home.Process5Text" xml:space="preserve"><value>İhracata uygun paketleme ile yurt içi ve dünya geneline teslimat.</value></data>
+  <data name="Home.Process1Title" xml:space="preserve"><value>Keşif ve Fizibilite</value></data>
+  <data name="Home.Process1Text" xml:space="preserve"><value>Parçalarınızı, kapasitenizi ve yerleşim alanınızı yerinde inceliyoruz.</value></data>
+  <data name="Home.Process2Title" xml:space="preserve"><value>Projelendirme</value></data>
+  <data name="Home.Process2Text" xml:space="preserve"><value>Hat yerleşimini, ekipman seçimini ve enerji ihtiyacını projelendiriyoruz.</value></data>
+  <data name="Home.Process3Title" xml:space="preserve"><value>İmalat ve Tedarik</value></data>
+  <data name="Home.Process3Text" xml:space="preserve"><value>Kabin, fırın ve konveyörleri kendi atölyemizde üretiyor, tabanca setlerini tedarik ediyoruz.</value></data>
+  <data name="Home.Process4Title" xml:space="preserve"><value>Montaj ve Devreye Alma</value></data>
+  <data name="Home.Process4Text" xml:space="preserve"><value>Lojistikten montaja kadar sahada kurulumu tamamlayıp hattı çalışır halde teslim ediyoruz.</value></data>
+  <data name="Home.Process5Title" xml:space="preserve"><value>Satış Sonrası Destek</value></data>
+  <data name="Home.Process5Text" xml:space="preserve"><value>Yedek parça, bakım ve teknik servisle hattınızın verimini koruyoruz.</value></data>
   <data name="Home.WhyEyebrow" xml:space="preserve"><value>Neden PRJ Proje Makina?</value></data>
-  <data name="Home.WhyTitle" xml:space="preserve"><value>Güvenilir bir üretim ortağı</value></data>
-  <data name="Home.Why1Title" xml:space="preserve"><value>Entegre Üretim</value></data>
-  <data name="Home.Why1Text" xml:space="preserve"><value>Döküm, işleme, kauçuk ve boya tek tesiste; dış kaynak bağımlılığı yok.</value></data>
-  <data name="Home.Why2Title" xml:space="preserve"><value>Kısa Teslim Süresi</value></data>
-  <data name="Home.Why2Text" xml:space="preserve"><value>Kendi kapasitemizi planladığımız için teslim tarihlerine sadık kalıyoruz.</value></data>
-  <data name="Home.Why3Title" xml:space="preserve"><value>Ölçülebilir Kalite</value></data>
-  <data name="Home.Why3Text" xml:space="preserve"><value>Hammaddeden sevkiyata kadar her parti test edilir ve kayıt altına alınır.</value></data>
-  <data name="Home.Why4Title" xml:space="preserve"><value>Mühendislik Desteği</value></data>
-  <data name="Home.Why4Text" xml:space="preserve"><value>Malzeme seçiminden tasarım iyileştirmeye kadar teknik danışmanlık.</value></data>
-  <data name="Home.Why5Title" xml:space="preserve"><value>Güvenlik Belgeli Tesis</value></data>
-  <data name="Home.Why5Text" xml:space="preserve"><value>MSB Tesis Güvenlik Belgesi ile gizlilik gerektiren projelere hazırız.</value></data>
-  <data name="Home.Why6Title" xml:space="preserve"><value>İhracat Deneyimi</value></data>
-  <data name="Home.Why6Text" xml:space="preserve"><value>20'den fazla ülkeye düzenli sevkiyat ve uluslararası dokümantasyon.</value></data>
+  <data name="Home.WhyTitle" xml:space="preserve"><value>Güvenilir bir çözüm ortağı</value></data>
+  <data name="Home.Why1Title" xml:space="preserve"><value>Uçtan Uca Çözüm</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>Ön işlem, kabin, tabanca, konveyör ve fırın tek bir projede, tek muhatapla.</value></data>
+  <data name="Home.Why2Title" xml:space="preserve"><value>Projeye Özel Tasarım</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Standart ürünlerin yanında ölçüye ve sürece özel ekipman tasarlıyoruz.</value></data>
+  <data name="Home.Why3Title" xml:space="preserve"><value>Kendi Atölyemizde İmalat</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>Üretimi kendi atölyemizde yaptığımız için kaliteyi ve termini kontrol ediyoruz.</value></data>
+  <data name="Home.Why4Title" xml:space="preserve"><value>Yedek Parça Sürekliliği</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Sattığımız cihazların yedek parçasını stoktan, hızlı temin ediyoruz.</value></data>
+  <data name="Home.Why5Title" xml:space="preserve"><value>Teknolojiyi Takip</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>Sektördeki yeni gelişmeleri izliyor, makinelerimizi sürekli geliştiriyoruz.</value></data>
+  <data name="Home.Why6Title" xml:space="preserve"><value>Şartsız Müşteri Memnuniyeti</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>İlk prensibimiz, müşterimizin makinelerimizden ve hizmetimizden tam memnun kalmasıdır.</value></data>
   <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Sektörler</value></data>
-  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Hizmet verdiğimiz sektörler</value></data>
-  <data name="Home.Industry1" xml:space="preserve"><value>İş Makinaları</value></data>
-  <data name="Home.Industry2" xml:space="preserve"><value>Madencilik</value></data>
-  <data name="Home.Industry3" xml:space="preserve"><value>Tarım Makinaları</value></data>
-  <data name="Home.Industry4" xml:space="preserve"><value>Savunma Sanayii</value></data>
-  <data name="Home.Industry5" xml:space="preserve"><value>Altyapı ve İnşaat</value></data>
-  <data name="Home.Industry6" xml:space="preserve"><value>Endüstriyel Ekipman</value></data>
+  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Toz boyanın kullanıldığı sektörler</value></data>
+  <data name="Home.Industry1" xml:space="preserve"><value>Metal Eşya</value></data>
+  <data name="Home.Industry2" xml:space="preserve"><value>Alüminyum Profil</value></data>
+  <data name="Home.Industry3" xml:space="preserve"><value>Beyaz Eşya</value></data>
+  <data name="Home.Industry4" xml:space="preserve"><value>Otomotiv Yan Sanayi</value></data>
+  <data name="Home.Industry5" xml:space="preserve"><value>Mobilya</value></data>
+  <data name="Home.Industry6" xml:space="preserve"><value>Tarım Makinaları</value></data>
   <data name="Cta.Eyebrow" xml:space="preserve"><value>Projenizi konuşalım</value></data>
   <data name="Cta.Title" xml:space="preserve"><value>Toz boya hattınız için teklif alın</value></data>
   <data name="Cta.Text" xml:space="preserve"><value>Ürün, kapasite veya tesis ihtiyacınızı yazın; teknik ekibimiz size dönüş yapsın.</value></data>
@@ -114,51 +114,51 @@
   <data name="Cookie.Details" xml:space="preserve"><value>Detaylı bilgi</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Kabul et</value></data>
   <data name="About.MetaTitle" xml:space="preserve"><value>Hakkımızda</value></data>
-  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın tarihçesi, vizyonu, misyonu, 25.000 m² üretim tesisi ve yerli üretim anlayışı hakkında bilgi alın.</value></data>
+  <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın misyonu, vizyonu ve elektrostatik toz boya ekipmanlarında fizibiliteden satış sonrasına uzanan hizmet anlayışı.</value></data>
   <data name="About.Title" xml:space="preserve"><value>Hakkımızda</value></data>
-  <data name="About.Lead" xml:space="preserve"><value>Çelik, plastik ve kauçuk üretiminde mühendislik, kapasite ve güvenilirliği bir araya getiriyoruz.</value></data>
+  <data name="About.Lead" xml:space="preserve"><value>Elektrostatik toz boya ekipmanlarında mühendislik, imalat ve satış sonrası desteği bir araya getiriyoruz.</value></data>
   <data name="About.WhoEyebrow" xml:space="preserve"><value>Biz Kimiz?</value></data>
-  <data name="About.WhoTitle" xml:space="preserve"><value>Entegre üretimin güvenilir adresi</value></data>
-  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina, Ankara Sincan 1. Organize Sanayi Bölgesi'ndeki 25.000 m²'lik tesislerinde çelik, plastik ve kauçuk iş makinası yedek parçaları üretmektedir.</value></data>
-  <data name="About.WhoText1" xml:space="preserve"><value>Bünyemizde çok sayıda CNC makinesi, hidrolik presler, kauçuk hamur karıştırma makineleri, lazer kesim ve büküm makineleri, 2 adet fırın boya tesisi, kaplama tesisi ve çelik döküm tesisi bulunmaktadır.</value></data>
-  <data name="About.WhoText2" xml:space="preserve"><value>Tasarımdan üretime, kalite kontrolden sevkiyata kadar birçok süreci kendi bünyemizde gerçekleştiriyor; bu sayede maliyet, kalite ve teslim süresi üzerinde tam kontrol sağlıyoruz.</value></data>
-  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Tarihçe</value></data>
-  <data name="About.HistoryTitle" xml:space="preserve"><value>Büyüme yolculuğumuz</value></data>
-  <data name="About.History1Title" xml:space="preserve"><value>Kuruluş ve kauçuk üretimi</value></data>
-  <data name="About.History1Text" xml:space="preserve"><value>İş makinaları için kauçuk yedek parça üretimiyle başlayan yolculuğumuzda, kendi hamur karışımlarımızı geliştirdik.</value></data>
-  <data name="About.History2Title" xml:space="preserve"><value>Çelik ve metal işleme yatırımları</value></data>
-  <data name="About.History2Text" xml:space="preserve"><value>CNC işleme, lazer kesim ve büküm yatırımlarıyla çelik parça üretimine geçtik.</value></data>
-  <data name="About.History3Title" xml:space="preserve"><value>Çelik döküm ve yüzey işlemleri</value></data>
-  <data name="About.History3Text" xml:space="preserve"><value>Çelik döküm tesisi, fırın boya hatları ve kaplama tesisiyle entegre üretim yapısına ulaştık.</value></data>
-  <data name="About.History4Title" xml:space="preserve"><value>Savunma sanayii</value></data>
-  <data name="About.History4Text" xml:space="preserve"><value>Milli Savunma Bakanlığı Tesis Güvenlik Belgesi'ni alarak savunma sanayii projelerinde yer almaya başladık.</value></data>
-  <data name="About.History5Title" xml:space="preserve"><value>Global ihracat</value></data>
-  <data name="About.History5Text" xml:space="preserve"><value>Bugün 150'den fazla uzman çalışanımızla 20'den fazla ülkeye ihracat yapıyoruz.</value></data>
+  <data name="About.WhoTitle" xml:space="preserve"><value>Toz boya sistemlerinde çözüm ortağınız</value></data>
+  <data name="About.WhoLead" xml:space="preserve"><value>PRJ Proje Makina A.Ş., beklentilerinizi karşılayan çözümler için fizibilitede, projelendirmede, üretimde, tedarikte, lojistikte, montajda ve satış sonrası hizmetlerde tüm kaynaklarını kullanır.</value></data>
+  <data name="About.WhoText1" xml:space="preserve"><value>En yüksek kalitede elektrostatik toz boya makinelerini üretmek ve tedarik etmek için İstanbul'daki atölyemizde çalışıyoruz. İlk ve en önemli prensibimiz şartsız müşteri memnuniyetidir.</value></data>
+  <data name="About.WhoText2" xml:space="preserve"><value>Kendimizi yalnızca bir tedarikçi olarak görmüyoruz. Müşterilerimizin gereksinimlerine uygun yeni makineler araştırıp geliştiriyor, sektördeki tüm teknolojik gelişmeleri takip ederek uyguluyoruz.</value></data>
+  <data name="About.HistoryEyebrow" xml:space="preserve"><value>Yaklaşımımız</value></data>
+  <data name="About.HistoryTitle" xml:space="preserve"><value>Bir projeyi nasıl yürütüyoruz</value></data>
+  <data name="About.History1Title" xml:space="preserve"><value>Fizibilite</value></data>
+  <data name="About.History1Text" xml:space="preserve"><value>İhtiyacı, kapasiteyi ve yatırım koşullarını birlikte değerlendiriyoruz.</value></data>
+  <data name="About.History2Title" xml:space="preserve"><value>Projelendirme</value></data>
+  <data name="About.History2Text" xml:space="preserve"><value>Hattın yerleşimini ve ekipman seçimini sürecinize göre tasarlıyoruz.</value></data>
+  <data name="About.History3Title" xml:space="preserve"><value>Üretim ve Tedarik</value></data>
+  <data name="About.History3Text" xml:space="preserve"><value>Ekipmanı atölyemizde üretiyor, gereken bileşenleri tedarik ediyoruz.</value></data>
+  <data name="About.History4Title" xml:space="preserve"><value>Lojistik ve Montaj</value></data>
+  <data name="About.History4Text" xml:space="preserve"><value>Sevkiyatı planlıyor, kurulumu sahada tamamlayıp hattı devreye alıyoruz.</value></data>
+  <data name="About.History5Title" xml:space="preserve"><value>Satış Sonrası</value></data>
+  <data name="About.History5Text" xml:space="preserve"><value>Yedek parça ve teknik servisle yatırımınızın verimini koruyoruz.</value></data>
   <data name="About.VisionTitle" xml:space="preserve"><value>Vizyon</value></data>
-  <data name="About.VisionText" xml:space="preserve"><value>Çelik, plastik ve kauçuk parça üretiminde teknolojiyi ve yerli mühendisliği esas alan, dünya çapında tercih edilen bir çözüm ortağı olmak.</value></data>
+  <data name="About.VisionText" xml:space="preserve"><value>Yüksek kaliteli, müşteri ihtiyaçlarına duyarlı, güvenilir ve toplam üretim maliyetini en aza indiren ekipman ve sistemler geliştirerek ulusal endüstrinin ilk tercihi olan, uluslararası rekabette kabul gören ve kalitesiyle kendini kanıtlamış özgün bir şirket olmak.</value></data>
   <data name="About.MissionTitle" xml:space="preserve"><value>Misyon</value></data>
-  <data name="About.MissionText" xml:space="preserve"><value>Müşterilerimizin ihtiyaçlarına uygun, yüksek kaliteli ve sürdürülebilir ürünleri zamanında teslim etmek; ülkemizin sanayi ve savunma gücüne katkı sağlamak.</value></data>
-  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Üretim Tesisimiz</value></data>
-  <data name="About.FacilityTitle" xml:space="preserve"><value>25.000 m² entegre üretim alanı</value></data>
-  <data name="About.FacilityText" xml:space="preserve"><value>Tesisimizde metal, kauçuk ve plastik üretimini aynı çatı altında birleştirerek kısa teslim süreleri ve tutarlı kalite sağlıyoruz.</value></data>
-  <data name="About.FacilityCnc" xml:space="preserve"><value>Çok sayıda CNC tezgâhı</value></data>
-  <data name="About.FacilityPress" xml:space="preserve"><value>Hidrolik presler</value></data>
-  <data name="About.FacilityRubber" xml:space="preserve"><value>Kauçuk hamur karıştırma</value></data>
-  <data name="About.FacilityLaser" xml:space="preserve"><value>Lazer kesim ve büküm</value></data>
-  <data name="About.FacilityPaint" xml:space="preserve"><value>2 adet fırın boya tesisi</value></data>
-  <data name="About.FacilityCoating" xml:space="preserve"><value>Kaplama tesisi</value></data>
-  <data name="About.FacilityCasting" xml:space="preserve"><value>Çelik döküm tesisi</value></data>
-  <data name="About.FacilityQuality" xml:space="preserve"><value>Kalite kontrol laboratuvarı</value></data>
-  <data name="About.HrTitle" xml:space="preserve"><value>İnsan Kaynakları</value></data>
-  <data name="About.HrText" xml:space="preserve"><value>150'den fazla uzman çalışanımız, sürekli eğitim ve iş güvenliği kültürüyle üretimimizin en değerli parçasıdır.</value></data>
-  <data name="About.DomesticTitle" xml:space="preserve"><value>Yerli ve Milli Üretim</value></data>
-  <data name="About.DomesticText" xml:space="preserve"><value>Tasarım ve üretim kabiliyetlerimizi ülkemizde geliştirerek dışa bağımlılığı azaltan %100 yerli çözümler sunuyoruz.</value></data>
-  <data name="About.ExportTitle" xml:space="preserve"><value>Global İhracat</value></data>
-  <data name="About.ExportText" xml:space="preserve"><value>Avrupa'dan Orta Asya'ya uzanan geniş bir coğrafyada 20'den fazla ülkeye ihracat yapıyoruz.</value></data>
+  <data name="About.MissionText" xml:space="preserve"><value>Elektrostatik toz boya ekipmanları, makineleri ve aksesuarlarında uzman kadromuzla mühendislik yaklaşımı kullanarak güvenilir ve kaliteli çözümler geliştirmek; müşterilerimize en uygun ekipman ve hizmeti sunarak küresel rekabet güçlerine katkıda bulunmak.</value></data>
+  <data name="About.FacilityEyebrow" xml:space="preserve"><value>Atölyemiz</value></data>
+  <data name="About.FacilityTitle" xml:space="preserve"><value>İmalattan sahaya tek çatı</value></data>
+  <data name="About.FacilityText" xml:space="preserve"><value>Kabin, fırın, konveyör ve özel makinelerimizi kendi atölyemizde imal ediyor, montaja hazır halde sahaya gönderiyoruz.</value></data>
+  <data name="About.FacilityCnc" xml:space="preserve"><value>CNC lazer kesim</value></data>
+  <data name="About.FacilityPress" xml:space="preserve"><value>CNC büküm</value></data>
+  <data name="About.FacilityRubber" xml:space="preserve"><value>Elektrostatik toz boyama</value></data>
+  <data name="About.FacilityLaser" xml:space="preserve"><value>Projelendirme</value></data>
+  <data name="About.FacilityPaint" xml:space="preserve"><value>Tedarik</value></data>
+  <data name="About.FacilityCoating" xml:space="preserve"><value>Lojistik</value></data>
+  <data name="About.FacilityCasting" xml:space="preserve"><value>Montaj</value></data>
+  <data name="About.FacilityQuality" xml:space="preserve"><value>Satış sonrası hizmet</value></data>
+  <data name="About.HrTitle" xml:space="preserve"><value>Uzman Kadro</value></data>
+  <data name="About.HrText" xml:space="preserve"><value>Mühendislik yaklaşımıyla çalışan uzman kadromuz, her projede müşterimizin ihtiyacını merkeze alır.</value></data>
+  <data name="About.DomesticTitle" xml:space="preserve"><value>Yerli Üretim</value></data>
+  <data name="About.DomesticText" xml:space="preserve"><value>Ekipmanlarımızı İstanbul'daki atölyemizde tasarlayıp üretiyor, yedek parçayı hızlı temin ediyoruz.</value></data>
+  <data name="About.ExportTitle" xml:space="preserve"><value>Küresel Rekabet</value></data>
+  <data name="About.ExportText" xml:space="preserve"><value>Müşterilerimize en uygun ekipmanı sunarak küresel pazarda rekabet güçlerini artırmayı hedefliyoruz.</value></data>
   <data name="Products.MetaTitle" xml:space="preserve"><value>Ürünler</value></data>
-  <data name="Products.MetaDescription" xml:space="preserve"><value>Çelik, kauçuk ve plastik ürünler, iş makinası yedek parçaları ve savunma sanayii ürünlerimizi inceleyin.</value></data>
+  <data name="Products.MetaDescription" xml:space="preserve"><value>Toz boya tabancaları, boya kabinleri, pişirme fırınları, konveyörler, basınçlı hava ve ön işlem hatlarından oluşan ürün yelpazemizi inceleyin.</value></data>
   <data name="Products.Title" xml:space="preserve"><value>Ürünlerimiz</value></data>
-  <data name="Products.Lead" xml:space="preserve"><value>İş makinaları ve endüstriyel uygulamalar için yüksek dayanımlı çelik, kauçuk ve plastik parçalar.</value></data>
+  <data name="Products.Lead" xml:space="preserve"><value>Elektrostatik toz boya ve yaş boya hatları için tabancadan fırına tüm ekipman.</value></data>
   <data name="Products.AllProducts" xml:space="preserve"><value>Tüm Ürünler</value></data>
   <data name="Products.Categories" xml:space="preserve"><value>Kategoriler</value></data>
   <data name="Products.SearchLabel" xml:space="preserve"><value>Ürün ara</value></data>
@@ -183,7 +183,7 @@
   <data name="Products.Related" xml:space="preserve"><value>İlgili Ürünler</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Görsel {0}</value></data>
   <data name="Services.MetaTitle" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
-  <data name="Services.MetaDescription" xml:space="preserve"><value>CNC işleme, hidrolik pres, kauçuk üretimi, lazer kesim, büküm, fırın boya, kaplama ve çelik döküm kabiliyetlerimiz.</value></data>
+  <data name="Services.MetaDescription" xml:space="preserve"><value>Anahtar teslim toz boya tesisleri, fason elektrostatik toz boyama, CNC lazer kesim ve CNC büküm hizmetlerimiz.</value></data>
   <data name="Services.Title" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
   <data name="Services.Lead" xml:space="preserve"><value>Tasarımdan sevkiyata kadar tüm süreçler tek çatı altında.</value></data>
   <data name="Services.IntroEyebrow" xml:space="preserve"><value>Entegre Üretim</value></data>
@@ -200,7 +200,7 @@
   <data name="Services.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
   <data name="Services.CertificatesTitle" xml:space="preserve"><value>Sertifikalar ve Belgeler</value></data>
   <data name="Services.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
-  <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Savunma sanayii ürünlerine ait teknik detaylar, çizimler ve üretim parametreleri kamuya açık olarak paylaşılmaz; yalnızca yetkili kurumlarla mevzuat çerçevesinde paylaşılır.</value></data>
+  <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Bu kategorideki ürünlerin teknik detayları talep üzerine, projeye özel olarak paylaşılır.</value></data>
   <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
   <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
@@ -216,7 +216,7 @@
   <data name="Blog.Share" xml:space="preserve"><value>Paylaş</value></data>
   <data name="Blog.Related" xml:space="preserve"><value>İlgili Yazılar</value></data>
   <data name="Videos.MetaTitle" xml:space="preserve"><value>Galeri</value></data>
-  <data name="Videos.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina fabrika, üretim, CNC, kauçuk, çelik ve fuar fotoğrafları.</value></data>
+  <data name="Videos.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina toz boya tesisleri, kabin, fırın ve konveyör uygulamalarından videolar.</value></data>
   <data name="Videos.Title" xml:space="preserve"><value>Galeri</value></data>
   <data name="Videos.Lead" xml:space="preserve"><value>Tesisimizden, üretim hatlarımızdan ve etkinliklerimizden kareler.</value></data>
   <data name="Videos.FilterLabel" xml:space="preserve"><value>Galeri kategorileri</value></data>
@@ -314,7 +314,7 @@
   <data name="Legal.PrivacyTitle" xml:space="preserve"><value>KVKK ve Gizlilik Politikası</value></data>
   <data name="Legal.PrivacyMetaDescription" xml:space="preserve"><value>PRJ Proje Makina kişisel verilerin korunması ve gizlilik politikası.</value></data>
   <data name="Legal.PrivacyLead" xml:space="preserve"><value>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni.</value></data>
-  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>PRJ Proje Makina olarak, web sitemiz aracılığıyla paylaştığınız kişisel verilerin güvenliğine önem veriyoruz. Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatıyla sizi bilgilendirmek amacıyla hazırlanmıştır.</value></data>
+  <data name="Legal.PrivacyIntro" xml:space="preserve"><value>PRJ Proje Makina olarak, web sitemiz aracılığıyla paylaştığınız kişisel verilerin güvenliğine önem veriyoruz. Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatıyla sizi bilgilendirmek amacıyla hazırlanmıştır. Veri sorumlusu PRJ Proje Makina A.Ş.'dir (Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / İstanbul; info@prestijteknikmakine.com.tr).</value></data>
   <data name="Legal.Privacy1Title" xml:space="preserve"><value>İşlenen kişisel veriler</value></data>
   <data name="Legal.Privacy1Text" xml:space="preserve"><value>İletişim ve teklif formları aracılığıyla ad soyad, firma adı, e-posta, telefon, mesaj içeriği ve yüklediğiniz teknik dosyalar ile güvenlik amacıyla IP adresiniz işlenmektedir. Çerezlere onay vermeniz hâlinde site kullanımına ilişkin istatistikler Google Analytics aracılığıyla işlenir; ayrıntılar Çerez Politikası'ndadır.</value></data>
   <data name="Legal.Privacy2Title" xml:space="preserve"><value>İşleme amaçları</value></data>

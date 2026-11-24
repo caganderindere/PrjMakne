@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.RegularExpressions;
 using PrjProje.Application.Common;
+using PrjProje.Infrastructure.Data.Seed;
 using PrjProje.Web.Routing;
 
 namespace PrjMigrate;

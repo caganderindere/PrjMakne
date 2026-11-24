@@ -1,6 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using PrjMigrate;
+using PrjProje.Infrastructure.Data.Seed;
 
 // Usage: dotnet run --project tools/PrjMigrate [-- <old site url> <repo content folder>]
 var site = new Uri(args.Length > 0 ? args[0] : "https://prestijteknikmakine.com.tr/");

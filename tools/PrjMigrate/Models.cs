@@ -33,20 +33,3 @@ public sealed record WpPage(
     [property: JsonPropertyName("link")] string Link,
     [property: JsonPropertyName("title")] WpRendered Title,
     [property: JsonPropertyName("content")] WpRendered Content);
-
-// Seed files written to content/seed and read back by the site's seeder.
-public sealed record SeedCategory(string LegacySlug, string NameTr, string? NameEn, string? DescriptionTr, string? Image, int SortOrder);
-
-public sealed record SeedProduct(
-    string LegacySlug,
-    string CategoryLegacySlug,
-    string NameTr,
-    string? NameEn,
-    string[] Variants,
-    string[] Images,
-    string LegacyHtmlTr,
-    Dictionary<string, string> SpecsTr);
-
-public sealed record SeedPage(string LegacySlug, string TitleTr, string LegacyHtmlTr);
-
-public sealed record SeedRedirect(string From, string ToTr, string? ToEn);

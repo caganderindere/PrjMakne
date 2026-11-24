@@ -36,4 +36,12 @@
     <Content Update="appsettings.Development.json;appsettings.Production.json;appsettings.Production.example.json" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
+  <!-- Catalogue exported from the old site; loaded into an empty database on first start. -->
+  <ItemGroup>
+    <None Include="../content/seed/*.json" Exclude="../content/seed/pages.json" LinkBase="SeedContent/seed"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../content/images/products/**/*" LinkBase="SeedContent/images/products"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

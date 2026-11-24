@@ -13,7 +13,7 @@ namespace PrjProje.Web.Seo;
 public static class JsonLd
 {
     // The address setting is one free-text line; search engines want its parts separately.
-    private const string StreetAddress = "Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk";
+    private const string StreetAddress = "Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk";
     private const string Locality = "Arnavutköy";
     private const string Region = "İstanbul";
     private const string PostalCode = "34281";

@@ -1,6 +1,7 @@
 using PrjProje.Application.Common;
 using PrjProje.Application.Interfaces;
 using PrjProje.Domain.Entities;
+using PrjProje.Infrastructure.Data.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,8 @@ public static class DbSeeder
         await SeedRolesAndAdminAsync(provider, logger);
         await SeedSettingsAsync(db);
         await SeedGalleryCategoriesAsync(db);
+        await CatalogSeeder.SeedAsync(db, provider.GetRequiredService<IFileStorageService>(),
+            Path.Combine(AppContext.BaseDirectory, "SeedContent"), logger);
 
         provider.GetRequiredService<IContentCache>().Invalidate();
     }
@@ -97,11 +100,11 @@ public static class DbSeeder
             new SiteSetting { Key = "Gsm", Value = "+90 531 796 00 29" },
             new SiteSetting { Key = "Email", Value = "info@prestijteknikmakine.com.tr" },
             new SiteSetting { Key = "SalesEmail", Value = "satis@prestijteknikmakine.com.tr" },
-            new SiteSetting { Key = "AddressTr", Value = "Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk, 34281 Arnavutköy / İstanbul, Türkiye" },
-            new SiteSetting { Key = "AddressEn", Value = "Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk, 34281 Arnavutköy / Istanbul, Türkiye" },
+            new SiteSetting { Key = "AddressTr", Value = "Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / İstanbul, Türkiye" },
+            new SiteSetting { Key = "AddressEn", Value = "Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / Istanbul, Türkiye" },
             new SiteSetting { Key = "WorkingHoursTr", Value = "Pazartesi - Cuma: 08:30 - 18:00 | Cumartesi: 08:30 - 13:00" },
             new SiteSetting { Key = "WorkingHoursEn", Value = "Monday - Friday: 08:30 - 18:00 | Saturday: 08:30 - 13:00" },
-            new SiteSetting { Key = "MapEmbedUrl", Value = "https://www.google.com/maps?q=Ta%C5%9Foluk+Arnavutk%C3%B6y+%C4%B0stanbul+Candener+Sok.+15&output=embed" },
+            new SiteSetting { Key = "MapEmbedUrl", Value = "https://www.google.com/maps?q=Ta%C5%9Foluk+Arnavutk%C3%B6y+%C4%B0stanbul+Candaner+Sok.+15&output=embed" },
             new SiteSetting { Key = "InstagramUrl", Value = "https://www.instagram.com/prjprojemakina" },
             new SiteSetting { Key = "FacebookUrl", Value = "https://www.facebook.com/PRJProjeMakine" },
             new SiteSetting { Key = "YouTubeUrl", Value = "https://www.youtube.com/@prjprojemakina" },

@@ -14,8 +14,8 @@ public class SiteSettingsDto
     public string? Gsm { get; set; }
     public string Email { get; set; } = "info@prestijteknikmakine.com.tr";
     public string? SalesEmail { get; set; }
-    public string AddressTr { get; set; } = "Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk, 34281 Arnavutköy / İstanbul, Türkiye";
-    public string AddressEn { get; set; } = "Mehmet Akif Ersoy Mah. Candener Sok. No:15-A Taşoluk, 34281 Arnavutköy / Istanbul, Türkiye";
+    public string AddressTr { get; set; } = "Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / İstanbul, Türkiye";
+    public string AddressEn { get; set; } = "Mehmet Akif Ersoy Mah. Candaner Sok. No:15-A Taşoluk, 34281 Arnavutköy / Istanbul, Türkiye";
     public string WorkingHoursTr { get; set; } = "Pazartesi - Cuma: 08:30 - 18:00";
     public string WorkingHoursEn { get; set; } = "Monday - Friday: 08:30 - 18:00";
     public string? MapEmbedUrl { get; set; }
