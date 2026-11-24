@@ -27,10 +27,6 @@
   <data name="Common.Pagination" xml:space="preserve"><value>Sayfalama</value></data>
   <data name="Common.Previous" xml:space="preserve"><value>Önceki</value></data>
   <data name="Common.Next" xml:space="preserve"><value>Sonraki</value></data>
-  <data name="Stats.Facility" xml:space="preserve"><value>Üretim Tesisi</value></data>
-  <data name="Stats.Employees" xml:space="preserve"><value>Uzman Çalışan</value></data>
-  <data name="Stats.Countries" xml:space="preserve"><value>İhracat Ülkesi</value></data>
-  <data name="Stats.Domestic" xml:space="preserve"><value>Yerli Üretim</value></data>
   <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
   <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Toz Boya Tesisleri ve Ekipmanları</value></data>
   <data name="Home.MetaDescription" xml:space="preserve"><value>Toz boya tabancaları, boya kabinleri, pişirme fırınları, konveyör ve ön işlem hatları. İstanbul'da tasarım, imalat ve montaj.</value></data>
@@ -38,7 +34,7 @@
   <data name="Home.HeroTitle" xml:space="preserve"><value>Toz boya tesisinizi</value></data>
   <data name="Home.HeroTitleAccent" xml:space="preserve"><value>uçtan uca kuruyoruz</value></data>
   <data name="Announcement.Label" xml:space="preserve"><value>Duyuru</value></data>
-  <data name="Announcement.More" xml:space="preserve"><value>Detaylı bilgi</value></data>
+  <data name="Announcement.More" xml:space="preserve"><value>Duyuruyu oku</value></data>
   <data name="Announcement.Close" xml:space="preserve"><value>Duyuruyu kapat</value></data>
   <data name="Announcement.Dismiss" xml:space="preserve"><value>Kapat</value></data>
   <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>Referanslar</value></data>
@@ -57,7 +53,7 @@
   <data name="Home.AboutPoint2" xml:space="preserve"><value>Tabancadan fırına geniş ürün yelpazesi</value></data>
   <data name="Home.AboutPoint3" xml:space="preserve"><value>Yedek parça ve teknik servis desteği</value></data>
   <data name="Home.AboutVisualCaption" xml:space="preserve"><value>İmalat atölyemiz</value></data>
-  <data name="Home.LearnMore" xml:space="preserve"><value>Detaylı İncele</value></data>
+  <data name="Home.LearnMore" xml:space="preserve"><value>Firmamızı tanıyın</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Ürün Kategorilerimiz</value></data>
   <data name="Home.ServicesTitle" xml:space="preserve"><value>Hizmetlerimiz</value></data>
   <data name="Home.ServicesLead" xml:space="preserve"><value>Anahtar teslim toz boya tesislerinin yanında lazer kesim, CNC büküm ve fason toz boyama hizmeti veriyoruz.</value></data>
@@ -111,7 +107,7 @@
   <data name="Cookie.Message" xml:space="preserve"><value>Sitemizin çalışması için zorunlu çerezlerin yanında, onay verirseniz ziyaret istatistikleri için Google Analytics çerezlerini kullanıyoruz.</value></data>
   <data name="Cookie.Reject" xml:space="preserve"><value>Reddet</value></data>
   <data name="Cookie.Settings" xml:space="preserve"><value>Çerez Tercihleri</value></data>
-  <data name="Cookie.Details" xml:space="preserve"><value>Detaylı bilgi</value></data>
+  <data name="Cookie.Details" xml:space="preserve"><value>Çerez politikası</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Kabul et</value></data>
   <data name="About.MetaTitle" xml:space="preserve"><value>Hakkımızda</value></data>
   <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın misyonu, vizyonu ve elektrostatik toz boya ekipmanlarında fizibiliteden satış sonrasına uzanan hizmet anlayışı.</value></data>
@@ -167,8 +163,6 @@
   <data name="Products.ResultCount" xml:space="preserve"><value>{0} ürün listeleniyor</value></data>
   <data name="Products.EmptyTitle" xml:space="preserve"><value>Ürün bulunamadı</value></data>
   <data name="Products.EmptyText" xml:space="preserve"><value>Arama kriterlerinize uygun ürün bulunamadı. İhtiyacınızı bize iletin, size özel çözüm sunalım.</value></data>
-  <data name="Products.Origin" xml:space="preserve"><value>Menşei</value></data>
-  <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — %100 yerli üretim</value></data>
   <data name="Products.Variants" xml:space="preserve"><value>Modeller</value></data>
   <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Bu Ürün İçin Teklif Al</value></data>
   <data name="Products.Description" xml:space="preserve"><value>Ürün Açıklaması</value></data>
@@ -372,4 +366,49 @@
   <data name="Footer.Contact" xml:space="preserve"><value>İletişim</value></data>
   <data name="Footer.Follow" xml:space="preserve"><value>Bizi takip edin</value></data>
   <data name="MobileBar.Label" xml:space="preserve"><value>Hızlı iletişim</value></data>
+  <data name="Common.ImageViewer" xml:space="preserve">
+    <value>Görsel görüntüleyici</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="Common.Zoom" xml:space="preserve">
+    <value>Büyüt</value>
+  </data>
+  <data name="Common.PlayVideo" xml:space="preserve">
+    <value>Videoyu oynat</value>
+  </data>
+  <data name="Home.CategoriesLead" xml:space="preserve">
+    <value>Ön işlemden pişirmeye, boya hattınızın her aşaması için ekipman.</value>
+  </data>
+  <data name="Home.VideoTitle" xml:space="preserve">
+    <value>Sahadan görüntüler</value>
+  </data>
+  <data name="Home.AllVideos" xml:space="preserve">
+    <value>Tüm videolar</value>
+  </data>
+  <data name="Products.CategoryCount" xml:space="preserve">
+    <value>{0} ürün</value>
+  </data>
+  <data name="Products.PointCustom" xml:space="preserve">
+    <value>Ölçünüze ve sürecinize göre üretim</value>
+  </data>
+  <data name="Products.PointInstall" xml:space="preserve">
+    <value>Sahada montaj ve devreye alma</value>
+  </data>
+  <data name="Products.PointSpares" xml:space="preserve">
+    <value>Yedek parça ve teknik servis</value>
+  </data>
+  <data name="Products.ManualsText" xml:space="preserve">
+    <value>Ürün kataloglarımızı ve kullanım kılavuzlarımızı çevrim içi okuyabilir veya indirebilirsiniz.</value>
+  </data>
+  <data name="Products.ManualsLink" xml:space="preserve">
+    <value>Kılavuzlara git</value>
+  </data>
+  <data name="Videos.VideosTitle" xml:space="preserve">
+    <value>Videolar</value>
+  </data>
+  <data name="Videos.GalleryTitle" xml:space="preserve">
+    <value>Fotoğraf galerisi</value>
+  </data>
 </root>

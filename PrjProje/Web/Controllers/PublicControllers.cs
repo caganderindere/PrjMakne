@@ -17,6 +17,7 @@ public class HomeController : PublicControllerBase
     private readonly IBlogService _blogService;
     private readonly ISiteSettingsService _settingsService;
     private readonly ISiteContentService _siteContentService;
+    private readonly IGalleryService _galleryService;
     private readonly IWebHostEnvironment _environment;
 
     public HomeController(
@@ -25,6 +26,7 @@ public class HomeController : PublicControllerBase
         IBlogService blogService,
         ISiteSettingsService settingsService,
         ISiteContentService siteContentService,
+        IGalleryService galleryService,
         IWebHostEnvironment environment)
     {
         _environment = environment;
@@ -33,6 +35,7 @@ public class HomeController : PublicControllerBase
         _blogService = blogService;
         _settingsService = settingsService;
         _siteContentService = siteContentService;
+        _galleryService = galleryService;
     }
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
@@ -44,13 +47,10 @@ public class HomeController : PublicControllerBase
             Services = await _servicePageService.GetServicesAsync(Lang, homeOnly: true, cancellationToken),
             FeaturedProducts = await _productService.GetFeaturedAsync(Lang, 4, cancellationToken),
             LatestPosts = await _blogService.GetLatestAsync(Lang, 3, cancellationToken),
-            ExportCountryCodes = settings.GetExportCountryCodes(),
             References = await _siteContentService.GetReferencesAsync(cancellationToken),
             HeroImage = settings.HeroImage,
             HeroVideo = ExistingFile(settings.HeroVideo),
-            HeroVideoMobile = ExistingFile(settings.HeroVideoMobile),
-            Sections = settings.GetHomeSections().Where(s => s.Visible).Select(s => s.Key).ToList(),
-            Stats = HomeStats.From(settings)
+            Videos = (await _galleryService.GetGalleryAsync(Lang, cancellationToken)).Videos.Take(3).ToList()
         };
 
         SetSeo(L["Home.MetaTitle"], L["Home.MetaDescription"], SiteRoutes.Home);

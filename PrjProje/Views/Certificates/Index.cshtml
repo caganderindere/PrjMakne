@@ -3,55 +3,51 @@
 @{
     var header = new PageHeaderModel(L["Certificates.Title"], L["Certificates.Lead"], L["Nav.Certificates"]);
     var groups = Model.Documents.GroupBy(d => d.DocumentType).OrderBy(g => g.Key);
+    var points = Enumerable.Range(1, 4);
 }
 <partial name="_PageHeader" model="header" />
 
 <section class="section">
     <div class="container">
-        <div class="row g-5 align-items-center mb-5">
-            <div class="col-lg-6">
-                <span class="eyebrow">@L["Certificates.PolicyEyebrow"]</span>
-                <h2 class="section-title">@L["Certificates.PolicyTitle"]</h2>
+        <div class="split" style="margin-bottom: var(--space-7)">
+            <div>
+                <p class="eyebrow">@L["Certificates.PolicyEyebrow"]</p>
+                <h2>@L["Certificates.PolicyTitle"]</h2>
                 <p>@L["Certificates.PolicyText"]</p>
             </div>
-            <div class="col-lg-6">
-                <ul class="check-list check-list-boxed">
-                    <li>@L["Certificates.Point1"]</li>
-                    <li>@L["Certificates.Point2"]</li>
-                    <li>@L["Certificates.Point3"]</li>
-                    <li>@L["Certificates.Point4"]</li>
-                </ul>
-            </div>
+            <ul class="check-list">
+                @foreach (var point in points)
+                {
+                    <li>@ViewHelpers.Icon("check") @L[$"Certificates.Point{point}"]</li>
+                }
+            </ul>
         </div>
 
         @if (!Model.Documents.Any())
         {
             <div class="empty-state">
-                <i class="fa-solid fa-file-shield" aria-hidden="true"></i>
+                @ViewHelpers.Icon("award")
                 <h2>@L["Certificates.EmptyTitle"]</h2>
                 <p>@L["Certificates.EmptyText"]</p>
             </div>
         }
         @foreach (var group in groups)
         {
-            <h2 class="content-title mt-5">@L[$"DocumentType.{group.Key}"]</h2>
-            <div class="row g-4">
+            <h2>@L[$"DocumentType.{group.Key}"]</h2>
+            <div class="grid grid-3" style="margin-bottom: var(--space-7)">
                 @foreach (var document in group)
                 {
-                    <div class="col-md-6 col-lg-4">
-                        <a href="@document.FilePath" class="document-card h-100" target="_blank" rel="noopener">
-                            <span class="document-icon"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></span>
-                            <span class="document-body">
-                                <span class="document-title">@document.Title</span>
-                                @if (!string.IsNullOrEmpty(document.Description))
-                                {
-                                    <span class="document-text">@document.Description</span>
-                                }
-                                <span class="document-meta">@document.DocumentDate.ToString("d MMMM yyyy") &middot; PDF &middot; @ViewHelpers.FileSize(document.FileSize)</span>
-                            </span>
-                            <i class="fa-solid fa-download document-download" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                    <article class="card doc-card">
+                        @ViewHelpers.Icon("file-text")
+                        <div>
+                            <h3 class="card-title"><a href="@document.FilePath" target="_blank" rel="noopener">@document.Title</a></h3>
+                            @if (!string.IsNullOrEmpty(document.Description))
+                            {
+                                <p class="card-text">@document.Description</p>
+                            }
+                            <p class="card-text">@document.DocumentDate.ToString("d MMMM yyyy") · PDF · @ViewHelpers.FileSize(document.FileSize)</p>
+                        </div>
+                    </article>
                 }
             </div>
         }

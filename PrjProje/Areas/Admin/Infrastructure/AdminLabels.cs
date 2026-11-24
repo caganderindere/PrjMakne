@@ -130,19 +130,4 @@ public static class AdminLabels
         _ => entity
     };
 
-    public static string HomeSection(string key) => key switch
-    {
-        "about" => "Hakkımızda özeti",
-        "categories" => "Ürün kategorileri",
-        "services" => "Hizmetler",
-        "process" => "Üretim süreci",
-        "featured" => "Öne çıkan ürünler",
-        "why" => "Neden biz",
-        "references" => "Referanslarımız",
-        "defense" => "Savunma sanayii",
-        "industries" => "Hizmet verilen sektörler",
-        "export" => "İhracat haritası",
-        "blog" => "Blog yazıları",
-        _ => key
-    };
 }

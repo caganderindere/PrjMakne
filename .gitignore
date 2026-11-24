@@ -13,3 +13,5 @@ content/images/raw/
 **/appsettings.Development.json
 node_modules/
 TestResults/
+test-results/
+playwright-report/

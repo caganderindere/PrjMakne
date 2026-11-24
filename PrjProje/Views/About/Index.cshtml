@@ -1,51 +1,51 @@
-@inject PrjProje.Application.Interfaces.ISiteSettingsService SettingsService
 @{
-    var milestones = new[] { 1, 2, 3, 4, 5 };
     var header = new PageHeaderModel(L["About.Title"], L["About.Lead"], L["Nav.About"]);
-    var stats = HomeStats.From(await SettingsService.GetAsync());
-    string Number(int value) => value.ToString("N0", System.Globalization.CultureInfo.CurrentCulture);
+    var steps = Enumerable.Range(1, 5);
+    var capabilities = new[] { "Cnc", "Press", "Rubber", "Laser", "Paint", "Coating", "Casting", "Quality" };
 }
 <partial name="_PageHeader" model="header" />
 
 <section class="section">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <span class="eyebrow">@L["About.WhoEyebrow"]</span>
-                <h2 class="section-title">@L["About.WhoTitle"]</h2>
-                <p class="lead-text">@L["About.WhoLead"]</p>
-                <p>@L["About.WhoText1"]</p>
-                <p>@L["About.WhoText2"]</p>
-            </div>
-            <div class="col-lg-6">
-                <div class="row g-3 about-stats">
-                    <div class="col-6"><div class="about-stat"><strong>@Number(stats.Facility) m²</strong><span>@L["Stats.Facility"]</span></div></div>
-                    <div class="col-6"><div class="about-stat"><strong>@Number(stats.Employees)+</strong><span>@L["Stats.Employees"]</span></div></div>
-                    <div class="col-6"><div class="about-stat"><strong>@Number(stats.Countries)+</strong><span>@L["Stats.Countries"]</span></div></div>
-                    <div class="col-6"><div class="about-stat about-stat-accent"><strong>%@stats.Domestic</strong><span>@L["Stats.Domestic"]</span></div></div>
-                </div>
-            </div>
+    <div class="container split">
+        <div>
+            <p class="eyebrow">@L["About.WhoEyebrow"]</p>
+            <h2>@L["About.WhoTitle"]</h2>
+            <p class="lead">@L["About.WhoLead"]</p>
+        </div>
+        <div class="prose">
+            <p>@L["About.WhoText1"]</p>
+            <p>@L["About.WhoText2"]</p>
         </div>
     </div>
 </section>
 
-<section class="section section-light" id="history">
+<section class="section section-alt">
+    <div class="container grid grid-2">
+        <div class="statement">
+            <h3>@ViewHelpers.Icon("globe") @L["About.VisionTitle"]</h3>
+            <p>@L["About.VisionText"]</p>
+        </div>
+        <div class="statement">
+            <h3>@ViewHelpers.Icon("shield-check") @L["About.MissionTitle"]</h3>
+            <p>@L["About.MissionText"]</p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark">
     <div class="container">
-        <div class="section-heading justify-content-center text-center">
+        <div class="section-head">
             <div>
-                <span class="eyebrow">@L["About.HistoryEyebrow"]</span>
-                <h2 class="section-title">@L["About.HistoryTitle"]</h2>
+                <p class="eyebrow">@L["About.HistoryEyebrow"]</p>
+                <h2>@L["About.HistoryTitle"]</h2>
             </div>
         </div>
-        <ol class="timeline list-unstyled">
-            @foreach (var step in milestones)
+        <ol class="process">
+            @foreach (var step in steps)
             {
-                <li class="timeline-item">
-                    <span class="timeline-marker">@step.ToString("00")</span>
-                    <div class="timeline-content">
-                        <h3>@L[$"About.History{step}Title"]</h3>
-                        <p>@L[$"About.History{step}Text"]</p>
-                    </div>
+                <li>
+                    <h3>@L[$"About.History{step}Title"]</h3>
+                    <p>@L[$"About.History{step}Text"]</p>
                 </li>
             }
         </ol>
@@ -53,75 +53,34 @@
 </section>
 
 <section class="section">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="value-card h-100">
-                    <i class="fa-solid fa-binoculars" aria-hidden="true"></i>
-                    <h2>@L["About.VisionTitle"]</h2>
-                    <p>@L["About.VisionText"]</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="value-card value-card-dark h-100">
-                    <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
-                    <h2>@L["About.MissionTitle"]</h2>
-                    <p>@L["About.MissionText"]</p>
-                </div>
-            </div>
+    <div class="container split">
+        <div>
+            <p class="eyebrow">@L["About.FacilityEyebrow"]</p>
+            <h2>@L["About.FacilityTitle"]</h2>
+            <p>@L["About.FacilityText"]</p>
         </div>
+        <ul class="chips chips-strong">
+            @foreach (var capability in capabilities)
+            {
+                <li>@L[$"About.Facility{capability}"]</li>
+            }
+        </ul>
     </div>
 </section>
 
-<section class="section section-dark">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-5">
-                <span class="eyebrow eyebrow-light">@L["About.FacilityEyebrow"]</span>
-                <h2 class="section-title text-white">@L["About.FacilityTitle"]</h2>
-                <p class="text-light-muted">@L["About.FacilityText"]</p>
-                <a href="@Url.Localized(SiteRoutes.Services)" class="btn btn-brand mt-2">@L["Home.AllServices"]</a>
-            </div>
-            <div class="col-lg-7">
-                <ul class="facility-list list-unstyled row g-3">
-                    <li class="col-sm-6"><i class="fa-solid fa-gear" aria-hidden="true"></i>@L["About.FacilityCnc"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-compress" aria-hidden="true"></i>@L["About.FacilityPress"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-flask" aria-hidden="true"></i>@L["About.FacilityRubber"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-burst" aria-hidden="true"></i>@L["About.FacilityLaser"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-spray-can" aria-hidden="true"></i>@L["About.FacilityPaint"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>@L["About.FacilityCoating"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>@L["About.FacilityCasting"]</li>
-                    <li class="col-sm-6"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>@L["About.FacilityQuality"]</li>
-                </ul>
-            </div>
+<section class="section section-alt">
+    <div class="container grid grid-3">
+        <div class="feature">
+            <h3>@L["About.HrTitle"]</h3>
+            <p>@L["About.HrText"]</p>
         </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="info-block h-100">
-                    <i class="fa-solid fa-people-group" aria-hidden="true"></i>
-                    <h2>@L["About.HrTitle"]</h2>
-                    <p>@L["About.HrText"]</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="info-block h-100">
-                    <i class="fa-solid fa-flag" aria-hidden="true"></i>
-                    <h2>@L["About.DomesticTitle"]</h2>
-                    <p>@L["About.DomesticText"]</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="info-block h-100">
-                    <i class="fa-solid fa-earth-europe" aria-hidden="true"></i>
-                    <h2>@L["About.ExportTitle"]</h2>
-                    <p>@L["About.ExportText"]</p>
-                </div>
-            </div>
+        <div class="feature">
+            <h3>@L["About.DomesticTitle"]</h3>
+            <p>@L["About.DomesticText"]</p>
+        </div>
+        <div class="feature">
+            <h3>@L["About.ExportTitle"]</h3>
+            <p>@L["About.ExportText"]</p>
         </div>
     </div>
 </section>

@@ -1,11 +1,11 @@
 @model ProductSearchFormModel
 @* Product search box with type-ahead suggestions (products-search.js). *@
-<form method="get" action="@Model.Action" class="products-hero-search" role="search"
+<form method="get" action="@Model.Action" class="search-box" role="search"
       data-product-suggest="/api/products/suggest?lang=@Languages.Current@(Model.CategorySlug is null ? null : "&category=" + Uri.EscapeDataString(Model.CategorySlug))">
     <label for="@Model.Id" class="visually-hidden">@L["Products.SearchLabel"]</label>
-    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    @ViewHelpers.Icon("search")
     <input type="search" id="@Model.Id" name="q" value="@Model.Value" placeholder="@L["Products.SearchPlaceholder"]" maxlength="100" autocomplete="off"
            role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="@(Model.Id)-list" />
     <ul class="products-suggest" id="@(Model.Id)-list" role="listbox" aria-label="@L["Products.SearchLabel"]" hidden></ul>
-    <button type="submit" class="btn btn-brand">@L["Common.Search"]</button>
+    <button type="submit" class="btn btn-primary">@L["Common.Search"]</button>
 </form>

@@ -9,40 +9,42 @@
         @if (Model.Count == 0)
         {
             <div class="empty-state">
-                <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                @ViewHelpers.Icon("book-open")
                 <h2>@L["Manuals.EmptyTitle"]</h2>
                 <p>@L["Manuals.EmptyText"]</p>
             </div>
         }
-        <div class="row g-4 g-xl-5">
-            @foreach (var catalog in Model)
-            {
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <article class="catalog-card">
-                        <button type="button" class="catalog-cover" data-catalog="@catalog.FilePath" data-title="@catalog.Title">
+        else
+        {
+            <div class="grid grid-4">
+                @foreach (var catalog in Model)
+                {
+                    <article class="card">
+                        <button type="button" class="doc-cover" data-catalog="@catalog.FilePath" data-title="@catalog.Title" aria-label="@L["Manuals.Read"]: @catalog.Title">
                             @if (catalog.CoverImagePath is not null)
                             {
                                 <img src="@catalog.CoverImagePath" alt="" width="420" height="594" loading="lazy" decoding="async" />
                             }
                             else
                             {
-                                <i class="fa-solid fa-book-open catalog-cover-icon" aria-hidden="true"></i>
+                                @ViewHelpers.Icon("book-open")
                             }
-                            <span class="catalog-cover-cta"><i class="fa-solid fa-book-open" aria-hidden="true"></i>@L["Manuals.Read"]<span class="visually-hidden">: @catalog.Title</span></span>
                         </button>
-                        <h2 class="catalog-title">@catalog.Title</h2>
-                        @if (!string.IsNullOrEmpty(catalog.Description))
-                        {
-                            <p class="catalog-text">@catalog.Description</p>
-                        }
-                        <div class="catalog-meta">
-                            <span>@catalog.DocumentDate.ToString("MMMM yyyy") &middot; PDF &middot; @ViewHelpers.FileSize(catalog.FileSize)</span>
-                            <a href="@catalog.FilePath" download><i class="fa-solid fa-download me-1" aria-hidden="true"></i>@L["Manuals.Download"]</a>
+                        <div class="card-body">
+                            <h2 class="card-title">@catalog.Title</h2>
+                            @if (!string.IsNullOrEmpty(catalog.Description))
+                            {
+                                <p class="card-text">@catalog.Description</p>
+                            }
+                            <div class="card-meta">
+                                <span>PDF · @ViewHelpers.FileSize(catalog.FileSize)</span>
+                                <a href="@catalog.FilePath" download class="link-arrow">@ViewHelpers.Icon("download") @L["Manuals.Download"]</a>
+                            </div>
                         </div>
                     </article>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
     </div>
 </section>
 
@@ -52,13 +54,13 @@
         <div class="catalog-viewer-bar">
             <h2 id="catalogViewerTitle"></h2>
             <span class="catalog-viewer-page" aria-live="polite"></span>
-            <a class="catalog-viewer-btn" data-catalog-download download title="@L["Manuals.Download"]"><i class="fa-solid fa-download" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Download"]</span></a>
-            <button type="button" class="catalog-viewer-btn" data-catalog-close title="@L["Manuals.Close"]"><i class="fa-solid fa-xmark" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Close"]</span></button>
+            <a class="catalog-viewer-btn" data-catalog-download download aria-label="@L["Manuals.Download"]">@ViewHelpers.Icon("download")</a>
+            <button type="button" class="catalog-viewer-btn" data-catalog-close aria-label="@L["Manuals.Close"]">@ViewHelpers.Icon("x")</button>
         </div>
         <div class="catalog-viewer-stage">
             <p class="catalog-viewer-status" role="status"></p>
-            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-prev" data-catalog-prev title="@L["Manuals.Previous"]"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Previous"]</span></button>
-            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-next" data-catalog-next title="@L["Manuals.Next"]"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span class="visually-hidden">@L["Manuals.Next"]</span></button>
+            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-prev" data-catalog-prev aria-label="@L["Manuals.Previous"]">@ViewHelpers.Icon("chevron-right")</button>
+            <button type="button" class="catalog-viewer-btn catalog-viewer-nav catalog-viewer-next" data-catalog-next aria-label="@L["Manuals.Next"]">@ViewHelpers.Icon("chevron-right")</button>
         </div>
     </dialog>
 }

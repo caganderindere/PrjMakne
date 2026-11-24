@@ -35,70 +35,18 @@ public class SiteSettingsDto
     public string? XUrl { get; set; }
     public string? HeroImage { get; set; }
 
-    // Site-relative MP4 paths; empty keeps the photo. Phones get their own portrait video.
+    // Site-relative MP4 path for the desktop hero; empty keeps the photo.
     public string? HeroVideo { get; set; }
-    public string? HeroVideoMobile { get; set; } = "/videos/heromobil.mp4";
 
-    public string ExportCountries { get; set; } = string.Empty;
     public string? GoogleSiteVerification { get; set; }
 
     /// <summary>GA4 measurement ID (G-XXXXXXXXXX); empty disables analytics. It loads only after the visitor accepts cookies.</summary>
     public string? GoogleAnalyticsId { get; set; }
 
-    // Home page / About page figures (numbers only; units and labels come from the texts).
-    public string StatFacility { get; set; } = "25000";
-    public string StatEmployees { get; set; } = "150";
-    public string StatCountries { get; set; } = "20";
-    public string StatDomestic { get; set; } = "100";
-
-    /// <summary>
-    /// Order of the movable home page sections as comma separated keys; a leading "!" hides a section.
-    /// Keys missing from the value (e.g. sections added later) are appended as visible.
-    /// </summary>
-    // Why and process repeat the about section, so a new site starts with them hidden.
-    public string HomeSections { get; set; } = "about,categories,services,featured,references,defense,export,blog,!industries,!why,!process";
-
-    public static readonly IReadOnlyList<string> HomeSectionKeys = new[]
-    {
-        "about", "categories", "services", "process", "featured", "why",
-        "references", "defense", "industries", "export", "blog"
-    };
-
-    public IReadOnlyList<(string Key, bool Visible)> GetHomeSections()
-    {
-        var result = new List<(string Key, bool Visible)>();
-        foreach (var raw in HomeSections.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
-        {
-            var visible = !raw.StartsWith('!');
-            var key = raw.TrimStart('!');
-            if (HomeSectionKeys.Contains(key) && result.All(s => s.Key != key))
-            {
-                result.Add((key, visible));
-            }
-        }
-
-        result.AddRange(HomeSectionKeys.Where(key => result.All(s => s.Key != key)).Select(key => (key, true)));
-        return result;
-    }
-
-    /// <summary>Parses a figure setting such as "25000" or "25.000"; falls back when it is not a number.</summary>
-    public static int ParseStat(string? value, int fallback)
-    {
-        var digits = new string((value ?? string.Empty).Where(char.IsDigit).ToArray());
-        return int.TryParse(digits, out var number) ? number : fallback;
-    }
-
     public string GetAddress(string languageCode) => languageCode == Languages.Turkish ? AddressTr : AddressEn;
 
     public string GetWorkingHours(string languageCode) => languageCode == Languages.Turkish ? WorkingHoursTr : WorkingHoursEn;
 
-    public IReadOnlyList<string> GetExportCountryCodes() =>
-        ExportCountries
-            .Split(new[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-            .Select(code => code.ToUpperInvariant())
-            .Where(code => code.Length == 2)
-            .Distinct()
-            .ToList();
 
     public IEnumerable<(string Icon, string Url, string Label)> GetSocialLinks()
     {

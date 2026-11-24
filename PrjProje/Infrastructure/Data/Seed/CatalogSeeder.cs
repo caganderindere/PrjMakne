@@ -35,6 +35,7 @@ public static class CatalogSeeder
         await SeedServicesAsync(db, content.Catalog.Services);
         var categories = await SeedCategoriesAsync(db, content);
         await SeedProductsAsync(db, storage, content, categories, logger);
+        await FillCategoryImagesAsync(db, categories.Values);
         await SeedRedirectsAsync(db, content);
     }
 
@@ -142,6 +143,18 @@ public static class CatalogSeeder
             db.Products.Add(product);
             await db.SaveChangesAsync();
         }
+    }
+
+    // The old categories had no pictures of their own; a new one borrows the photo of its first product.
+    private static async Task FillCategoryImagesAsync(ApplicationDbContext db, IEnumerable<ProductCategory> categories)
+    {
+        foreach (var category in categories.Where(c => c.Image is null))
+        {
+            category.Image = await db.Products.Where(p => p.CategoryId == category.Id && p.Image != null)
+                .OrderBy(p => p.SortOrder).Select(p => p.Image).FirstOrDefaultAsync();
+        }
+
+        await db.SaveChangesAsync();
     }
 
     /// <summary>

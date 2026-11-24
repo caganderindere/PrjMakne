@@ -231,7 +231,7 @@ public sealed class ContentTextAdminService : IContentTextAdminService
 
     private static readonly IReadOnlyList<ContentTextGroup> AllGroups = new[]
     {
-        new ContentTextGroup("home", "Ana Sayfa", "Hero başlığı ve sloganı, rakam etiketleri ve ana sayfa bölüm metinleri.", new[] { "Home.", "Stats." }),
+        new ContentTextGroup("home", "Ana Sayfa", "Hero başlığı ve sloganı ve ana sayfa bölüm metinleri.", new[] { "Home." }),
         new ContentTextGroup("about", "Kurumsal", "Kurumsal (Hakkımızda) sayfası: tarihçe, vizyon, misyon, tesis.", new[] { "About." }),
         new ContentTextGroup("certificates", "Belgeler", "Belgeler ve sertifikalar sayfası metinleri.", new[] { "Certificates." }),
         new ContentTextGroup("services", "Hizmetler", "Hizmetler sayfasının sabit metinleri.", new[] { "Services." }),

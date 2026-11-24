@@ -10,26 +10,12 @@ public class HomeViewModel
     public IReadOnlyList<ServiceDto> Services { get; init; } = Array.Empty<ServiceDto>();
     public IReadOnlyList<ProductListItemDto> FeaturedProducts { get; init; } = Array.Empty<ProductListItemDto>();
     public IReadOnlyList<BlogPostListItemDto> LatestPosts { get; init; } = Array.Empty<BlogPostListItemDto>();
-    public IReadOnlyList<string> ExportCountryCodes { get; init; } = Array.Empty<string>();
     public IReadOnlyList<ReferenceDto> References { get; init; } = Array.Empty<ReferenceDto>();
     public string? HeroImage { get; init; }
     public string? HeroVideo { get; init; }
-    public string? HeroVideoMobile { get; init; }
-
-    /// <summary>Visible movable sections in display order (see SiteSettingsDto.HomeSectionKeys).</summary>
-    public IReadOnlyList<string> Sections { get; init; } = Array.Empty<string>();
-
-    public HomeStats Stats { get; init; } = new(25000, 150, 20, 100);
+    public IReadOnlyList<VideoDto> Videos { get; init; } = Array.Empty<VideoDto>();
 }
 
-public record HomeStats(int Facility, int Employees, int Countries, int Domestic)
-{
-    public static HomeStats From(SiteSettingsDto settings) => new(
-        SiteSettingsDto.ParseStat(settings.StatFacility, 25000),
-        SiteSettingsDto.ParseStat(settings.StatEmployees, 150),
-        SiteSettingsDto.ParseStat(settings.StatCountries, 20),
-        SiteSettingsDto.ParseStat(settings.StatDomestic, 100));
-}
 
 public class ProductListViewModel
 {

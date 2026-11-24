@@ -1,0 +1,18 @@
+@model ProductCategoryDto
+<a href="@Url.Localized(SiteRoutes.ProductCategory, Model.Slug)" class="card category-card">
+    <span class="card-media">
+        @if (Model.Image is not null)
+        {
+            <img src="@ViewHelpers.SmallImage(Model.Image)" srcset="@ViewHelpers.SrcSet(Model.Image)" sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 25vw"
+                 alt="" loading="lazy" decoding="async" width="640" height="480" />
+        }
+        else
+        {
+            @ViewHelpers.Icon("layers")
+        }
+    </span>
+    <span class="card-body">
+        <span class="card-title">@Model.Name</span>
+        <span class="count">@L["Products.CategoryCount", Model.ProductCount]</span>
+    </span>
+</a>

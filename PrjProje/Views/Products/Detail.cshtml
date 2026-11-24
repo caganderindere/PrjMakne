@@ -1,148 +1,159 @@
 @model ProductDetailDto
 @{
     // The main image comes first; gallery photos carry their own descriptions.
-    var images = new List<string>();
-    var alts = new List<string>();
-    if (Model.Image is not null) { images.Add(Model.Image); alts.Add(Model.Name); }
-    foreach (var image in Model.Images.Where(i => i.Path != Model.Image)) { images.Add(image.Path); alts.Add(image.Alt); }
+    var images = new List<ProductImageDto>();
+    if (Model.Image is not null) { images.Add(new ProductImageDto(Model.Image, Model.Name)); }
+    images.AddRange(Model.Images.Where(i => i.Path != Model.Image));
     var quoteUrl = $"{Url.Localized(SiteRoutes.Quote)}?product={Model.Id}";
     ViewData["QuoteHref"] = quoteUrl;
-    // Picked up by the layout: product-specific WhatsApp message plus the "ask marketing" bubble.
+    // Picked up by the layout: product-specific WhatsApp message.
     ViewData["WhatsAppText"] = L["Products.WhatsAppTemplate", Model.Name, $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}"].Value;
+    var crumbs = (ViewData[PageSeo.ViewDataKey] as PageSeo)?.Breadcrumbs ?? new List<BreadcrumbItem>();
 }
 
-<section class="section pt-5">
+<section class="section product-hero">
     <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <div class="product-gallery" data-product-gallery>
-                    <div class="product-gallery-main">
-                        @if (images.Count > 0)
-                        {
-                            <a href="@images[0]" data-lightbox="product" data-gallery-main>
-                                <img src="@images[0]" srcset="@ViewHelpers.SrcSet(images[0])" sizes="(max-width: 992px) 100vw, 50vw" alt="@alts[0]" width="960" height="720" fetchpriority="high" />
-                            </a>
-                        }
-                        else
-                        {
-                            <span class="media-placeholder media-placeholder-lg"><i class="@Model.CategoryIcon" aria-hidden="true"></i></span>
-                        }
-                    </div>
+        @if (crumbs.Count > 1)
+        {
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    @foreach (var crumb in crumbs)
+                    {
+                        <li>@if (crumb.Url is not null) { <a href="@crumb.Url">@crumb.Title</a> } else { <span aria-current="page">@crumb.Title</span> }</li>
+                    }
+                </ol>
+            </nav>
+        }
+        <div class="product-layout">
+            <div data-gallery>
+                @if (images.Count > 0)
+                {
+                    <a href="@images[0].Path" class="gallery-main" data-gallery-main data-lightbox="product" data-alt="@images[0].Alt">
+                        <img src="@images[0].Path" srcset="@ViewHelpers.SrcSet(images[0].Path)" sizes="(max-width: 960px) 100vw, 58vw" alt="@images[0].Alt" width="1600" height="1200" fetchpriority="high" />
+                        <span class="zoom-hint">@ViewHelpers.Icon("search") @L["Common.Zoom"]</span>
+                    </a>
                     @if (images.Count > 1)
                     {
-                        <div class="product-gallery-thumbs">
+                        <div class="gallery-thumbs">
                             @for (var i = 0; i < images.Count; i++)
                             {
-                                <button type="button" class="@(i == 0 ? "active" : null)" data-gallery-thumb="@images[i]" aria-label="@L["Products.ShowImage", i + 1]">
-                                    <img src="@ViewHelpers.SmallImage(images[i])" alt="" loading="lazy" decoding="async" width="120" height="90" />
+                                <button type="button" data-gallery-thumb data-index="@i" data-src="@images[i].Path" data-srcset="@ViewHelpers.SrcSet(images[i].Path)" data-alt="@images[i].Alt"
+                                        aria-current="@(i == 0 ? "true" : "false")" aria-label="@L["Products.ShowImage", i + 1]">
+                                    <img src="@ViewHelpers.SmallImage(images[i].Path)" alt="" loading="lazy" decoding="async" width="120" height="120" />
                                 </button>
                             }
                         </div>
                         @foreach (var image in images.Skip(1))
                         {
-                            <a href="@image" data-lightbox="product" class="d-none" aria-hidden="true" tabindex="-1"></a>
+                            <a href="@image.Path" data-lightbox="product" data-alt="@image.Alt" hidden tabindex="-1" aria-hidden="true"></a>
                         }
                     }
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <a href="@Url.Localized(SiteRoutes.ProductCategory, Model.CategorySlug)" class="product-category-tag"><i class="@Model.CategoryIcon me-2" aria-hidden="true"></i>@Model.CategoryName</a>
-                <h1 class="product-title">@Model.Name</h1>
-                @if (Model.Variants.Count > 0)
-                {
-                    <div class="product-variants">
-                        <span class="product-variants-label">@L["Products.Variants"]</span>
-                        <ul class="product-variant-list">
-                            @foreach (var code in Model.Variants)
-                            {
-                                <li>@code</li>
-                            }
-                        </ul>
-                    </div>
                 }
-                @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                else
                 {
-                    <p class="lead-text">@Model.ShortDescription</p>
-                }
-                <dl class="product-facts">
-                    <div><dt>@L["Products.Origin"]</dt><dd>@L["Products.OriginValue"]</dd></div>
-                </dl>
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                    <a href="@quoteUrl" class="btn btn-brand btn-lg"><i class="fa-solid fa-file-signature me-2" aria-hidden="true"></i>@L["Products.RequestQuoteForProduct"]</a>
-                    <a href="@Url.Localized(SiteRoutes.Contact)" class="btn btn-outline-dark btn-lg">@L["Nav.Contact"]</a>
-                </div>
-                @if (Model.IsRestricted)
-                {
-                    <div class="notice notice-dark mt-4">
-                        <i class="fa-solid fa-user-lock" aria-hidden="true"></i>
-                        <span>@L["Products.ConfidentialityNotice"]</span>
-                    </div>
+                    <div class="gallery-main">@ViewHelpers.Icon("package")</div>
                 }
             </div>
-        </div>
 
-        <div class="row g-5 mt-2">
-            <div class="col-lg-8">
-                @if (!string.IsNullOrEmpty(Model.Description))
-                {
-                    <div class="content-block">
-                        <h2 class="content-title">@L["Products.Description"]</h2>
-                        <div class="rich-content">@Html.Raw(Model.Description)</div>
-                    </div>
-                }
-                @if (Model.Specifications.Count > 0)
-                {
-                    <div class="content-block">
-                        <h2 class="content-title">@L["Products.Specifications"]</h2>
-                        <div class="table-responsive">
-                            <table class="table spec-table">
-                                <tbody>
-                                    @foreach (var spec in Model.Specifications)
-                                    {
-                                        <tr><th scope="row">@spec.Name</th><td>@spec.Value</td></tr>
-                                    }
-                                </tbody>
-                            </table>
+            <div class="product-summary">
+                <div class="sticky-quote">
+                    <a href="@Url.Localized(SiteRoutes.ProductCategory, Model.CategorySlug)" class="category-link">@ViewHelpers.Icon("layers") @Model.CategoryName</a>
+                    <h1>@Model.Name</h1>
+                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                    {
+                        <p class="lead">@Model.ShortDescription</p>
+                    }
+                    @if (Model.Variants.Count > 0)
+                    {
+                        <div class="variants">
+                            <h2>@L["Products.Variants"]</h2>
+                            <ul class="chips chips-strong">
+                                @foreach (var code in Model.Variants)
+                                {
+                                    <li>@code</li>
+                                }
+                            </ul>
                         </div>
+                    }
+                    @if (Model.IsRestricted)
+                    {
+                        <p class="notice">@ViewHelpers.Icon("info") <span>@L["Products.ConfidentialityNotice"]</span></p>
+                    }
+                    <div class="button-row">
+                        <a href="@quoteUrl" class="btn btn-primary btn-lg">@L["Products.RequestQuoteForProduct"]</a>
+                        <a href="@Url.Localized(SiteRoutes.Contact)" class="btn btn-outline btn-lg">@L["Nav.Contact"]</a>
                     </div>
-                }
-            </div>
-            <div class="col-lg-4">
-                @if (Model.ApplicationAreas.Count > 0)
-                {
-                    <div class="side-card">
-                        <h2 class="side-card-title">@L["Products.ApplicationAreas"]</h2>
-                        <ul class="check-list mb-0">
-                            @foreach (var area in Model.ApplicationAreas)
-                            {
-                                <li>@area</li>
-                            }
-                        </ul>
-                    </div>
-                }
-                <div class="side-card side-card-dark">
-                    <h2 class="side-card-title">@L["Products.QuoteBoxTitle"]</h2>
-                    <p>@L["Products.QuoteBoxText"]</p>
-                    <a href="@quoteUrl" class="btn btn-brand w-100">@L["Common.RequestQuote"]</a>
+                    <ul class="check-list" style="margin-top: var(--space-6)">
+                        <li>@ViewHelpers.Icon("check") @L["Products.PointCustom"]</li>
+                        <li>@ViewHelpers.Icon("check") @L["Products.PointInstall"]</li>
+                        <li>@ViewHelpers.Icon("check") @L["Products.PointSpares"]</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<section class="section section-alt">
+    <div class="container split split-wide">
+        <div>
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <h2>@L["Products.Description"]</h2>
+                <div class="prose">@Html.Raw(Model.Description)</div>
+            }
+            @if (Model.Specifications.Count > 0)
+            {
+                <h2>@L["Products.Specifications"]</h2>
+                <div class="table-scroll">
+                    <table class="spec-table">
+                        <tbody>
+                            @foreach (var spec in Model.Specifications)
+                            {
+                                <tr><th scope="row">@spec.Name</th><td>@spec.Value</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            @if (Model.ApplicationAreas.Count > 0)
+            {
+                <h2>@L["Products.ApplicationAreas"]</h2>
+                <ul class="chips">
+                    @foreach (var area in Model.ApplicationAreas)
+                    {
+                        <li>@area</li>
+                    }
+                </ul>
+            }
+        </div>
+        <aside class="stack">
+            <div class="side-card side-card-dark">
+                <h2>@L["Products.QuoteBoxTitle"]</h2>
+                <p>@L["Products.QuoteBoxText"]</p>
+                <a href="@quoteUrl" class="btn btn-primary btn-block">@L["Common.RequestQuote"]</a>
+            </div>
+            <div class="side-card">
+                <h2>@L["Nav.Manuals"]</h2>
+                <p>@L["Products.ManualsText"]</p>
+                <a href="@Url.Localized(SiteRoutes.Manuals)" class="link-arrow">@L["Products.ManualsLink"] @ViewHelpers.Icon("arrow-right")</a>
+            </div>
+        </aside>
+    </div>
+</section>
+
 @if (Model.RelatedProducts.Count > 0)
 {
-    <section class="section section-light">
+    <section class="section">
         <div class="container">
-            <div class="section-heading">
-                <h2 class="section-title">@L["Products.Related"]</h2>
+            <div class="section-head">
+                <div><h2>@L["Products.Related"]</h2></div>
+                <a href="@Url.Localized(SiteRoutes.ProductCategory, Model.CategorySlug)" class="link-arrow">@Model.CategoryName @ViewHelpers.Icon("arrow-right")</a>
             </div>
-            <div class="row g-4">
+            <div class="grid grid-4">
                 @foreach (var product in Model.RelatedProducts)
                 {
-                    <div class="col-sm-6 col-lg-3">
-                        <partial name="_ProductCard" model="product" />
-                    </div>
+                    <partial name="_ProductCard" model="product" />
                 }
             </div>
         </div>

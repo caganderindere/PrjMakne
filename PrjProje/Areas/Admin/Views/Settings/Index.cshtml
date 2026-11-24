@@ -68,15 +68,9 @@
                     </div>
                 }
                 <input type="file" name="heroImageFile" id="heroImageFile" class="form-control mb-3" accept=".jpg,.jpeg,.png,.webp" />
-                <label class="form-label" asp-for="HeroVideoMobile">Mobil Hero Videosu (dikey MP4)</label>
-                <input asp-for="HeroVideoMobile" class="form-control mb-1" placeholder="/videos/heromobil.mp4" />
-                <div class="form-text mb-3">Telefonlarda hero metni yerine tam genişlik video gösterilir. Boş bırakılırsa fotoğraf ve metin kalır.</div>
                 <label class="form-label" asp-for="HeroVideo">Masaüstü Hero Videosu (MP4)</label>
                 <input asp-for="HeroVideo" class="form-control mb-1" placeholder="/videos/hero.mp4" />
                 <div class="form-text mb-3">Boş bırakılırsa masaüstünde fotoğraf gösterilir.</div>
-                <label class="form-label" asp-for="ExportCountries">İhracat Ülkeleri (ISO kodları, virgülle)</label>
-                <input asp-for="ExportCountries" class="form-control mb-1" placeholder="DE,FR,IT,..." />
-                <div class="form-text mb-3">Ana sayfadaki dünya haritasında işaretlenir.</div>
                 <label class="form-label" asp-for="GoogleSiteVerification">Google Search Console doğrulama kodu</label>
                 <input asp-for="GoogleSiteVerification" class="form-control mb-3" />
                 <label class="form-label" asp-for="GoogleAnalyticsId">Google Analytics 4 ölçüm kimliği</label>
@@ -84,36 +78,6 @@
                 <span asp-validation-for="GoogleAnalyticsId" class="text-danger small d-block"></span>
                 <div class="form-text mb-3">Analytics → Yönetici → Veri akışları → Web akışı'nda yazar. Ziyaretçi çerezleri kabul ederse yüklenir. Boş bırakılırsa takip kapalı.</div>
                 <div class="form-text mt-2">Hero başlığı, slogan ve diğer metinler için: <a asp-controller="ContentTexts" asp-action="Index" asp-route-group="home">Sayfa İçerikleri → Ana Sayfa</a></div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="admin-card">
-                <h2 class="admin-card-title mb-3">Ana Sayfa Rakamları</h2>
-                <p class="small text-muted">Ana sayfadaki sayaçlarda ve Kurumsal sayfasında gösterilir. Yalnızca sayı girin; birimler (m², +, %) otomatik eklenir.</p>
-                <div class="row g-3">
-                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatFacility">Tesis Alanı (m²)</label><input asp-for="StatFacility" class="form-control" inputmode="numeric" /></div>
-                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatEmployees">Çalışan (+)</label><input asp-for="StatEmployees" class="form-control" inputmode="numeric" /></div>
-                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatCountries">İhracat Ülkesi (+)</label><input asp-for="StatCountries" class="form-control" inputmode="numeric" /></div>
-                    <div class="col-sm-6 col-md-3"><label class="form-label" asp-for="StatDomestic">Yerlilik (%)</label><input asp-for="StatDomestic" class="form-control" inputmode="numeric" /></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="admin-card">
-                <h2 class="admin-card-title mb-3">Ana Sayfa Bölümleri</h2>
-                <p class="small text-muted">Okları kullanarak sırayı değiştirin, kutucuğu kaldırarak bölümü gizleyin. Hero, rakamlar ve en alttaki teklif çağrısı sabittir.</p>
-                <ul class="home-sections-list" data-sortable-list>
-                    @foreach (var (key, visible) in Model.GetHomeSections())
-                    {
-                        <li class="@(visible ? null : "is-hidden")">
-                            <input type="hidden" name="homeSectionOrder" value="@key" />
-                            <input type="checkbox" class="form-check-input mt-0" name="homeSectionVisible" value="@key" id="section-@key" checked="@visible" />
-                            <label class="section-name" for="section-@key">@AdminLabels.HomeSection(key)</label>
-                            <button type="button" class="btn btn-sm btn-outline-secondary" data-move="up" aria-label="Yukarı taşı"><i class="fa-solid fa-arrow-up"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary" data-move="down" aria-label="Aşağı taşı"><i class="fa-solid fa-arrow-down"></i></button>
-                        </li>
-                    }
-                </ul>
             </div>
         </div>
     </div>

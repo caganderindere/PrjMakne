@@ -4,40 +4,52 @@
 }
 <partial name="_PageHeader" model="header" />
 
-<section class="section">
+@if (Model.Videos.Count > 0)
+{
+    <section class="section">
+        <div class="container">
+            <h2>@L["Videos.VideosTitle"]</h2>
+            <div class="grid grid-3">
+                @foreach (var video in Model.Videos)
+                {
+                    <partial name="_Video" model="video" />
+                }
+            </div>
+        </div>
+    </section>
+}
+
+<section class="section @(Model.Videos.Count > 0 ? "section-alt" : null)">
     <div class="container">
+        <h2>@L["Videos.GalleryTitle"]</h2>
         @if (Model.Items.Count == 0)
         {
             <div class="empty-state">
-                <i class="fa-regular fa-images" aria-hidden="true"></i>
-                <h2>@L["Videos.EmptyTitle"]</h2>
+                @ViewHelpers.Icon("image")
+                <h3>@L["Videos.EmptyTitle"]</h3>
                 <p>@L["Videos.EmptyText"]</p>
             </div>
         }
         else
         {
-            <div class="gallery-filters" role="group" aria-label="@L["Videos.FilterLabel"]">
-                <button type="button" class="active" data-gallery-filter="all">@L["Videos.All"] <span>@Model.Items.Count</span></button>
+            <div class="filter-buttons" role="group" aria-label="@L["Videos.FilterLabel"]" data-filter-group="galleryGrid">
+                <button type="button" aria-pressed="true" data-filter="all">@L["Videos.All"] (@Model.Items.Count)</button>
                 @foreach (var category in Model.Categories)
                 {
-                    <button type="button" data-gallery-filter="@category.Id">@category.Name <span>@category.ItemCount</span></button>
+                    <button type="button" aria-pressed="false" data-filter="@category.Id">@category.Name (@category.ItemCount)</button>
                 }
             </div>
-            <div class="gallery-grid">
+            <div class="gallery-grid" id="galleryGrid">
                 @foreach (var item in Model.Items)
                 {
-                    <a href="@item.ImagePath" class="gallery-item" data-lightbox="gallery" data-category="@item.CategoryId" data-caption="@item.Title">
-                        <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@(string.IsNullOrEmpty(item.Title) ? "PRJ Proje Makina" : item.Title)" loading="lazy" decoding="async" width="640" height="480" />
-                        <span class="gallery-item-overlay">
-                            <i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i>
-                            @if (!string.IsNullOrEmpty(item.Title))
-                            {
-                                <span>@item.Title</span>
-                            }
-                        </span>
+                    var alt = string.IsNullOrEmpty(item.Title) ? "PRJ Proje Makina" : item.Title;
+                    <a href="@item.ImagePath" data-lightbox="gallery" data-category="@item.CategoryId" data-caption="@item.Title" data-alt="@alt">
+                        <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@alt" loading="lazy" decoding="async" width="640" height="480" />
                     </a>
                 }
             </div>
         }
     </div>
 </section>
+
+<partial name="_CtaSection" />

@@ -158,30 +158,10 @@ public class SettingsController : AdminControllerBase
         SiteSettingsDto model,
         IFormFile? heroImageFile,
         bool removeHeroImage,
-        string[]? homeSectionOrder,
-        string[]? homeSectionVisible,
         CancellationToken cancellationToken)
     {
         var current = await _settingsService.GetAsync(cancellationToken);
         model.HeroImage = current.HeroImage;
-
-        // "!" marks a hidden section; GetHomeSections() drops unknown keys and appends missing ones.
-        var visible = new HashSet<string>(homeSectionVisible ?? Array.Empty<string>());
-        model.HomeSections = homeSectionOrder is { Length: > 0 }
-            ? string.Join(",", homeSectionOrder.Select(key => visible.Contains(key) ? key : "!" + key))
-            : current.HomeSections;
-
-        foreach (var (name, value) in new[]
-                 {
-                     (nameof(model.StatFacility), model.StatFacility), (nameof(model.StatEmployees), model.StatEmployees),
-                     (nameof(model.StatCountries), model.StatCountries), (nameof(model.StatDomestic), model.StatDomestic)
-                 })
-        {
-            if (SiteSettingsDto.ParseStat(value, -1) < 0)
-            {
-                ModelState.AddModelError(name, "Rakam alanlarına yalnızca sayı girin.");
-            }
-        }
 
         if (!string.IsNullOrWhiteSpace(model.MapEmbedUrl) && !model.MapEmbedUrl.StartsWith("https://www.google.com/maps", StringComparison.OrdinalIgnoreCase))
         {
@@ -195,15 +175,10 @@ public class SettingsController : AdminControllerBase
             ModelState.AddModelError(nameof(model.GoogleAnalyticsId), "Ölçüm kimliği G- ile başlamalıdır (ör. G-AB12CD34EF).");
         }
 
-        // Stored as "" rather than null, otherwise clearing the mobile video would bring its default back.
         model.HeroVideo ??= string.Empty;
-        model.HeroVideoMobile ??= string.Empty;
-        foreach (var (name, value) in new[] { (nameof(model.HeroVideo), model.HeroVideo), (nameof(model.HeroVideoMobile), model.HeroVideoMobile) })
+        if (model.HeroVideo.Length > 0 && (!model.HeroVideo.StartsWith('/') || !model.HeroVideo.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase)))
         {
-            if (value.Length > 0 && (!value.StartsWith('/') || !value.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase)))
-            {
-                ModelState.AddModelError(name, "Video yolu / ile başlamalı ve .mp4 ile bitmelidir (ör. /videos/hero.mp4).");
-            }
+            ModelState.AddModelError(nameof(model.HeroVideo), "Video yolu / ile başlamalı ve .mp4 ile bitmelidir (ör. /videos/hero.mp4).");
         }
 
         if (heroImageFile is { Length: > 0 })

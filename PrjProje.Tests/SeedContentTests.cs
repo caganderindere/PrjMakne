@@ -20,8 +20,8 @@ public partial class SeedContentTests
         var categories = Seed.Catalog.Categories.Select(c => c.LegacySlug).ToHashSet();
         var products = Seed.Catalog.Products.Select(p => p.LegacySlug).ToHashSet();
 
-        Assert.Empty(Seed.Categories.Select(c => c.LegacySlug).Where(s => !categories.Contains(s)));
-        Assert.Empty(Seed.Products.Select(p => p.LegacySlug).Where(s => !products.Contains(s)));
+        Assert.All(Seed.Categories, c => Assert.Contains(c.LegacySlug, categories));
+        Assert.All(Seed.Products, p => Assert.Contains(p.LegacySlug, products));
         Assert.Equal(Seed.Products.Count, products.Count);
     }
 

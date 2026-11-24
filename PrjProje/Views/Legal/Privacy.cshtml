@@ -5,16 +5,12 @@
 <partial name="_PageHeader" model="header" />
 
 <section class="section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9 rich-content legal-content">
-                <p>@L["Legal.PrivacyIntro"]</p>
-                @foreach (var index in sections)
-                {
-                    <h2>@L[$"Legal.Privacy{index}Title"]</h2>
-                    <p>@L[$"Legal.Privacy{index}Text"]</p>
-                }
-            </div>
-        </div>
+    <div class="container prose legal">
+        <p>@L["Legal.PrivacyIntro"]</p>
+        @foreach (var index in sections)
+        {
+            <h2>@L[$"Legal.Privacy{index}Title"]</h2>
+            <p>@L[$"Legal.Privacy{index}Text"]</p>
+        }
     </div>
 </section>

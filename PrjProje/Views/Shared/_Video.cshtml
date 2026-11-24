@@ -1,0 +1,9 @@
+@model VideoDto
+@* Thumbnail first; the YouTube player loads on click (pages.js). *@
+<figure>
+    <button type="button" class="video" data-youtube="@Model.YouTubeId" data-title="@Model.Title" aria-label="@L["Common.PlayVideo"]: @Model.Title">
+        <img src="https://i.ytimg.com/vi/@Model.YouTubeId/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" />
+        <span class="play">@ViewHelpers.Icon("play")</span>
+    </button>
+    <figcaption class="video-title">@Model.Title</figcaption>
+</figure>

@@ -27,10 +27,6 @@
   <data name="Common.Pagination" xml:space="preserve"><value>Pagination</value></data>
   <data name="Common.Previous" xml:space="preserve"><value>Previous</value></data>
   <data name="Common.Next" xml:space="preserve"><value>Next</value></data>
-  <data name="Stats.Facility" xml:space="preserve"><value>Production Facility</value></data>
-  <data name="Stats.Employees" xml:space="preserve"><value>Skilled Employees</value></data>
-  <data name="Stats.Countries" xml:space="preserve"><value>Export Countries</value></data>
-  <data name="Stats.Domestic" xml:space="preserve"><value>Domestic Production</value></data>
   <data name="Seo.TitleSuffix" xml:space="preserve"><value>PRJ Proje Makina</value></data>
   <data name="Home.MetaTitle" xml:space="preserve"><value>PRJ Proje Makina | Powder Coating Plants and Equipment</value></data>
   <data name="Home.MetaDescription" xml:space="preserve"><value>Powder coating guns, paint booths, curing ovens, conveyors and pretreatment lines, designed, built and installed from Istanbul.</value></data>
@@ -38,7 +34,7 @@
   <data name="Home.HeroTitle" xml:space="preserve"><value>We build your powder coating line</value></data>
   <data name="Home.HeroTitleAccent" xml:space="preserve"><value>from end to end</value></data>
   <data name="Announcement.Label" xml:space="preserve"><value>Announcement</value></data>
-  <data name="Announcement.More" xml:space="preserve"><value>Learn more</value></data>
+  <data name="Announcement.More" xml:space="preserve"><value>Read the announcement</value></data>
   <data name="Announcement.Close" xml:space="preserve"><value>Close announcement</value></data>
   <data name="Announcement.Dismiss" xml:space="preserve"><value>Close</value></data>
   <data name="Home.ReferencesEyebrow" xml:space="preserve"><value>References</value></data>
@@ -57,7 +53,7 @@
   <data name="Home.AboutPoint2" xml:space="preserve"><value>A full range from guns to curing ovens</value></data>
   <data name="Home.AboutPoint3" xml:space="preserve"><value>Spare parts and technical service</value></data>
   <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Our workshop</value></data>
-  <data name="Home.LearnMore" xml:space="preserve"><value>Learn More</value></data>
+  <data name="Home.LearnMore" xml:space="preserve"><value>About our company</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
   <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Services</value></data>
   <data name="Home.ServicesLead" xml:space="preserve"><value>Alongside turnkey powder coating plants, we offer laser cutting, CNC bending and contract powder coating.</value></data>
@@ -111,7 +107,7 @@
   <data name="Cookie.Message" xml:space="preserve"><value>Besides the cookies this website needs to work, with your consent we use Google Analytics cookies to measure visits.</value></data>
   <data name="Cookie.Reject" xml:space="preserve"><value>Reject</value></data>
   <data name="Cookie.Settings" xml:space="preserve"><value>Cookie Preferences</value></data>
-  <data name="Cookie.Details" xml:space="preserve"><value>Learn more</value></data>
+  <data name="Cookie.Details" xml:space="preserve"><value>Cookie policy</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Accept</value></data>
   <data name="About.MetaTitle" xml:space="preserve"><value>About Us</value></data>
   <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's mission, vision and approach to electrostatic powder coating equipment, from feasibility to after-sales service.</value></data>
@@ -167,8 +163,6 @@
   <data name="Products.ResultCount" xml:space="preserve"><value>{0} products found</value></data>
   <data name="Products.EmptyTitle" xml:space="preserve"><value>No products found</value></data>
   <data name="Products.EmptyText" xml:space="preserve"><value>No products match your search. Tell us what you need and we will offer a tailored solution.</value></data>
-  <data name="Products.Origin" xml:space="preserve"><value>Origin</value></data>
-  <data name="Products.OriginValue" xml:space="preserve"><value>Türkiye — 100% domestically manufactured</value></data>
   <data name="Products.Variants" xml:space="preserve"><value>Models</value></data>
   <data name="Products.RequestQuoteForProduct" xml:space="preserve"><value>Request a Quote for This Product</value></data>
   <data name="Products.Description" xml:space="preserve"><value>Product Description</value></data>
@@ -372,4 +366,49 @@
   <data name="Footer.Contact" xml:space="preserve"><value>Contact</value></data>
   <data name="Footer.Follow" xml:space="preserve"><value>Follow us</value></data>
   <data name="MobileBar.Label" xml:space="preserve"><value>Quick contact</value></data>
+  <data name="Common.ImageViewer" xml:space="preserve">
+    <value>Image viewer</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Common.Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Common.PlayVideo" xml:space="preserve">
+    <value>Play video</value>
+  </data>
+  <data name="Home.CategoriesLead" xml:space="preserve">
+    <value>Equipment for every stage of your coating line, from pretreatment to curing.</value>
+  </data>
+  <data name="Home.VideoTitle" xml:space="preserve">
+    <value>From the field</value>
+  </data>
+  <data name="Home.AllVideos" xml:space="preserve">
+    <value>All videos</value>
+  </data>
+  <data name="Products.CategoryCount" xml:space="preserve">
+    <value>{0} products</value>
+  </data>
+  <data name="Products.PointCustom" xml:space="preserve">
+    <value>Built to your dimensions and process</value>
+  </data>
+  <data name="Products.PointInstall" xml:space="preserve">
+    <value>On-site installation and commissioning</value>
+  </data>
+  <data name="Products.PointSpares" xml:space="preserve">
+    <value>Spare parts and technical service</value>
+  </data>
+  <data name="Products.ManualsText" xml:space="preserve">
+    <value>Read or download our product catalogues and user manuals online.</value>
+  </data>
+  <data name="Products.ManualsLink" xml:space="preserve">
+    <value>Go to manuals</value>
+  </data>
+  <data name="Videos.VideosTitle" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="Videos.GalleryTitle" xml:space="preserve">
+    <value>Photo gallery</value>
+  </data>
 </root>
