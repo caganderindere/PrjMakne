@@ -2,7 +2,11 @@
 @{
     var heroImage = Model.HeroImage ?? Model.FeaturedProducts.FirstOrDefault(p => p.Image is not null)?.Image;
     var processSteps = Enumerable.Range(1, 5);
-    var reasons = Enumerable.Range(1, 6);
+    var reasons = new[] { (1, "layers"), (2, "ruler"), (3, "factory"), (4, "package"), (5, "settings"), (6, "award") };
+    var aboutImage = Model.FeaturedProducts.Skip(1).FirstOrDefault(p => p.Image is not null)?.Image ?? heroImage;
+    var aboutPoints = Enumerable.Range(1, 3);
+    var industries = Enumerable.Range(1, 6);
+    var questions = Enumerable.Range(1, 4);
 }
 @section Head {
     @if (heroImage is not null)
@@ -40,6 +44,32 @@
     </div>
 </section>
 
+<section class="section">
+    <div class="container split">
+        <div>
+            <p class="eyebrow">@L["Nav.About"]</p>
+            <h2>@L["Home.AboutTitle"]</h2>
+            <p class="lead">@L["Home.AboutLead"]</p>
+            <p>@L["Home.AboutText"]</p>
+            <ul class="check-list">
+                @foreach (var point in aboutPoints)
+                {
+                    <li>@ViewHelpers.Icon("circle-check") <span>@L[$"Home.AboutPoint{point}"]</span></li>
+                }
+            </ul>
+            <div class="button-row">
+                <a href="@Url.Localized(SiteRoutes.About)" class="btn btn-outline">@L["Home.LearnMore"]</a>
+            </div>
+        </div>
+        @if (aboutImage is not null)
+        {
+            <div class="about-media">
+                <img src="@ViewHelpers.SmallImage(aboutImage)" srcset="@ViewHelpers.SrcSet(aboutImage)" sizes="(max-width: 900px) 100vw, 50vw" alt="@L["Home.ModelAlt"]" loading="lazy" decoding="async" width="960" height="720" />
+            </div>
+        }
+    </div>
+</section>
+
 @if (Model.Categories.Count > 0)
 {
     <section class="section">
@@ -62,6 +92,37 @@
     </section>
 }
 
+@if (Model.Services.Count > 0)
+{
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">@L["Nav.Services"]</p>
+                    <h2>@L["Home.ServicesTitle"]</h2>
+                    <p>@L["Home.ServicesLead"]</p>
+                </div>
+                <a href="@Url.Localized(SiteRoutes.Services)" class="link-arrow">@L["Home.AllServices"] @ViewHelpers.Icon("arrow-right")</a>
+            </div>
+            <div class="grid grid-4">
+                @foreach (var service in Model.Services)
+                {
+                    <article class="card">
+                        @if (service.Image is not null)
+                        {
+                            <div class="card-media"><img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 640px) 100vw, 25vw" alt="" loading="lazy" decoding="async" width="640" height="480" /></div>
+                        }
+                        <div class="card-body" style="position: relative">
+                            <h3 class="card-title"><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></h3>
+                            <p class="card-text">@service.Summary</p>
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+}
+
 <section class="section section-dark">
     <div class="container">
         <div class="section-head">
@@ -72,7 +133,7 @@
             </div>
             <a href="@Url.Localized(SiteRoutes.Services)" class="btn btn-ghost-light">@L["Home.AllServices"]</a>
         </div>
-        <ol class="process">
+        <ol class="process" aria-label="@L["Home.ProcessTitle"]">
             @foreach (var step in processSteps)
             {
                 <li>
@@ -90,19 +151,35 @@
             <div>
                 <p class="eyebrow">@L["Home.WhyEyebrow"]</p>
                 <h2>@L["Home.WhyTitle"]</h2>
-                <p>@L["Home.AboutLead"]</p>
+                <p>@L["Home.WhyLead"]</p>
             </div>
-            <a href="@Url.Localized(SiteRoutes.About)" class="link-arrow">@L["Home.LearnMore"] @ViewHelpers.Icon("arrow-right")</a>
         </div>
         <div class="grid grid-3">
-            @foreach (var reason in reasons)
+            @foreach (var (reason, icon) in reasons)
             {
                 <div class="feature">
+                    @ViewHelpers.Icon(icon)
                     <h3>@L[$"Home.Why{reason}Title"]</h3>
                     <p>@L[$"Home.Why{reason}Text"]</p>
                 </div>
             }
         </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container split">
+        <div>
+            <p class="eyebrow">@L["Home.IndustriesEyebrow"]</p>
+            <h2>@L["Home.IndustriesTitle"]</h2>
+            <p>@L["Home.IndustriesLead"]</p>
+        </div>
+        <ul class="chips chips-strong">
+            @foreach (var industry in industries)
+            {
+                <li>@L[$"Home.Industry{industry}"]</li>
+            }
+        </ul>
     </div>
 </section>
 
@@ -177,5 +254,25 @@
         </div>
     </section>
 }
+
+<section class="section">
+    <div class="container split">
+        <div>
+            <p class="eyebrow">@L["Home.FaqEyebrow"]</p>
+            <h2>@L["Home.FaqTitle"]</h2>
+            <p>@L["Home.FaqLead"]</p>
+            <a href="@Url.Localized(SiteRoutes.Contact)" class="link-arrow">@L["Home.FaqContact"] @ViewHelpers.Icon("arrow-right")</a>
+        </div>
+        <div class="faq">
+            @foreach (var question in questions)
+            {
+                <details>
+                    <summary>@L[$"Home.Faq{question}Question"] @ViewHelpers.Icon("chevron-down")</summary>
+                    <p>@L[$"Home.Faq{question}Answer"]</p>
+                </details>
+            }
+        </div>
+    </div>
+</section>
 
 <partial name="_CtaSection" />

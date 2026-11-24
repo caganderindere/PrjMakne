@@ -138,13 +138,13 @@
   <data name="About.FacilityTitle" xml:space="preserve"><value>From workshop to site under one roof</value></data>
   <data name="About.FacilityText" xml:space="preserve"><value>We build booths, ovens, conveyors and custom machines in our own workshop and ship them ready for installation.</value></data>
   <data name="About.FacilityCnc" xml:space="preserve"><value>CNC laser cutting</value></data>
-  <data name="About.FacilityPress" xml:space="preserve"><value>CNC bending</value></data>
-  <data name="About.FacilityRubber" xml:space="preserve"><value>Electrostatic powder coating</value></data>
-  <data name="About.FacilityLaser" xml:space="preserve"><value>Engineering</value></data>
-  <data name="About.FacilityPaint" xml:space="preserve"><value>Supply</value></data>
-  <data name="About.FacilityCoating" xml:space="preserve"><value>Logistics</value></data>
-  <data name="About.FacilityCasting" xml:space="preserve"><value>Installation</value></data>
-  <data name="About.FacilityQuality" xml:space="preserve"><value>After-sales service</value></data>
+  <data name="About.FacilityBending" xml:space="preserve"><value>CNC bending</value></data>
+  <data name="About.FacilityPowder" xml:space="preserve"><value>Electrostatic powder coating</value></data>
+  <data name="About.FacilityEngineering" xml:space="preserve"><value>Engineering</value></data>
+  <data name="About.FacilitySupply" xml:space="preserve"><value>Supply</value></data>
+  <data name="About.FacilityLogistics" xml:space="preserve"><value>Logistics</value></data>
+  <data name="About.FacilityInstallation" xml:space="preserve"><value>Installation</value></data>
+  <data name="About.FacilityAfterSales" xml:space="preserve"><value>After-sales service</value></data>
   <data name="About.HrTitle" xml:space="preserve"><value>Expert Team</value></data>
   <data name="About.HrText" xml:space="preserve"><value>Our expert team works with an engineering mindset and puts the customer's need at the centre of every project.</value></data>
   <data name="About.DomesticTitle" xml:space="preserve"><value>Made in Türkiye</value></data>
@@ -411,4 +411,19 @@
   <data name="Videos.GalleryTitle" xml:space="preserve">
     <value>Photo gallery</value>
   </data>
+  <data name="Home.WhyLead" xml:space="preserve"><value>We run your coating line investment from survey to after-sales with one team and a single point of contact.</value></data>
+  <data name="Home.IndustriesLead" xml:space="preserve"><value>Powder-coated metal surfaces are used across many industries. We design each line around part size, volume and the finish expected.</value></data>
+  <data name="Home.FaqEyebrow" xml:space="preserve"><value>FAQ</value></data>
+  <data name="Home.FaqTitle" xml:space="preserve"><value>Frequently asked questions</value></data>
+  <data name="Home.FaqLead" xml:space="preserve"><value>If your question is not answered here, our team is happy to help directly.</value></data>
+  <data name="Home.FaqContact" xml:space="preserve"><value>Contact us</value></data>
+  <data name="Home.Faq1Question" xml:space="preserve"><value>Do you build turnkey powder coating plants?</value></data>
+  <data name="Home.Faq1Answer" xml:space="preserve"><value>Yes. One team handles every stage, from survey and engineering to manufacturing, installation and commissioning.</value></data>
+  <data name="Home.Faq2Question" xml:space="preserve"><value>Can the equipment be adapted to our existing line?</value></data>
+  <data name="Home.Faq2Answer" xml:space="preserve"><value>We engineer booths, ovens and conveyors around your parts and floor space and, where needed, design them to work alongside your current line.</value></data>
+  <data name="Home.Faq3Question" xml:space="preserve"><value>Do you provide spare parts and service?</value></data>
+  <data name="Home.Faq3Answer" xml:space="preserve"><value>We supply spare parts for the equipment we sell and keep your line productive with maintenance and technical service.</value></data>
+  <data name="Home.Faq4Question" xml:space="preserve"><value>What do you need from us for a quote?</value></data>
+  <data name="Home.Faq4Answer" xml:space="preserve"><value>Part dimensions, daily output and the installation area are enough to start. Fill in the quote form and our team will get back to you.</value></data>
+  <data name="About.WhyLead" xml:space="preserve"><value>The main reasons our customers choose to work with us.</value></data>
 </root>

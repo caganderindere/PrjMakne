@@ -138,13 +138,13 @@
   <data name="About.FacilityTitle" xml:space="preserve"><value>İmalattan sahaya tek çatı</value></data>
   <data name="About.FacilityText" xml:space="preserve"><value>Kabin, fırın, konveyör ve özel makinelerimizi kendi atölyemizde imal ediyor, montaja hazır halde sahaya gönderiyoruz.</value></data>
   <data name="About.FacilityCnc" xml:space="preserve"><value>CNC lazer kesim</value></data>
-  <data name="About.FacilityPress" xml:space="preserve"><value>CNC büküm</value></data>
-  <data name="About.FacilityRubber" xml:space="preserve"><value>Elektrostatik toz boyama</value></data>
-  <data name="About.FacilityLaser" xml:space="preserve"><value>Projelendirme</value></data>
-  <data name="About.FacilityPaint" xml:space="preserve"><value>Tedarik</value></data>
-  <data name="About.FacilityCoating" xml:space="preserve"><value>Lojistik</value></data>
-  <data name="About.FacilityCasting" xml:space="preserve"><value>Montaj</value></data>
-  <data name="About.FacilityQuality" xml:space="preserve"><value>Satış sonrası hizmet</value></data>
+  <data name="About.FacilityBending" xml:space="preserve"><value>CNC büküm</value></data>
+  <data name="About.FacilityPowder" xml:space="preserve"><value>Elektrostatik toz boyama</value></data>
+  <data name="About.FacilityEngineering" xml:space="preserve"><value>Projelendirme</value></data>
+  <data name="About.FacilitySupply" xml:space="preserve"><value>Tedarik</value></data>
+  <data name="About.FacilityLogistics" xml:space="preserve"><value>Lojistik</value></data>
+  <data name="About.FacilityInstallation" xml:space="preserve"><value>Montaj</value></data>
+  <data name="About.FacilityAfterSales" xml:space="preserve"><value>Satış sonrası hizmet</value></data>
   <data name="About.HrTitle" xml:space="preserve"><value>Uzman Kadro</value></data>
   <data name="About.HrText" xml:space="preserve"><value>Mühendislik yaklaşımıyla çalışan uzman kadromuz, her projede müşterimizin ihtiyacını merkeze alır.</value></data>
   <data name="About.DomesticTitle" xml:space="preserve"><value>Yerli Üretim</value></data>
@@ -411,4 +411,19 @@
   <data name="Videos.GalleryTitle" xml:space="preserve">
     <value>Fotoğraf galerisi</value>
   </data>
+  <data name="Home.WhyLead" xml:space="preserve"><value>Boya hattı yatırımınızı keşiften satış sonrasına kadar aynı ekiple, tek muhatapla yürütüyoruz.</value></data>
+  <data name="Home.IndustriesLead" xml:space="preserve"><value>Toz boyalı metal yüzeyler pek çok sektörde kullanılır. Hatlarımızı parçanın boyutuna, adedine ve yüzey beklentisine göre tasarlıyoruz.</value></data>
+  <data name="Home.FaqEyebrow" xml:space="preserve"><value>Sık Sorulanlar</value></data>
+  <data name="Home.FaqTitle" xml:space="preserve"><value>Aklınıza takılanlar</value></data>
+  <data name="Home.FaqLead" xml:space="preserve"><value>Yanıtını burada bulamadığınız sorular için ekibimize doğrudan ulaşabilirsiniz.</value></data>
+  <data name="Home.FaqContact" xml:space="preserve"><value>Bize ulaşın</value></data>
+  <data name="Home.Faq1Question" xml:space="preserve"><value>Toz boya tesisini anahtar teslim kuruyor musunuz?</value></data>
+  <data name="Home.Faq1Answer" xml:space="preserve"><value>Evet. Keşif ve projelendirmeden imalat, montaj ve devreye almaya kadar tüm aşamaları aynı ekip yürütür.</value></data>
+  <data name="Home.Faq2Question" xml:space="preserve"><value>Ekipmanlar mevcut hattımıza uyarlanabilir mi?</value></data>
+  <data name="Home.Faq2Answer" xml:space="preserve"><value>Kabin, fırın ve konveyörleri parçanızın ölçüsüne ve yerleşim alanınıza göre projelendiriyor, gerekirse mevcut hatla birlikte çalışacak şekilde tasarlıyoruz.</value></data>
+  <data name="Home.Faq3Question" xml:space="preserve"><value>Yedek parça ve servis desteği veriyor musunuz?</value></data>
+  <data name="Home.Faq3Answer" xml:space="preserve"><value>Sattığımız cihazların yedek parçalarını temin ediyor, bakım ve teknik servis desteğiyle hattınızın verimini koruyoruz.</value></data>
+  <data name="Home.Faq4Question" xml:space="preserve"><value>Teklif almak için hangi bilgiler gerekiyor?</value></data>
+  <data name="Home.Faq4Answer" xml:space="preserve"><value>Boyanacak parçaların ölçüleri, günlük üretim adedi ve kurulum alanı bilgisi yeterlidir. Teklif formunu doldurduğunuzda ekibimiz sizinle iletişime geçer.</value></data>
+  <data name="About.WhyLead" xml:space="preserve"><value>Müşterilerimizin bizi tercih etmesinin başlıca nedenleri.</value></data>
 </root>

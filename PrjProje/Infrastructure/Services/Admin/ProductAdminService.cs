@@ -335,7 +335,7 @@ public sealed class ProductAdminService : IProductAdminService
             translation.ShortDescription = AdminHelpers.Clean(input.ShortDescription);
             translation.Description = AdminHelpers.Clean(_sanitizer.Sanitize(input.Description));
             translation.ApplicationAreas = AdminHelpers.Clean(input.ApplicationAreas);
-            // The SEO title is always generated from the name and codes; clear any value saved before that rule.
+            // The SEO title is always generated from the product name; clear any value saved before that rule.
             translation.MetaTitle = null;
             translation.MetaDescription = AdminHelpers.Clean(input.MetaDescription);
 

@@ -5,7 +5,7 @@ namespace PrjProje.Infrastructure.Services;
 
 /// <summary>
 /// Ranks products against a free-text query in memory: variant codes ("B 400", "YB 500") first, then the product name,
-/// then category and descriptive fields. Text is folded so "kaucuk", "KAUÇUK" and "Kauçuk" match the same way.
+/// then category and descriptive fields. Text is folded so "firin", "FIRIN" and "Fırın" match the same way.
 /// </summary>
 /// <remarks>shortcut: scores every product of a language per search; move to SQL full-text if the catalogue grows past a few thousand products.</remarks>
 public static class ProductSearch
@@ -192,7 +192,7 @@ public static class ProductSearch
             {
                 best = Math.Max(best, weight * 3 / 4);
             }
-            // Turkish suffixes: "takozlar" / "kauçukları" should still find "takoz" / "kauçuk".
+            // Turkish suffixes: "tabancalar" / "fırınları" should still find "tabanca" / "fırın".
             else if (word.Length >= 4 && token.StartsWith(word, StringComparison.Ordinal))
             {
                 best = Math.Max(best, weight / 2);

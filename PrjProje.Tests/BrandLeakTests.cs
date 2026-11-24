@@ -14,14 +14,15 @@ public class BrandLeakTests
     public void No_source_file_mentions_the_reference_project()
     {
         var root = RepoRoot();
-        var forbidden = string.Concat("asp", "rubber");
+        // Built from parts so this file does not match itself: the old brand, its material and its facility claim.
+        string[] forbidden = [string.Concat("asp", "rubber"), string.Concat("kau", "çuk"), string.Concat("25.000 m", "²")];
         var offenders = ScannedFolders
             .Select(folder => Path.Combine(root, folder))
             .Where(Directory.Exists)
             .SelectMany(dir => Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
             .Where(path => !IsBuildOutput(path) && TextExtensions.Contains(Path.GetExtension(path).ToLowerInvariant()))
-            .Where(path => File.ReadAllText(path).Contains(forbidden, StringComparison.OrdinalIgnoreCase)
-                           || Path.GetFileName(path).Contains(forbidden, StringComparison.OrdinalIgnoreCase))
+            .Where(path => forbidden.Any(term => File.ReadAllText(path).Contains(term, StringComparison.OrdinalIgnoreCase)
+                                                 || Path.GetFileName(path).Contains(term, StringComparison.OrdinalIgnoreCase)))
             .Select(path => Path.GetRelativePath(root, path))
             .ToList();
 

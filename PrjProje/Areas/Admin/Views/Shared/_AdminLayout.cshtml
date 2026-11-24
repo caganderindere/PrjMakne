@@ -22,8 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
     <title>@ViewData["Title"] | PRJ Proje Makina Yönetim</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="~/css/tokens.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
@@ -32,7 +31,7 @@
 <body class="admin-body">
     <aside class="admin-sidebar" id="adminSidebar">
         <a class="admin-brand" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
-            <img src="~/images/logo.png" alt="PRJ Proje Makina" width="160" height="35" />
+            <img src="~/images/brand/prj-logo-negative.svg" alt="PRJ Proje Makina" width="59" height="44" /><span>Yönetim<br />Paneli</span>
         </a>
         <nav class="admin-nav">
             @* Shortcuts to the pages used every day; everything else sits in a group below. *@

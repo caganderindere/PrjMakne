@@ -10,7 +10,7 @@ public class ProductCategory : BaseEntity, ITranslatable<ProductCategoryTranslat
     public bool IsActive { get; set; } = true;
 
     /// <summary>
-    /// Restricted categories (e.g. defense) never expose technical specifications on the public site.
+    /// Restricted categories (e.g. confidential customer projects) never expose technical specifications on the public site.
     /// </summary>
     public bool IsRestricted { get; set; }
 
