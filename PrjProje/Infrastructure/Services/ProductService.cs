@@ -132,7 +132,9 @@ public sealed class ProductService : IProductService
                     .Where(ct => ct.LanguageCode == languageCode)
                     .Select(ct => new { ct.Name, ct.Slug })
                     .FirstOrDefault(),
-                Images = t.Product.Images.OrderBy(i => i.SortOrder).Select(i => i.ImagePath).ToList(),
+                Images = t.Product.Images.OrderBy(i => i.SortOrder)
+                    .Select(i => new ProductImageDto(i.ImagePath, languageCode == Languages.Turkish ? i.AltTr : i.AltEn ?? i.AltTr))
+                    .ToList(),
                 Variants = t.Product.Variants.OrderBy(v => v.SortOrder).Select(v => v.Code).ToList(),
                 Specifications = t.Product.Specifications
                     .Where(s => s.LanguageCode == languageCode)

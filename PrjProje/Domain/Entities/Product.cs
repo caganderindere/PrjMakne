@@ -39,6 +39,8 @@ public class ProductImage
     public Product Product { get; set; } = null!;
     public string ImagePath { get; set; } = string.Empty;
     public int SortOrder { get; set; }
+    public string AltTr { get; set; } = string.Empty;
+    public string? AltEn { get; set; }
 }
 
 /// <summary>A model of the product, such as "B 300" or "YB 500". Codes are the same in every language.</summary>

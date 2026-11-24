@@ -118,6 +118,14 @@ public interface IReferenceAdminService
     Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
 }
 
+public interface IVideoAdminService
+{
+    Task<IReadOnlyList<VideoAdminItem>> GetListAsync(CancellationToken cancellationToken = default);
+    Task<VideoEditModel?> GetForEditAsync(int id, CancellationToken cancellationToken = default);
+    Task<ServiceResult<int>> SaveAsync(VideoEditModel model, CancellationToken cancellationToken = default);
+    Task<ServiceResult> DeleteAsync(int id, CancellationToken cancellationToken = default);
+}
+
 public interface ILegacyRedirectAdminService
 {
     Task<IReadOnlyList<LegacyRedirectAdminItem>> GetListAsync(CancellationToken cancellationToken = default);

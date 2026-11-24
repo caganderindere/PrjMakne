@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SkiaSharp;
 
 namespace PrjProje.Infrastructure.Services.Support;
 
@@ -14,14 +13,10 @@ public class FileUploadOptions
 
     public long MaxImageBytes { get; set; } = 8 * 1024 * 1024;
     public long MaxDocumentBytes { get; set; } = 20 * 1024 * 1024;
-    public int MaxImageWidth { get; set; } = 1920;
-    public int SmallImageWidth { get; set; } = 640;
-    public int WebpQuality { get; set; } = 82;
 }
 
 public sealed class FileStorageService : IFileStorageService
 {
-    public const string SmallImageSuffix = "-sm";
     public const string PublicUploadRoot = "uploads";
     public const string PrivateUploadRoot = "App_Data/quote-files";
 
@@ -52,7 +47,7 @@ public sealed class FileStorageService : IFileStorageService
             return ServiceResult<StoredFile>.Failure($"{file.FileName}: Görsel boyutu en fazla {_options.MaxImageBytes / 1024 / 1024} MB olabilir.");
         }
 
-        await using var memory = new MemoryStream();
+await using var memory = new MemoryStream();
         await file.CopyToAsync(memory, cancellationToken);
         var bytes = memory.ToArray();
 
@@ -61,12 +56,11 @@ public sealed class FileStorageService : IFileStorageService
             return ServiceResult<StoredFile>.Failure($"{file.FileName}: Dosya içeriği geçerli bir görsel değil.");
         }
 
-        // Re-encoding through SkiaSharp guarantees the stored file is a clean bitmap:
-        // EXIF/GPS metadata and any appended payloads are discarded.
-        using var original = SKBitmap.Decode(bytes);
-        if (original is null)
+        // Re-encoding guarantees a clean bitmap: EXIF/GPS metadata and any appended payloads are discarded.
+        var set = ImageProcessor.ToWebpSet(new MemoryStream(bytes));
+        if (!set.Succeeded)
         {
-            return ServiceResult<StoredFile>.Failure($"{file.FileName}: Görsel okunamadı.");
+            return ServiceResult<StoredFile>.Failure($"{file.FileName}: {set.Errors[0]}");
         }
 
         var now = DateTime.UtcNow;
@@ -76,13 +70,17 @@ public sealed class FileStorageService : IFileStorageService
 
         var baseName = SlugHelper.Generate(Path.GetFileNameWithoutExtension(file.FileName), 50);
         var fileName = $"{(string.IsNullOrEmpty(baseName) ? "image" : baseName)}-{Guid.NewGuid().ToString("N")[..12]}";
-        var largePath = Path.Combine(physicalFolder, fileName + ".webp");
-        var smallPath = Path.Combine(physicalFolder, fileName + SmallImageSuffix + ".webp");
+        var full = set.Value![^1].Data;
+        await File.WriteAllBytesAsync(Path.Combine(physicalFolder, fileName + ".webp"), full, cancellationToken);
 
-        var largeSize = WriteWebp(original, _options.MaxImageWidth, largePath);
-        WriteWebp(original, _options.SmallImageWidth, smallPath);
+        // Every srcset width gets a file, so srcset never points at a missing one; a small original is not upscaled.
+        foreach (var width in ImageProcessor.SrcSetWidths)
+        {
+            var variant = set.Value!.FirstOrDefault(v => v.Width == width).Data ?? full;
+            await File.WriteAllBytesAsync(Path.Combine(physicalFolder, $"{fileName}-{width}.webp"), variant, cancellationToken);
+        }
 
-        return ServiceResult<StoredFile>.Success(new StoredFile($"/{relativeFolder}/{fileName}.webp", largeSize, file.FileName));
+        return ServiceResult<StoredFile>.Success(new StoredFile($"/{relativeFolder}/{fileName}.webp", full.Length, file.FileName));
     }
 
     public async Task<ServiceResult<StoredFile>> SaveDocumentAsync(IFormFile file, CancellationToken cancellationToken = default)
@@ -171,7 +169,10 @@ public sealed class FileStorageService : IFileStorageService
         TryDelete(fullPath);
         if (fullPath.EndsWith(".webp", StringComparison.OrdinalIgnoreCase))
         {
-            TryDelete(fullPath[..^5] + SmallImageSuffix + ".webp");
+            foreach (var width in ImageProcessor.SrcSetWidths)
+            {
+                TryDelete($"{fullPath[..^5]}-{width}.webp");
+            }
         }
     }
 
@@ -191,30 +192,6 @@ public sealed class FileStorageService : IFileStorageService
 
     private string PrivateRootPath => Path.Combine(_environment.ContentRootPath, PrivateUploadRoot.Replace('/', Path.DirectorySeparatorChar));
 
-    private long WriteWebp(SKBitmap source, int maxWidth, string path)
-    {
-        var bitmap = source;
-        SKBitmap? resized = null;
-        if (source.Width > maxWidth)
-        {
-            var height = (int)Math.Round(source.Height * (maxWidth / (double)source.Width));
-            resized = source.Resize(new SKImageInfo(maxWidth, height), SKFilterQuality.High);
-            bitmap = resized ?? source;
-        }
-
-        try
-        {
-            using var image = SKImage.FromBitmap(bitmap);
-            using var data = image.Encode(SKEncodedImageFormat.Webp, _options.WebpQuality);
-            using var output = File.Create(path);
-            data.SaveTo(output);
-            return data.Size;
-        }
-        finally
-        {
-            resized?.Dispose();
-        }
-    }
 
     private void TryDelete(string path)
     {

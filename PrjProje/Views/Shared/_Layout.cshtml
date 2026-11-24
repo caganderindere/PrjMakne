@@ -16,7 +16,7 @@
     // Sections without content stay out of the menu (an empty blog, no manuals uploaded yet, ...).
     var hasServices = (await ServicePageService.GetServicesAsync(lang)).Count > 0;
     var hasBlog = (await BlogService.GetLatestAsync(lang, 1)).Count > 0;
-    var hasVideos = (await GalleryService.GetGalleryAsync(lang)).Items.Count > 0;
+    var hasVideos = !(await GalleryService.GetGalleryAsync(lang)).IsEmpty;
     var hasManuals = documents.Any(d => d.DocumentType == DocumentType.Catalog);
     var hasCertificates = documents.Any(d => d.DocumentType != DocumentType.Catalog);
 

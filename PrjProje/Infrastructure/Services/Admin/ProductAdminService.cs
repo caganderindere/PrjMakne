@@ -109,7 +109,7 @@ public sealed class ProductAdminService : IProductAdminService
             Image = product.Image,
             ExistingImages = product.Images
                 .OrderBy(i => i.SortOrder)
-                .Select(i => new ProductImageItem { Id = i.Id, ImagePath = i.ImagePath, SortOrder = i.SortOrder })
+                .Select(i => new ProductImageItem { Id = i.Id, ImagePath = i.ImagePath, SortOrder = i.SortOrder, AltTr = i.AltTr, AltEn = i.AltEn })
                 .ToList(),
             Translations = Languages.All.Select(code =>
             {
@@ -207,7 +207,9 @@ public sealed class ProductAdminService : IProductAdminService
         product.IsFeatured = model.IsFeatured;
         product.SortOrder = model.SortOrder;
 
-        SyncImages(product, model.ExistingImages, newGalleryPaths);
+        SyncImages(product, model.ExistingImages, newGalleryPaths,
+            model.Translations.First(t => t.LanguageCode == Languages.Default).Name!.Trim(),
+            AdminHelpers.Clean(model.Translations.FirstOrDefault(t => t.LanguageCode == Languages.English)?.Name));
         SyncVariants(product, model.Variants);
         await SyncTranslationsAsync(product, model.Translations, cancellationToken);
 
@@ -267,7 +269,7 @@ public sealed class ProductAdminService : IProductAdminService
             .ToList();
     }
 
-    private void SyncImages(Product product, IEnumerable<ProductImageItem> existingInputs, IReadOnlyList<string> newPaths)
+    private void SyncImages(Product product, IEnumerable<ProductImageItem> existingInputs, IReadOnlyList<string> newPaths, string defaultAltTr, string? defaultAltEn)
     {
         foreach (var input in existingInputs)
         {
@@ -285,13 +287,16 @@ public sealed class ProductAdminService : IProductAdminService
             else
             {
                 entity.SortOrder = input.SortOrder;
+                entity.AltTr = input.AltTr!.Trim();
+                entity.AltEn = AdminHelpers.Clean(input.AltEn);
             }
         }
 
+        // New photos start with the product name as their description; the editor can refine it after saving.
         var nextOrder = product.Images.Count == 0 ? 0 : product.Images.Max(i => i.SortOrder) + 1;
         foreach (var path in newPaths)
         {
-            product.Images.Add(new ProductImage { ImagePath = path, SortOrder = nextOrder++ });
+            product.Images.Add(new ProductImage { ImagePath = path, SortOrder = nextOrder++, AltTr = defaultAltTr, AltEn = defaultAltEn });
         }
     }
 

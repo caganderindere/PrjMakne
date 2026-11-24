@@ -56,6 +56,51 @@ public class ReferencesController : AdminControllerBase
         ResultRedirect(await _referenceService.DeleteAsync(id, cancellationToken), "Referans silindi.");
 }
 
+public class VideosController : AdminControllerBase
+{
+    private readonly IVideoAdminService _videoService;
+
+    public VideosController(IVideoAdminService videoService)
+    {
+        _videoService = videoService;
+    }
+
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) =>
+        View(await _videoService.GetListAsync(cancellationToken));
+
+    public IActionResult Create() => View("Form", new VideoEditModel());
+
+    public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
+    {
+        var model = await _videoService.GetForEditAsync(id, cancellationToken);
+        return model is null ? NotFound() : View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Save(VideoEditModel model, CancellationToken cancellationToken)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _videoService.SaveAsync(model, cancellationToken);
+            if (result.Succeeded)
+            {
+                Success("Video kaydedildi.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            AddErrors(result);
+        }
+
+        return View("Form", model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken) =>
+        ResultRedirect(await _videoService.DeleteAsync(id, cancellationToken), "Video silindi.");
+}
+
 public class RedirectsController : AdminControllerBase
 {
     private readonly ILegacyRedirectAdminService _redirectService;

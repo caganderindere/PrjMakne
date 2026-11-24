@@ -1,8 +1,10 @@
 @model ProductDetailDto
 @{
+    // The main image comes first; gallery photos carry their own descriptions.
     var images = new List<string>();
-    if (Model.Image is not null) images.Add(Model.Image);
-    images.AddRange(Model.Images.Where(i => i != Model.Image));
+    var alts = new List<string>();
+    if (Model.Image is not null) { images.Add(Model.Image); alts.Add(Model.Name); }
+    foreach (var image in Model.Images.Where(i => i.Path != Model.Image)) { images.Add(image.Path); alts.Add(image.Alt); }
     var quoteUrl = $"{Url.Localized(SiteRoutes.Quote)}?product={Model.Id}";
     ViewData["QuoteHref"] = quoteUrl;
     // Picked up by the layout: product-specific WhatsApp message plus the "ask marketing" bubble.
@@ -18,7 +20,7 @@
                         @if (images.Count > 0)
                         {
                             <a href="@images[0]" data-lightbox="product" data-gallery-main>
-                                <img src="@images[0]" srcset="@ViewHelpers.SrcSet(images[0])" sizes="(max-width: 992px) 100vw, 50vw" alt="@Model.Name" width="960" height="720" fetchpriority="high" />
+                                <img src="@images[0]" srcset="@ViewHelpers.SrcSet(images[0])" sizes="(max-width: 992px) 100vw, 50vw" alt="@alts[0]" width="960" height="720" fetchpriority="high" />
                             </a>
                         }
                         else

@@ -10,14 +10,19 @@ public static class ViewHelpers
     public static IHtmlContent Icon(string name, string? cssClass = null) =>
         new HtmlString($"<svg class=\"icon{(cssClass is null ? null : " " + cssClass)}\" aria-hidden=\"true\" focusable=\"false\"><use href=\"/images/icons.svg#{name}\"></use></svg>");
 
-    /// <summary>Returns the small (mobile/card) variant generated next to every uploaded WebP image.</summary>
-    public static string SmallImage(string path) =>
-        path.StartsWith("/uploads/", StringComparison.OrdinalIgnoreCase) && path.EndsWith(".webp", StringComparison.OrdinalIgnoreCase)
-            ? path[..^5] + FileStorageService.SmallImageSuffix + ".webp"
+    /// <summary>The 480 px variant written next to every uploaded image (cards, thumbnails); other paths unchanged.</summary>
+    public static string SmallImage(string path) => Variant(path, 480);
+
+    /// <summary>srcset for an uploaded image: the 480/960/1600 variants and the full file (at most 2000 px).</summary>
+    public static string SrcSet(string path) =>
+        IsUpload(path)
+            ? string.Join(", ", ImageProcessor.SrcSetWidths.Select(width => $"{Variant(path, width)} {width}w").Append($"{path} {ImageProcessor.MaxEdge}w"))
             : path;
 
-    public static string SrcSet(string path) =>
-        SmallImage(path) == path ? path : $"{SmallImage(path)} 640w, {path} 1920w";
+    private static bool IsUpload(string path) =>
+        path.StartsWith("/uploads/", StringComparison.OrdinalIgnoreCase) && path.EndsWith(".webp", StringComparison.OrdinalIgnoreCase);
+
+    private static string Variant(string path, int width) => IsUpload(path) ? $"{path[..^5]}-{width}.webp" : path;
 
     public static string FileSize(long bytes)
     {

@@ -4,6 +4,33 @@ using Microsoft.AspNetCore.Http;
 
 namespace PrjProje.Application.Models.Admin;
 
+public record VideoAdminItem(int Id, string YouTubeId, string TitleTr, string? TitleEn, int SortOrder, bool IsActive);
+
+public class VideoEditModel
+{
+    public int Id { get; set; }
+
+    [Display(Name = "YouTube bağlantısı")]
+    [Required(ErrorMessage = "{0} zorunludur.")]
+    [StringLength(300, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string Url { get; set; } = string.Empty;
+
+    [Display(Name = "Başlık (TR)")]
+    [Required(ErrorMessage = "{0} zorunludur.")]
+    [StringLength(150, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string TitleTr { get; set; } = string.Empty;
+
+    [Display(Name = "Başlık (EN)")]
+    [StringLength(150, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string? TitleEn { get; set; }
+
+    [Display(Name = "Sıra")]
+    public int SortOrder { get; set; }
+
+    [Display(Name = "Yayında")]
+    public bool IsActive { get; set; } = true;
+}
+
 public record LegacyRedirectAdminItem(int Id, string FromPath, string ToPath, string? ToPathEn, int HitCount);
 
 public class LegacyRedirectEditModel

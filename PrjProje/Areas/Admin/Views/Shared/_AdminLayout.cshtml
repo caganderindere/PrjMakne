@@ -12,7 +12,7 @@
     string Show(string[] names) => names.Contains(controller) ? "show" : string.Empty;
     var catalogPages = new[] { "ProductCategories", "Services" };
     var contentPages = new[] { "ContentTexts", "Blog", "BlogCategories", "Announcements", "References", "Redirects" };
-    var mediaPages = new[] { "Gallery", "GalleryCategories", "Documents" };
+    var mediaPages = new[] { "Gallery", "GalleryCategories", "Videos", "Documents" };
     var systemPages = new[] { "Users", "Settings", "Notifications" };
 }
 <!DOCTYPE html>
@@ -68,6 +68,7 @@
                 <button type="button" class="admin-nav-group" data-bs-toggle="collapse" data-bs-target="#navMedia" aria-controls="navMedia" aria-expanded="@Expanded(mediaPages)">Medya<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                 <div class="collapse @Show(mediaPages)" id="navMedia" data-bs-parent=".admin-nav">
                     <a class="@Active("Gallery")" asp-area="Admin" asp-controller="Gallery" asp-action="Index"><i class="fa-regular fa-images"></i>Galeri</a>
+                    <a class="@Active("Videos")" asp-area="Admin" asp-controller="Videos" asp-action="Index"><i class="fa-brands fa-youtube"></i>Videolar</a>
                     <a class="@Active("GalleryCategories")" asp-area="Admin" asp-controller="GalleryCategories" asp-action="Index"><i class="fa-solid fa-layer-group"></i>Galeri Kategorileri</a>
                     <a class="@Active("Documents")" asp-area="Admin" asp-controller="Documents" asp-action="Index"><i class="fa-solid fa-file-pdf"></i>Belgeler</a>
                 </div>

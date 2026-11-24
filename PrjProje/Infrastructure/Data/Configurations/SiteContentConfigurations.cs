@@ -14,6 +14,17 @@ public class ReferenceConfiguration : IEntityTypeConfiguration<Reference>
     }
 }
 
+public class VideoConfiguration : IEntityTypeConfiguration<Video>
+{
+    public void Configure(EntityTypeBuilder<Video> builder)
+    {
+        builder.Property(x => x.YouTubeId).HasMaxLength(11).IsRequired();
+        builder.Property(x => x.TitleTr).HasMaxLength(150).IsRequired();
+        builder.Property(x => x.TitleEn).HasMaxLength(150);
+        builder.HasIndex(x => new { x.IsActive, x.SortOrder });
+    }
+}
+
 public class LegacyRedirectConfiguration : IEntityTypeConfiguration<LegacyRedirect>
 {
     public void Configure(EntityTypeBuilder<LegacyRedirect> builder)

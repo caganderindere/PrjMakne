@@ -54,9 +54,18 @@ public sealed class GalleryService : IGalleryService
                     i.ImagePath))
                 .ToListAsync(cancellationToken);
 
+            var videos = await _db.Videos
+                .AsNoTracking()
+                .Where(v => v.IsActive)
+                .OrderBy(v => v.SortOrder)
+                .ThenByDescending(v => v.Id)
+                .Select(v => new VideoDto(v.YouTubeId, languageCode == Languages.Turkish ? v.TitleTr : v.TitleEn ?? v.TitleTr))
+                .ToListAsync(cancellationToken);
+
             return new GalleryDto(
                 categories.Select(c => new GalleryCategoryDto(c.Id, c.Name, c.Slug, c.Count)).ToList(),
-                items);
+                items,
+                videos);
         });
 }
 

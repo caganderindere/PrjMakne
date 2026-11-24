@@ -118,12 +118,30 @@ public class ProductTranslationInput
     public string? MetaDescription { get; set; }
 }
 
-public class ProductImageItem
+public class ProductImageItem : IValidatableObject
 {
     public int Id { get; set; }
     public string ImagePath { get; set; } = string.Empty;
     public int SortOrder { get; set; }
     public bool Delete { get; set; }
+
+    /// <summary>Describes the photo for screen readers and image search; required in Turkish, the default language.</summary>
+    [Display(Name = "Alt metin (TR)")]
+    [StringLength(150, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string? AltTr { get; set; }
+
+    [Display(Name = "Alt metin (EN)")]
+    [StringLength(150, ErrorMessage = "{0} en fazla {1} karakter olabilir.")]
+    public string? AltEn { get; set; }
+
+    // An image being deleted needs no description.
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (!Delete && string.IsNullOrWhiteSpace(AltTr))
+        {
+            yield return new ValidationResult("Her ürün görseli için Türkçe alt metin zorunludur.", new[] { nameof(AltTr) });
+        }
+    }
 }
 
 public class ProductEditModel : IValidatableObject

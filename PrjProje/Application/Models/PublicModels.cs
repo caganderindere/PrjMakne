@@ -35,6 +35,8 @@ public class ProductFilter
 
 public record SpecificationDto(string Name, string Value);
 
+public record ProductImageDto(string Path, string Alt);
+
 public class ProductDetailDto
 {
     public int Id { get; init; }
@@ -47,7 +49,7 @@ public class ProductDetailDto
     public IReadOnlyList<string> ApplicationAreas { get; init; } = Array.Empty<string>();
     public string? MetaDescription { get; init; }
     public string? Image { get; init; }
-    public IReadOnlyList<string> Images { get; init; } = Array.Empty<string>();
+    public IReadOnlyList<ProductImageDto> Images { get; init; } = Array.Empty<ProductImageDto>();
     public IReadOnlyList<SpecificationDto> Specifications { get; init; } = Array.Empty<SpecificationDto>();
     public int CategoryId { get; init; }
     public string CategoryName { get; init; } = string.Empty;
@@ -109,7 +111,12 @@ public record GalleryCategoryDto(int Id, string Name, string Slug, int ItemCount
 
 public record GalleryItemDto(int Id, int CategoryId, string Title, string ImagePath);
 
-public record GalleryDto(IReadOnlyList<GalleryCategoryDto> Categories, IReadOnlyList<GalleryItemDto> Items);
+public record GalleryDto(IReadOnlyList<GalleryCategoryDto> Categories, IReadOnlyList<GalleryItemDto> Items, IReadOnlyList<VideoDto> Videos)
+{
+    public bool IsEmpty => Items.Count == 0 && Videos.Count == 0;
+}
+
+public record VideoDto(string YouTubeId, string Title);
 
 public record DocumentDto(
     int Id,

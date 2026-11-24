@@ -83,6 +83,7 @@ public static class DependencyInjection
         services.AddSingleton<RecentLogStore>();
         services.AddSingleton<ILoggerProvider>(provider => provider.GetRequiredService<RecentLogStore>());
         services.AddScoped<IReferenceAdminService, ReferenceAdminService>();
+        services.AddScoped<IVideoAdminService, VideoAdminService>();
         services.AddScoped<ILegacyRedirectAdminService, LegacyRedirectAdminService>();
         services.AddSingleton<ILegacyRedirectLookup, LegacyRedirectLookup>();
         services.AddScoped<IAnnouncementAdminService, AnnouncementAdminService>();

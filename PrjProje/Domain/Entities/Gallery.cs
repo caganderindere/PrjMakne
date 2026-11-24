@@ -37,3 +37,13 @@ public class GalleryItemTranslation : ITranslation
     public string LanguageCode { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
 }
+
+/// <summary>A YouTube video shown on the Videos page next to the photo gallery; only the id is stored, the video stays on YouTube.</summary>
+public class Video : BaseEntity
+{
+    public string YouTubeId { get; set; } = string.Empty;
+    public string TitleTr { get; set; } = string.Empty;
+    public string? TitleEn { get; set; }
+    public int SortOrder { get; set; }
+    public bool IsActive { get; set; } = true;
+}

@@ -71,6 +71,11 @@
                                 <input type="hidden" asp-for="ExistingImages[i].Id" />
                                 <input type="hidden" asp-for="ExistingImages[i].ImagePath" />
                                 <img src="@ViewHelpers.SmallImage(Model.ExistingImages[i].ImagePath)" alt="" loading="lazy" />
+                                <div class="body">
+                                    <input asp-for="ExistingImages[i].AltTr" class="form-control form-control-sm mb-1" placeholder="Alt metin (TR) *" />
+                                    <span asp-validation-for="ExistingImages[i].AltTr" class="text-danger small d-block"></span>
+                                    <input asp-for="ExistingImages[i].AltEn" class="form-control form-control-sm" placeholder="Alt metin (EN)" />
+                                </div>
                                 <div class="body d-flex gap-2 align-items-center">
                                     <input asp-for="ExistingImages[i].SortOrder" class="form-control form-control-sm" style="width:70px" title="Sıra" />
                                     <div class="form-check mb-0">
