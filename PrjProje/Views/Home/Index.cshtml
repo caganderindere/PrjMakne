@@ -1,6 +1,8 @@
 @model HomeViewModel
 @{
     var heroImage = Model.HeroImage ?? Model.FeaturedProducts.FirstOrDefault(p => p.Image is not null)?.Image;
+    // Without an uploaded site photo the hero shows a product cut-out beside the text instead of stretching it full-bleed.
+    var heroIsPhoto = Model.HeroImage is not null;
     var processSteps = Enumerable.Range(1, 5);
     var reasons = new[] { (1, "layers"), (2, "ruler"), (3, "factory"), (4, "package"), (5, "settings"), (6, "award") };
     var aboutImage = Model.FeaturedProducts.Skip(1).FirstOrDefault(p => p.Image is not null)?.Image ?? heroImage;
@@ -15,8 +17,8 @@
     }
 }
 
-<section class="hero">
-    @if (heroImage is not null)
+<section class="hero @(heroIsPhoto ? null : "hero-split")">
+    @if (heroIsPhoto)
     {
         <div class="hero-media">
             @if (Model.HeroVideo is not null)
@@ -29,7 +31,8 @@
             }
         </div>
     }
-    <div class="container hero-inner reveal">
+    <div class="container hero-grid">
+    <div class="hero-inner reveal">
         <p class="eyebrow">@L["Home.HeroEyebrow"]</p>
         <h1>@L["Home.HeroTitle"] <span>@L["Home.HeroTitleAccent"]</span></h1>
         <p class="lead">@L["Home.HeroSubtitle"]</p>
@@ -41,6 +44,13 @@
             <li>@ViewHelpers.Icon("factory") @L["Home.BadgeInHouse"]</li>
             <li>@ViewHelpers.Icon("wrench") @L["Home.BadgeExport"]</li>
         </ul>
+    </div>
+    @if (!heroIsPhoto && heroImage is not null)
+    {
+        <div class="hero-figure">
+            <img src="@ViewHelpers.SmallImage(heroImage)" srcset="@ViewHelpers.SrcSet(heroImage)" sizes="(max-width: 900px) 90vw, 560px" alt="@L["Home.ModelAlt"]" fetchpriority="high" width="960" height="960" />
+        </div>
+    }
     </div>
 </section>
 
