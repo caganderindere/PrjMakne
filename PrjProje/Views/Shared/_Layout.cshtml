@@ -14,11 +14,10 @@
     var documents = await DocumentService.GetPublicDocumentsAsync(lang);
 
     // Sections without content stay out of the menu (an empty blog, no manuals uploaded yet, ...).
-    var hasServices = (await ServicePageService.GetServicesAsync(lang)).Count > 0;
-    var hasBlog = (await BlogService.GetLatestAsync(lang, 1)).Count > 0;
-    var hasVideos = !(await GalleryService.GetGalleryAsync(lang)).IsEmpty;
+    // Menu: Corporate (about, quality), Products (categories), Services, Media (gallery, blog), Contact.
+    var services = await ServicePageService.GetServicesAsync(lang);
+    var hasServices = services.Count > 0;
     var hasManuals = documents.Any(d => d.DocumentType == DocumentType.Catalog);
-    var hasCertificates = documents.Any(d => d.DocumentType != DocumentType.Catalog);
 
     var announcements = await SiteContentService.GetCurrentAnnouncementsAsync(lang);
     var bar = announcements.FirstOrDefault(a => a.DisplayType == AnnouncementDisplay.Bar);
@@ -79,8 +78,16 @@
                     <button type="button" class="icon-button" data-nav-close aria-label="@L["Nav.CloseMenu"]">@ViewHelpers.Icon("x")</button>
                 </div>
                 <ul class="nav-list">
+                    <li class="nav-item has-sub">
+                        <a class="nav-link" href="@Url.Localized(SiteRoutes.About)" aria-current="@Current("About", "Certificates")">@L["Nav.About"]</a>
+                        <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-about" aria-label="@L["Nav.About"]">@ViewHelpers.Icon("chevron-down")</button>
+                        <ul class="sub dropdown" id="sub-about">
+                            <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
+                            <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item has-sub has-mega">
-                        <a class="nav-link" href="@Url.Localized(SiteRoutes.Products)" aria-current="@Current("Products")">@L["Nav.Products"]</a>
+                        <a class="nav-link" href="@Url.Localized(SiteRoutes.Products)" aria-current="@Current("Products", "Manuals")">@L["Nav.Products"]</a>
                         <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-products" aria-label="@L["Nav.Products"]">@ViewHelpers.Icon("chevron-down")</button>
                         <div class="sub mega" id="sub-products">
                             <div class="container mega-inner">
@@ -106,9 +113,9 @@
                                 <aside class="mega-aside">
                                     <p class="mega-aside-title">@L["Nav.TurnkeyTitle"]</p>
                                     <p>@L["Nav.TurnkeyText"]</p>
-                                    @if (hasServices)
+                                    @if (hasManuals)
                                     {
-                                        <a class="link-arrow" href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]@ViewHelpers.Icon("arrow-right")</a>
+                                        <a class="link-arrow" href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]@ViewHelpers.Icon("arrow-right")</a>
                                     }
                                     <a class="btn btn-primary" href="@Url.Localized(SiteRoutes.Products)">@L["Nav.AllProducts"]</a>
                                 </aside>
@@ -117,31 +124,26 @@
                     </li>
                     @if (hasServices)
                     {
-                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Services)" aria-current="@Current("Services")">@L["Nav.Services"]</a></li>
+                        <li class="nav-item has-sub">
+                            <a class="nav-link" href="@Url.Localized(SiteRoutes.Services)" aria-current="@Current("Services")">@L["Nav.Services"]</a>
+                            <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-services" aria-label="@L["Nav.Services"]">@ViewHelpers.Icon("chevron-down")</button>
+                            <ul class="sub dropdown" id="sub-services">
+                                @foreach (var service in services)
+                                {
+                                    <li><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></li>
+                                }
+                                <li class="dropdown-all"><a href="@Url.Localized(SiteRoutes.Services)">@L["Home.AllServices"]</a></li>
+                            </ul>
+                        </li>
                     }
                     <li class="nav-item has-sub">
-                        <a class="nav-link" href="@Url.Localized(SiteRoutes.About)" aria-current="@Current("About", "Certificates")">@L["Nav.About"]</a>
-                        @if (hasCertificates)
-                        {
-                            <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-about" aria-label="@L["Nav.About"]">@ViewHelpers.Icon("chevron-down")</button>
-                            <ul class="sub dropdown" id="sub-about">
-                                <li><a href="@Url.Localized(SiteRoutes.About)">@L["Nav.AboutUs"]</a></li>
-                                <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
-                            </ul>
-                        }
+                        <a class="nav-link" href="@Url.Localized(SiteRoutes.Videos)" aria-current="@Current("Videos", "Blog")">@L["Nav.Media"]</a>
+                        <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-media" aria-label="@L["Nav.Media"]">@ViewHelpers.Icon("chevron-down")</button>
+                        <ul class="sub dropdown" id="sub-media">
+                            <li><a href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Gallery"]</a></li>
+                            <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
+                        </ul>
                     </li>
-                    @if (hasVideos)
-                    {
-                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Videos)" aria-current="@Current("Videos")">@L["Nav.Videos"]</a></li>
-                    }
-                    @if (hasManuals)
-                    {
-                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Manuals)" aria-current="@Current("Manuals")">@L["Nav.Manuals"]</a></li>
-                    }
-                    @if (hasBlog)
-                    {
-                        <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Blog)" aria-current="@Current("Blog")">@L["Nav.Blog"]</a></li>
-                    }
                     <li class="nav-item"><a class="nav-link" href="@Url.Localized(SiteRoutes.Contact)" aria-current="@Current("Contact")">@L["Nav.Contact"]</a></li>
                 </ul>
                 <div class="nav-panel-foot">
@@ -197,22 +199,13 @@
                     {
                         <li><a href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></li>
                     }
-                    @if (hasCertificates)
-                    {
-                        <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
-                    }
-                    @if (hasVideos)
-                    {
-                        <li><a href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Videos"]</a></li>
-                    }
+                    <li><a href="@Url.Localized(SiteRoutes.Certificates)">@L["Nav.Certificates"]</a></li>
+                    <li><a href="@Url.Localized(SiteRoutes.Videos)">@L["Nav.Gallery"]</a></li>
                     @if (hasManuals)
                     {
                         <li><a href="@Url.Localized(SiteRoutes.Manuals)">@L["Nav.Manuals"]</a></li>
                     }
-                    @if (hasBlog)
-                    {
-                        <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
-                    }
+                    <li><a href="@Url.Localized(SiteRoutes.Blog)">@L["Nav.Blog"]</a></li>
                     <li><a href="@Url.Localized(SiteRoutes.Quote)">@L["Common.RequestQuote"]</a></li>
                 </ul>
             </div>

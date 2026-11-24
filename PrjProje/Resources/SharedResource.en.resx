@@ -9,7 +9,7 @@
   <data name="Nav.AboutUs" xml:space="preserve"><value>About Us</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Products</value></data>
   <data name="Nav.Services" xml:space="preserve"><value>Services</value></data>
-  <data name="Nav.Certificates" xml:space="preserve"><value>Certificates</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Quality</value></data>
   <data name="Nav.Videos" xml:space="preserve"><value>Videos</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>Contact</value></data>
@@ -44,7 +44,7 @@
   <data name="Home.ModelAlt" xml:space="preserve"><value>PRJ Proje Makina powder coating equipment</value></data>
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Explore Products</value></data>
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design, build and installation from one source</value></data>
-  <data name="Home.BadgeExport" xml:space="preserve"><value>After-sales spare parts support</value></data>
+  <data name="Home.BadgeSupport" xml:space="preserve"><value>After-sales spare parts support</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Company figures</value></data>
   <data name="Home.AboutTitle" xml:space="preserve"><value>Engineering-led manufacturing in powder coating</value></data>
   <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina works from its Istanbul workshop to build and supply high-quality electrostatic powder coating machinery.</value></data>
@@ -149,8 +149,8 @@
   <data name="About.HrText" xml:space="preserve"><value>Our expert team works with an engineering mindset and puts the customer's need at the centre of every project.</value></data>
   <data name="About.DomesticTitle" xml:space="preserve"><value>Made in Türkiye</value></data>
   <data name="About.DomesticText" xml:space="preserve"><value>We design and build our equipment in our Istanbul workshop and supply spare parts quickly.</value></data>
-  <data name="About.ExportTitle" xml:space="preserve"><value>Global Competitiveness</value></data>
-  <data name="About.ExportText" xml:space="preserve"><value>By offering the most suitable equipment, we aim to strengthen our customers' position in global markets.</value></data>
+  <data name="About.GlobalTitle" xml:space="preserve"><value>Global Competitiveness</value></data>
+  <data name="About.GlobalText" xml:space="preserve"><value>By offering the most suitable equipment, we aim to strengthen our customers' position in global markets.</value></data>
   <data name="Products.MetaTitle" xml:space="preserve"><value>Products</value></data>
   <data name="Products.MetaDescription" xml:space="preserve"><value>Explore our range of powder coating guns, paint booths, curing ovens, conveyors, compressed air equipment and pretreatment lines.</value></data>
   <data name="Products.Title" xml:space="preserve"><value>Our Products</value></data>
@@ -176,13 +176,13 @@
 {1}</value></data>
   <data name="Products.Related" xml:space="preserve"><value>Related Products</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Image {0}</value></data>
-  <data name="Services.MetaTitle" xml:space="preserve"><value>Manufacturing Capabilities</value></data>
+  <data name="Services.MetaTitle" xml:space="preserve"><value>Our Services</value></data>
   <data name="Services.MetaDescription" xml:space="preserve"><value>Our turnkey powder coating plants, contract electrostatic powder coating, CNC laser cutting and CNC bending services.</value></data>
-  <data name="Services.Title" xml:space="preserve"><value>Our Manufacturing Capabilities</value></data>
-  <data name="Services.Lead" xml:space="preserve"><value>Every process, from design to shipment, under one roof.</value></data>
-  <data name="Services.IntroEyebrow" xml:space="preserve"><value>Integrated Production</value></data>
-  <data name="Services.IntroTitle" xml:space="preserve"><value>Full control, consistent quality</value></data>
-  <data name="Services.IntroText" xml:space="preserve"><value>We manage every critical step in-house rather than outsourcing it, ensuring traceability and repeatable quality on every order.</value></data>
+  <data name="Services.Title" xml:space="preserve"><value>Our Services</value></data>
+  <data name="Services.Lead" xml:space="preserve"><value>From turnkey powder coating plants to contract coating, laser cutting and CNC bending.</value></data>
+  <data name="Services.IntroEyebrow" xml:space="preserve"><value>What we do</value></data>
+  <data name="Services.IntroTitle" xml:space="preserve"><value>From plant installation to part manufacturing</value></data>
+  <data name="Services.IntroText" xml:space="preserve"><value>Alongside turnkey powder coating plants, we offer contract work with the laser cutting, CNC bending and powder coating capacity in our workshop.</value></data>
   <data name="Services.FlowDesign" xml:space="preserve"><value>Design</value></data>
   <data name="Services.FlowProduction" xml:space="preserve"><value>Production</value></data>
   <data name="Services.FlowFinishing" xml:space="preserve"><value>Finishing</value></data>
@@ -190,12 +190,12 @@
   <data name="Services.FlowShipping" xml:space="preserve"><value>Shipment</value></data>
   <data name="Services.OtherServices" xml:space="preserve"><value>Other Services</value></data>
   <data name="Services.SpecsTitle" xml:space="preserve"><value>Technical Capacity</value></data>
-  <data name="Services.GalleryTitle" xml:space="preserve"><value>From Our Facility</value></data>
-  <data name="Services.RelatedCategories" xml:space="preserve"><value>Parts We Make With This Process</value></data>
+  <data name="Services.GalleryTitle" xml:space="preserve"><value>Images</value></data>
+  <data name="Services.RelatedCategories" xml:space="preserve"><value>Products related to this service</value></data>
   <data name="Services.CertificatesTitle" xml:space="preserve"><value>Certificates &amp; Approvals</value></data>
   <data name="Services.AllDocuments" xml:space="preserve"><value>All documents</value></data>
   <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Technical details for products in this category are shared on request, specific to your project.</value></data>
-  <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.MetaTitle" xml:space="preserve"><value>Powder Coating Articles and News</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>Company news, technical articles and industry insights from PRJ Proje Makina.</value></data>
   <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.Lead" xml:space="preserve"><value>Company news, technical articles and industry insights.</value></data>
@@ -212,22 +212,22 @@
   <data name="Videos.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
   <data name="Videos.MetaDescription" xml:space="preserve"><value>Videos of PRJ Proje Makina powder coating plants, booths, ovens and conveyor installations.</value></data>
   <data name="Videos.Title" xml:space="preserve"><value>Gallery</value></data>
-  <data name="Videos.Lead" xml:space="preserve"><value>A look inside our facility, production lines and events.</value></data>
+  <data name="Videos.Lead" xml:space="preserve"><value>Photos and videos from our workshop and the plants we have installed.</value></data>
   <data name="Videos.FilterLabel" xml:space="preserve"><value>Gallery categories</value></data>
   <data name="Videos.All" xml:space="preserve"><value>All</value></data>
   <data name="Videos.EmptyTitle" xml:space="preserve"><value>Gallery coming soon</value></data>
-  <data name="Videos.EmptyText" xml:space="preserve"><value>Photos from our facility will be published here soon.</value></data>
+  <data name="Videos.EmptyText" xml:space="preserve"><value>Photos from our workshop and projects will appear here soon.</value></data>
   <data name="Certificates.MetaTitle" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
-  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's quality policy, certificates, quality documents and authorizations.</value></data>
+  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina quality approach: a controlled process from engineering and manufacturing to commissioning and after-sales, plus quality documents.</value></data>
   <data name="Certificates.Title" xml:space="preserve"><value>Quality &amp; Certifications</value></data>
-  <data name="Certificates.Lead" xml:space="preserve"><value>Measurable, traceable and documented quality in every part.</value></data>
+  <data name="Certificates.Lead" xml:space="preserve"><value>A controlled process from design to after-sales.</value></data>
   <data name="Certificates.PolicyEyebrow" xml:space="preserve"><value>Our Quality Policy</value></data>
-  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>Quality is not a department, it is how we work</value></data>
-  <data name="Certificates.PolicyText" xml:space="preserve"><value>Measurement, testing and record-keeping at every stage, from incoming raw material to shipment, allow us to deliver consistent and reliable products.</value></data>
-  <data name="Certificates.Point1" xml:space="preserve"><value>Incoming inspection and material certificates</value></data>
-  <data name="Certificates.Point2" xml:space="preserve"><value>In-process dimensional and visual inspection</value></data>
-  <data name="Certificates.Point3" xml:space="preserve"><value>Hardness, tensile and physical testing</value></data>
-  <data name="Certificates.Point4" xml:space="preserve"><value>Full batch-level traceability</value></data>
+  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>We follow quality from design to commissioning</value></data>
+  <data name="Certificates.PolicyText" xml:space="preserve"><value>Our first principle is that customers are fully satisfied with our machines. That is why we check every stage as we engineer the equipment, build it in our workshop and commission it on site.</value></data>
+  <data name="Certificates.Point1" xml:space="preserve"><value>Materials and components chosen for each project</value></data>
+  <data name="Certificates.Point2" xml:space="preserve"><value>Dimensional and workmanship checks during manufacturing</value></data>
+  <data name="Certificates.Point3" xml:space="preserve"><value>On-site commissioning and running checks</value></data>
+  <data name="Certificates.Point4" xml:space="preserve"><value>After-sales spare parts and service</value></data>
   <data name="Certificates.EmptyTitle" xml:space="preserve"><value>Documents coming soon</value></data>
   <data name="Certificates.EmptyText" xml:space="preserve"><value>Our certificates and quality documents will be published here soon.</value></data>
   <data name="DocumentType.Certificate" xml:space="preserve"><value>Certificates</value></data>
@@ -426,4 +426,6 @@
   <data name="Home.Faq4Question" xml:space="preserve"><value>What do you need from us for a quote?</value></data>
   <data name="Home.Faq4Answer" xml:space="preserve"><value>Part dimensions, daily output and the installation area are enough to start. Fill in the quote form and our team will get back to you.</value></data>
   <data name="About.WhyLead" xml:space="preserve"><value>The main reasons our customers choose to work with us.</value></data>
+  <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
+  <data name="Nav.Gallery" xml:space="preserve"><value>Gallery</value></data>
 </root>

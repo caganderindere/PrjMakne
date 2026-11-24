@@ -9,7 +9,7 @@
   <data name="Nav.AboutUs" xml:space="preserve"><value>Hakkımızda</value></data>
   <data name="Nav.Products" xml:space="preserve"><value>Ürünler</value></data>
   <data name="Nav.Services" xml:space="preserve"><value>Hizmetler</value></data>
-  <data name="Nav.Certificates" xml:space="preserve"><value>Belgeler</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Kalite</value></data>
   <data name="Nav.Videos" xml:space="preserve"><value>Videolar</value></data>
   <data name="Nav.Blog" xml:space="preserve"><value>Blog</value></data>
   <data name="Nav.Contact" xml:space="preserve"><value>İletişim</value></data>
@@ -44,7 +44,7 @@
   <data name="Home.ModelAlt" xml:space="preserve"><value>PRJ Proje Makina toz boya ekipmanı görseli</value></data>
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Ürünleri İncele</value></data>
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarım, imalat ve montaj tek elden</value></data>
-  <data name="Home.BadgeExport" xml:space="preserve"><value>Satış sonrası yedek parça desteği</value></data>
+  <data name="Home.BadgeSupport" xml:space="preserve"><value>Satış sonrası yedek parça desteği</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Firma istatistikleri</value></data>
   <data name="Home.AboutTitle" xml:space="preserve"><value>Toz boya teknolojisinde mühendislik odaklı üretim</value></data>
   <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina, en yüksek kalitede elektrostatik toz boya makinelerini üretmek ve tedarik etmek için İstanbul'daki atölyesinde çalışıyor.</value></data>
@@ -149,8 +149,8 @@
   <data name="About.HrText" xml:space="preserve"><value>Mühendislik yaklaşımıyla çalışan uzman kadromuz, her projede müşterimizin ihtiyacını merkeze alır.</value></data>
   <data name="About.DomesticTitle" xml:space="preserve"><value>Yerli Üretim</value></data>
   <data name="About.DomesticText" xml:space="preserve"><value>Ekipmanlarımızı İstanbul'daki atölyemizde tasarlayıp üretiyor, yedek parçayı hızlı temin ediyoruz.</value></data>
-  <data name="About.ExportTitle" xml:space="preserve"><value>Küresel Rekabet</value></data>
-  <data name="About.ExportText" xml:space="preserve"><value>Müşterilerimize en uygun ekipmanı sunarak küresel pazarda rekabet güçlerini artırmayı hedefliyoruz.</value></data>
+  <data name="About.GlobalTitle" xml:space="preserve"><value>Küresel Rekabet</value></data>
+  <data name="About.GlobalText" xml:space="preserve"><value>Müşterilerimize en uygun ekipmanı sunarak küresel pazarda rekabet güçlerini artırmayı hedefliyoruz.</value></data>
   <data name="Products.MetaTitle" xml:space="preserve"><value>Ürünler</value></data>
   <data name="Products.MetaDescription" xml:space="preserve"><value>Toz boya tabancaları, boya kabinleri, pişirme fırınları, konveyörler, basınçlı hava ve ön işlem hatlarından oluşan ürün yelpazemizi inceleyin.</value></data>
   <data name="Products.Title" xml:space="preserve"><value>Ürünlerimiz</value></data>
@@ -176,13 +176,13 @@
 {1}</value></data>
   <data name="Products.Related" xml:space="preserve"><value>İlgili Ürünler</value></data>
   <data name="Products.ShowImage" xml:space="preserve"><value>Görsel {0}</value></data>
-  <data name="Services.MetaTitle" xml:space="preserve"><value>Üretim Kabiliyetleri</value></data>
+  <data name="Services.MetaTitle" xml:space="preserve"><value>Hizmetlerimiz</value></data>
   <data name="Services.MetaDescription" xml:space="preserve"><value>Anahtar teslim toz boya tesisleri, fason elektrostatik toz boyama, CNC lazer kesim ve CNC büküm hizmetlerimiz.</value></data>
-  <data name="Services.Title" xml:space="preserve"><value>Üretim Kabiliyetlerimiz</value></data>
-  <data name="Services.Lead" xml:space="preserve"><value>Tasarımdan sevkiyata kadar tüm süreçler tek çatı altında.</value></data>
-  <data name="Services.IntroEyebrow" xml:space="preserve"><value>Entegre Üretim</value></data>
-  <data name="Services.IntroTitle" xml:space="preserve"><value>Kontrol bizde, kalite sizde</value></data>
-  <data name="Services.IntroText" xml:space="preserve"><value>Kritik üretim adımlarını dış kaynağa bırakmadan yönetiyor, her siparişte izlenebilirlik ve tekrarlanabilir kalite sağlıyoruz.</value></data>
+  <data name="Services.Title" xml:space="preserve"><value>Hizmetlerimiz</value></data>
+  <data name="Services.Lead" xml:space="preserve"><value>Anahtar teslim toz boya tesislerinden fason boyamaya, lazer kesimden CNC büküme.</value></data>
+  <data name="Services.IntroEyebrow" xml:space="preserve"><value>Neler yapıyoruz</value></data>
+  <data name="Services.IntroTitle" xml:space="preserve"><value>Tesis kurulumundan parça imalatına</value></data>
+  <data name="Services.IntroText" xml:space="preserve"><value>Anahtar teslim toz boya tesislerinin yanında, atölyemizdeki lazer kesim, CNC büküm ve toz boyama imkânlarıyla fason hizmet veriyoruz.</value></data>
   <data name="Services.FlowDesign" xml:space="preserve"><value>Tasarım</value></data>
   <data name="Services.FlowProduction" xml:space="preserve"><value>Üretim</value></data>
   <data name="Services.FlowFinishing" xml:space="preserve"><value>Yüzey İşlem</value></data>
@@ -190,12 +190,12 @@
   <data name="Services.FlowShipping" xml:space="preserve"><value>Sevkiyat</value></data>
   <data name="Services.OtherServices" xml:space="preserve"><value>Diğer Hizmetler</value></data>
   <data name="Services.SpecsTitle" xml:space="preserve"><value>Teknik Kapasite</value></data>
-  <data name="Services.GalleryTitle" xml:space="preserve"><value>Tesisten Görüntüler</value></data>
-  <data name="Services.RelatedCategories" xml:space="preserve"><value>Bu Süreçle Ürettiğimiz Parçalar</value></data>
+  <data name="Services.GalleryTitle" xml:space="preserve"><value>Görseller</value></data>
+  <data name="Services.RelatedCategories" xml:space="preserve"><value>Bu hizmetle ilgili ürünler</value></data>
   <data name="Services.CertificatesTitle" xml:space="preserve"><value>Sertifikalar ve Belgeler</value></data>
   <data name="Services.AllDocuments" xml:space="preserve"><value>Tüm belgeler</value></data>
   <data name="Products.ConfidentialityNotice" xml:space="preserve"><value>Bu kategorideki ürünlerin teknik detayları talep üzerine, projeye özel olarak paylaşılır.</value></data>
-  <data name="Blog.MetaTitle" xml:space="preserve"><value>Blog</value></data>
+  <data name="Blog.MetaTitle" xml:space="preserve"><value>Toz Boya Teknik Yazılar ve Haberler</value></data>
   <data name="Blog.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina'nın kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
   <data name="Blog.Title" xml:space="preserve"><value>Blog</value></data>
   <data name="Blog.Lead" xml:space="preserve"><value>Kurumsal haberler, teknik makaleler ve sektörel gelişmeler.</value></data>
@@ -212,22 +212,22 @@
   <data name="Videos.MetaTitle" xml:space="preserve"><value>Galeri</value></data>
   <data name="Videos.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina toz boya tesisleri, kabin, fırın ve konveyör uygulamalarından videolar.</value></data>
   <data name="Videos.Title" xml:space="preserve"><value>Galeri</value></data>
-  <data name="Videos.Lead" xml:space="preserve"><value>Tesisimizden, üretim hatlarımızdan ve etkinliklerimizden kareler.</value></data>
+  <data name="Videos.Lead" xml:space="preserve"><value>Atölyemizden ve kurduğumuz tesislerden fotoğraf ve videolar.</value></data>
   <data name="Videos.FilterLabel" xml:space="preserve"><value>Galeri kategorileri</value></data>
   <data name="Videos.All" xml:space="preserve"><value>Tümü</value></data>
   <data name="Videos.EmptyTitle" xml:space="preserve"><value>Galeri hazırlanıyor</value></data>
-  <data name="Videos.EmptyText" xml:space="preserve"><value>Yakında tesisimizden fotoğraflar burada yer alacak.</value></data>
+  <data name="Videos.EmptyText" xml:space="preserve"><value>Yakında atölyemizden ve projelerimizden fotoğraflar burada yer alacak.</value></data>
   <data name="Certificates.MetaTitle" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
-  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina kalite politikası, sertifikaları, kalite belgeleri ve yetki belgeleri.</value></data>
+  <data name="Certificates.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina kalite yaklaşımı: projelendirmeden imalata, devreye almadan satış sonrasına kontrollü süreç ve kalite belgeleri.</value></data>
   <data name="Certificates.Title" xml:space="preserve"><value>Kalite ve Sertifikalar</value></data>
-  <data name="Certificates.Lead" xml:space="preserve"><value>Her parçada ölçülebilir, izlenebilir ve belgelenmiş kalite.</value></data>
+  <data name="Certificates.Lead" xml:space="preserve"><value>Tasarımdan satış sonrasına kadar kontrollü bir süreç.</value></data>
   <data name="Certificates.PolicyEyebrow" xml:space="preserve"><value>Kalite Politikamız</value></data>
-  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>Kalite bir departman değil, üretim kültürümüzdür</value></data>
-  <data name="Certificates.PolicyText" xml:space="preserve"><value>Hammadde girişinden sevkiyata kadar her aşamada ölçüm, test ve kayıt süreçlerimizle müşterilerimize tutarlı ve güvenilir ürünler sunuyoruz.</value></data>
-  <data name="Certificates.Point1" xml:space="preserve"><value>Hammadde giriş kontrolü ve malzeme sertifikaları</value></data>
-  <data name="Certificates.Point2" xml:space="preserve"><value>Proses içi boyutsal ve görsel kontroller</value></data>
-  <data name="Certificates.Point3" xml:space="preserve"><value>Sertlik, çekme ve fiziksel testler</value></data>
-  <data name="Certificates.Point4" xml:space="preserve"><value>Parti bazında tam izlenebilirlik</value></data>
+  <data name="Certificates.PolicyTitle" xml:space="preserve"><value>Kaliteyi tasarımdan devreye almaya kadar izliyoruz</value></data>
+  <data name="Certificates.PolicyText" xml:space="preserve"><value>Müşterimizin makinelerimizden tam memnun kalması ilk prensibimizdir. Bu yüzden ekipmanı projelendirirken, atölyede üretirken ve sahada devreye alırken her aşamayı kontrol ederek ilerliyoruz.</value></data>
+  <data name="Certificates.Point1" xml:space="preserve"><value>Projeye uygun malzeme ve bileşen seçimi</value></data>
+  <data name="Certificates.Point2" xml:space="preserve"><value>İmalat sırasında ölçü ve işçilik kontrolleri</value></data>
+  <data name="Certificates.Point3" xml:space="preserve"><value>Sahada devreye alma ve çalışma kontrolü</value></data>
+  <data name="Certificates.Point4" xml:space="preserve"><value>Satış sonrası yedek parça ve servis desteği</value></data>
   <data name="Certificates.EmptyTitle" xml:space="preserve"><value>Belgeler yakında</value></data>
   <data name="Certificates.EmptyText" xml:space="preserve"><value>Sertifika ve kalite belgelerimiz yakında burada yayınlanacaktır.</value></data>
   <data name="DocumentType.Certificate" xml:space="preserve"><value>Sertifikalar</value></data>
@@ -426,4 +426,6 @@
   <data name="Home.Faq4Question" xml:space="preserve"><value>Teklif almak için hangi bilgiler gerekiyor?</value></data>
   <data name="Home.Faq4Answer" xml:space="preserve"><value>Boyanacak parçaların ölçüleri, günlük üretim adedi ve kurulum alanı bilgisi yeterlidir. Teklif formunu doldurduğunuzda ekibimiz sizinle iletişime geçer.</value></data>
   <data name="About.WhyLead" xml:space="preserve"><value>Müşterilerimizin bizi tercih etmesinin başlıca nedenleri.</value></data>
+  <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
+  <data name="Nav.Gallery" xml:space="preserve"><value>Görseller</value></data>
 </root>

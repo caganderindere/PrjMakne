@@ -1,4 +1,4 @@
-using PrjProje.Application.Common;
+﻿using PrjProje.Application.Common;
 using PrjProje.Application.Interfaces;
 using PrjProje.Domain.Entities;
 using PrjProje.Infrastructure.Data.Seed;
@@ -32,8 +32,9 @@ public static class DbSeeder
         await SeedRolesAndAdminAsync(provider, logger);
         await SeedSettingsAsync(db);
         await SeedGalleryCategoriesAsync(db);
-        await CatalogSeeder.SeedAsync(db, provider.GetRequiredService<IFileStorageService>(),
-            Path.Combine(AppContext.BaseDirectory, "SeedContent"), logger);
+        var seedRoot = Path.Combine(AppContext.BaseDirectory, "SeedContent");
+        await CatalogSeeder.SeedAsync(db, provider.GetRequiredService<IFileStorageService>(), seedRoot, logger);
+        await BlogSeeder.SeedAsync(db, seedRoot);
 
         provider.GetRequiredService<IContentCache>().Invalidate();
     }

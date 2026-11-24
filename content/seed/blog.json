@@ -1,0 +1,59 @@
+{
+  "Category": { "Tr": { "Name": "Teknik Bilgi", "Slug": "teknik-bilgi" }, "En": { "Name": "Technical Notes", "Slug": "technical-notes" } },
+  "Posts": [
+    {
+      "CoverProduct": "manuel-corona-cihaz-seti",
+      "PublishedDate": "2026-11-10",
+      "Tr": {
+        "Title": "Elektrostatik toz boya nasıl çalışır?",
+        "Slug": "elektrostatik-toz-boya-nasil-calisir",
+        "Summary": "Toz boyanın parçaya nasıl tutunduğunu, fırında nasıl kürlendiğini ve sıvı boyaya göre farklarını sade bir dille anlatıyoruz.",
+        "MetaDescription": "Elektrostatik toz boyanın çalışma prensibi: tabancada yükleme, topraklanmış parçaya tutunma, fırında kürleme ve sıvı boyaya göre farkları.",
+        "Content": "<p>Elektrostatik toz boyama, solvent içermeyen ince toz boyanın elektrik yüküyle metal yüzeye tutturulup fırında eritilerek kaplama haline getirilmesidir. Süreç üç temel adımdan oluşur: yüzey hazırlığı, uygulama ve kürleme.</p><h2>Uygulama: yük ve topraklama</h2><p>Toz boya tabancası, basınçlı havayla taşınan toz parçacıklarını elektrik yüküyle yükler. Boyanacak parça askıya asılarak topraklanır. Zıt yükler birbirini çektiği için toz parçanın yüzeyine yönelir ve ince bir tabaka halinde tutunur. Kabin içinde parçaya tutunmayan toz, filtre veya siklon sistemiyle toplanarak yeniden kullanılabilir.</p><h2>Kürleme: fırında kaplamaya dönüşüm</h2><p>Tozla kaplanan parça pişirme fırınına alınır. Toz, toz boya üreticisinin belirttiği sıcaklık ve sürede erir, yayılır ve kimyasal olarak sertleşir. Bu aşamada fırın sıcaklığı parçanın her noktasında eşit olmalıdır; aksi halde parlaklık ve dayanım farkları oluşur.</p><h2>Sıvı boyaya göre farkları</h2><ul><li>Solvent içermediği için uçucu organik bileşik salımı çok düşüktür.</li><li>Tutunmayan toz geri kazanılabildiği için malzeme kaybı azdır.</li><li>Tek katta kalın ve darbeye dayanıklı bir film elde edilebilir.</li></ul><p>Hattınız için doğru tabanca, kabin ve fırın kombinasyonunu birlikte belirlemek isterseniz teklif formu üzerinden bize ulaşabilirsiniz.</p>"
+      },
+      "En": {
+        "Title": "How does electrostatic powder coating work?",
+        "Slug": "how-electrostatic-powder-coating-works",
+        "Summary": "A plain-language look at how powder sticks to the part, how it cures in the oven and how it differs from liquid paint.",
+        "MetaDescription": "How electrostatic powder coating works: charging in the gun, adhesion to the grounded part, curing in the oven and how it differs from liquid paint.",
+        "Content": "<p>Electrostatic powder coating uses an electric charge to hold a fine, solvent-free powder on a metal surface, which is then melted in an oven to form a finish. The process has three stages: surface preparation, application and curing.</p><h2>Application: charge and ground</h2><p>The powder gun charges powder particles carried by compressed air. The part hangs on a grounded hook. Opposite charges attract, so the powder moves towards the part and settles as an even layer. Powder that misses the part is collected in the booth by filters or a cyclone and can be reused.</p><h2>Curing: from powder to finish</h2><p>The coated part moves into the curing oven. The powder melts, flows and hardens chemically at the temperature and time specified by the powder manufacturer. Oven temperature must be even across the whole part, otherwise gloss and durability will vary.</p><h2>How it differs from liquid paint</h2><ul><li>With no solvents, volatile organic emissions are very low.</li><li>Overspray can be recovered, so material loss is small.</li><li>A thick, impact-resistant film can be built in a single coat.</li></ul><p>If you would like to choose the right gun, booth and oven combination for your line, send us a request through the quote form.</p>"
+      }
+    },
+    {
+      "CoverProduct": "manuel-tribo-cihaz-seti",
+      "PublishedDate": "2026-11-14",
+      "Tr": {
+        "Title": "Corona mı tribo mu? Doğru toz boya tabancasını seçmek",
+        "Slug": "corona-mi-tribo-mu-toz-boya-tabancasi-secimi",
+        "Summary": "İki yükleme yönteminin farkını, hangi parçalarda öne çıktıklarını ve seçim yaparken sormanız gereken soruları derledik.",
+        "MetaDescription": "Corona ve tribo toz boya tabancaları arasındaki fark, hangi parça ve boya türünde hangisinin uygun olduğu ve seçimde dikkat edilecek noktalar.",
+        "Content": "<p>Toz boya tabancaları tozu iki farklı yöntemle yükler: corona ve tribo. İkisi de aynı amaca hizmet eder ama farklı parçalarda farklı sonuç verir.</p><h2>Corona tabanca</h2><p>Corona tabancalar, ucundaki elektrot ile yüksek gerilim üretir ve tozu bu alandan geçirerek yükler. Güçlü bir elektrik alanı oluştuğu için düz ve geniş yüzeylerde hızlı ve verimli kaplama sağlar. Yaygın kullanılan toz boyaların çoğuyla uyumludur.</p><h2>Tribo tabanca</h2><p>Tribo tabancalarda toz, tabanca içindeki özel bir yüzeye sürtünerek yüklenir. Güçlü bir dış elektrik alanı oluşmadığı için köşe, iç bükey ve girintili bölgelere toz daha rahat ulaşır. Buna karşılık sürtünmeyle yüklenmeye uygun toz boya kullanılması gerekir.</p><h2>Seçim yaparken sorulacak sorular</h2><ul><li>Parçalarınız düz ve geniş mi, yoksa derin girintili mi?</li><li>Kullandığınız toz boya hangi yükleme yöntemine uygun?</li><li>Hat manuel mi çalışacak, yoksa otomatik tabancalar mı kullanılacak?</li></ul><p>Bu soruların cevabına göre manuel veya otomatik corona ve tribo setlerinden uygun olanı birlikte belirleyebiliriz.</p>"
+      },
+      "En": {
+        "Title": "Corona or tribo? Choosing the right powder gun",
+        "Slug": "corona-or-tribo-choosing-a-powder-gun",
+        "Summary": "The difference between the two charging methods, where each one performs best and what to ask before you choose.",
+        "MetaDescription": "Corona vs tribo powder coating guns: how each charges the powder, which parts and powders suit each method and what to check before choosing.",
+        "Content": "<p>Powder guns charge the powder in one of two ways: corona or tribo. Both do the same job but give different results on different parts.</p><h2>Corona guns</h2><p>A corona gun creates a high voltage at an electrode in its tip and charges the powder as it passes through that field. The strong electric field gives fast, efficient coverage on flat and wide surfaces, and it works with most common powders.</p><h2>Tribo guns</h2><p>In a tribo gun the powder is charged by friction against a special surface inside the gun. With no strong external field, powder reaches corners, recesses and deep sections more easily. The trade-off is that the powder must be suitable for friction charging.</p><h2>Questions to ask before choosing</h2><ul><li>Are your parts flat and wide, or deeply recessed?</li><li>Which charging method does your powder support?</li><li>Will the line run manually or with automatic guns?</li></ul><p>Based on the answers, we can choose the right manual or automatic corona or tribo set with you.</p>"
+      }
+    },
+    {
+      "CoverProduct": "tunel-tipi-spreyli-temizlik",
+      "PublishedDate": "2026-11-18",
+      "Tr": {
+        "Title": "Toz boya hattında ön işlem neden bu kadar önemli?",
+        "Slug": "toz-boya-hattinda-on-islem-neden-onemli",
+        "Summary": "Kaplamanın ömrünü belirleyen adım çoğu zaman boyanın kendisi değil, parçanın boyamadan önce nasıl temizlendiğidir.",
+        "MetaDescription": "Toz boya öncesi ön işlemin önemi: yağ alma, durulama ve dönüşüm kaplaması adımları, daldırma ve spreyli hat seçenekleri.",
+        "Content": "<p>Toz boyanın yüzeye iyi tutunması ve uzun yıllar korozyona dayanması büyük ölçüde boyamadan önceki yüzey hazırlığına bağlıdır. Yağ, kir veya oksit kalıntısı olan bir yüzeyde en kaliteli toz boya bile kalkabilir.</p><h2>Ön işlemin temel adımları</h2><ul><li><strong>Yağ alma:</strong> İmalattan gelen yağ ve kirler kimyasal banyo veya spreyle uzaklaştırılır.</li><li><strong>Durulama:</strong> Kimyasal kalıntılar bir sonraki adıma taşınmadan temizlenir.</li><li><strong>Dönüşüm kaplaması:</strong> Yüzeyde boyanın tutunmasını ve korozyon direncini artıran ince bir tabaka oluşturulur.</li><li><strong>Kurutma:</strong> Parça boyama kabinine tamamen kuru girmelidir.</li></ul><h2>Daldırma mı, spreyli tünel mi?</h2><p>Düşük ve orta kapasitede veya parça çeşitliliği fazla olduğunda daldırma tipi ön işlem havuzları esnek bir çözümdür. Konveyörlü ve sürekli çalışan hatlarda ise spreyli tünel tipi temizlik sistemleri parçaları hattın akışını durdurmadan işler.</p><p>Hangi sistemin size uygun olduğunu parçanızın malzemesine, boyutuna ve üretim adedine göre birlikte belirleyebiliriz.</p>"
+      },
+      "En": {
+        "Title": "Why pre-treatment matters in a powder coating line",
+        "Slug": "why-pre-treatment-matters-in-powder-coating",
+        "Summary": "What decides how long a coating lasts is often not the powder itself but how the part was cleaned before coating.",
+        "MetaDescription": "Why pre-treatment matters before powder coating: degreasing, rinsing and conversion coating steps, and immersion versus spray tunnel lines.",
+        "Content": "<p>How well powder adheres and how long it resists corrosion depend largely on surface preparation. On a surface with oil, dirt or oxide, even the best powder can peel.</p><h2>The main pre-treatment steps</h2><ul><li><strong>Degreasing:</strong> oil and dirt from manufacturing are removed by a chemical bath or spray.</li><li><strong>Rinsing:</strong> chemical residue is cleaned off before the next stage.</li><li><strong>Conversion coating:</strong> a thin layer improves adhesion and corrosion resistance.</li><li><strong>Drying:</strong> the part must enter the booth completely dry.</li></ul><h2>Immersion or spray tunnel?</h2><p>For low to medium volumes or a wide mix of parts, immersion tanks are a flexible choice. On conveyorised lines running continuously, spray tunnel washers treat parts without stopping the flow.</p><p>We can choose the right system with you based on your part material, size and output.</p>"
+      }
+    }
+  ]
+}

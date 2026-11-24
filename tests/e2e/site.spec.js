@@ -20,6 +20,7 @@ const pages = [
     ["/tr/kullanim-kilavuzlari", "/en/user-manuals"],
     ["/tr/teklif-al", "/en/request-a-quote"],
     ["/tr/iletisim", "/en/contact"],
+    ["/tr/blog", "/en/blog"],
     ["/tr/kvkk", "/en/privacy-policy"],
     ["/tr/cerez-politikasi", "/en/cookie-policy"],
 ];
@@ -102,10 +103,23 @@ test("no horizontal scrolling at 390px", async ({ page }) => {
     }
 });
 
-test("blog stays out of the menu and sitemap while there are no posts", async ({ page, request }) => {
+test("menu groups pages under corporate, products, services, media and contact", async ({ page, request }) => {
     await page.goto("/tr");
-    await expect(page.locator('.main-nav a[href="/tr/blog"]')).toHaveCount(0);
+    const top = await page.locator(".main-nav .nav-list > li > .nav-link").allTextContents();
+    expect(top.map((t) => t.trim())).toEqual(["Kurumsal", "Ürünler", "Hizmetler", "Medya", "İletişim"]);
+    await expect(page.locator('#sub-about a[href="/tr/belgeler"]')).toHaveCount(1);
+    await expect(page.locator('#sub-media a[href="/tr/blog"]')).toHaveCount(1);
+    await expect(page.locator('#sub-media a[href="/tr/videolar"]')).toHaveCount(1);
     const sitemap = await (await request.get("/sitemap.xml")).text();
-    expect(sitemap).not.toContain("/tr/blog");
+    expect(sitemap).toContain("/tr/blog");
     expect(sitemap).toContain(`/tr/urunler/${product.Tr.Slug}`);
+});
+
+test("seeded blog posts are listed and open", async ({ page }) => {
+    await page.goto("/tr/blog");
+    const links = page.locator(".card-title a");
+    expect(await links.count()).toBeGreaterThanOrEqual(3);
+    await links.first().click();
+    await expect(page.locator("h1")).toHaveCount(1);
+    await expect(page.locator(".prose h2").first()).toBeVisible();
 });
