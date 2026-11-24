@@ -1,0 +1,217 @@
+[
+  {
+    "From": "/belgeler",
+    "ToTr": "/tr/belgeler",
+    "ToEn": "/en/certificates"
+  },
+  {
+    "From": "/category/prestij-teknik-makine",
+    "ToTr": "/tr",
+    "ToEn": "/en"
+  },
+  {
+    "From": "/category/uncategorized",
+    "ToTr": "/tr",
+    "ToEn": "/en"
+  },
+  {
+    "From": "/cihazlar-2",
+    "ToTr": "/tr/urunler",
+    "ToEn": "/en/products"
+  },
+  {
+    "From": "/hizmetler",
+    "ToTr": "/tr/hizmetler",
+    "ToEn": "/en/services"
+  },
+  {
+    "From": "/iletisim",
+    "ToTr": "/tr/iletisim",
+    "ToEn": "/en/contact"
+  },
+  {
+    "From": "/kullanim-kilavuzu",
+    "ToTr": "/tr/kullanim-kilavuzlari",
+    "ToEn": "/en/user-manuals"
+  },
+  {
+    "From": "/kurumsal",
+    "ToTr": "/tr/kurumsal",
+    "ToEn": "/en/about-us"
+  },
+  {
+    "From": "/urun-kategori/basincli-hava-sistemleri",
+    "ToTr": "/tr/urunler/kategori/basincli-hava-sistemleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/boya-pisirme-firinlari",
+    "ToTr": "/tr/urunler/kategori/boya-pisirme-firinlari",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/boya-uygulama-kabinleri",
+    "ToTr": "/tr/urunler/kategori/boya-uygulama-kabinleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/kimyasal-yuzey-temizlik-hatlari",
+    "ToTr": "/tr/urunler/kategori/kimyasal-yuzey-temizlik-hatlari",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/konveyor-sistemleri",
+    "ToTr": "/tr/urunler/kategori/konveyor-sistemleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/ozel-imalat-urunler",
+    "ToTr": "/tr/urunler/kategori/ozel-imalat-urunler",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/siglonlar",
+    "ToTr": "/tr/urunler/kategori/siglonlar",
+    "ToEn": null
+  },
+  {
+    "From": "/urun-kategori/toz-boya-cihazlari",
+    "ToTr": "/tr/urunler/kategori/toz-boya-cihazlari",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/aluminyum-termik-firinlari",
+    "ToTr": "/tr/urunler/aluminyum-termik-firinlari",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/bara-aktarma-sistemleri",
+    "ToTr": "/tr/urunler/bara-aktarma-sistemleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/basincli-hava-filtreleri",
+    "ToTr": "/tr/urunler/basincli-hava-filtreleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/basincli-hava-kurutuculari",
+    "ToTr": "/tr/urunler/basincli-hava-kurutuculari",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/daldirma-banyo-tipi-temizlik",
+    "ToTr": "/tr/urunler/daldirma-banyo-tipi-temizlik",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/filtreli-manuel-kabin",
+    "ToTr": "/tr/urunler/filtreli-manuel-kabin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/filtreli-otomatik-kabin",
+    "ToTr": "/tr/urunler/filtreli-otomatik-kabin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/kablo-pudralama-makinasi",
+    "ToTr": "/tr/urunler/kablo-pudralama-makinasi",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/kardan-konveyor-sistemleri",
+    "ToTr": "/tr/urunler/kardan-konveyor-sistemleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/kuru-tip-yas-boya-kabini",
+    "ToTr": "/tr/urunler/kuru-tip-yas-boya-kabini",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/kutu-tipi-firin",
+    "ToTr": "/tr/urunler/kutu-tipi-firin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/manuel-corona-cihaz-seti",
+    "ToTr": "/tr/urunler/manuel-corona-cihaz-seti",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/manuel-tribo-cihaz-seti",
+    "ToTr": "/tr/urunler/manuel-tribo-cihaz-seti",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/otomatik-corona-cihaz-seti",
+    "ToTr": "/tr/urunler/otomatik-corona-cihaz-seti",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/otomatik-tribo-cihaz-seti",
+    "ToTr": "/tr/urunler/otomatik-tribo-cihaz-seti",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/siglonlar",
+    "ToTr": "/tr/urunler/siglonlar",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/siklon-manuel-kabin",
+    "ToTr": "/tr/urunler/siklon-manuel-kabin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/siklon-otomatik-kabin",
+    "ToTr": "/tr/urunler/siklon-otomatik-kabin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/su-perdeli-yas-boya-kabini",
+    "ToTr": "/tr/urunler/su-perdeli-yas-boya-kabini",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/toz-emaye-kabini",
+    "ToTr": "/tr/urunler/toz-emaye-kabini",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/tunel-tipi-otomatik-firin",
+    "ToTr": "/tr/urunler/tunel-tipi-otomatik-firin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/tunel-tipi-spreyli-temizlik",
+    "ToTr": "/tr/urunler/tunel-tipi-spreyli-temizlik",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/u-tipi-otomatik-firin",
+    "ToTr": "/tr/urunler/u-tipi-otomatik-firin",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/vernik-kurutma-firinlari",
+    "ToTr": "/tr/urunler/vernik-kurutma-firinlari",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/webb-tipi-konveyor-sistemleri",
+    "ToTr": "/tr/urunler/webb-tipi-konveyor-sistemleri",
+    "ToEn": null
+  },
+  {
+    "From": "/urunler/yari-otomatik-paletli-firin",
+    "ToTr": "/tr/urunler/yari-otomatik-paletli-firin",
+    "ToEn": null
+  },
+  {
+    "From": "/videolar",
+    "ToTr": "/tr/videolar",
+    "ToEn": "/en/videos"
+  }
+]
