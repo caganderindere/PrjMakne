@@ -141,7 +141,12 @@ else
 
 app.UseStatusCodePagesWithReExecute("/error/{0}");
 app.UseHttpsRedirection();
-app.UseResponseCompression();
+// Not in Development: Visual Studio Browser Link appends its script as plain text to the already-compressed body,
+// which breaks some pages with ERR_CONTENT_DECODING_FAILED.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseResponseCompression();
+}
 app.UseSecurityHeaders(app.Environment.IsDevelopment());
 app.UseStaticFiles(new StaticFileOptions
 {

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -44,6 +44,8 @@
   <!-- Catalogue exported from the old site; loaded into an empty database on first start. -->
   <ItemGroup>
     <None Include="../content/seed/*.json" Exclude="../content/seed/pages.json" LinkBase="SeedContent/seed"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../content/images/gallery/**/*" LinkBase="SeedContent/images/gallery"
           CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <None Include="../content/images/products/**/*" LinkBase="SeedContent/images/products"
           CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />

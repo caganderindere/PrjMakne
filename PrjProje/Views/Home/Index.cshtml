@@ -1,9 +1,6 @@
 @model HomeViewModel
 @{
     var heroImage = Model.HeroImage ?? Model.FeaturedProducts.FirstOrDefault(p => p.Image is not null)?.Image;
-    // Without an uploaded site photo the hero shows a product cut-out beside the text instead of stretching it full-bleed.
-    var heroIsPhoto = Model.HeroImage is not null;
-    var processSteps = Enumerable.Range(1, 5);
     var reasons = Enumerable.Range(1, 6);
     var aboutImage = Model.FeaturedProducts.Skip(1).FirstOrDefault(p => p.Image is not null)?.Image ?? heroImage;
     var whyImage = Model.FeaturedProducts.Skip(2).FirstOrDefault(p => p.Image is not null)?.Image ?? aboutImage;
@@ -35,47 +32,20 @@
     }
     stats.Add(("globe", industries.Count(), "+", L["Home.StatSectors"]));
 }
-@section Head {
-    @if (heroImage is not null)
-    {
-        <link rel="preload" as="image" href="@ViewHelpers.SmallImage(heroImage)" imagesrcset="@ViewHelpers.SrcSet(heroImage)" imagesizes="100vw" fetchpriority="high" />
-    }
-}
-
-<section class="hero @(heroIsPhoto ? null : "hero-split")">
-    @if (heroIsPhoto)
-    {
-        <div class="hero-media">
-            @if (Model.HeroVideo is not null)
+@* Hero: a scroll-driven powder coating line drawn with three.js (js/hero3d.js). Parts ride the overhead conveyor
+   into the booth bare, get coated, cure in the oven and leave glossy red. Without WebGL the plant photo stays. *@
+<section class="hero-line" data-paint-line aria-labelledby="hero-title">
+    <h1 id="hero-title" class="visually-hidden">@L["Home.HeroTitle"] @L["Home.HeroTitleAccent"]</h1>
+    <div class="hero-line-stage">
+        <img class="hero-line-poster" src="~/images/hero/poster.webp" alt="@L["Home.LineAlt"]" width="1600" height="1200" fetchpriority="high" />
+        <div class="hero-line-canvas" role="img" aria-label="@L["Home.LineAlt"]"></div>
+        <ol class="hero-line-steps">
+            @for (var step = 1; step <= 4; step++)
             {
-                <video autoplay muted loop playsinline poster="@ViewHelpers.SmallImage(heroImage)" aria-hidden="true"><source src="@Model.HeroVideo" type="video/mp4" media="(min-width: 900px)" /></video>
+                <li><span>0@(step)</span> @L[$"Home.LineStep{step}"]</li>
             }
-            else
-            {
-                <img src="@ViewHelpers.SmallImage(heroImage)" srcset="@ViewHelpers.SrcSet(heroImage)" sizes="100vw" alt="" fetchpriority="high" width="1600" height="900" />
-            }
-        </div>
-    }
-    <div class="container hero-grid">
-    <div class="hero-inner reveal">
-        <p class="eyebrow">@L["Home.HeroEyebrow"]</p>
-        <h1>@L["Home.HeroTitle"] <span>@L["Home.HeroTitleAccent"]</span></h1>
-        <p class="lead">@L["Home.HeroSubtitle"]</p>
-        <div class="button-row">
-            <a href="@Url.Localized(SiteRoutes.Quote)" class="btn btn-primary btn-lg">@L["Common.RequestQuote"]</a>
-            <a href="@Url.Localized(SiteRoutes.Products)" class="btn btn-ghost-light btn-lg">@L["Home.ExploreProducts"]</a>
-        </div>
-        <ul class="hero-badges">
-            <li>@ViewHelpers.Icon("factory") @L["Home.BadgeInHouse"]</li>
-            <li>@ViewHelpers.Icon("wrench") @L["Home.BadgeSupport"]</li>
-        </ul>
-    </div>
-    @if (!heroIsPhoto && heroImage is not null)
-    {
-        <div class="hero-figure">
-            <img src="@ViewHelpers.SmallImage(heroImage)" srcset="@ViewHelpers.SrcSet(heroImage)" sizes="(max-width: 900px) 90vw, 560px" alt="@L["Home.ModelAlt"]" fetchpriority="high" width="960" height="960" />
-        </div>
-    }
+        </ol>
+        <p class="hero-line-hint" aria-hidden="true">@L["Home.LineHint"] @ViewHelpers.Icon("chevron-down")</p>
     </div>
 </section>
 
@@ -132,7 +102,7 @@
                 </div>
                 <a href="@Url.Localized(SiteRoutes.Products)" class="link-arrow">@L["Products.AllProducts"] @ViewHelpers.Icon("arrow-right")</a>
             </div>
-            <div class="grid grid-4" data-reveal="items">
+            <div class="grid grid-4 rail-mobile" data-reveal="items">
                 @foreach (var category in Model.Categories)
                 {
                     <partial name="_CategoryCard" model="category" />
@@ -154,18 +124,16 @@
                 </div>
                 <a href="@Url.Localized(SiteRoutes.Services)" class="link-arrow">@L["Home.AllServices"] @ViewHelpers.Icon("arrow-right")</a>
             </div>
-            <div class="grid grid-4" data-reveal="items">
+            <div class="service-grid service-grid-4 rail-mobile" data-reveal="items">
                 @foreach (var service in Model.Services)
                 {
-                    <article class="card">
+                    <article class="service-card">
                         @if (service.Image is not null)
                         {
-                            <div class="card-media"><img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 640px) 100vw, 25vw" alt="" loading="lazy" decoding="async" width="640" height="480" /></div>
+                            <img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 768px) 80vw, 25vw" alt="" loading="lazy" decoding="async" width="640" height="480" />
                         }
-                        <div class="card-body" style="position: relative">
-                            <h3 class="card-title"><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></h3>
-                            <p class="card-text">@service.Summary</p>
-                        </div>
+                        <h3><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></h3>
+                        <p>@service.Summary</p>
                     </article>
                 }
             </div>
@@ -183,15 +151,7 @@
             </div>
             <a href="@Url.Localized(SiteRoutes.Services)" class="btn btn-ghost-light">@L["Home.AllServices"]</a>
         </div>
-        <ol class="process" data-reveal="items" aria-label="@L["Home.ProcessTitle"]">
-            @foreach (var step in processSteps)
-            {
-                <li>
-                    <h3>@L[$"Home.Process{step}Title"]</h3>
-                    <p>@L[$"Home.Process{step}Text"]</p>
-                </li>
-            }
-        </ol>
+        <partial name="_ProcessTimeline" />
     </div>
 </section>
 
@@ -228,7 +188,7 @@
                 </div>
                 <a href="@Url.Localized(SiteRoutes.Products)" class="link-arrow">@L["Products.AllProducts"] @ViewHelpers.Icon("arrow-right")</a>
             </div>
-            <div class="grid grid-4" data-reveal="items">
+            <div class="grid grid-4 rail-mobile" data-reveal="items">
                 @foreach (var product in Model.FeaturedProducts)
                 {
                     <partial name="_ProductCard" model="product" />
@@ -331,3 +291,7 @@
 }
 
 <partial name="_CtaSection" />
+
+@section Scripts {
+    <script type="module" src="~/js/hero3d.js" asp-append-version="true"></script>
+}

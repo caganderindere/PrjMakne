@@ -35,6 +35,7 @@ public static class DbSeeder
         var seedRoot = Path.Combine(AppContext.BaseDirectory, "SeedContent");
         await CatalogSeeder.SeedAsync(db, provider.GetRequiredService<IFileStorageService>(), seedRoot, logger);
         await BlogSeeder.SeedAsync(db, seedRoot);
+        await MediaSeeder.SeedAsync(db, provider.GetRequiredService<IFileStorageService>(), seedRoot, logger);
 
         provider.GetRequiredService<IContentCache>().Invalidate();
     }

@@ -1,7 +1,6 @@
 @model ServicesViewModel
 @{
     var header = new PageHeaderModel(L["Services.Title"], L["Services.Lead"], L["Nav.Services"]);
-    var steps = Enumerable.Range(1, 5);
 }
 <partial name="_PageHeader" model="header" />
 
@@ -14,19 +13,17 @@
                 <p>@L["Services.IntroText"]</p>
             </div>
         </div>
-        <div class="grid grid-2">
+        <div class="service-grid">
             @foreach (var service in Model.Services)
             {
-                <article class="card">
+                <article class="service-card">
                     @if (service.Image is not null)
                     {
-                        <div class="card-media"><img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 640px) 100vw, 50vw" alt="" loading="lazy" decoding="async" width="640" height="480" /></div>
+                        <img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 768px) 100vw, 50vw" alt="" loading="lazy" decoding="async" width="960" height="720" />
                     }
-                    <div class="card-body" style="position: relative">
-                        <h3 class="card-title"><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></h3>
-                        <p class="card-text">@service.Summary</p>
-                        <div class="card-meta"><span class="link-arrow">@L["Common.ViewDetails"] @ViewHelpers.Icon("arrow-right")</span></div>
-                    </div>
+                    <h3><a href="@Url.Localized(SiteRoutes.ServiceDetail, service.Slug)">@service.Title</a></h3>
+                    <p>@service.Summary</p>
+                    <span class="link-arrow" aria-hidden="true">@L["Common.ViewDetails"] @ViewHelpers.Icon("arrow-right")</span>
                 </article>
             }
         </div>
@@ -41,15 +38,7 @@
                 <h2>@L["Home.ProcessTitle"]</h2>
             </div>
         </div>
-        <ol class="process">
-            @foreach (var step in steps)
-            {
-                <li>
-                    <h3>@L[$"Home.Process{step}Title"]</h3>
-                    <p>@L[$"Home.Process{step}Text"]</p>
-                </li>
-            }
-        </ol>
+        <partial name="_ProcessTimeline" />
     </div>
 </section>
 

@@ -141,4 +141,5 @@
             counterObserver.observe(counter);
         });
     }
+
 })();

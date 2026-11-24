@@ -429,4 +429,10 @@
   <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
   <data name="Nav.Gallery" xml:space="preserve"><value>Görseller</value></data>
   <data name="Home.WhyImageAlt" xml:space="preserve"><value>PRJ Proje Makina toz boya hattı ekipmanı</value></data>
+  <data name="Home.LineAlt" xml:space="preserve"><value>Toz boya hattı: ham parça konveyörle kabine girer, boyanır, fırında pişer ve hazır çıkar.</value></data>
+  <data name="Home.LineStep1" xml:space="preserve"><value>Ham parça</value></data>
+  <data name="Home.LineStep2" xml:space="preserve"><value>Toz boyama</value></data>
+  <data name="Home.LineStep3" xml:space="preserve"><value>Fırında pişirme</value></data>
+  <data name="Home.LineStep4" xml:space="preserve"><value>Kusursuz yüzey</value></data>
+  <data name="Home.LineHint" xml:space="preserve"><value>Kaydırın</value></data>
 </root>

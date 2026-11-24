@@ -429,4 +429,10 @@
   <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
   <data name="Nav.Gallery" xml:space="preserve"><value>Gallery</value></data>
   <data name="Home.WhyImageAlt" xml:space="preserve"><value>PRJ Proje Makina powder coating line equipment</value></data>
+  <data name="Home.LineAlt" xml:space="preserve"><value>Powder coating line: a raw part rides the conveyor into the booth, is coated, cured in the oven and comes out finished.</value></data>
+  <data name="Home.LineStep1" xml:space="preserve"><value>Raw part</value></data>
+  <data name="Home.LineStep2" xml:space="preserve"><value>Powder coating</value></data>
+  <data name="Home.LineStep3" xml:space="preserve"><value>Oven curing</value></data>
+  <data name="Home.LineStep4" xml:space="preserve"><value>Flawless finish</value></data>
+  <data name="Home.LineHint" xml:space="preserve"><value>Scroll</value></data>
 </root>

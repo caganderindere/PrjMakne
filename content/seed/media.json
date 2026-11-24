@@ -1,0 +1,27 @@
+{
+  "CategoryCovers": {
+    "toz-boya-cihazlari": "gallery/toz-boya-cihazlari/012.jpg",
+    "boya-uygulama-kabinleri": "gallery/boya-uygulama-kabinleri/015.jpg",
+    "boya-pisirme-firinlari": "gallery/boya-pisirme-firinlari/020.jpg",
+    "konveyor-sistemleri": "gallery/konveyor-sistemleri/001.jpg",
+    "ozel-imalat-urunleri": "gallery/ozel-imalat-urunleri/005.jpg",
+    "kimyasal-yuzey-temizlik-hatlari": "gallery/kimyasal-yuzey-temizlik-hatlari/020.jpg",
+    "siklonlar": "gallery/siklonlar/003.jpg"
+  },
+  "ServiceImages": {
+    "toz-boya-tesisleri": "gallery/tesis-kurulumlari/001.jpg",
+    "elektrostatik-toz-boyama": "gallery/boya-uygulama-kabinleri/014.jpg",
+    "lazer-kesim": "gallery/ozel-imalat-urunleri/007.jpg",
+    "cnc-bukum": "gallery/kimyasal-yuzey-temizlik-hatlari/023.jpg"
+  },
+  "Gallery": [
+    "boya-pisirme-firinlari",
+    "boya-uygulama-kabinleri",
+    "kimyasal-yuzey-temizlik-hatlari",
+    "konveyor-sistemleri",
+    "ozel-imalat-urunleri",
+    "siklonlar",
+    "tesis-kurulumlari",
+    "toz-boya-cihazlari"
+  ]
+}

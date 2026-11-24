@@ -1,0 +1,14 @@
+@* The five project steps with a photo each; shared by the home and services pages. *@
+<ol class="process-timeline rail-mobile" data-reveal="items" aria-label="@L["Home.ProcessTitle"]">
+    @for (var step = 1; step <= 5; step++)
+    {
+        <li>
+            <figure><img src="~/images/process/step-@(step).webp" alt="@L[$"Home.Process{step}Title"]" loading="lazy" decoding="async" width="800" height="600" /></figure>
+            <div class="step-body">
+                <span class="step-no" aria-hidden="true"></span>
+                <h3>@L[$"Home.Process{step}Title"]</h3>
+                <p>@L[$"Home.Process{step}Text"]</p>
+            </div>
+        </li>
+    }
+</ol>
