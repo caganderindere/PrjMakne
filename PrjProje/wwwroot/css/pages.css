@@ -325,28 +325,6 @@ a.card:hover::after, .card:has(a:hover)::after { transform: scaleX(1); }
 .dropdown-all { margin-top: var(--space-1); border-top: 1px solid var(--color-line); padding-top: var(--space-1); }
 .dropdown-all a { font-weight: 600; color: var(--prj-anthracite); }
 
-/* ---------- Home: counter strip ----------
-   A white plate right under the paint-line hero, cut corner on the right. */
-.stats { position: relative; z-index: 1; padding-top: var(--space-7); }
-.stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; background: #fff; box-shadow: var(--shadow-lg);
-    border-top: 3px solid var(--prj-red); clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%); }
-.stat { position: relative; display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-5) var(--space-5) var(--space-6); }
-.stat + .stat { border-left: 1px solid var(--prj-steel-100); }
-.stat:nth-child(3) { border-left: 0; }
-.stat:nth-child(n + 3) { border-top: 1px solid var(--prj-steel-100); }
-.stat > .icon { width: 22px; height: 22px; color: var(--prj-red); margin-bottom: var(--space-2); }
-.stat dt { order: 2; font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); line-height: 1.35; }
-.stat dd { order: 1; margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.5rem, 1.8rem + 2.4vw, 3.75rem); line-height: 1; color: var(--prj-anthracite);
-    font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.stat dd small { margin-left: 2px; font-size: 0.6em; color: var(--prj-red); vertical-align: top; }
-@media (min-width: 960px) {
-    .stats-grid { grid-template-columns: none; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; }
-    .stat { padding: var(--space-6) var(--space-6) var(--space-7); }
-    .stat:nth-child(3) { border-left: 1px solid var(--prj-steel-100); }
-    .stat:nth-child(n + 3) { border-top: 0; }
-}
-.stats + .section { padding-top: var(--space-8); }
-
 /* ---------- Home: latest blog posts ----------
    Three posts read as a magazine block: the newest large on the left, the next two as horizontal cards. */
 .home-blog { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1fr); }
@@ -479,3 +457,56 @@ a.card:hover::after, .card:has(a:hover)::after { transform: scaleX(1); }
 @media (max-width: 767px) {
     .process-timeline.rail-mobile { margin-inline: calc(var(--space-4) * -1); }
 }
+
+/* ---------- Section tones ----------
+   Steel grey between the white and the dark sections, so long pages do not read as one white sheet. */
+.section-steel { background: linear-gradient(180deg, #e6eaee 0%, #eef1f4 100%); border-top: 1px solid #d9dfe5; border-bottom: 1px solid #d9dfe5; }
+.section-steel .card { border-color: #d3dae1; }
+.section-dark .card { border-color: transparent; }
+.section-dark .section-head .eyebrow { color: var(--prj-steel-300); }
+
+/* ---------- Service detail ----------
+   A dark intro with the title and the service photo, then the text with photos beside a sticky side column. */
+.service-intro { background: var(--prj-anthracite); color: var(--prj-steel-200); padding: var(--space-7) 0; position: relative; overflow: hidden; }
+.service-intro::before { content: ""; position: absolute; inset: 0; opacity: 0.5; pointer-events: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px; }
+.service-intro-grid { position: relative; display: grid; gap: var(--space-7); align-items: center; }
+.service-intro h1 { color: #fff; font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem); margin-bottom: var(--space-4); }
+.service-intro .lead { color: var(--prj-steel-200); max-width: 56ch; }
+.service-intro .eyebrow a { color: inherit; text-decoration: none; }
+.service-intro .eyebrow a:hover { color: #fff; }
+.service-intro-media { margin: 0; position: relative; }
+.service-intro-media > img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+    clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%); }
+.service-intro-thumbs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-3); }
+.service-intro-thumbs a { display: block; aspect-ratio: 16 / 9; overflow: hidden; }
+.service-intro-thumbs img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition); }
+.service-intro-thumbs a:hover img { transform: scale(1.05); }
+@media (min-width: 900px) {
+    .service-intro { padding: var(--space-8) 0; }
+    .service-intro-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--space-8); }
+}
+
+.service-prose { max-width: none; font-size: 1.0625rem; line-height: 1.7; }
+.service-prose > p:first-child { font-size: 1.2rem; color: var(--prj-anthracite); }
+.service-prose h2 { position: relative; padding-top: var(--space-4); }
+.service-prose h2::before { content: ""; position: absolute; top: 0; left: 0; width: 48px; height: 3px; background: var(--prj-red); }
+.service-prose ul { list-style: none; padding: 0; }
+.service-prose ul li { position: relative; padding-left: 1.5rem; margin-bottom: var(--space-3); }
+.service-prose ul li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 10px; height: 10px; background: var(--prj-red);
+    clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 0 100%); }
+.service-prose ol { counter-reset: step; list-style: none; padding: 0; }
+.service-prose ol li { counter-increment: step; position: relative; padding: var(--space-3) var(--space-4) var(--space-3) 3.5rem; margin-bottom: var(--space-2);
+    background: var(--prj-steel-50); border-left: 3px solid var(--prj-red); }
+.service-prose ol li::before { content: counter(step, decimal-leading-zero); position: absolute; left: var(--space-4); top: var(--space-3);
+    font-family: var(--font-display); font-weight: 700; color: var(--prj-red); }
+.service-prose figure { margin: var(--space-6) 0; }
+.service-prose figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 0; display: block;
+    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%); }
+.service-prose figcaption { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); border-left: 2px solid var(--prj-red); padding-left: var(--space-3); }
+@media (min-width: 960px) { .service-aside { position: sticky; top: calc(var(--header-height) + var(--space-5)); } }
+.service-aside .spec-table { margin-bottom: var(--space-4); }
+.service-gallery-count { font-family: var(--font-display); font-weight: 700; font-size: 3rem; line-height: 1; color: var(--prj-red); }
+/* White cards keep dark text inside dark sections. */
+.section-dark .card h3, .section-dark .card .card-title { color: var(--prj-anthracite); }

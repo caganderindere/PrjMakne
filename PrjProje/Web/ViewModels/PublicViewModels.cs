@@ -14,12 +14,6 @@ public class HomeViewModel
     public string? HeroImage { get; init; }
     public string? HeroVideo { get; init; }
     public IReadOnlyList<VideoDto> Videos { get; init; } = Array.Empty<VideoDto>();
-
-    // Counter strip under the hero: catalogue figures are counted live, the company figures come from site settings.
-    public int ProductCount { get; init; }
-    public int ServiceCount { get; init; }
-    public int? FoundedYear { get; init; }
-    public int? CompletedProjects { get; init; }
 }
 
 

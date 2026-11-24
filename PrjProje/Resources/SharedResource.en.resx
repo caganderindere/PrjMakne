@@ -45,13 +45,6 @@
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Explore Products</value></data>
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design, build and installation from one source</value></data>
   <data name="Home.BadgeSupport" xml:space="preserve"><value>After-sales spare parts support</value></data>
-  <data name="Home.StatsLabel" xml:space="preserve"><value>Company figures</value></data>
-  <data name="Home.StatYears" xml:space="preserve"><value>Years of experience</value></data>
-  <data name="Home.StatProjects" xml:space="preserve"><value>Completed projects</value></data>
-  <data name="Home.StatProducts" xml:space="preserve"><value>Product models</value></data>
-  <data name="Home.StatCategories" xml:space="preserve"><value>Product categories</value></data>
-  <data name="Home.StatServices" xml:space="preserve"><value>Service areas</value></data>
-  <data name="Home.StatSectors" xml:space="preserve"><value>Industries served</value></data>
   <data name="Home.BlogEyebrow" xml:space="preserve"><value>Blog</value></data>
   <data name="Home.BlogTitle" xml:space="preserve"><value>Technical articles and news</value></data>
   <data name="Home.BlogLead" xml:space="preserve"><value>Notes from the field on powder coating processes, equipment selection and maintenance.</value></data>

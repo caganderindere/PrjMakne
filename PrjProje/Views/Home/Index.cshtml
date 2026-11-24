@@ -5,32 +5,7 @@
     var aboutImage = Model.FeaturedProducts.Skip(1).FirstOrDefault(p => p.Image is not null)?.Image ?? heroImage;
     var whyImage = Model.FeaturedProducts.Skip(2).FirstOrDefault(p => p.Image is not null)?.Image ?? aboutImage;
     var aboutPoints = Enumerable.Range(1, 3);
-    var industries = Enumerable.Range(1, 6);
     var questions = Enumerable.Range(1, 4);
-
-    // Counter strip: company figures from the settings come first, live catalogue figures fill the rest; at most four.
-    var stats = new List<(string Icon, int Value, string Suffix, string Label)>();
-    if (Model.FoundedYear is int founded && DateTime.Today.Year > founded)
-    {
-        stats.Add(("award", DateTime.Today.Year - founded, "+", L["Home.StatYears"]));
-    }
-    if (Model.CompletedProjects is int projects)
-    {
-        stats.Add(("factory", projects, "+", L["Home.StatProjects"]));
-    }
-    if (Model.ProductCount > 0)
-    {
-        stats.Add(("package", Model.ProductCount, "", L["Home.StatProducts"]));
-    }
-    if (Model.Categories.Count > 0)
-    {
-        stats.Add(("layers", Model.Categories.Count, "", L["Home.StatCategories"]));
-    }
-    if (Model.ServiceCount > 0)
-    {
-        stats.Add(("wrench", Model.ServiceCount, "", L["Home.StatServices"]));
-    }
-    stats.Add(("globe", industries.Count(), "+", L["Home.StatSectors"]));
 }
 @* Hero: a scroll-driven powder coating line drawn with three.js (js/hero3d.js). Parts ride the overhead conveyor
    into the booth bare, get coated, cure in the oven and leave glossy red. Without WebGL the plant photo stays. *@
@@ -49,20 +24,6 @@
     </div>
 </section>
 
-<section class="stats" aria-label="@L["Home.StatsLabel"]">
-    <div class="container">
-        <dl class="stats-grid" data-reveal="items">
-            @foreach (var stat in stats.Take(4))
-            {
-                <div class="stat">
-                    @ViewHelpers.Icon(stat.Icon)
-                    <dt>@stat.Label</dt>
-                    <dd><span data-count-to="@stat.Value">@stat.Value.ToString("N0", System.Globalization.CultureInfo.CurrentCulture)</span>@if (stat.Suffix.Length > 0) {<small>@stat.Suffix</small>}</dd>
-                </div>
-            }
-        </dl>
-    </div>
-</section>
 
 <section class="section">
     <div class="container split">
@@ -92,7 +53,7 @@
 
 @if (Model.Categories.Count > 0)
 {
-    <section class="section section-alt">
+    <section class="section section-dark">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>
@@ -114,7 +75,7 @@
 
 @if (Model.Services.Count > 0)
 {
-    <section class="section">
+    <section class="section section-steel">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>
@@ -178,7 +139,7 @@
 
 @if (Model.FeaturedProducts.Count > 0)
 {
-    <section class="section">
+    <section class="section section-steel">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>
@@ -200,7 +161,7 @@
 
 @if (Model.Videos.Count > 0)
 {
-    <section class="section section-alt">
+    <section class="section section-dark">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>
@@ -221,7 +182,7 @@
 
 @if (Model.References.Count > 0)
 {
-    <section class="section">
+    <section class="section section-steel">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>
@@ -248,7 +209,7 @@
     </section>
 }
 
-<section class="section section-alt">
+<section class="section">
     <div class="container split">
         <div data-reveal>
             <p class="eyebrow">@L["Home.FaqEyebrow"]</p>
@@ -270,7 +231,7 @@
 
 @if (Model.LatestPosts.Count > 0)
 {
-    <section class="section">
+    <section class="section section-steel">
         <div class="container">
             <div class="section-head" data-reveal>
                 <div>

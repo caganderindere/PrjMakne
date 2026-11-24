@@ -1,45 +1,52 @@
 @model ServiceDetailViewModel
 @{
     var service = Model.Service;
-    var header = new PageHeaderModel(service.Title, service.Summary, L["Nav.Services"], service.Image);
+    // The first photos of the service's gallery sit beside the intro; the rest form the gallery below.
+    var introPhotos = Model.Gallery.Take(3).ToList();
 }
-<partial name="_PageHeader" model="header" />
+@* No title banner: the page opens with the service itself, its photo and the request button. *@
+<section class="service-intro">
+    <div class="container service-intro-grid">
+        <div class="service-intro-text">
+            <p class="eyebrow"><a href="@Url.Localized(SiteRoutes.Services)">@L["Nav.Services"]</a></p>
+            <h1>@service.Title</h1>
+            @if (!string.IsNullOrEmpty(service.Summary))
+            {
+                <p class="lead">@service.Summary</p>
+            }
+            <div class="button-row">
+                <a href="@Url.Localized(SiteRoutes.Quote)?service=@Uri.EscapeDataString(service.Slug)" class="btn btn-primary btn-lg">@L["Common.RequestQuote"]</a>
+                @if (Model.Gallery.Count > 0)
+                {
+                    <a href="#service-gallery" class="btn btn-ghost-light btn-lg">@L["Services.GalleryTitle"] (@Model.Gallery.Count)</a>
+                }
+            </div>
+        </div>
+        @if (service.Image is not null)
+        {
+            <figure class="service-intro-media">
+                <img src="@ViewHelpers.SmallImage(service.Image)" srcset="@ViewHelpers.SrcSet(service.Image)" sizes="(max-width: 900px) 100vw, 50vw" alt="@service.Title" fetchpriority="high" width="960" height="720" />
+                @if (introPhotos.Count > 1)
+                {
+                    <div class="service-intro-thumbs">
+                        @foreach (var photo in introPhotos.Skip(1))
+                        {
+                            <a href="@photo.ImagePath" data-lightbox="service" data-caption="@photo.Title" data-alt="@service.Title">
+                                <img src="@ViewHelpers.SmallImage(photo.ImagePath)" alt="@service.Title" loading="lazy" decoding="async" width="320" height="240" />
+                            </a>
+                        }
+                    </div>
+                }
+            </figure>
+        }
+    </div>
+</section>
 
 <section class="section">
     <div class="container split split-wide">
-        <div>
-            <div class="prose">@Html.Raw(service.Content)</div>
-            <div class="button-row">
-                <a href="@Url.Localized(SiteRoutes.Quote)?service=@Uri.EscapeDataString(service.Slug)" class="btn btn-primary btn-lg">@L["Common.RequestQuote"]</a>
-                <a href="@Url.Localized(SiteRoutes.Products)" class="btn btn-outline btn-lg">@L["Home.ExploreProducts"]</a>
-            </div>
+        <article class="prose service-prose">@Html.Raw(service.Content)</article>
 
-            @if (Model.Gallery.Count > 0)
-            {
-                <h2 style="margin-top: var(--space-7)">@L["Services.GalleryTitle"]</h2>
-                <div class="gallery-grid">
-                    @foreach (var item in Model.Gallery)
-                    {
-                        <a href="@item.ImagePath" data-lightbox="service" data-caption="@item.Title" data-alt="@(string.IsNullOrEmpty(item.Title) ? service.Title : item.Title)">
-                            <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@(string.IsNullOrEmpty(item.Title) ? service.Title : item.Title)" loading="lazy" decoding="async" width="640" height="480" />
-                        </a>
-                    }
-                </div>
-            }
-
-            @if (Model.Categories.Count > 0)
-            {
-                <h2 style="margin-top: var(--space-7)">@L["Services.RelatedCategories"]</h2>
-                <div class="grid grid-2">
-                    @foreach (var category in Model.Categories)
-                    {
-                        <partial name="_CategoryCard" model="category" />
-                    }
-                </div>
-            }
-        </div>
-
-        <aside class="stack">
+        <aside class="stack service-aside">
             @if (service.Specifications.Count > 0)
             {
                 <div class="side-card">
@@ -52,6 +59,7 @@
                             }
                         </tbody>
                     </table>
+                    <a href="@Url.Localized(SiteRoutes.Quote)?service=@Uri.EscapeDataString(service.Slug)" class="btn btn-primary" style="width: 100%">@L["Common.RequestQuote"]</a>
                 </div>
             }
             @if (Model.Certificates.Count > 0)
@@ -82,5 +90,50 @@
         </aside>
     </div>
 </section>
+
+@if (Model.Gallery.Count > 0)
+{
+    <section class="section section-dark" id="service-gallery">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">@service.Title</p>
+                    <h2>@L["Services.GalleryTitle"]</h2>
+                </div>
+                <span class="service-gallery-count">@Model.Gallery.Count</span>
+            </div>
+            <div class="gallery-grid">
+                @foreach (var item in Model.Gallery)
+                {
+                    var alt = string.IsNullOrEmpty(item.Title) ? service.Title : item.Title;
+                    <a href="@item.ImagePath" data-lightbox="service" data-caption="@item.Title" data-alt="@alt">
+                        <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@alt" loading="lazy" decoding="async" width="640" height="480" />
+                    </a>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+@if (Model.Categories.Count > 0)
+{
+    <section class="section section-steel">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">@L["Nav.Products"]</p>
+                    <h2>@L["Services.RelatedCategories"]</h2>
+                </div>
+                <a href="@Url.Localized(SiteRoutes.Products)" class="link-arrow">@L["Products.AllProducts"] @ViewHelpers.Icon("arrow-right")</a>
+            </div>
+            <div class="grid grid-4 rail-mobile">
+                @foreach (var category in Model.Categories)
+                {
+                    <partial name="_CategoryCard" model="category" />
+                }
+            </div>
+        </div>
+    </section>
+}
 
 <partial name="_CtaSection" />

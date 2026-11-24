@@ -38,10 +38,6 @@ public class SiteSettingsDto
     // Site-relative MP4 path for the desktop hero; empty keeps the photo.
     public string? HeroVideo { get; set; }
 
-    // Home counters; empty hides the counter. Kept as strings because every setting is stored as text.
-    public string? FoundedYear { get; set; }
-    public string? CompletedProjects { get; set; }
-
     public string? GoogleSiteVerification { get; set; }
 
     /// <summary>GA4 measurement ID (G-XXXXXXXXXX); empty disables analytics. It loads only after the visitor accepts cookies.</summary>

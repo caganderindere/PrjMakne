@@ -45,13 +45,6 @@
   <data name="Home.ExploreProducts" xml:space="preserve"><value>Ürünleri İncele</value></data>
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarım, imalat ve montaj tek elden</value></data>
   <data name="Home.BadgeSupport" xml:space="preserve"><value>Satış sonrası yedek parça desteği</value></data>
-  <data name="Home.StatsLabel" xml:space="preserve"><value>Firma istatistikleri</value></data>
-  <data name="Home.StatYears" xml:space="preserve"><value>Yıllık deneyim</value></data>
-  <data name="Home.StatProjects" xml:space="preserve"><value>Tamamlanan proje</value></data>
-  <data name="Home.StatProducts" xml:space="preserve"><value>Ürün modeli</value></data>
-  <data name="Home.StatCategories" xml:space="preserve"><value>Ürün kategorisi</value></data>
-  <data name="Home.StatServices" xml:space="preserve"><value>Hizmet alanı</value></data>
-  <data name="Home.StatSectors" xml:space="preserve"><value>Hizmet verilen sektör</value></data>
   <data name="Home.BlogEyebrow" xml:space="preserve"><value>Blog</value></data>
   <data name="Home.BlogTitle" xml:space="preserve"><value>Teknik yazılar ve haberler</value></data>
   <data name="Home.BlogLead" xml:space="preserve"><value>Toz boya prosesleri, ekipman seçimi ve bakım üzerine sahadan derlediğimiz notlar.</value></data>

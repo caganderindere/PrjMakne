@@ -46,10 +46,6 @@ public class HomeController : PublicControllerBase
         {
             Categories = categories,
             Services = await _servicePageService.GetServicesAsync(Lang, homeOnly: true, cancellationToken),
-            ProductCount = categories.Sum(c => c.ProductCount),
-            ServiceCount = (await _servicePageService.GetServicesAsync(Lang, cancellationToken: cancellationToken)).Count,
-            FoundedYear = int.TryParse(settings.FoundedYear, out var founded) ? founded : null,
-            CompletedProjects = int.TryParse(settings.CompletedProjects, out var projects) ? projects : null,
             FeaturedProducts = await _productService.GetFeaturedAsync(Lang, 4, cancellationToken),
             LatestPosts = await _blogService.GetLatestAsync(Lang, 3, cancellationToken),
             References = await _siteContentService.GetReferencesAsync(cancellationToken),

@@ -69,7 +69,7 @@
                 var value = button.getAttribute("data-filter");
                 group.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
                 target.querySelectorAll("[data-category]").forEach(function (item) {
-                    item.hidden = value !== "all" && item.getAttribute("data-category") !== value;
+                    item.hidden = value === "all" ? item.hasAttribute("data-repeat") : item.getAttribute("data-category") !== value;
                 });
             });
         });
@@ -116,30 +116,5 @@
         });
     }
 
-    // Home counters count up the first time they come into view; the server-rendered figure stays for reduced motion.
-    var counters = document.querySelectorAll("[data-count-to]");
-    if (canObserve && counters.length) {
-        var format = new Intl.NumberFormat(document.documentElement.lang || undefined);
-        var counterObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) { return; }
-                counterObserver.unobserve(entry.target);
-                var counter = entry.target;
-                var target = parseInt(counter.getAttribute("data-count-to"), 10) || 0;
-                var start = null;
-                var tick = function (now) {
-                    if (start === null) { start = now; }
-                    var progress = Math.min((now - start) / 1600, 1);
-                    counter.textContent = format.format(Math.round(target * (1 - Math.pow(1 - progress, 3))));
-                    if (progress < 1) { window.requestAnimationFrame(tick); }
-                };
-                window.requestAnimationFrame(tick);
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(function (counter) {
-            counter.textContent = format.format(0);
-            counterObserver.observe(counter);
-        });
-    }
 
 })();

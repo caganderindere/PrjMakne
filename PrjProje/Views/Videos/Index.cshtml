@@ -33,17 +33,20 @@
         else
         {
             <div class="filter-buttons" role="group" aria-label="@L["Videos.FilterLabel"]" data-filter-group="galleryGrid">
-                <button type="button" aria-pressed="true" data-filter="all">@L["Videos.All"] (@Model.Items.Count)</button>
+                <button type="button" aria-pressed="true" data-filter="all">@L["Videos.All"] (@Model.Items.Select(i => i.ImagePath).Distinct().Count())</button>
                 @foreach (var category in Model.Categories)
                 {
                     <button type="button" aria-pressed="false" data-filter="@category.Id">@category.Name (@category.ItemCount)</button>
                 }
             </div>
+            var shown = new HashSet<string>(StringComparer.Ordinal);
             <div class="gallery-grid" id="galleryGrid">
+                @* A photo can belong to a product and a service category; "all" shows it once. *@
                 @foreach (var item in Model.Items)
                 {
                     var alt = string.IsNullOrEmpty(item.Title) ? "PRJ Proje Makina" : item.Title;
-                    <a href="@item.ImagePath" data-lightbox="gallery" data-category="@item.CategoryId" data-caption="@item.Title" data-alt="@alt">
+                    var repeat = !shown.Add(item.ImagePath);
+                    <a href="@item.ImagePath" data-lightbox="gallery" data-category="@item.CategoryId" data-caption="@item.Title" data-alt="@alt" data-repeat="@(repeat ? "true" : null)" hidden="@repeat">
                         <img src="@ViewHelpers.SmallImage(item.ImagePath)" alt="@alt" loading="lazy" decoding="async" width="640" height="480" />
                     </a>
                 }
