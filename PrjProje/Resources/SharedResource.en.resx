@@ -46,6 +46,15 @@
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Design, build and installation from one source</value></data>
   <data name="Home.BadgeSupport" xml:space="preserve"><value>After-sales spare parts support</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Company figures</value></data>
+  <data name="Home.StatYears" xml:space="preserve"><value>Years of experience</value></data>
+  <data name="Home.StatProjects" xml:space="preserve"><value>Completed projects</value></data>
+  <data name="Home.StatProducts" xml:space="preserve"><value>Product models</value></data>
+  <data name="Home.StatCategories" xml:space="preserve"><value>Product categories</value></data>
+  <data name="Home.StatServices" xml:space="preserve"><value>Service areas</value></data>
+  <data name="Home.StatSectors" xml:space="preserve"><value>Industries served</value></data>
+  <data name="Home.BlogEyebrow" xml:space="preserve"><value>Blog</value></data>
+  <data name="Home.BlogTitle" xml:space="preserve"><value>Technical articles and news</value></data>
+  <data name="Home.BlogLead" xml:space="preserve"><value>Notes from the field on powder coating processes, equipment selection and maintenance.</value></data>
   <data name="Home.AboutTitle" xml:space="preserve"><value>Engineering-led manufacturing in powder coating</value></data>
   <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina works from its Istanbul workshop to build and supply high-quality electrostatic powder coating machinery.</value></data>
   <data name="Home.AboutText" xml:space="preserve"><value>We do not see ourselves as just an equipment supplier: we develop new machines around our customers' needs and follow every technological advance in the sector. Our first principle is unconditional customer satisfaction.</value></data>
@@ -79,25 +88,17 @@
   <data name="Home.WhyEyebrow" xml:space="preserve"><value>Why PRJ Proje Makina?</value></data>
   <data name="Home.WhyTitle" xml:space="preserve"><value>A reliable solution partner</value></data>
   <data name="Home.Why1Title" xml:space="preserve"><value>End-to-End Solutions</value></data>
-  <data name="Home.Why1Text" xml:space="preserve"><value>Pretreatment, booth, guns, conveyor and oven in one project, with one contact.</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>We design and install the pretreatment tunnel, powder coating booth, electrostatic spray guns, conveyor system and curing oven as one project. With the whole line managed by one supplier, the equipment works together and commissioning is shorter.</value></data>
   <data name="Home.Why2Title" xml:space="preserve"><value>Project-Specific Design</value></data>
-  <data name="Home.Why2Text" xml:space="preserve"><value>Besides standard products, we design equipment to your dimensions and process.</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Alongside our standard booth and oven models, we design paint shop equipment around your part dimensions, line speed and plant layout. Every project goes through engineering with energy efficiency and uninterrupted production in mind.</value></data>
   <data name="Home.Why3Title" xml:space="preserve"><value>Built in Our Own Workshop</value></data>
-  <data name="Home.Why3Text" xml:space="preserve"><value>Building in our own workshop keeps quality and lead times under our control.</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>We build booths, ovens and conveyors in our own workshop, so material quality, welding and sheet metal work and delivery dates stay under our direct control. Local manufacturing also speeds up spare parts and service.</value></data>
   <data name="Home.Why4Title" xml:space="preserve"><value>Spare Parts Continuity</value></data>
-  <data name="Home.Why4Text" xml:space="preserve"><value>Spare parts for the equipment we supply are kept in stock and shipped quickly.</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Spare parts for the powder coating machines and electrostatic guns we supply are kept in stock and shipped quickly, keeping downtime on your coating line to a minimum.</value></data>
   <data name="Home.Why5Title" xml:space="preserve"><value>Up-to-Date Technology</value></data>
-  <data name="Home.Why5Text" xml:space="preserve"><value>We follow new developments in the sector and keep improving our machines.</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>We follow advances in powder coating technology, energy-saving ovens and filter systems closely, and keep improving our machines with feedback from the field.</value></data>
   <data name="Home.Why6Title" xml:space="preserve"><value>Unconditional Customer Satisfaction</value></data>
-  <data name="Home.Why6Text" xml:space="preserve"><value>Our first principle is that customers are fully satisfied with our machines and service.</value></data>
-  <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Industries</value></data>
-  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Industries that rely on powder coating</value></data>
-  <data name="Home.Industry1" xml:space="preserve"><value>Metal Goods</value></data>
-  <data name="Home.Industry2" xml:space="preserve"><value>Aluminium Profiles</value></data>
-  <data name="Home.Industry3" xml:space="preserve"><value>Household Appliances</value></data>
-  <data name="Home.Industry4" xml:space="preserve"><value>Automotive Supply</value></data>
-  <data name="Home.Industry5" xml:space="preserve"><value>Furniture</value></data>
-  <data name="Home.Industry6" xml:space="preserve"><value>Agricultural Machinery</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>Our first principle is that customers are fully satisfied with their coating line and our service. Training after installation, scheduled maintenance and technical support keep your investment productive for years.</value></data>
   <data name="Cta.Eyebrow" xml:space="preserve"><value>Let's talk about your project</value></data>
   <data name="Cta.Title" xml:space="preserve"><value>Get a quote for your powder coating line</value></data>
   <data name="Cta.Text" xml:space="preserve"><value>Tell us the product, capacity or plant you need, and our technical team will get back to you.</value></data>
@@ -411,8 +412,7 @@
   <data name="Videos.GalleryTitle" xml:space="preserve">
     <value>Photo gallery</value>
   </data>
-  <data name="Home.WhyLead" xml:space="preserve"><value>We run your coating line investment from survey to after-sales with one team and a single point of contact.</value></data>
-  <data name="Home.IndustriesLead" xml:space="preserve"><value>Powder-coated metal surfaces are used across many industries. We design each line around part size, volume and the finish expected.</value></data>
+  <data name="Home.WhyLead" xml:space="preserve"><value>PRJ Proje Makina runs your powder coating line and electrostatic painting system investment through survey, engineering, manufacturing, installation and after-sales service with one team and a single point of contact. Every unit, from pretreatment to the curing oven, is planned around your parts, output and finish requirements.</value></data>
   <data name="Home.FaqEyebrow" xml:space="preserve"><value>FAQ</value></data>
   <data name="Home.FaqTitle" xml:space="preserve"><value>Frequently asked questions</value></data>
   <data name="Home.FaqLead" xml:space="preserve"><value>If your question is not answered here, our team is happy to help directly.</value></data>
@@ -428,4 +428,5 @@
   <data name="About.WhyLead" xml:space="preserve"><value>The main reasons our customers choose to work with us.</value></data>
   <data name="Nav.Media" xml:space="preserve"><value>Media</value></data>
   <data name="Nav.Gallery" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Home.WhyImageAlt" xml:space="preserve"><value>PRJ Proje Makina powder coating line equipment</value></data>
 </root>

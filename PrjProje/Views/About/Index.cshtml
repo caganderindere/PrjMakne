@@ -1,7 +1,7 @@
 @{
     var header = new PageHeaderModel(L["About.Title"], L["About.Lead"], L["Nav.About"]);
     var steps = Enumerable.Range(1, 5);
-    var reasons = new[] { (1, "layers"), (2, "ruler"), (3, "factory"), (4, "package"), (5, "settings"), (6, "award") };
+    var reasons = Enumerable.Range(1, 6);
     var capabilities = new[] { "Cnc", "Bending", "Powder", "Engineering", "Supply", "Logistics", "Installation", "AfterSales" };
 }
 <partial name="_PageHeader" model="header" />
@@ -96,10 +96,9 @@
             </div>
         </div>
         <div class="grid grid-3">
-            @foreach (var (reason, icon) in reasons)
+            @foreach (var reason in reasons)
             {
                 <div class="feature">
-                    @ViewHelpers.Icon(icon)
                     <h3>@L[$"Home.Why{reason}Title"]</h3>
                     <p>@L[$"Home.Why{reason}Text"]</p>
                 </div>

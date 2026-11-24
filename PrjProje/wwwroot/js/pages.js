@@ -89,4 +89,56 @@
         wrapper.appendChild(frame);
         button.replaceWith(wrapper);
     });
+
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var canObserve = "IntersectionObserver" in window && !reducedMotion;
+
+    // Scroll reveal: only blocks that start below the fold are hidden, so nothing seen on load blinks out.
+    if (canObserve) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) { return; }
+                revealObserver.unobserve(entry.target);
+                entry.target.classList.remove("reveal-pending");
+                // Drop the stagger delay once the items are in, or it would also delay their hover effects.
+                setTimeout(function () {
+                    Array.prototype.forEach.call(entry.target.children, function (child) { child.style.removeProperty("--reveal-index"); });
+                }, 1400);
+            });
+        }, { rootMargin: "0px 0px -10% 0px" });
+        document.querySelectorAll("[data-reveal]").forEach(function (element) {
+            if (element.getBoundingClientRect().top < window.innerHeight) { return; }
+            if (element.getAttribute("data-reveal") === "items") {
+                Array.prototype.forEach.call(element.children, function (child, i) { child.style.setProperty("--reveal-index", String(i)); });
+            }
+            element.classList.add("reveal-pending");
+            revealObserver.observe(element);
+        });
+    }
+
+    // Home counters count up the first time they come into view; the server-rendered figure stays for reduced motion.
+    var counters = document.querySelectorAll("[data-count-to]");
+    if (canObserve && counters.length) {
+        var format = new Intl.NumberFormat(document.documentElement.lang || undefined);
+        var counterObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) { return; }
+                counterObserver.unobserve(entry.target);
+                var counter = entry.target;
+                var target = parseInt(counter.getAttribute("data-count-to"), 10) || 0;
+                var start = null;
+                var tick = function (now) {
+                    if (start === null) { start = now; }
+                    var progress = Math.min((now - start) / 1600, 1);
+                    counter.textContent = format.format(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+                    if (progress < 1) { window.requestAnimationFrame(tick); }
+                };
+                window.requestAnimationFrame(tick);
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(function (counter) {
+            counter.textContent = format.format(0);
+            counterObserver.observe(counter);
+        });
+    }
 })();

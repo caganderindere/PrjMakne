@@ -46,6 +46,15 @@
   <data name="Home.BadgeInHouse" xml:space="preserve"><value>Tasarım, imalat ve montaj tek elden</value></data>
   <data name="Home.BadgeSupport" xml:space="preserve"><value>Satış sonrası yedek parça desteği</value></data>
   <data name="Home.StatsLabel" xml:space="preserve"><value>Firma istatistikleri</value></data>
+  <data name="Home.StatYears" xml:space="preserve"><value>Yıllık deneyim</value></data>
+  <data name="Home.StatProjects" xml:space="preserve"><value>Tamamlanan proje</value></data>
+  <data name="Home.StatProducts" xml:space="preserve"><value>Ürün modeli</value></data>
+  <data name="Home.StatCategories" xml:space="preserve"><value>Ürün kategorisi</value></data>
+  <data name="Home.StatServices" xml:space="preserve"><value>Hizmet alanı</value></data>
+  <data name="Home.StatSectors" xml:space="preserve"><value>Hizmet verilen sektör</value></data>
+  <data name="Home.BlogEyebrow" xml:space="preserve"><value>Blog</value></data>
+  <data name="Home.BlogTitle" xml:space="preserve"><value>Teknik yazılar ve haberler</value></data>
+  <data name="Home.BlogLead" xml:space="preserve"><value>Toz boya prosesleri, ekipman seçimi ve bakım üzerine sahadan derlediğimiz notlar.</value></data>
   <data name="Home.AboutTitle" xml:space="preserve"><value>Toz boya teknolojisinde mühendislik odaklı üretim</value></data>
   <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina, en yüksek kalitede elektrostatik toz boya makinelerini üretmek ve tedarik etmek için İstanbul'daki atölyesinde çalışıyor.</value></data>
   <data name="Home.AboutText" xml:space="preserve"><value>Kendimizi yalnızca bir ekipman tedarikçisi olarak görmüyoruz; ihtiyaca uygun yeni makineler geliştiriyor, sektördeki teknolojik gelişmeleri yakından takip ediyoruz. İlk prensibimiz şartsız müşteri memnuniyetidir.</value></data>
@@ -79,25 +88,17 @@
   <data name="Home.WhyEyebrow" xml:space="preserve"><value>Neden PRJ Proje Makina?</value></data>
   <data name="Home.WhyTitle" xml:space="preserve"><value>Güvenilir bir çözüm ortağı</value></data>
   <data name="Home.Why1Title" xml:space="preserve"><value>Uçtan Uca Çözüm</value></data>
-  <data name="Home.Why1Text" xml:space="preserve"><value>Ön işlem, kabin, tabanca, konveyör ve fırın tek bir projede, tek muhatapla.</value></data>
+  <data name="Home.Why1Text" xml:space="preserve"><value>Ön işlem tüneli, toz boya kabini, elektrostatik boya tabancası, konveyör sistemi ve kürleme fırınını tek bir projede tasarlayıp kuruyoruz. Tüm hat tek elden yönetildiği için ekipmanlar birbiriyle uyumlu çalışır, devreye alma süresi kısalır.</value></data>
   <data name="Home.Why2Title" xml:space="preserve"><value>Projeye Özel Tasarım</value></data>
-  <data name="Home.Why2Text" xml:space="preserve"><value>Standart ürünlerin yanında ölçüye ve sürece özel ekipman tasarlıyoruz.</value></data>
+  <data name="Home.Why2Text" xml:space="preserve"><value>Standart boya kabini ve fırın modellerimizin yanında, parçanızın ölçüsüne, hat hızına ve tesis yerleşiminize özel boyahane ekipmanı tasarlıyoruz. Her proje, enerji verimliliği ve kesintisiz üretim hedefiyle mühendislik aşamasından geçer.</value></data>
   <data name="Home.Why3Title" xml:space="preserve"><value>Kendi Atölyemizde İmalat</value></data>
-  <data name="Home.Why3Text" xml:space="preserve"><value>Üretimi kendi atölyemizde yaptığımız için kaliteyi ve termini kontrol ediyoruz.</value></data>
+  <data name="Home.Why3Text" xml:space="preserve"><value>Boya kabini, fırın ve konveyör imalatını kendi atölyemizde yaptığımız için malzeme kalitesini, kaynak ve sac işçiliğini ve teslim terminini doğrudan kontrol ediyoruz. Yerli üretim, yedek parça ve servis desteğinde de hız kazandırır.</value></data>
   <data name="Home.Why4Title" xml:space="preserve"><value>Yedek Parça Sürekliliği</value></data>
-  <data name="Home.Why4Text" xml:space="preserve"><value>Sattığımız cihazların yedek parçasını stoktan, hızlı temin ediyoruz.</value></data>
+  <data name="Home.Why4Text" xml:space="preserve"><value>Sattığımız toz boya makinelerinin ve elektrostatik tabancaların yedek parçalarını stokta tutuyor, hızlı gönderiyoruz. Böylece boya hattınızda duruş süresi en aza iner, üretim planınız aksamaz.</value></data>
   <data name="Home.Why5Title" xml:space="preserve"><value>Teknolojiyi Takip</value></data>
-  <data name="Home.Why5Text" xml:space="preserve"><value>Sektördeki yeni gelişmeleri izliyor, makinelerimizi sürekli geliştiriyoruz.</value></data>
+  <data name="Home.Why5Text" xml:space="preserve"><value>Toz boya teknolojisindeki yenilikleri, enerji tasarruflu fırın ve filtre sistemlerini yakından izliyor; makinelerimizi saha geri bildirimleriyle sürekli geliştiriyoruz.</value></data>
   <data name="Home.Why6Title" xml:space="preserve"><value>Şartsız Müşteri Memnuniyeti</value></data>
-  <data name="Home.Why6Text" xml:space="preserve"><value>İlk prensibimiz, müşterimizin makinelerimizden ve hizmetimizden tam memnun kalmasıdır.</value></data>
-  <data name="Home.IndustriesEyebrow" xml:space="preserve"><value>Sektörler</value></data>
-  <data name="Home.IndustriesTitle" xml:space="preserve"><value>Toz boyanın kullanıldığı sektörler</value></data>
-  <data name="Home.Industry1" xml:space="preserve"><value>Metal Eşya</value></data>
-  <data name="Home.Industry2" xml:space="preserve"><value>Alüminyum Profil</value></data>
-  <data name="Home.Industry3" xml:space="preserve"><value>Beyaz Eşya</value></data>
-  <data name="Home.Industry4" xml:space="preserve"><value>Otomotiv Yan Sanayi</value></data>
-  <data name="Home.Industry5" xml:space="preserve"><value>Mobilya</value></data>
-  <data name="Home.Industry6" xml:space="preserve"><value>Tarım Makinaları</value></data>
+  <data name="Home.Why6Text" xml:space="preserve"><value>İlk prensibimiz, müşterimizin boya hattından ve hizmetimizden tam memnun kalmasıdır. Kurulum sonrası eğitim, periyodik bakım ve teknik destekle yatırımınızın uzun yıllar verimli çalışmasını sağlıyoruz.</value></data>
   <data name="Cta.Eyebrow" xml:space="preserve"><value>Projenizi konuşalım</value></data>
   <data name="Cta.Title" xml:space="preserve"><value>Toz boya hattınız için teklif alın</value></data>
   <data name="Cta.Text" xml:space="preserve"><value>Ürün, kapasite veya tesis ihtiyacınızı yazın; teknik ekibimiz size dönüş yapsın.</value></data>
@@ -411,8 +412,7 @@
   <data name="Videos.GalleryTitle" xml:space="preserve">
     <value>Fotoğraf galerisi</value>
   </data>
-  <data name="Home.WhyLead" xml:space="preserve"><value>Boya hattı yatırımınızı keşiften satış sonrasına kadar aynı ekiple, tek muhatapla yürütüyoruz.</value></data>
-  <data name="Home.IndustriesLead" xml:space="preserve"><value>Toz boyalı metal yüzeyler pek çok sektörde kullanılır. Hatlarımızı parçanın boyutuna, adedine ve yüzey beklentisine göre tasarlıyoruz.</value></data>
+  <data name="Home.WhyLead" xml:space="preserve"><value>PRJ Proje Makina, toz boya hattı ve elektrostatik boya sistemi yatırımınızı keşif, mühendislik, imalat, montaj ve satış sonrası servis aşamalarında aynı ekiple, tek muhatapla yürütür. Ön işlemden fırına kadar her ekipmanı parçanıza, üretim adedinize ve yüzey kalitesi beklentinize göre planlıyoruz.</value></data>
   <data name="Home.FaqEyebrow" xml:space="preserve"><value>Sık Sorulanlar</value></data>
   <data name="Home.FaqTitle" xml:space="preserve"><value>Aklınıza takılanlar</value></data>
   <data name="Home.FaqLead" xml:space="preserve"><value>Yanıtını burada bulamadığınız sorular için ekibimize doğrudan ulaşabilirsiniz.</value></data>
@@ -428,4 +428,5 @@
   <data name="About.WhyLead" xml:space="preserve"><value>Müşterilerimizin bizi tercih etmesinin başlıca nedenleri.</value></data>
   <data name="Nav.Media" xml:space="preserve"><value>Medya</value></data>
   <data name="Nav.Gallery" xml:space="preserve"><value>Görseller</value></data>
+  <data name="Home.WhyImageAlt" xml:space="preserve"><value>PRJ Proje Makina toz boya hattı ekipmanı</value></data>
 </root>

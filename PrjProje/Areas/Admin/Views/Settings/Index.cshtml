@@ -71,6 +71,19 @@
                 <label class="form-label" asp-for="HeroVideo">Masaüstü Hero Videosu (MP4)</label>
                 <input asp-for="HeroVideo" class="form-control mb-1" placeholder="/videos/hero.mp4" />
                 <div class="form-text mb-3">Boş bırakılırsa masaüstünde fotoğraf gösterilir.</div>
+                <div class="row g-3 mb-1">
+                    <div class="col-md-6">
+                        <label class="form-label" asp-for="FoundedYear">Kuruluş Yılı</label>
+                        <input asp-for="FoundedYear" class="form-control" inputmode="numeric" maxlength="4" placeholder="ör. 2005" />
+                        <span asp-validation-for="FoundedYear" class="text-danger small d-block"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" asp-for="CompletedProjects">Tamamlanan Proje Sayısı</label>
+                        <input asp-for="CompletedProjects" class="form-control" inputmode="numeric" maxlength="6" placeholder="ör. 250" />
+                        <span asp-validation-for="CompletedProjects" class="text-danger small d-block"></span>
+                    </div>
+                </div>
+                <div class="form-text mb-3">Hero altındaki sayaçlarda "yıllık deneyim" ve "tamamlanan proje" olarak gösterilir. Boş bırakılan sayaç gizlenir; ürün, hizmet ve sektör sayıları otomatik hesaplanır.</div>
                 <label class="form-label" asp-for="GoogleSiteVerification">Google Search Console doğrulama kodu</label>
                 <input asp-for="GoogleSiteVerification" class="form-control mb-3" />
                 <label class="form-label" asp-for="GoogleAnalyticsId">Google Analytics 4 ölçüm kimliği</label>

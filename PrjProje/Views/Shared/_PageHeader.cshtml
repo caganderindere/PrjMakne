@@ -1,37 +1,3 @@
 @model PageHeaderModel
-@{
-    var crumbs = (ViewData[PageSeo.ViewDataKey] as PageSeo)?.Breadcrumbs ?? new List<BreadcrumbItem>();
-}
-<section class="page-header">
-    <div class="container">
-        @if (crumbs.Count > 1)
-        {
-            <nav aria-label="Breadcrumb">
-                <ol class="breadcrumb">
-                    @foreach (var crumb in crumbs)
-                    {
-                        <li>
-                            @if (crumb.Url is not null)
-                            {
-                                <a href="@crumb.Url">@crumb.Title</a>
-                            }
-                            else
-                            {
-                                <span aria-current="page">@crumb.Title</span>
-                            }
-                        </li>
-                    }
-                </ol>
-            </nav>
-        }
-        @if (Model.Eyebrow is not null)
-        {
-            <p class="eyebrow">@Model.Eyebrow</p>
-        }
-        <h1>@Model.Title</h1>
-        @if (Model.Lead is not null)
-        {
-            <p class="lead">@Model.Lead</p>
-        }
-    </div>
-</section>
+@* No banner strip: pages open straight after the menu. The h1 stays for search engines and screen readers. *@
+<h1 class="visually-hidden">@Model.Title</h1>

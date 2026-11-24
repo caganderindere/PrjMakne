@@ -41,10 +41,15 @@ public class HomeController : PublicControllerBase
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         var settings = await _settingsService.GetAsync(cancellationToken);
+        var categories = await _productService.GetCategoriesAsync(Lang, cancellationToken);
         var model = new HomeViewModel
         {
-            Categories = await _productService.GetCategoriesAsync(Lang, cancellationToken),
+            Categories = categories,
             Services = await _servicePageService.GetServicesAsync(Lang, homeOnly: true, cancellationToken),
+            ProductCount = categories.Sum(c => c.ProductCount),
+            ServiceCount = (await _servicePageService.GetServicesAsync(Lang, cancellationToken: cancellationToken)).Count,
+            FoundedYear = int.TryParse(settings.FoundedYear, out var founded) ? founded : null,
+            CompletedProjects = int.TryParse(settings.CompletedProjects, out var projects) ? projects : null,
             FeaturedProducts = await _productService.GetFeaturedAsync(Lang, 4, cancellationToken),
             LatestPosts = await _blogService.GetLatestAsync(Lang, 3, cancellationToken),
             References = await _siteContentService.GetReferencesAsync(cancellationToken),

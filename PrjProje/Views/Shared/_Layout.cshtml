@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="~/css/tokens.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/pages.css" asp-append-version="true" />
+    <script src="~/js/intro.js" asp-append-version="true"></script>
     <link rel="icon" href="~/favicon.ico" sizes="48x48" />
     <link rel="icon" href="~/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png" />
@@ -50,6 +51,12 @@
     @await RenderSectionAsync("Head", required: false)
 </head>
 <body>
+    <div class="intro-screen" aria-hidden="true">
+        <div class="intro-logo">
+            <img src="~/images/brand/prj-logo-negative.svg" alt="" width="265" height="198" />
+            <span class="intro-laser"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+    </div>
     <a class="skip-link" href="#main">@L["Common.SkipToContent"]</a>
 
     @if (bar is not null)

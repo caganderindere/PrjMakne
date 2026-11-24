@@ -181,6 +181,18 @@ public class SettingsController : AdminControllerBase
             ModelState.AddModelError(nameof(model.HeroVideo), "Video yolu / ile başlamalı ve .mp4 ile bitmelidir (ör. /videos/hero.mp4).");
         }
 
+        model.FoundedYear = model.FoundedYear?.Trim();
+        if (!string.IsNullOrEmpty(model.FoundedYear) && (!int.TryParse(model.FoundedYear, out var year) || year < 1900 || year > DateTime.Today.Year))
+        {
+            ModelState.AddModelError(nameof(model.FoundedYear), $"Kuruluş yılı 1900 ile {DateTime.Today.Year} arasında bir yıl olmalıdır.");
+        }
+
+        model.CompletedProjects = model.CompletedProjects?.Trim();
+        if (!string.IsNullOrEmpty(model.CompletedProjects) && (!int.TryParse(model.CompletedProjects, out var projects) || projects < 1))
+        {
+            ModelState.AddModelError(nameof(model.CompletedProjects), "Proje sayısı pozitif bir tam sayı olmalıdır.");
+        }
+
         if (heroImageFile is { Length: > 0 })
         {
             var upload = await _fileStorage.SaveImageAsync(heroImageFile, ImageFolder.Site, cancellationToken);
