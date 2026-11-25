@@ -54,7 +54,8 @@ public class HomeController : PublicControllerBase
             Videos = (await _galleryService.GetGalleryAsync(Lang, cancellationToken)).Videos.Take(3).ToList()
         };
 
-        SetSeo(L["Home.MetaTitle"], L["Home.MetaDescription"], SiteRoutes.Home);
+        var seo = SetSeo(L["Home.MetaTitle"], L["Home.MetaDescription"], SiteRoutes.Home);
+        seo.StructuredData.Add(JsonLd.WebSite(L["Seo.TitleSuffix"], Url.Absolute("/").TrimEnd('/'), Languages.All));
         return View(model);
     }
 
@@ -230,6 +231,8 @@ public class ServicesController : PublicControllerBase
         seo.Image = service.Image;
         seo.Breadcrumbs.Add(new BreadcrumbItem(L["Nav.Services"], Url.Localized(SiteRoutes.Services)));
         seo.Breadcrumbs.Add(new BreadcrumbItem(service.Title, null));
+        seo.StructuredData.Add(JsonLd.Service(service.Title, service.MetaDescription ?? service.Summary,
+            service.Image is null ? null : Url.Absolute(service.Image), Url.Absolute(seo.CanonicalPath), Url.Absolute("/").TrimEnd('/')));
 
         var gallery = service.GalleryCategoryId is { } galleryCategoryId
             ? (await _galleryService.GetGalleryAsync(Lang, cancellationToken)).Items.Where(i => i.CategoryId == galleryCategoryId).ToList()

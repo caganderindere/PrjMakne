@@ -2,17 +2,31 @@
 // Sheet-metal parts hang from the overhead conveyor, enter the booth bare, come out with a matte powder coat,
 // cure in the tunnel oven and leave glossy red. Modelled after the company's own installations: red-framed
 // booth with a cyclone and yellow gun reciprocators, grey-panelled oven with red corner posts.
-import * as THREE from "../lib/three/three.module.min.js";
-import { RoomEnvironment } from "../lib/three/RoomEnvironment.js";
-import { mergeGeometries } from "../lib/three/BufferGeometryUtils.js";
+// three.js (~670 KB) is fetched only after the page has loaded and the main thread is idle: the poster photo is the
+// first paint, and parsing the library and building the scene stay out of the load-time blocking work.
+let THREE, RoomEnvironment, mergeGeometries;
 
 const section = document.querySelector("[data-paint-line]");
 const host = section && section.querySelector(".hero-line-canvas");
 if (host) {
+    const idle = () => ("requestIdleCallback" in window ? window.requestIdleCallback(begin, { timeout: 3000 }) : window.setTimeout(begin, 300));
+    if (document.readyState === "complete") {
+        idle();
+    } else {
+        window.addEventListener("load", idle, { once: true });
+    }
+}
+
+async function begin() {
     try {
+        [THREE, { RoomEnvironment }, { mergeGeometries }] = await Promise.all([
+            import("../lib/three/three.module.min.js"),
+            import("../lib/three/RoomEnvironment.js"),
+            import("../lib/three/BufferGeometryUtils.js"),
+        ]);
         start();
     } catch (error) {
-        // No WebGL: the poster photo stays.
+        // No WebGL or the library failed to load: the poster photo stays.
         console.warn("Paint line hero disabled:", error);
     }
 }

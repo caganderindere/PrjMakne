@@ -19,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.Services.AddSingleton<ContentImageSizes>();
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 // Texts edited in the admin panel override the .resx texts (see ContentOverrideLocalizerFactory).
 builder.Services.AddSingleton<ResourceManagerStringLocalizerFactory>();
@@ -163,6 +164,7 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
+app.UseMiddleware<CanonicalPathMiddleware>();
 app.UseMiddleware<LegacyRedirectMiddleware>();
 app.UseRouting();
 app.UseRequestLocalization();

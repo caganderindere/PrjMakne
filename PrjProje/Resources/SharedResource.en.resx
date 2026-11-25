@@ -48,14 +48,14 @@
   <data name="Home.BlogEyebrow" xml:space="preserve"><value>Blog</value></data>
   <data name="Home.BlogTitle" xml:space="preserve"><value>Technical articles and news</value></data>
   <data name="Home.BlogLead" xml:space="preserve"><value>Notes from the field on powder coating processes, equipment selection and maintenance.</value></data>
-  <data name="Home.AboutTitle" xml:space="preserve"><value>Engineering-led manufacturing in powder coating</value></data>
-  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina works from its Istanbul workshop to build and supply high-quality electrostatic powder coating machinery.</value></data>
-  <data name="Home.AboutText" xml:space="preserve"><value>We do not see ourselves as just an equipment supplier: we develop new machines around our customers' needs and follow every technological advance in the sector. Our first principle is unconditional customer satisfaction.</value></data>
-  <data name="Home.AboutPoint1" xml:space="preserve"><value>One team from feasibility to after-sales support</value></data>
-  <data name="Home.AboutPoint2" xml:space="preserve"><value>A full range from guns to curing ovens</value></data>
-  <data name="Home.AboutPoint3" xml:space="preserve"><value>Spare parts and technical service</value></data>
+  <data name="Home.AboutTitle" xml:space="preserve"><value>Turnkey engineering solutions in powder coating technology</value></data>
+  <data name="Home.AboutLead" xml:space="preserve"><value>PRJ Proje Makina A.Ş. is an engineering and manufacturing company that brings the design, manufacture and commissioning of electrostatic powder coating equipment and complete finishing plants under one roof.</value></data>
+  <data name="Home.AboutText" xml:space="preserve"><value>At our production facility in Istanbul, we design and manufacture pre-treatment, application, curing and conveyor systems in line with our clients' capacity, quality and efficiency targets. Through integrated project management from feasibility to after-sales service, we turn your investment into a durable, cost-efficient and sustainable production facility.</value></data>
+  <data name="Home.AboutPoint1" xml:space="preserve"><value>Integrated project management from feasibility to commissioning</value></data>
+  <data name="Home.AboutPoint2" xml:space="preserve"><value>A complete product and system portfolio from pre-treatment to curing</value></data>
+  <data name="Home.AboutPoint3" xml:space="preserve"><value>Assured spare parts supply and technical service</value></data>
   <data name="Home.AboutVisualCaption" xml:space="preserve"><value>Our workshop</value></data>
-  <data name="Home.LearnMore" xml:space="preserve"><value>About our company</value></data>
+  <data name="Home.LearnMore" xml:space="preserve"><value>Our corporate profile</value></data>
   <data name="Home.CategoriesTitle" xml:space="preserve"><value>Our Product Categories</value></data>
   <data name="Home.ServicesTitle" xml:space="preserve"><value>Our Services</value></data>
   <data name="Home.ServicesLead" xml:space="preserve"><value>Alongside turnkey powder coating plants, we offer laser cutting, CNC bending and contract powder coating.</value></data>
@@ -103,7 +103,7 @@
   <data name="Cookie.Settings" xml:space="preserve"><value>Cookie Preferences</value></data>
   <data name="Cookie.Details" xml:space="preserve"><value>Cookie policy</value></data>
   <data name="Cookie.Accept" xml:space="preserve"><value>Accept</value></data>
-  <data name="About.MetaTitle" xml:space="preserve"><value>About Us</value></data>
+  <data name="About.MetaTitle" xml:space="preserve"><value>About Us: Powder Coating Plant Maker</value></data>
   <data name="About.MetaDescription" xml:space="preserve"><value>PRJ Proje Makina's mission, vision and approach to electrostatic powder coating equipment, from feasibility to after-sales service.</value></data>
   <data name="About.Title" xml:space="preserve"><value>About Us</value></data>
   <data name="About.Lead" xml:space="preserve"><value>We bring together engineering, manufacturing and after-sales support for electrostatic powder coating equipment.</value></data>
@@ -145,7 +145,7 @@
   <data name="About.DomesticText" xml:space="preserve"><value>We design and build our equipment in our Istanbul workshop and supply spare parts quickly.</value></data>
   <data name="About.GlobalTitle" xml:space="preserve"><value>Global Competitiveness</value></data>
   <data name="About.GlobalText" xml:space="preserve"><value>By offering the most suitable equipment, we aim to strengthen our customers' position in global markets.</value></data>
-  <data name="Products.MetaTitle" xml:space="preserve"><value>Products</value></data>
+  <data name="Products.MetaTitle" xml:space="preserve"><value>Powder Coating Equipment and Products</value></data>
   <data name="Products.MetaDescription" xml:space="preserve"><value>Explore our range of powder coating guns, paint booths, curing ovens, conveyors, compressed air equipment and pretreatment lines.</value></data>
   <data name="Products.Title" xml:space="preserve"><value>Our Products</value></data>
   <data name="Products.Lead" xml:space="preserve"><value>Every piece of equipment for powder and wet paint lines, from the gun to the oven.</value></data>
@@ -203,7 +203,7 @@
   <data name="Blog.Tags" xml:space="preserve"><value>Tags</value></data>
   <data name="Blog.Share" xml:space="preserve"><value>Share</value></data>
   <data name="Blog.Related" xml:space="preserve"><value>Related Articles</value></data>
-  <data name="Videos.MetaTitle" xml:space="preserve"><value>Gallery</value></data>
+  <data name="Videos.MetaTitle" xml:space="preserve"><value>Gallery: Powder Coating Plant Projects</value></data>
   <data name="Videos.MetaDescription" xml:space="preserve"><value>Videos of PRJ Proje Makina powder coating plants, booths, ovens and conveyor installations.</value></data>
   <data name="Videos.Title" xml:space="preserve"><value>Gallery</value></data>
   <data name="Videos.Lead" xml:space="preserve"><value>Photos and videos from our workshop and the plants we have installed.</value></data>
@@ -243,7 +243,7 @@
   <data name="Manuals.Error" xml:space="preserve"><value>The catalogue could not be displayed. You can download the PDF instead.</value></data>
   <data name="Manuals.EmptyTitle" xml:space="preserve"><value>Catalogues coming soon</value></data>
   <data name="Manuals.EmptyText" xml:space="preserve"><value>Our product catalogues will be published here soon.</value></data>
-  <data name="Contact.MetaTitle" xml:space="preserve"><value>Contact Us</value></data>
+  <data name="Contact.MetaTitle" xml:space="preserve"><value>Contact Us: Arnavutköy, Istanbul</value></data>
   <data name="Contact.MetaDescription" xml:space="preserve"><value>Contact PRJ Proje Makina A.Ş. in Arnavutköy, Istanbul: phone, email, WhatsApp and contact form.</value></data>
   <data name="Contact.Title" xml:space="preserve"><value>Contact Us</value></data>
   <data name="Contact.Lead" xml:space="preserve"><value>Get in touch about products, service or a new plant project.</value></data>

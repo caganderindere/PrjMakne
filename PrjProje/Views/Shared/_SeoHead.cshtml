@@ -46,11 +46,11 @@
 }
 @if (Model.PublishedTime.HasValue)
 {
-    <meta property="article:published_time" content="@Model.PublishedTime.Value.ToString("O")" />
+    <meta property="article:published_time" content="@JsonLd.UtcTimestamp(Model.PublishedTime.Value)" />
 }
 @if (Model.ModifiedTime.HasValue)
 {
-    <meta property="article:modified_time" content="@Model.ModifiedTime.Value.ToString("O")" />
+    <meta property="article:modified_time" content="@JsonLd.UtcTimestamp(Model.ModifiedTime.Value)" />
 }
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="@title" />

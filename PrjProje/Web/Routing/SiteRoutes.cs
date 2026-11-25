@@ -40,7 +40,7 @@ public static class SiteRoutes
         Route(Products, "Products", "Index", "urunler", "products"),
         Route(ServiceDetail, "Services", "Detail", "hizmetler/{slug}", "services/{slug}"),
         Route(Services, "Services", "Index", "hizmetler", "services"),
-        Route(Videos, "Videos", "Index", "videolar", "videos"),
+        Route(Videos, "Videos", "Index", "galeri", "gallery"),
         Route(Manuals, "Manuals", "Index", "kullanim-kilavuzlari", "user-manuals"),
         Route(BlogDetail, "Blog", "Detail", "blog/{slug}", "blog/{slug}"),
         Route(Blog, "Blog", "Index", "blog", "blog"),
@@ -48,6 +48,13 @@ public static class SiteRoutes
         Route(Contact, "Contact", "Index", "iletisim", "contact"),
         Route(Privacy, "Legal", "Privacy", "kvkk", "privacy-policy"),
         Route(Cookies, "Legal", "Cookies", "cerez-politikasi", "cookie-policy"),
+    };
+
+    /// <summary>Former addresses of pages that were renamed, answered with a 301 to the new one.</summary>
+    public static readonly IReadOnlyDictionary<string, string> MovedPaths = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+    {
+        ["/tr/videolar"] = "/tr/galeri",
+        ["/en/videos"] = "/en/gallery",
     };
 
     /// <summary>Static pages (no slug) listed in the sitemap.</summary>

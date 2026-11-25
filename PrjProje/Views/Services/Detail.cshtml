@@ -1,4 +1,5 @@
 @model ServiceDetailViewModel
+@inject ContentImageSizes ImageSizes
 @{
     var service = Model.Service;
     // The first photos of the service's gallery sit beside the intro; the rest form the gallery below.
@@ -44,7 +45,7 @@
 
 <section class="section">
     <div class="container split split-wide">
-        <article class="prose service-prose">@Html.Raw(service.Content)</article>
+        <article class="prose service-prose">@Html.Raw(ImageSizes.Apply(service.Content))</article>
 
         <aside class="stack service-aside">
             @if (service.Specifications.Count > 0)

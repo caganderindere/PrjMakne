@@ -16,7 +16,7 @@ const pages = [
     [`/tr/urunler/${product.Tr.Slug}`, `/en/products/${product.En.Slug}`],
     ["/tr/hizmetler", "/en/services"],
     [`/tr/hizmetler/${service.Tr.Slug}`, `/en/services/${service.En.Slug}`],
-    ["/tr/videolar", "/en/videos"],
+    ["/tr/galeri", "/en/gallery"],
     ["/tr/kullanim-kilavuzlari", "/en/user-manuals"],
     ["/tr/teklif-al", "/en/request-a-quote"],
     ["/tr/iletisim", "/en/contact"],
@@ -109,7 +109,7 @@ test("menu groups pages under corporate, products, services, media and contact",
     expect(top.map((t) => t.trim())).toEqual(["Kurumsal", "Ürünler", "Hizmetler", "Medya", "İletişim"]);
     await expect(page.locator('#sub-about a[href="/tr/belgeler"]')).toHaveCount(1);
     await expect(page.locator('#sub-media a[href="/tr/blog"]')).toHaveCount(1);
-    await expect(page.locator('#sub-media a[href="/tr/videolar"]')).toHaveCount(1);
+    await expect(page.locator('#sub-media a[href="/tr/galeri"]')).toHaveCount(1);
     const sitemap = await (await request.get("/sitemap.xml")).text();
     expect(sitemap).toContain("/tr/blog");
     expect(sitemap).toContain(`/tr/urunler/${product.Tr.Slug}`);

@@ -1,4 +1,5 @@
 @model BlogPostDetailDto
+@inject ContentImageSizes ImageSizes
 @{
     var seo = ViewData[PageSeo.ViewDataKey] as PageSeo;
     var blogPath = Url.Localized(SiteRoutes.Blog);
@@ -26,7 +27,7 @@
         {
             <p class="lead">@Model.Summary</p>
         }
-        @Html.Raw(Model.Content)
+        @Html.Raw(ImageSizes.Apply(Model.Content))
 
         @if (Model.Tags.Count > 0)
         {

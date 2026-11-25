@@ -18,7 +18,13 @@ public static class JsonLd
     private const string Region = "İstanbul";
     private const string PostalCode = "34281";
     private const string FormerName = "Prestij Teknik Makine";
-    private const string LogoPath = "/images/brand/prj-logo.svg";
+    // Google reads logos as raster images; the PNG is rendered from prj-logo.svg.
+    private const string LogoPath = "/images/brand/prj-logo.png";
+
+    // Matches the default working hours setting ("Pazartesi - Cuma: 08:30 - 18:00"), which is free text.
+    private static readonly string[] OpenDays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+    private const string Opens = "08:30";
+    private const string Closes = "18:00";
 
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -47,7 +53,38 @@ public static class JsonLd
             ["postalCode"] = PostalCode,
             ["addressCountry"] = "TR"
         },
+        ["hasMap"] = "https://www.google.com/maps/search/?api=1&query=" + Uri.EscapeDataString($"{StreetAddress}, {PostalCode} {Locality} {Region}"),
+        ["openingHoursSpecification"] = new Dictionary<string, object>
+        {
+            ["@type"] = "OpeningHoursSpecification",
+            ["dayOfWeek"] = OpenDays,
+            ["opens"] = Opens,
+            ["closes"] = Closes
+        },
         ["sameAs"] = settings.GetSocialLinks().Select(s => s.Url).ToArray()
+    });
+
+    public static string WebSite(string name, string baseUrl, IEnumerable<string> languages) => Serialize(new Dictionary<string, object?>
+    {
+        ["@context"] = "https://schema.org",
+        ["@type"] = "WebSite",
+        ["@id"] = baseUrl + "/#website",
+        ["name"] = name,
+        ["url"] = baseUrl,
+        ["inLanguage"] = languages.ToArray(),
+        ["publisher"] = new Dictionary<string, object> { ["@id"] = baseUrl + "/#organization" }
+    });
+
+    public static string Service(string name, string? description, string? imageUrl, string url, string baseUrl) => Serialize(new Dictionary<string, object?>
+    {
+        ["@context"] = "https://schema.org",
+        ["@type"] = "Service",
+        ["name"] = name,
+        ["serviceType"] = name,
+        ["description"] = description,
+        ["image"] = imageUrl,
+        ["url"] = url,
+        ["provider"] = new Dictionary<string, object> { ["@id"] = baseUrl + "/#organization" }
     });
 
     /// <summary>No offers: prices are quoted per order, and an offer without a price is an error in Google's report.</summary>
@@ -97,10 +134,15 @@ public static class JsonLd
         ["headline"] = headline,
         ["description"] = description,
         ["image"] = imageUrl,
-        ["datePublished"] = published.ToString("O"),
-        ["dateModified"] = modified.ToString("O"),
+        ["datePublished"] = UtcTimestamp(published),
+        ["dateModified"] = UtcTimestamp(modified),
         ["inLanguage"] = language,
-        ["author"] = new Dictionary<string, object> { ["@type"] = "Organization", ["name"] = authorName },
+        // A named writer set in the panel is a Person (an expertise signal); the company name stays an Organization.
+        ["author"] = new Dictionary<string, object>
+        {
+            ["@type"] = publisherName.StartsWith(authorName, StringComparison.OrdinalIgnoreCase) ? "Organization" : "Person",
+            ["name"] = authorName
+        },
         ["publisher"] = new Dictionary<string, object>
         {
             ["@type"] = "Organization",
@@ -109,6 +151,10 @@ public static class JsonLd
         },
         ["mainEntityOfPage"] = url
     });
+
+    /// <summary>Dates are stored in UTC but read back without a kind; the "Z" tells search engines the time zone.</summary>
+    public static string UtcTimestamp(DateTime utc) =>
+        DateTime.SpecifyKind(utc, DateTimeKind.Utc).ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", System.Globalization.CultureInfo.InvariantCulture);
 
     // WhenWritingNull skips null properties of objects, not null dictionary entries; those are dropped here.
     private static string Serialize(object value) =>
